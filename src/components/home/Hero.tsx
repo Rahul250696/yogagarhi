@@ -1,0 +1,53 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-yoga-bali.jpg";
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-primary/60" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
+        <div className="max-w-4xl mx-auto space-y-8 animate-fade-up">
+          <p className="text-lg md:text-xl font-medium tracking-wide opacity-90">
+            Welcome To
+          </p>
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
+            Yogagarhi
+          </h1>
+          <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto opacity-90">
+            Ancient Himalayan wisdom. Authentic yoga, lived & taught.
+          </p>
+          
+          {/* Stats */}
+          <div className="flex items-center justify-center gap-8 pt-4">
+            <div className="text-center">
+              <p className="font-heading text-4xl md:text-5xl font-bold">500+</p>
+              <p className="text-sm opacity-80">Graduated Students</p>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/contact">Quick Enquiry</Link>
+            </Button>
+            <Button variant="heroOutline" size="xl" asChild>
+              <Link to="/about">Learn More</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+    </section>
+  );
+}
