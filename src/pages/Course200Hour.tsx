@@ -14,6 +14,7 @@ import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
 import activitySoundHealing from "@/assets/activity-sound-healing.jpg";
 import activityWaterfall from "@/assets/activity-waterfall.jpg";
+import webinarBackground from "@/assets/webinar-background.jpg";
 import WhyFeatureItem from "@/components/home/WhyFeatureItem";
 
 // Custom scroll-aware header component
@@ -1262,7 +1263,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
           {/* Background Image */}
           <div className="absolute inset-0 -z-10">
             <img 
-              src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1920&q=80"
+              src={webinarBackground}
               alt="Yoga meditation background"
               className="w-full h-full object-cover"
             />
