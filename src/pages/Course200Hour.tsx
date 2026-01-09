@@ -1139,37 +1139,37 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   { 
                     title: "Ashtanga Yoga Postures", 
                     content: "Complete Ashtanga yoga primary series sequence. Week-by-week progression through Sun Salutation A & B, Standing sequence, Seated sequence, and Mysore style practice.",
-                    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop"
+                    image: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Hatha & Vinyasa Flow", 
                     content: "Pawanmuktasana series, Surya Namaskar variations, Standing and seated postures, Backbends, Forward folds, Inversions, and complete sequencing methodology.",
-                    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=400&fit=crop"
+                    image: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Yoga Philosophy", 
                     content: "Introduction to yoga sutras of Patanjali, Eight limbs of Ashtanga Yoga, Nadis, Chakras, Pancha-Vayus, Panchakoshas, Triguna, and inspiring stories of great yogis.",
-                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Pranayama & Breathing", 
                     content: "Complete breathing techniques including Ujjayi, Bhastrika, Kapalbhati, Nadi-Sodhana, Bhramari, Surya-Bhedi, Chandra-Bhedi, Sheetali, and Sheetkari.",
-                    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop"
+                    image: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Anatomy & Physiology", 
                     content: "Body movement planes, joint protection, anatomy of ankle, knee, spine, shoulder, breathing mechanism, physiology of muscles, and nervous system.",
-                    image: "https://images.unsplash.com/photo-1559757175-7cb036e0e69a?w=400&h=400&fit=crop"
+                    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Teaching Methodology", 
                     content: "Class sequencing, adjustments, working with different levels, voice usage, mental preparation, demonstration principles, and step-by-step class planning.",
-                    image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=400&h=400&fit=crop"
+                    image: "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Meditation & Mantra", 
-                    content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices.",
-                    image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=400&h=400&fit=crop"
+                    content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices for inner stillness.",
+                    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop"
                   },
                 ].map((item, index) => (
                   <div 
@@ -1177,7 +1177,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     className="flex-shrink-0 snap-start first:ml-4 last:mr-4"
                   >
                     {/* Card with circular image attached */}
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center h-full">
                       {/* Circular Image */}
                       <div className="relative z-10 mb-[-40px]">
                         <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-background shadow-lg">
@@ -1189,12 +1189,12 @@ This is not a transactional relationship — it is a lifelong connection.`}
                         </div>
                       </div>
                       
-                      {/* Square Card */}
-                      <div className="w-72 bg-card rounded-xl border border-border p-6 pt-12 shadow-sm hover:shadow-md transition-shadow">
+                      {/* Square Card - fixed height for consistency */}
+                      <div className="w-72 h-52 bg-card rounded-xl border border-border p-6 pt-12 shadow-sm hover:shadow-md transition-shadow flex flex-col">
                         <h3 className="font-heading text-lg font-semibold text-foreground text-center mb-3">
                           {item.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                        <p className="text-sm text-muted-foreground text-center leading-relaxed flex-1">
                           {item.content}
                         </p>
                       </div>
