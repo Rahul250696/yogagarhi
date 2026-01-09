@@ -328,6 +328,15 @@ export default function Course200Hour() {
   const [showWelcomeExpanded, setShowWelcomeExpanded] = useState(false);
   const [activeInclusionTab, setActiveInclusionTab] = useState<'inclusions' | 'exclusions'>('inclusions');
   const [showWebinarDialog, setShowWebinarDialog] = useState(false);
+  const [webinarForm, setWebinarForm] = useState({
+    name: '',
+    email: '',
+    timezone: '',
+    date: '',
+    time: ''
+  });
+
+  const isWebinarFormComplete = webinarForm.name && webinarForm.email && webinarForm.timezone && webinarForm.date && webinarForm.time;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1270,7 +1279,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     Register for Free Webinar
                   </DialogTitle>
                 </DialogHeader>
-                <form onSubmit={(e) => { e.preventDefault(); setShowWebinarDialog(false); }} className="space-y-4 pt-4">
+                <form onSubmit={(e) => { e.preventDefault(); setShowWebinarDialog(false); setWebinarForm({ name: '', email: '', timezone: '', date: '', time: '' }); }} className="space-y-4 pt-4">
                   <p className="text-center text-muted-foreground text-sm">
                     Fill in your details to join our live orientation session
                   </p>
@@ -1284,6 +1293,8 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       type="text"
                       placeholder="Enter your full name"
                       required
+                      value={webinarForm.name}
+                      onChange={(e) => setWebinarForm(prev => ({ ...prev, name: e.target.value }))}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
@@ -1297,6 +1308,8 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       type="email"
                       placeholder="Enter your email"
                       required
+                      value={webinarForm.email}
+                      onChange={(e) => setWebinarForm(prev => ({ ...prev, email: e.target.value }))}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
@@ -1308,18 +1321,43 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     </label>
                     <select 
                       required
+                      value={webinarForm.timezone}
+                      onChange={(e) => setWebinarForm(prev => ({ ...prev, timezone: e.target.value }))}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select your timezone</option>
-                      <option value="UTC-12">UTC-12:00 (Baker Island)</option>
-                      <option value="UTC-8">UTC-08:00 (Pacific Time)</option>
-                      <option value="UTC-5">UTC-05:00 (Eastern Time)</option>
-                      <option value="UTC+0">UTC+00:00 (London)</option>
-                      <option value="UTC+1">UTC+01:00 (Central Europe)</option>
-                      <option value="UTC+5:30">UTC+05:30 (India)</option>
-                      <option value="UTC+8">UTC+08:00 (Singapore/Bali)</option>
-                      <option value="UTC+9">UTC+09:00 (Japan/Korea)</option>
-                      <option value="UTC+10">UTC+10:00 (Sydney)</option>
+                      <option value="UTC-12:00">(UTC-12:00) Baker Island</option>
+                      <option value="UTC-11:00">(UTC-11:00) American Samoa</option>
+                      <option value="UTC-10:00">(UTC-10:00) Hawaii</option>
+                      <option value="UTC-09:00">(UTC-09:00) Alaska</option>
+                      <option value="UTC-08:00">(UTC-08:00) Pacific Time (US & Canada)</option>
+                      <option value="UTC-07:00">(UTC-07:00) Mountain Time (US & Canada)</option>
+                      <option value="UTC-06:00">(UTC-06:00) Central Time (US & Canada)</option>
+                      <option value="UTC-05:00">(UTC-05:00) Eastern Time (US & Canada)</option>
+                      <option value="UTC-04:00">(UTC-04:00) Atlantic Time (Canada)</option>
+                      <option value="UTC-03:00">(UTC-03:00) Buenos Aires, São Paulo</option>
+                      <option value="UTC-02:00">(UTC-02:00) Mid-Atlantic</option>
+                      <option value="UTC-01:00">(UTC-01:00) Azores</option>
+                      <option value="UTC+00:00">(UTC+00:00) London, Dublin, Lisbon</option>
+                      <option value="UTC+01:00">(UTC+01:00) Berlin, Paris, Rome, Madrid</option>
+                      <option value="UTC+02:00">(UTC+02:00) Cairo, Athens, Istanbul</option>
+                      <option value="UTC+03:00">(UTC+03:00) Moscow, Nairobi, Kuwait</option>
+                      <option value="UTC+03:30">(UTC+03:30) Tehran</option>
+                      <option value="UTC+04:00">(UTC+04:00) Dubai, Abu Dhabi</option>
+                      <option value="UTC+04:30">(UTC+04:30) Kabul</option>
+                      <option value="UTC+05:00">(UTC+05:00) Karachi, Tashkent</option>
+                      <option value="UTC+05:30">(UTC+05:30) Mumbai, New Delhi, Kolkata</option>
+                      <option value="UTC+05:45">(UTC+05:45) Kathmandu</option>
+                      <option value="UTC+06:00">(UTC+06:00) Dhaka, Almaty</option>
+                      <option value="UTC+06:30">(UTC+06:30) Yangon</option>
+                      <option value="UTC+07:00">(UTC+07:00) Bangkok, Jakarta, Hanoi</option>
+                      <option value="UTC+08:00">(UTC+08:00) Singapore, Kuala Lumpur, Bali</option>
+                      <option value="UTC+09:00">(UTC+09:00) Tokyo, Seoul</option>
+                      <option value="UTC+09:30">(UTC+09:30) Adelaide</option>
+                      <option value="UTC+10:00">(UTC+10:00) Sydney, Melbourne</option>
+                      <option value="UTC+11:00">(UTC+11:00) Solomon Islands</option>
+                      <option value="UTC+12:00">(UTC+12:00) Auckland, Fiji</option>
+                      <option value="UTC+13:00">(UTC+13:00) Samoa, Tonga</option>
                     </select>
                   </div>
                   
@@ -1331,6 +1369,8 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     <input
                       type="date"
                       required
+                      value={webinarForm.date}
+                      onChange={(e) => setWebinarForm(prev => ({ ...prev, date: e.target.value }))}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
@@ -1342,6 +1382,8 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     </label>
                     <select 
                       required
+                      value={webinarForm.time}
+                      onChange={(e) => setWebinarForm(prev => ({ ...prev, time: e.target.value }))}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select preferred time</option>
@@ -1351,7 +1393,12 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     </select>
                   </div>
                   
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button 
+                    type="submit" 
+                    className={`w-full transition-all ${isWebinarFormComplete ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-muted text-muted-foreground cursor-not-allowed'}`}
+                    size="lg"
+                    disabled={!isWebinarFormComplete}
+                  >
                     Register Now
                   </Button>
                   
