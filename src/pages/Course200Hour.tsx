@@ -1446,7 +1446,10 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   className="group p-6 bg-card rounded-lg border border-border text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                 >
                   <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                    <item.icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-300" />
+                    <item.icon 
+                      className="w-7 h-7 text-primary animate-float group-hover:scale-110 transition-transform duration-300" 
+                      style={{ animationDelay: `${index * 0.2}s` }}
+                    />
                   </div>
                   <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
                     {item.title}
