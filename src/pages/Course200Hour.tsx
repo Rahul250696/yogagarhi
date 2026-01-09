@@ -1258,18 +1258,28 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== FREE WEBINAR ===== */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <section className="relative py-20 overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 -z-10">
+            <img 
+              src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1920&q=80"
+              alt="Yoga meditation background"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-foreground/70" />
+          </div>
+          
+          <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               Free Orientation Webinar
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
               Join our live webinar to learn more about the training, ask questions, 
               and connect with our teachers before making your decision.
             </p>
             <Dialog open={showWebinarDialog} onOpenChange={setShowWebinarDialog}>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary text-primary-foreground">
+                <Button size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90">
                   Register for Free Webinar
                 </Button>
               </DialogTrigger>
