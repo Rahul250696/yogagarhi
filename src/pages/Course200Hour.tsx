@@ -976,45 +976,80 @@ This is not a transactional relationship — it is a lifelong connection.`}
               A comprehensive curriculum covering all aspects of yoga
             </p>
             
-            {/* Vertical Carousel with 4 visible cards */}
-            <div className="relative max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Main 4 Vertical Cards */}
+            <div className="max-w-5xl mx-auto mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {whatYouWillReceive.slice(0, 4).map((item, index) => (
                   <div 
                     key={index}
-                    className="group p-6 bg-card rounded-xl border border-border shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-up"
+                    className="group p-8 bg-card rounded-xl border border-border shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                      <item.icon className="w-7 h-7 text-primary" />
+                    <div className="flex items-start gap-5">
+                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        <item.icon className="w-8 h-8 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+                          {item.title}
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
                   </div>
                 ))}
               </div>
+            </div>
+            
+            {/* Horizontal Scrollable Flip Cards */}
+            <div className="relative">
+              {/* Gradient fade edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
               
-              {/* Scrolling carousel for remaining items */}
-              <div className="mt-8 relative">
-                <div className="flex animate-scroll-x gap-6 py-4">
-                  {[...whatYouWillReceive.slice(4), ...whatYouWillReceive.slice(4)].map((item, index) => (
+              <div className="overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4">
+                <div className="flex gap-6" style={{ width: 'max-content' }}>
+                  {whatYouWillReceive.slice(4).map((item, index) => (
                     <div 
                       key={index}
-                      className="flex-shrink-0 w-72 p-6 bg-card rounded-xl border border-border shadow-sm hover:shadow-card transition-all duration-300"
+                      className="flip-card w-64 h-72 flex-shrink-0 cursor-pointer"
+                      onClick={(e) => {
+                        const card = e.currentTarget;
+                        card.classList.toggle('flipped');
+                      }}
                     >
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <item.icon className="w-6 h-6 text-primary" />
+                      <div className="flip-card-inner relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
+                        {/* Front - Image with icon */}
+                        <div className="flip-card-front absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-border shadow-card">
+                          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex flex-col items-center justify-center p-6">
+                            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                              <item.icon className="w-10 h-10 text-primary" />
+                            </div>
+                            <h3 className="font-heading text-lg font-semibold text-foreground text-center">
+                              {item.title}
+                            </h3>
+                            <p className="text-xs text-muted-foreground mt-2 md:hidden">Tap to see more</p>
+                            <p className="text-xs text-muted-foreground mt-2 hidden md:block">Hover to see more</p>
+                          </div>
+                        </div>
+                        
+                        {/* Back - Content */}
+                        <div className="flip-card-back absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-border shadow-card rotate-y-180 bg-card">
+                          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center">
+                            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                              <item.icon className="w-7 h-7 text-primary" />
+                            </div>
+                            <h3 className="font-heading text-lg font-semibold text-foreground mb-3">
+                              {item.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="font-heading text-base font-semibold text-foreground mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
                     </div>
                   ))}
                 </div>
