@@ -1120,69 +1120,129 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== COURSE SYLLABUS ===== */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-background overflow-hidden">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Course Syllabus
             </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Comprehensive curriculum covering all aspects of yoga teacher training
+            </p>
             
-            <div className="max-w-4xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
+            {/* Horizontal Scrollable Cards */}
+            <div className="relative">
+              <div 
+                className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide scroll-smooth snap-x snap-mandatory"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
                 {[
-                  { title: "Ashtanga Yoga Postures", content: "Complete Ashtanga yoga primary series sequence. Week-by-week progression through Sun Salutation A & B, Standing sequence, Seated sequence, and Mysore style practice." },
-                  { title: "Hatha & Vinyasa Flow", content: "Pawanmuktasana series, Surya Namaskar variations, Standing and seated postures, Backbends, Forward folds, Inversions, and complete sequencing methodology." },
-                  { title: "Yoga Philosophy", content: "Introduction to yoga sutras of Patanjali, Eight limbs of Ashtanga Yoga, Nadis, Chakras, Pancha-Vayus, Panchakoshas, Triguna, and inspiring stories of great yogis." },
-                  { title: "Pranayama & Breathing", content: "Complete breathing techniques including Ujjayi, Bhastrika, Kapalbhati, Nadi-Sodhana, Bhramari, Surya-Bhedi, Chandra-Bhedi, Sheetali, and Sheetkari." },
-                  { title: "Anatomy & Physiology", content: "Body movement planes, joint protection, anatomy of ankle, knee, spine, shoulder, breathing mechanism, physiology of muscles, and nervous system." },
-                  { title: "Teaching Methodology", content: "Class sequencing, adjustments, working with different levels, voice usage, mental preparation, demonstration principles, and step-by-step class planning." },
-                  { title: "Meditation & Mantra", content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices." },
+                  { 
+                    title: "Ashtanga Yoga Postures", 
+                    content: "Complete Ashtanga yoga primary series sequence. Week-by-week progression through Sun Salutation A & B, Standing sequence, Seated sequence, and Mysore style practice.",
+                    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Hatha & Vinyasa Flow", 
+                    content: "Pawanmuktasana series, Surya Namaskar variations, Standing and seated postures, Backbends, Forward folds, Inversions, and complete sequencing methodology.",
+                    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Yoga Philosophy", 
+                    content: "Introduction to yoga sutras of Patanjali, Eight limbs of Ashtanga Yoga, Nadis, Chakras, Pancha-Vayus, Panchakoshas, Triguna, and inspiring stories of great yogis.",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Pranayama & Breathing", 
+                    content: "Complete breathing techniques including Ujjayi, Bhastrika, Kapalbhati, Nadi-Sodhana, Bhramari, Surya-Bhedi, Chandra-Bhedi, Sheetali, and Sheetkari.",
+                    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Anatomy & Physiology", 
+                    content: "Body movement planes, joint protection, anatomy of ankle, knee, spine, shoulder, breathing mechanism, physiology of muscles, and nervous system.",
+                    image: "https://images.unsplash.com/photo-1559757175-7cb036e0e69a?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Teaching Methodology", 
+                    content: "Class sequencing, adjustments, working with different levels, voice usage, mental preparation, demonstration principles, and step-by-step class planning.",
+                    image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Meditation & Mantra", 
+                    content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices.",
+                    image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=400&h=400&fit=crop"
+                  },
                 ].map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-lg border border-border px-6">
-                    <AccordionTrigger className="font-heading text-lg hover:no-underline">
-                      {item.title}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
-                      {item.content}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-              
-              <div className="text-center mt-12">
-                <Dialog open={showSyllabusDialog} onOpenChange={setShowSyllabusDialog}>
-                  <DialogTrigger asChild>
-                    <Button size="lg" variant="outline" className="gap-2">
-                      <Download className="w-4 h-4" />
-                      Download Detailed Syllabus
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md">
-                    <DialogHeader>
-                      <DialogTitle className="font-heading text-2xl text-center">
-                        Download Syllabus
-                      </DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4 pt-4">
-                      <p className="text-center text-muted-foreground text-sm">
-                        Select your course and enter email to receive the detailed syllabus.
-                      </p>
-                      <select className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary">
-                        <option value="100">100 Hour YTTC</option>
-                        <option value="200" selected>200 Hour YTTC</option>
-                        <option value="300">300 Hour YTTC</option>
-                      </select>
-                      <input
-                        type="email"
-                        placeholder="Your email address"
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      />
-                      <Button className="w-full" size="lg">
-                        Send Syllabus
-                      </Button>
+                  <div 
+                    key={index} 
+                    className="flex-shrink-0 snap-start first:ml-4 last:mr-4"
+                  >
+                    {/* Card with circular image attached */}
+                    <div className="flex flex-col items-center">
+                      {/* Circular Image */}
+                      <div className="relative z-10 mb-[-40px]">
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-background shadow-lg">
+                          <img 
+                            src={item.image} 
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Square Card */}
+                      <div className="w-72 bg-card rounded-xl border border-border p-6 pt-12 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 className="font-heading text-lg font-semibold text-foreground text-center mb-3">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                          {item.content}
+                        </p>
+                      </div>
                     </div>
-                  </DialogContent>
-                </Dialog>
+                  </div>
+                ))}
               </div>
+              
+              {/* Scroll indicator */}
+              <div className="flex justify-center gap-2 mt-6">
+                <span className="text-sm text-muted-foreground">← Scroll to explore →</span>
+              </div>
+            </div>
+            
+            <div className="text-center mt-12">
+              <Dialog open={showSyllabusDialog} onOpenChange={setShowSyllabusDialog}>
+                <DialogTrigger asChild>
+                  <Button size="lg" variant="outline" className="gap-2">
+                    <Download className="w-4 h-4" />
+                    Download Detailed Syllabus
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="font-heading text-2xl text-center">
+                      Download Syllabus
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 pt-4">
+                    <p className="text-center text-muted-foreground text-sm">
+                      Select your course and enter email to receive the detailed syllabus.
+                    </p>
+                    <select className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary">
+                      <option value="100">100 Hour YTTC</option>
+                      <option value="200" selected>200 Hour YTTC</option>
+                      <option value="300">300 Hour YTTC</option>
+                    </select>
+                    <input
+                      type="email"
+                      placeholder="Your email address"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                    <Button className="w-full" size="lg">
+                      Send Syllabus
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </section>
