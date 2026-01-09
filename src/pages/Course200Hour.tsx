@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { 
   Award, Users, Leaf, MapPin, BookOpen, Heart, 
   Check, X, ChevronDown, Play, Download, Phone,
-  Calendar, Clock, Star, Instagram, MessageCircle
+  Calendar, Clock, Star, Instagram, MessageCircle, Sparkles
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
@@ -572,33 +572,138 @@ export default function Course200Hour() {
         </section>
 
         {/* ===== WHY YOGAGARHI STANDS APART ===== */}
-        <section className="py-20 bg-background">
+        <section className="py-20 lg:py-28 bg-background">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-              Why Yogagarhi Stands Apart
-            </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              What makes our approach different from others
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {whatSetsApart.map((item, index) => (
-                <div key={index} className="p-8 bg-card rounded-lg border border-border">
-                  <div className="flex items-start gap-4">
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-                      {index + 1}
-                    </span>
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+              
+              {/* Left Column - Images */}
+              <div className="relative">
+                <div className="grid grid-cols-2 gap-4">
+                  {/* Main large image */}
+                  <div className="col-span-2">
+                    <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-card">
+                      <img 
+                        src={heroImage}
+                        alt="YogaGarhi community practice" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  {/* Two smaller images */}
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-card">
+                    <img 
+                      src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop"
+                      alt="Meditation in nature" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-card">
+                    <img 
+                      src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=400&fit=crop"
+                      alt="Yoga teacher training session" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Decorative accent */}
+                <div className="absolute -z-10 -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
+              </div>
+              
+              {/* Right Column - Content */}
+              <div className="lg:pl-8">
+                {/* Section Label */}
+                <p className="font-body uppercase tracking-[0.2em] text-sm text-primary mb-4">
+                  A New Vision in Yoga
+                </p>
+                
+                {/* Main Headline */}
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+                  Why YogaGarhi Stands Apart
+                </h2>
+                
+                {/* Intro Paragraph */}
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                  YogaGarhi stands for growth, awareness, and the joy of living consciously. 
+                  We offer a holistic journey of the body, mind, and soul — where ancient 
+                  wisdom meets modern integration.
+                </p>
+                
+                {/* Benefit Statements */}
+                <div className="space-y-6">
+                  {/* Benefit 1 */}
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Sparkles className="w-5 h-5 text-primary" />
+                    </div>
                     <div>
-                      <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
-                        {item.title}
+                      <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
+                        The Shivshakti Method
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {item.description}
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Our signature approach converts Himalayan yogic theory into practical 
+                        and applied wisdom — awakening the inner masculine and feminine energies 
+                        that govern transformation.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Benefit 2 */}
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <BookOpen className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
+                        Traditional Multi-Style Training
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        We teach Vinyasa, Hatha, Ashtanga, and Iyengar as complete systems — 
+                        learning each method deeply so you can adapt yoga to the individual.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Benefit 3 */}
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
+                        Intimate Mentorship Groups
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Only 8-10 students per batch ensures personalized attention. 
+                        We don't create instructors — we awaken teachers.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Benefit 4 */}
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-lg font-semibold text-foreground mb-1">
+                        Transformation Over Certification
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        The certificate is a formality. The transformation is the reality. 
+                        Our graduates don't just teach yoga — they live it.
                       </p>
                     </div>
                   </div>
                 </div>
-              ))}
+                
+                {/* Quote/Philosophy */}
+                <div className="mt-10 pt-8 border-t border-border/50">
+                  <blockquote className="font-heading text-lg italic text-foreground/80">
+                    "Many come for a certificate. We prepare you for a calling."
+                  </blockquote>
+                </div>
+              </div>
             </div>
           </div>
         </section>
