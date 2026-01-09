@@ -327,6 +327,7 @@ export default function Course200Hour() {
   const [email, setEmail] = useState("");
   const [showWelcomeExpanded, setShowWelcomeExpanded] = useState(false);
   const [activeInclusionTab, setActiveInclusionTab] = useState<'inclusions' | 'exclusions'>('inclusions');
+  const [showWebinarDialog, setShowWebinarDialog] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1257,9 +1258,90 @@ This is not a transactional relationship — it is a lifelong connection.`}
               Join our live webinar to learn more about the training, ask questions, 
               and connect with our teachers before making your decision.
             </p>
-            <Button size="lg" className="bg-primary text-primary-foreground">
-              Register for Free Webinar
-            </Button>
+            <Dialog open={showWebinarDialog} onOpenChange={setShowWebinarDialog}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary text-primary-foreground">
+                  Register for Free Webinar
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="font-heading text-2xl text-center">
+                    Register for Free Webinar
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4 pt-4">
+                  <p className="text-center text-muted-foreground text-sm">
+                    Fill in your details to join our live orientation session
+                  </p>
+                  
+                  {/* Name */}
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="Enter your full name"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  
+                  {/* Email */}
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Email Address</label>
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  
+                  {/* Timezone */}
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Your Timezone</label>
+                    <select className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary">
+                      <option value="">Select your timezone</option>
+                      <option value="UTC-12">UTC-12:00 (Baker Island)</option>
+                      <option value="UTC-8">UTC-08:00 (Pacific Time)</option>
+                      <option value="UTC-5">UTC-05:00 (Eastern Time)</option>
+                      <option value="UTC+0">UTC+00:00 (London)</option>
+                      <option value="UTC+1">UTC+01:00 (Central Europe)</option>
+                      <option value="UTC+5:30">UTC+05:30 (India)</option>
+                      <option value="UTC+8">UTC+08:00 (Singapore/Bali)</option>
+                      <option value="UTC+9">UTC+09:00 (Japan/Korea)</option>
+                      <option value="UTC+10">UTC+10:00 (Sydney)</option>
+                    </select>
+                  </div>
+                  
+                  {/* Preferred Date */}
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Preferred Date</label>
+                    <input
+                      type="date"
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  
+                  {/* Preferred Time */}
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Preferred Time</label>
+                    <select className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary">
+                      <option value="">Select preferred time</option>
+                      <option value="morning">Morning (8:00 AM - 12:00 PM)</option>
+                      <option value="afternoon">Afternoon (12:00 PM - 4:00 PM)</option>
+                      <option value="evening">Evening (4:00 PM - 8:00 PM)</option>
+                    </select>
+                  </div>
+                  
+                  <Button className="w-full" size="lg" onClick={() => setShowWebinarDialog(false)}>
+                    Register Now
+                  </Button>
+                  
+                  <p className="text-xs text-center text-muted-foreground">
+                    You'll receive a confirmation email with the webinar link
+                  </p>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </section>
 
