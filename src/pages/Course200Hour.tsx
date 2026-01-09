@@ -8,7 +8,8 @@ import {
   Award, Users, Leaf, MapPin, BookOpen, Heart, 
   Check, X, ChevronDown, Play, Download, Phone,
   Calendar, Clock, Star, Instagram, MessageCircle, Sparkles,
-  GraduationCap, Repeat, Mountain, Handshake
+  GraduationCap, Repeat, Mountain, Handshake, Zap, Layers, 
+  UserCheck, Brain, BookMarked, UsersRound, RefreshCw
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
@@ -1431,16 +1432,22 @@ This is not a transactional relationship — it is a lifelong connection.`}
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {[
-                { title: "Unique Shiv-Shakti Method", desc: "Our signature approach converts yogic theory into practical wisdom." },
-                { title: "Traditional Multi-Style", desc: "Vinyasa, Hatha, Ashtanga, and Iyengar as complete systems." },
-                { title: "Pre-TTC Mentorship", desc: "Build a strong foundation before training begins." },
-                { title: "Small Learning Groups", desc: "Only 8-10 students for personalized attention." },
-                { title: "Philosophy-Driven", desc: "Highest philosophy through rituals, meditation, and satsang." },
-                { title: "35+ Sequencing Book", desc: "Practical sequences for immediate teaching application." },
-                { title: "Yoga Community", desc: "Join a large yoga family that supports growth." },
-                { title: "Course Repetition", desc: "Revisit training whenever it runs, at no extra cost." },
+                { title: "Unique Shiv-Shakti Method", desc: "Our signature approach converts yogic theory into practical wisdom.", icon: Zap },
+                { title: "Traditional Multi-Style", desc: "Vinyasa, Hatha, Ashtanga, and Iyengar as complete systems.", icon: Layers },
+                { title: "Pre-TTC Mentorship", desc: "Build a strong foundation before training begins.", icon: UserCheck },
+                { title: "Small Learning Groups", desc: "Only 8-10 students for personalized attention.", icon: Users },
+                { title: "Philosophy-Driven", desc: "Highest philosophy through rituals, meditation, and satsang.", icon: Brain },
+                { title: "35+ Sequencing Book", desc: "Practical sequences for immediate teaching application.", icon: BookMarked },
+                { title: "Yoga Community", desc: "Join a large yoga family that supports growth.", icon: UsersRound },
+                { title: "Course Repetition", desc: "Revisit training whenever it runs, at no extra cost.", icon: RefreshCw },
               ].map((item, index) => (
-                <div key={index} className="p-6 bg-card rounded-lg border border-border text-center">
+                <div 
+                  key={index} 
+                  className="group p-6 bg-card rounded-lg border border-border text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                    <item.icon className="w-7 h-7 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  </div>
                   <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
                     {item.title}
                   </h3>
