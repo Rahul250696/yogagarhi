@@ -16,6 +16,7 @@ import activityAyurveda from "@/assets/activity-ayurveda.jpg";
 import activitySoundHealing from "@/assets/activity-sound-healing.jpg";
 import activityWaterfall from "@/assets/activity-waterfall.jpg";
 import webinarBackground from "@/assets/webinar-background.jpg";
+import yogaAllianceBg from "@/assets/yoga-alliance-bg.jpg";
 import WhyFeatureItem from "@/components/home/WhyFeatureItem";
 
 // Custom scroll-aware header component
@@ -1462,30 +1463,72 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== YOGA ALLIANCE CERTIFICATION ===== */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4">
+        <section 
+          className="py-24 relative bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: `url(${yogaAllianceBg})` }}
+        >
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50" />
+          
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="flex justify-center gap-8 mb-8">
-                <img 
-                  src="https://www.yogagarhi.com/wp-content/uploads/2025/09/ryt200-1-1.png" 
-                  alt="RYT 200" 
-                  className="h-24 w-24 object-contain"
-                />
-                <img 
-                  src="https://www.yogagarhi.com/wp-content/uploads/2025/09/rys-200-yoga-alliance.jpg" 
-                  alt="RYS 200" 
-                  className="h-24 w-24 object-contain"
-                />
-              </div>
-              
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Yoga Alliance Certified School
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                At Yogagarhi, we are proud to be a Yoga Alliance certified school. This means our 
-                teacher training courses meet high international standards. When you train with us, 
-                you get a certificate recognized all over the world.
+              {/* Subtitle */}
+              <p className="text-white/90 text-lg mb-2 font-medium">
+                "YOGAGARHI – 200 Hour YTTC"
               </p>
+              
+              {/* Main Title */}
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-amber-500 mb-6">
+                Yoga Alliance USA CERTIFIED
+              </h2>
+              
+              {/* Description */}
+              <p className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+                Our school, YogaGarhi, is registered with Yoga Alliance USA. Upon completing this course, 
+                you will receive an internationally recognized certification, allowing you to become a 
+                <span className="text-white font-medium"> Registered Yoga Teacher (RYT)</span>. 
+                This certification opens doors for you to teach yoga anywhere in the world.
+              </p>
+              
+              {/* Certification Badges */}
+              <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+                {[
+                  { name: "Yoga Alliance", badge: "YA" },
+                  { name: "RYS 100", badge: "100" },
+                  { name: "RYS 200", badge: "200" },
+                  { name: "RYS 300", badge: "300" },
+                  { name: "RPYS", badge: "RPYS" },
+                  { name: "RCYS", badge: "RCYS" },
+                  { name: "YACEP", badge: "YACEP" },
+                ].map((cert, index) => (
+                  <div 
+                    key={cert.name}
+                    className="group flex flex-col items-center"
+                  >
+                    <div 
+                      className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-amber-500 bg-white/95 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <span className="text-amber-600 font-bold text-xs md:text-sm text-center leading-tight">
+                        {cert.badge === "YA" ? (
+                          <span className="text-[10px] md:text-xs">YOGA<br/>ALLIANCE</span>
+                        ) : (
+                          <>
+                            {cert.badge.includes("RYS") || cert.badge.match(/^\d+$/) ? (
+                              <>
+                                <span className="text-[8px] block">REGISTERED YOGA SCHOOL</span>
+                                <span className="text-lg md:text-xl font-bold">{cert.badge}</span>
+                              </>
+                            ) : (
+                              <span className="text-sm md:text-base font-bold">{cert.badge}</span>
+                            )}
+                          </>
+                        )}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
