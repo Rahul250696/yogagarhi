@@ -525,21 +525,16 @@ export default function Course200Hour() {
               Hear from our graduates about their transformative journey
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {["OGmWr_aC4WA", "2pLe6NHa5WU", "30jjvcqHEwA"].map((videoId, index) => (
-                <div key={index} className="relative aspect-video rounded-lg overflow-hidden bg-muted group cursor-pointer">
-                  <img 
-                    src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-                    alt={`Student testimonial ${index + 1}`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-primary-foreground/90 flex items-center justify-center">
-                      <Play className="w-6 h-6 text-primary ml-1" />
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="max-w-2xl mx-auto mb-12">
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-muted shadow-card">
+                <iframe
+                  src="https://www.youtube.com/embed/OGmWr_aC4WA?rel=0"
+                  title="Student testimonial"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
             </div>
             
             <div className="text-center">
