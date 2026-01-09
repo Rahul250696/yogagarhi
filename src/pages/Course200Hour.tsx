@@ -879,9 +879,12 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       <span className="font-heading text-lg md:text-xl font-semibold text-primary">{item.time}</span>
                     </div>
                     
-                    {/* Timeline dot */}
+                    {/* Timeline dot with pulse animation */}
                     <div className="flex-shrink-0 z-10">
-                      <div className="w-4 h-4 rounded-full bg-primary" />
+                      <div 
+                        className="w-4 h-4 rounded-full bg-primary animate-pulse-dot"
+                        style={{ animationDelay: `${index * 0.5}s` }}
+                      />
                     </div>
                     
                     {/* Activity card */}

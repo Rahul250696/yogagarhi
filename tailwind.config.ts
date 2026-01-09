@@ -88,6 +88,10 @@ export default {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
+        "pulse-dot": {
+          "0%, 100%": { transform: "scale(1)", opacity: "0.7", boxShadow: "0 0 0 0 hsl(var(--primary) / 0.4)" },
+          "50%": { transform: "scale(1.3)", opacity: "1", boxShadow: "0 0 0 8px hsl(var(--primary) / 0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -95,6 +99,7 @@ export default {
         "fade-up": "fade-up 0.8s ease-out forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "spin-slow": "spin-slow 4s linear infinite",
+        "pulse-dot": "pulse-dot 5.5s ease-in-out infinite",
       },
     },
   },
