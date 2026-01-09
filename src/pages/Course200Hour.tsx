@@ -73,18 +73,17 @@ const whatSetsApart = [
 
 // Daily Schedule
 const dailySchedule = [
-  { time: "6:00 - 6:30", activity: "Wake up & Coffee", period: "morning" },
-  { time: "7:00 - 8:00", activity: "Hatha & Vinyasa Flow", period: "morning" },
-  { time: "8:00 - 9:00", activity: "Pranayama & Meditation", period: "morning" },
-  { time: "9:00 - 10:00", activity: "Breakfast", period: "morning" },
-  { time: "11:00 - 12:00", activity: "Anatomy", period: "morning" },
-  { time: "12:00 - 1:00", activity: "Self Study / Teaching Practice", period: "afternoon" },
-  { time: "1:00 - 2:00", activity: "Lunch", period: "afternoon" },
-  { time: "3:00 - 4:00", activity: "Philosophy", period: "afternoon" },
-  { time: "4:00 - 5:30", activity: "Ashtanga", period: "afternoon" },
-  { time: "6:00 - 7:00", activity: "Alignment", period: "evening" },
-  { time: "7:00 - 8:00", activity: "Dinner", period: "evening" },
-  { time: "9:00 PM", activity: "Lights Off", period: "evening" },
+  { time: "6:00 AM", activity: "Wake Up & Morning Cleansing" },
+  { time: "6:30 AM", activity: "Pranayama & Meditation" },
+  { time: "7:30 AM", activity: "Asana Practice (Hatha/Ashtanga)" },
+  { time: "9:00 AM", activity: "Breakfast" },
+  { time: "10:00 AM", activity: "Yoga Philosophy / Anatomy" },
+  { time: "12:00 PM", activity: "Lunch & Rest" },
+  { time: "3:00 PM", activity: "Teaching Methodology" },
+  { time: "4:30 PM", activity: "Alignment & Adjustments" },
+  { time: "6:00 PM", activity: "Evening Practice" },
+  { time: "7:30 PM", activity: "Dinner" },
+  { time: "9:00 PM", activity: "Self-Study / Lights Off" },
 ];
 
 // Course Curriculum
@@ -858,32 +857,39 @@ This is not a transactional relationship — it is a lifelong connection.`}
         {/* ===== DAILY SCHEDULE ===== */}
         <section className="py-20 bg-secondary/30">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-primary mb-4">
               Daily Schedule
             </h2>
-            <p className="text-center text-muted-foreground mb-12">
-              Monday - Saturday
+            <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+              A typical day at YogaGarhi is designed to balance intensive learning with rest and integration.
             </p>
             
             <div className="max-w-3xl mx-auto">
-              <div className="grid gap-3">
+              <div className="space-y-4">
                 {dailySchedule.map((item, index) => (
                   <div 
                     key={index}
-                    className="flex items-center gap-4 p-4 bg-card rounded-lg border border-border"
+                    className="flex items-center gap-6"
                   >
-                    <div className="w-32 flex-shrink-0">
-                      <span className="font-medium text-primary">{item.time}</span>
+                    {/* Time */}
+                    <div className="w-24 md:w-28 flex-shrink-0 text-right">
+                      <span className="font-heading text-lg md:text-xl font-semibold text-primary">{item.time}</span>
                     </div>
-                    <div className="flex-1">
-                      <span className="text-foreground">{item.activity}</span>
+                    
+                    {/* Timeline dot */}
+                    <div className="flex-shrink-0">
+                      <div className="w-4 h-4 rounded-full bg-primary" />
                     </div>
-                    <Clock className="w-4 h-4 text-muted-foreground" />
+                    
+                    {/* Activity card */}
+                    <div className="flex-1 bg-card border border-border rounded-lg px-6 py-4 shadow-sm">
+                      <span className="text-foreground font-medium">{item.activity}</span>
+                    </div>
                   </div>
                 ))}
               </div>
               
-              <p className="mt-8 text-center text-sm text-muted-foreground">
+              <p className="mt-12 text-center text-sm text-muted-foreground">
                 Sunday is a full day off for rest, self-study, or optional excursions.
               </p>
             </div>
