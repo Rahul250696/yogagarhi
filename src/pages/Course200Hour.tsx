@@ -17,6 +17,10 @@ import activitySoundHealing from "@/assets/activity-sound-healing.jpg";
 import activityWaterfall from "@/assets/activity-waterfall.jpg";
 import webinarBackground from "@/assets/webinar-background.jpg";
 import yogaAllianceBg from "@/assets/yoga-alliance-bg.jpg";
+import yaRyt200 from "@/assets/ya-ryt-200.png";
+import yaRys100 from "@/assets/ya-rys-100.png";
+import yaRys200 from "@/assets/ya-rys-200.jpg";
+import yaAllCertifications from "@/assets/ya-all-certifications.jpg";
 import WhyFeatureItem from "@/components/home/WhyFeatureItem";
 
 // Custom scroll-aware header component
@@ -1490,44 +1494,16 @@ This is not a transactional relationship — it is a lifelong connection.`}
                 This certification opens doors for you to teach yoga anywhere in the world.
               </p>
               
-              {/* Certification Badges */}
-              <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-                {[
-                  { name: "Yoga Alliance", badge: "YA" },
-                  { name: "RYS 100", badge: "100" },
-                  { name: "RYS 200", badge: "200" },
-                  { name: "RYS 300", badge: "300" },
-                  { name: "RPYS", badge: "RPYS" },
-                  { name: "RCYS", badge: "RCYS" },
-                  { name: "YACEP", badge: "YACEP" },
-                ].map((cert, index) => (
-                  <div 
-                    key={cert.name}
-                    className="group flex flex-col items-center"
-                  >
-                    <div 
-                      className="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-amber-500 bg-white/95 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <span className="text-amber-600 font-bold text-xs md:text-sm text-center leading-tight">
-                        {cert.badge === "YA" ? (
-                          <span className="text-[10px] md:text-xs">YOGA<br/>ALLIANCE</span>
-                        ) : (
-                          <>
-                            {cert.badge.includes("RYS") || cert.badge.match(/^\d+$/) ? (
-                              <>
-                                <span className="text-[8px] block">REGISTERED YOGA SCHOOL</span>
-                                <span className="text-lg md:text-xl font-bold">{cert.badge}</span>
-                              </>
-                            ) : (
-                              <span className="text-sm md:text-base font-bold">{cert.badge}</span>
-                            )}
-                          </>
-                        )}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+              {/* Certification Badges - Real Images */}
+              <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+                <img src={yaRys100} alt="RYS 100" className="h-20 md:h-24 w-auto object-contain hover:scale-110 transition-transform duration-300" />
+                <img src={yaRys200} alt="RYS 200" className="h-20 md:h-24 w-auto object-contain hover:scale-110 transition-transform duration-300" />
+                <img src={yaRyt200} alt="RYT 200" className="h-20 md:h-24 w-auto object-contain hover:scale-110 transition-transform duration-300" />
+              </div>
+              
+              {/* Full Certification Banner */}
+              <div className="mt-10">
+                <img src={yaAllCertifications} alt="All Yoga Alliance Certifications" className="max-w-full md:max-w-2xl mx-auto rounded-lg shadow-lg" />
               </div>
             </div>
           </div>
