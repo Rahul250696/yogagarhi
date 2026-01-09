@@ -320,6 +320,111 @@ export default function Course200Hour() {
           </div>
         </section>
 
+        {/* ===== COURSE DETAILS BAR ===== */}
+        <section className="py-8 bg-secondary/50 border-b border-border/50">
+          <div className="container mx-auto px-4">
+            {/* Main Course Info Row */}
+            <div className="bg-background rounded-xl shadow-card p-6 md:p-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 items-center">
+                {/* Course Duration */}
+                <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Course</p>
+                  <p className="font-heading font-semibold text-foreground">200 Hour YTTC</p>
+                </div>
+                
+                {/* Course Length */}
+                <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Duration</p>
+                  <p className="font-heading font-semibold text-foreground">24 Days</p>
+                </div>
+                
+                {/* Yoga Style */}
+                <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Style</p>
+                  <p className="font-heading font-semibold text-foreground">Multi-Style Yoga</p>
+                </div>
+                
+                {/* Level */}
+                <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Level</p>
+                  <p className="font-heading font-semibold text-foreground">Beginner - Intermediate</p>
+                </div>
+                
+                {/* Certification */}
+                <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Certification</p>
+                  <p className="font-heading font-semibold text-foreground">Yoga Alliance RYT 200</p>
+                </div>
+                
+                {/* Price */}
+                <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Starting From</p>
+                  <div className="flex items-baseline gap-2 justify-center lg:justify-start">
+                    <span className="text-sm text-muted-foreground line-through">$2187</span>
+                    <span className="font-heading text-xl font-bold text-primary">$1750</span>
+                  </div>
+                </div>
+                
+                {/* Book Now Button */}
+                <div className="col-span-2 md:col-span-1 flex justify-center lg:justify-end">
+                  <Button 
+                    size="lg" 
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full md:w-auto"
+                    asChild
+                  >
+                    <a href="#dates">Book Now</a>
+                  </Button>
+                </div>
+              </div>
+              
+              {/* What's Included / Bonus Row */}
+              <div className="mt-6 pt-6 border-t border-border/30">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Play className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">1 Month Live Access</p>
+                      <p className="text-xs text-muted-foreground">Online Classes</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <BookOpen className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Pre-YTTC Support</p>
+                      <p className="text-xs text-muted-foreground">Preparation & Guidance</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Post-YTTC Mentorship</p>
+                      <p className="text-xs text-muted-foreground">Ongoing Support</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Award className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Complimentary Goodie Bag</p>
+                      <p className="text-xs text-muted-foreground">Yoga Essentials</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ===== ICON HIGHLIGHTS ===== */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
