@@ -742,95 +742,110 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== WHY ONE STYLE DOESN'T FIT ALL ===== */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-6">
-              Why One Style Does Not Fit All
-            </h2>
-            <p className="font-heading text-xl text-center text-primary mb-8 italic">
-              Why We Teach Authentic Multi-Style & Prakriti-Based Yoga
-            </p>
-            
-            <div className="space-y-6 text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto mb-12">
-              <p>
-                Every human being is unique. Your body, your energy, your mind — they are unlike 
-                anyone else's. So why should your yoga practice be the same as everyone else's?
-              </p>
-              <p>
-                At Yogagarhi, we teach multi-style yoga not to confuse, but to liberate. 
-                By understanding Hatha, Vinyasa, Ashtanga, and Iyengar as complete systems, 
-                you learn to adapt yoga to the individual — not force the individual into yoga.
-              </p>
-              <p>
-                Our Prakriti-based approach considers your unique constitution. We help you 
-                discover which practices serve your nature, so your teaching can be truly 
-                responsive to each student who comes to you.
-              </p>
+        <section className="relative min-h-screen">
+          {/* Background Image - Sticky on mobile */}
+          <div className="absolute inset-0 md:fixed md:inset-auto md:top-0 md:left-0 md:right-0 md:h-screen -z-10">
+            <div className="sticky top-0 h-screen md:h-full">
+              <img 
+                src={heroImage}
+                alt="Yoga practice in nature"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/60" />
             </div>
-            
-            <div className="text-center">
-              <Dialog open={showQuizDialog} onOpenChange={(open) => {
-                setShowQuizDialog(open);
-                if (!open) resetQuiz();
-              }}>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="bg-primary text-primary-foreground">
-                    Reveal Your Yogic Energy
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-lg">
-                  <DialogHeader>
-                    <DialogTitle className="font-heading text-2xl text-center">
-                      {quizStep < quizQuestions.length 
-                        ? "Discover Your Yogic Energy" 
-                        : "Your Insight Awaits"}
-                    </DialogTitle>
-                  </DialogHeader>
-                  
-                  <div className="pt-4">
-                    {quizStep < quizQuestions.length ? (
-                      <div className="space-y-6">
-                        <div className="text-center mb-2">
-                          <span className="text-sm text-muted-foreground">
-                            Question {quizStep + 1} of {quizQuestions.length}
-                          </span>
+          </div>
+
+          {/* Content - Scrollable */}
+          <div className="relative z-10 min-h-screen flex items-center py-20">
+            <div className="container mx-auto px-4 max-w-4xl">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-white mb-6">
+                Why One Style Does Not Fit All
+              </h2>
+              <p className="font-heading text-xl text-center text-primary-foreground/90 mb-8 italic">
+                Why We Teach Authentic Multi-Style & Prakriti-Based Yoga
+              </p>
+              
+              <div className="space-y-6 text-white/90 leading-relaxed text-center max-w-3xl mx-auto mb-12">
+                <p>
+                  Every human being is unique. Your body, your energy, your mind — they are unlike 
+                  anyone else's. So why should your yoga practice be the same as everyone else's?
+                </p>
+                <p>
+                  At Yogagarhi, we teach multi-style yoga not to confuse, but to liberate. 
+                  By understanding Hatha, Vinyasa, Ashtanga, and Iyengar as complete systems, 
+                  you learn to adapt yoga to the individual — not force the individual into yoga.
+                </p>
+                <p>
+                  Our Prakriti-based approach considers your unique constitution. We help you 
+                  discover which practices serve your nature, so your teaching can be truly 
+                  responsive to each student who comes to you.
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <Dialog open={showQuizDialog} onOpenChange={(open) => {
+                  setShowQuizDialog(open);
+                  if (!open) resetQuiz();
+                }}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="bg-white text-foreground hover:bg-white/90">
+                      Reveal Your Yogic Energy
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-lg">
+                    <DialogHeader>
+                      <DialogTitle className="font-heading text-2xl text-center">
+                        {quizStep < quizQuestions.length 
+                          ? "Discover Your Yogic Energy" 
+                          : "Your Insight Awaits"}
+                      </DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="pt-4">
+                      {quizStep < quizQuestions.length ? (
+                        <div className="space-y-6">
+                          <div className="text-center mb-2">
+                            <span className="text-sm text-muted-foreground">
+                              Question {quizStep + 1} of {quizQuestions.length}
+                            </span>
+                          </div>
+                          <p className="text-center font-medium text-lg">
+                            {quizQuestions[quizStep].question}
+                          </p>
+                          <div className="space-y-3">
+                            {quizQuestions[quizStep].options.map((option, i) => (
+                              <button
+                                key={i}
+                                onClick={() => handleQuizAnswer(option)}
+                                className="w-full p-4 text-left rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors"
+                              >
+                                {option}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                        <p className="text-center font-medium text-lg">
-                          {quizQuestions[quizStep].question}
-                        </p>
-                        <div className="space-y-3">
-                          {quizQuestions[quizStep].options.map((option, i) => (
-                            <button
-                              key={i}
-                              onClick={() => handleQuizAnswer(option)}
-                              className="w-full p-4 text-left rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-colors"
-                            >
-                              {option}
-                            </button>
-                          ))}
+                      ) : (
+                        <div className="space-y-4 text-center">
+                          <p className="text-muted-foreground">
+                            Thank you for sharing. Enter your email and we will send you 
+                            your personalized yogic energy insight shortly.
+                          </p>
+                          <input
+                            type="email"
+                            placeholder="Your email address"
+                            className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                          <Button className="w-full" size="lg" onClick={() => setShowQuizDialog(false)}>
+                            Receive My Insight
+                          </Button>
                         </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-4 text-center">
-                        <p className="text-muted-foreground">
-                          Thank you for sharing. Enter your email and we will send you 
-                          your personalized yogic energy insight shortly.
-                        </p>
-                        <input
-                          type="email"
-                          placeholder="Your email address"
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <Button className="w-full" size="lg" onClick={() => setShowQuizDialog(false)}>
-                          Receive My Insight
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </DialogContent>
-              </Dialog>
+                      )}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
           </div>
         </section>
