@@ -177,62 +177,74 @@ const whatYouWillReceive = [
   { 
     title: "Multi Style Yoga Training", 
     description: "Learn yoga in its authentic, time-tested way. Our teachers preserve the wisdom of yogic tradition.",
-    icon: Leaf
+    icon: Leaf,
+    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=500&fit=crop"
   },
   { 
     title: "Yoga Alliance Certified", 
     description: "Receive globally recognized certification. Begin teaching yoga with confidence worldwide.",
-    icon: Award
+    icon: Award,
+    image: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=500&fit=crop"
   },
   { 
     title: "Peaceful Bali Surroundings", 
     description: "Experience yoga in the lap of nature. Calm beaches and greenery deepen your practice.",
-    icon: Mountain
+    icon: Mountain,
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=500&fit=crop"
   },
   { 
     title: "Outdoor Excursions", 
     description: "Explore temples, beaches, and nature walks. Balance learning with adventure and culture.",
-    icon: MapPin
+    icon: MapPin,
+    image: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400&h=500&fit=crop"
   },
   { 
     title: "Small Batch Sizes", 
     description: "Get personal attention and guidance. Every student's growth matters to us.",
-    icon: Users
+    icon: Users,
+    image: "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=400&h=500&fit=crop"
   },
   { 
     title: "Supportive Community", 
     description: "Be part of a warm and positive family. Grow together in a caring environment.",
-    icon: Heart
+    icon: Heart,
+    image: "https://images.unsplash.com/photo-1529693662653-9d480530a697?w=400&h=500&fit=crop"
   },
   { 
     title: "Balinese Massage", 
     description: "Traditional Indonesian therapy to relieve muscle tension. Promotes deep relaxation and holistic healing.",
-    icon: Sparkles
+    icon: Sparkles,
+    image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&h=500&fit=crop"
   },
   { 
     title: "Balinese Dance Performance", 
     description: "Ancient, dynamic and highly expressive dance form that reflects Bali's rich cultural heritage.",
-    icon: Star
+    icon: Star,
+    image: "https://images.unsplash.com/photo-1518611507436-f9221403cca2?w=400&h=500&fit=crop"
   },
   { 
     title: "Ayurvedic Meals", 
     description: "Enjoy sattvic and healthy meals supporting your practice.",
-    icon: Heart
+    icon: Heart,
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=500&fit=crop"
   },
   { 
     title: "Meditation Practice", 
     description: "Deepen inner peace and mindfulness with guided sessions.",
-    icon: Sparkles
+    icon: Sparkles,
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=500&fit=crop"
   },
   { 
     title: "Experienced Instructors", 
     description: "Learn from certified teachers with years of expertise.",
-    icon: GraduationCap
+    icon: GraduationCap,
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=500&fit=crop"
   },
   { 
     title: "Yoga Lifestyle", 
     description: "Adopt the yogic way of living for body, mind, and spirit.",
-    icon: Leaf
+    icon: Leaf,
+    image: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=400&h=500&fit=crop"
   },
 ];
 
@@ -994,17 +1006,20 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       }}
                     >
                       <div className="flip-card-inner relative w-full h-full transition-transform duration-500 transform-style-preserve-3d">
-                        {/* Front - Image with icon */}
+                        {/* Front - Image */}
                         <div className="flip-card-front absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-border shadow-card">
-                          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex flex-col items-center justify-center p-6">
-                            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                              <item.icon className="w-10 h-10 text-primary" />
-                            </div>
-                            <h3 className="font-heading text-lg font-semibold text-foreground text-center">
+                          <img 
+                            src={item.image} 
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-5">
+                            <h3 className="font-heading text-lg font-semibold text-white text-center">
                               {item.title}
                             </h3>
-                            <p className="text-xs text-muted-foreground mt-2 md:hidden">Tap to see more</p>
-                            <p className="text-xs text-muted-foreground mt-2 hidden md:block">Hover to see more</p>
+                            <p className="text-xs text-white/70 mt-1 text-center md:hidden">Tap to see more</p>
+                            <p className="text-xs text-white/70 mt-1 text-center hidden md:block">Hover to see more</p>
                           </div>
                         </div>
                         
