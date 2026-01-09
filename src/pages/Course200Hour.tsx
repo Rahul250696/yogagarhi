@@ -742,10 +742,10 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== WHY ONE STYLE DOESN'T FIT ALL ===== */}
-        <section className="relative min-h-screen">
-          {/* Background Image - Sticky on mobile */}
-          <div className="absolute inset-0 md:fixed md:inset-auto md:top-0 md:left-0 md:right-0 md:h-screen -z-10">
-            <div className="sticky top-0 h-screen md:h-full">
+        <section className="relative overflow-hidden">
+          {/* Background Image - Sticky only on mobile within this section */}
+          <div className="absolute inset-0 -z-10">
+            <div className="md:relative md:h-full sticky top-0 h-screen">
               <img 
                 src={heroImage}
                 alt="Yoga practice in nature"
@@ -755,8 +755,8 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
           </div>
 
-          {/* Content - Scrollable */}
-          <div className="relative z-10 min-h-screen flex items-center py-20">
+          {/* Content - Scrollable on mobile */}
+          <div className="relative z-10 min-h-screen md:min-h-0 flex items-center py-20">
             <div className="container mx-auto px-4 max-w-4xl">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-white mb-6">
                 Why One Style Does Not Fit All
@@ -788,7 +788,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   if (!open) resetQuiz();
                 }}>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="bg-white text-foreground hover:bg-white/90">
+                    <Button size="lg" className="bg-amber-500 text-white hover:bg-amber-600 font-semibold shadow-lg">
                       Reveal Your Yogic Energy
                     </Button>
                   </DialogTrigger>
