@@ -11,7 +11,10 @@ import {
   GraduationCap, Repeat, Mountain, Handshake
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
-import WhyFeatureCard from "@/components/home/WhyFeatureCard";
+import activityAyurveda from "@/assets/activity-ayurveda.jpg";
+import activitySoundHealing from "@/assets/activity-sound-healing.jpg";
+import activityWaterfall from "@/assets/activity-waterfall.jpg";
+import WhyFeatureItem from "@/components/home/WhyFeatureItem";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible }: { visible: boolean }) {
@@ -575,7 +578,7 @@ export default function Course200Hour() {
 
         {/* ===== WHAT SETS YOGAGARHI APART ===== */}
         <section className="py-20 lg:py-28 bg-background">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 max-w-4xl">
             {/* Section Header */}
             <div className="text-center mb-16">
               <p className="font-body uppercase tracking-[0.2em] text-sm text-primary mb-4">
@@ -586,32 +589,14 @@ export default function Course200Hour() {
               </h2>
             </div>
 
-            {/* Two-column layout inspired by Yoga New Vision */}
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 max-w-7xl mx-auto">
-              
-              {/* Left Column - Feature Image */}
-              <div className="relative order-2 lg:order-1">
-                <div className="sticky top-32">
-                  <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card">
-                    <img 
-                      src={heroImage}
-                      alt="YogaGarhi community practice" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Decorative accent */}
-                  <div className="absolute -z-10 -bottom-6 -right-6 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-                </div>
-              </div>
-              
-              {/* Right Column - Features with Read More */}
-              <div className="order-1 lg:order-2 space-y-6">
-                {/* Feature 1: Pre-YTTC */}
-                <WhyFeatureCard
-                  icon={<GraduationCap className="w-5 h-5 text-primary" />}
-                  title="Begin Before You Begin – Pre YTTC"
-                  preview="The World's First Pre-YTTC school. The Optional Complimentary Online Pre-YTTC Preparation. If you feel like you don't know you are ready for course or not, this pre-YTTC is for you to be prepared & feel confident."
-                  expanded={`At Yogagarhi, we do something different. We offer a Pre-YTTC Online Optional Complimentary Preparation Program. This gives you time to:
+            {/* Zigzag Feature Layout */}
+            <div className="space-y-16">
+              {/* Feature 1: Pre-YTTC */}
+              <WhyFeatureItem
+                icon={<GraduationCap className="w-4 h-4 text-primary" />}
+                title="Begin Before You Begin – Pre YTTC"
+                preview="The World's First Pre-YTTC school. The Optional Complimentary Online Pre-YTTC Preparation. If you feel like you don't know you are ready for course or not, this pre-YTTC is for you to be prepared & feel confident."
+                expanded={`At Yogagarhi, we do something different. We offer a Pre-YTTC Online Optional Complimentary Preparation Program. This gives you time to:
 
 • Prepare your body
 • Get friendly with curriculum & subjects
@@ -619,14 +604,17 @@ export default function Course200Hour() {
 • Feel confident & clear
 
 So when training begins, you don't panic. You arrive grounded. You don't jump into transformation — you are gently prepared for it.`}
-                />
+                imageUrl={heroImage}
+                imageAlt="Pre-YTTC Preparation"
+                isReversed={false}
+              />
 
-                {/* Feature 2: Transform You */}
-                <WhyFeatureCard
-                  icon={<Heart className="w-5 h-5 text-primary" />}
-                  title="Not Just Transform Yoga – Transform You"
-                  preview="Very few address the human being behind the practice. At Yogagarhi, yoga is taught as a way of living, not as a skill to perform."
-                  expanded={`The focus is not only on how you practice, but on how you think, relate, act, and respond to life itself. Here, philosophy is not memorized. It is applied, reflected upon, and lived — so transformation becomes visible in daily life, not just on the mat. We work with:
+              {/* Feature 2: Transform You */}
+              <WhyFeatureItem
+                icon={<Heart className="w-4 h-4 text-primary" />}
+                title="Not Just Transform Yoga – Transform You"
+                preview="Very few address the human being behind the practice. At Yogagarhi, yoga is taught as a way of living, not as a skill to perform."
+                expanded={`The focus is not only on how you practice, but on how you think, relate, act, and respond to life itself. Here, philosophy is not memorized. It is applied, reflected upon, and lived — so transformation becomes visible in daily life, not just on the mat. We work with:
 
 • How you think
 • How you react
@@ -634,14 +622,17 @@ So when training begins, you don't panic. You arrive grounded. You don't jump in
 • How you relate to others
 
 This is where real change happens.`}
-                />
+                imageUrl={activityAyurveda}
+                imageAlt="Yoga Transformation"
+                isReversed={true}
+              />
 
-                {/* Feature 3: Lifetime Re-Attendance */}
-                <WhyFeatureCard
-                  icon={<Repeat className="w-5 h-5 text-primary" />}
-                  title="Lifetime Re-Attendance & Assistant Teaching"
-                  preview="At Yogagarhi, graduation is not the end of learning. Graduates are welcome to return to future trainings for deeper practice and to assist as teachers."
-                  expanded={`Over years of teaching, our founder observed a clear pattern: students often wanted to repeat their 200-hour training to revise, deepen, and truly integrate what they had learned.
+              {/* Feature 3: Lifetime Re-Attendance */}
+              <WhyFeatureItem
+                icon={<Repeat className="w-4 h-4 text-primary" />}
+                title="Lifetime Re-Attendance & Assistant Teaching"
+                preview="At Yogagarhi, graduation is not the end of learning. Graduates are welcome to return to future trainings for deeper practice and to assist as teachers."
+                expanded={`Over years of teaching, our founder observed a clear pattern: students often wanted to repeat their 200-hour training to revise, deepen, and truly integrate what they had learned.
 
 Instead of ignoring this need, Yogagarhi embraced it. Once you complete your YTTC with us, you are welcome to repeat the same course again in the future — without paying the course fee again (food & stay exclusive).
 
@@ -650,14 +641,17 @@ Instead of ignoring this need, Yogagarhi embraced it. Once you complete your YTT
 • Build confidence and refine skills
 
 Because yoga is not a one-time achievement. It is a lifelong refinement.`}
-                />
+                imageUrl={activitySoundHealing}
+                imageAlt="Lifetime Learning"
+                isReversed={false}
+              />
 
-                {/* Feature 4: Small Groups */}
-                <WhyFeatureCard
-                  icon={<Users className="w-5 h-5 text-primary" />}
-                  title="Small Group Deep Work. Personal Transformation."
-                  preview="At Yogagarhi, we intentionally keep small groups (8–10 students) allowing personalized guidance, deeper alignment, and understanding different bodies."
-                  expanded={`This allows:
+              {/* Feature 4: Small Groups */}
+              <WhyFeatureItem
+                icon={<Users className="w-4 h-4 text-primary" />}
+                title="Small Group Deep Work. Personal Transformation."
+                preview="At Yogagarhi, we intentionally keep small groups (8–10 students) allowing personalized guidance, deeper alignment, and understanding different bodies."
+                expanded={`This allows:
 
 • Individual attention
 • Personal correction
@@ -667,14 +661,17 @@ Because yoga is not a one-time achievement. It is a lifelong refinement.`}
 • Understand how to read and work with different bodies
 
 At Yogagarhi, teaching is personalized, precise, and practical — you are a person on a journey, not a number.`}
-                />
+                imageUrl={activityWaterfall}
+                imageAlt="Small Group Training"
+                isReversed={true}
+              />
 
-                {/* Feature 5: 35+ Sequences */}
-                <WhyFeatureCard
-                  icon={<BookOpen className="w-5 h-5 text-primary" />}
-                  title="35+ Functional, Ready-to-Use Sequences"
-                  preview="Yogagarhi provides over 35 functional, purpose-based yoga sequences for personal practice, teaching clarity, therapeutic understanding, and intelligent class structuring."
-                  expanded={`At Yogagarhi, students receive over 35 carefully designed yoga sequences:
+              {/* Feature 5: 35+ Sequences */}
+              <WhyFeatureItem
+                icon={<BookOpen className="w-4 h-4 text-primary" />}
+                title="35+ Functional, Ready-to-Use Sequences"
+                preview="Yogagarhi provides over 35 functional, purpose-based yoga sequences for personal practice, teaching clarity, therapeutic understanding, and intelligent class structuring."
+                expanded={`At Yogagarhi, students receive over 35 carefully designed yoga sequences:
 
 • Personal Practice – structured flows to deepen your daily practice
 • Teaching Clarity – sequences to confidently structure your own classes
@@ -687,14 +684,17 @@ Key Benefits:
 • Designed to refine over time as your understanding deepens
 
 These sequences are not random flows — they are practical, purposeful, and built to give maximum benefit.`}
-                />
+                imageUrl={heroImage}
+                imageAlt="Yoga Sequences"
+                isReversed={false}
+              />
 
-                {/* Feature 6: Himalayan Lineage */}
-                <WhyFeatureCard
-                  icon={<Mountain className="w-5 h-5 text-primary" />}
-                  title="Rooted in Himalayan Lineage"
-                  preview="Modern yoga often focuses only on physical and meditative practices. At Yogagarhi, our teachings are inspired by Himalayan yogic traditions, where yoga is understood as an integrated path."
-                  expanded={`We teach the four classical paths:
+              {/* Feature 6: Himalayan Lineage */}
+              <WhyFeatureItem
+                icon={<Mountain className="w-4 h-4 text-primary" />}
+                title="Rooted in Himalayan Lineage"
+                preview="Modern yoga often focuses only on physical and meditative practices. At Yogagarhi, our teachings are inspired by Himalayan yogic traditions, where yoga is understood as an integrated path."
+                expanded={`We teach the four classical paths:
 
 • Karma Yoga – conscious action
 • Jnana Yoga – self-inquiry and wisdom
@@ -702,24 +702,30 @@ These sequences are not random flows — they are practical, purposeful, and bui
 • Raja Yoga – discipline of body and mind
 
 These paths are not taught as theory. They are experienced through daily life, reflection, and practice.`}
-                />
+                imageUrl={activityAyurveda}
+                imageAlt="Himalayan Tradition"
+                isReversed={true}
+              />
 
-                {/* Feature 7: Living Philosophy */}
-                <WhyFeatureCard
-                  icon={<Sparkles className="w-5 h-5 text-primary" />}
-                  title="The Heart of Yogagarhi: Living Philosophy"
-                  preview="At Yogagarhi we teach philosophy as a tool for living. Our approach focuses on applied yogic philosophy — helping students observe suffering, understand its roots, and dissolve it through awareness."
-                  expanded={`This is one of Yogagarhi's core strengths: students don't just transform how they practice, they transform how they live.
+              {/* Feature 7: Living Philosophy */}
+              <WhyFeatureItem
+                icon={<Sparkles className="w-4 h-4 text-primary" />}
+                title="The Heart of Yogagarhi: Living Philosophy"
+                preview="At Yogagarhi we teach philosophy as a tool for living. Our approach focuses on applied yogic philosophy — helping students observe suffering, understand its roots, and dissolve it through awareness."
+                expanded={`This is one of Yogagarhi's core strengths: students don't just transform how they practice, they transform how they live.
 
 Philosophy is not memorized for an exam — it is applied, reflected upon, and integrated into daily decisions, relationships, and self-understanding.`}
-                />
+                imageUrl={activitySoundHealing}
+                imageAlt="Living Philosophy"
+                isReversed={false}
+              />
 
-                {/* Feature 8: Continuing Community */}
-                <WhyFeatureCard
-                  icon={<Handshake className="w-5 h-5 text-primary" />}
-                  title="A Community That Continues After Certification"
-                  preview="Yoga does not end with a certificate. Yogagarhi is building a living yoga community where students remain connected after completing their training."
-                  expanded={`Growth is supported through:
+              {/* Feature 8: Continuing Community */}
+              <WhyFeatureItem
+                icon={<Handshake className="w-4 h-4 text-primary" />}
+                title="A Community That Continues After Certification"
+                preview="Yoga does not end with a certificate. Yogagarhi is building a living yoga community where students remain connected after completing their training."
+                expanded={`Growth is supported through:
 
 • Connection with fellow graduates
 • Ongoing guidance from teachers
@@ -727,8 +733,10 @@ Philosophy is not memorized for an exam — it is applied, reflected upon, and i
 • Support as your journey continues
 
 This is not a transactional relationship — it is a lifelong connection.`}
-                />
-              </div>
+                imageUrl={activityWaterfall}
+                imageAlt="Yoga Community"
+                isReversed={true}
+              />
             </div>
           </div>
         </section>
