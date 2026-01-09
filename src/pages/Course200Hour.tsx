@@ -865,11 +865,14 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </p>
             
             <div className="max-w-3xl mx-auto">
-              <div className="space-y-4">
+              <div className="relative space-y-4">
+                {/* Vertical connecting line */}
+                <div className="absolute left-[calc(6rem+1.5rem+0.5rem-1px)] md:left-[calc(7rem+1.5rem+0.5rem-1px)] top-2 bottom-2 w-0.5 bg-primary/30" />
+                
                 {dailySchedule.map((item, index) => (
                   <div 
                     key={index}
-                    className="flex items-center gap-6"
+                    className="relative flex items-center gap-6"
                   >
                     {/* Time */}
                     <div className="w-24 md:w-28 flex-shrink-0 text-right">
@@ -877,7 +880,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     </div>
                     
                     {/* Timeline dot */}
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 z-10">
                       <div className="w-4 h-4 rounded-full bg-primary" />
                     </div>
                     
