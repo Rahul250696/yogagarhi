@@ -245,6 +245,7 @@ export default function Course200Hour() {
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
   const [email, setEmail] = useState("");
+  const [showWelcomeExpanded, setShowWelcomeExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -447,15 +448,21 @@ export default function Course200Hour() {
         {/* ===== WELCOME SECTION ===== */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative">
-                <img 
-                  src={heroImage} 
-                  alt="Yogagarhi Training" 
-                  className="rounded-lg shadow-card w-full"
-                />
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* Left Column - YouTube Video */}
+              <div className="relative w-full">
+                <div className="aspect-video rounded-lg overflow-hidden shadow-card bg-muted">
+                  <iframe
+                    src="https://www.youtube.com/embed/U1r2mQRmWXM?rel=0"
+                    title="YogaGarhi 200 Hour Yoga Teacher Training"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
               
+              {/* Right Column - Welcome Text with Read More */}
               <div>
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Welcome to Yogagarhi
@@ -465,6 +472,7 @@ export default function Course200Hour() {
                 </p>
                 
                 <div className="space-y-6 text-muted-foreground leading-relaxed">
+                  {/* First 2 paragraphs - always visible */}
                   <p>
                     Become a Yoga Alliance Registered Yoga Teacher (RYT 200) through Yogagarhi's 
                     200-Hour Yoga Teacher Training in Bali Ubud and join a life-changing journey 
@@ -475,11 +483,32 @@ export default function Course200Hour() {
                     This course covers all essential aspects of yoga, including asanas, pranayama, 
                     anatomy, and teaching methodology.
                   </p>
-                  <p>
-                    Become a part of this transformative once in a lifetime experience in the 
-                    mesmerizing beauty of Bali. This holistic program prepares you to become a 
-                    professional yoga teacher having expertise, skills, and confidence.
-                  </p>
+                  
+                  {/* Expandable content */}
+                  <div 
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      showWelcomeExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <p className="pt-6">
+                      Become a part of this transformative once in a lifetime experience in the 
+                      mesmerizing beauty of Bali. This holistic program prepares you to become a 
+                      professional yoga teacher having expertise, skills, and confidence.
+                    </p>
+                  </div>
+                  
+                  {/* Read More / Read Less Button */}
+                  <button
+                    onClick={() => setShowWelcomeExpanded(!showWelcomeExpanded)}
+                    className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors mt-2 group"
+                  >
+                    {showWelcomeExpanded ? 'Read Less' : 'Read More'}
+                    <ChevronDown 
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        showWelcomeExpanded ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
                 </div>
               </div>
             </div>
