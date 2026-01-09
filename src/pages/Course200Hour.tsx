@@ -976,33 +976,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
               A comprehensive curriculum covering all aspects of yoga
             </p>
             
-            {/* Main 4 Vertical Cards */}
-            <div className="max-w-5xl mx-auto mb-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {whatYouWillReceive.slice(0, 4).map((item, index) => (
-                  <div 
-                    key={index}
-                    className="group p-8 bg-card rounded-xl border border-border shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="flex items-start gap-5">
-                      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <item.icon className="w-8 h-8 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
             {/* Horizontal Scrollable Flip Cards */}
             <div className="relative">
               {/* Gradient fade edges */}
@@ -1011,7 +984,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
               
               <div className="overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4">
                 <div className="flex gap-6" style={{ width: 'max-content' }}>
-                  {whatYouWillReceive.slice(4).map((item, index) => (
+                  {whatYouWillReceive.map((item, index) => (
                     <div 
                       key={index}
                       className="flip-card w-64 h-72 flex-shrink-0 cursor-pointer"
