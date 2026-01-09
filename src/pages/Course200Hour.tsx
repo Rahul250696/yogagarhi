@@ -855,34 +855,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
           </div>
         </section>
-
-        {/* ===== COURSE OVERVIEW VIDEO ===== */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-              Course Overview
-            </h2>
-            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              A glimpse into your 24-day transformative journey
-            </p>
-            
-            <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-video rounded-lg overflow-hidden bg-muted group cursor-pointer">
-                <img 
-                  src="https://img.youtube.com/vi/U1r2mQRmWXM/maxresdefault.jpg"
-                  alt="Course Overview"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-foreground/30 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-primary-foreground/90 flex items-center justify-center">
-                    <Play className="w-8 h-8 text-primary ml-1" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ===== DAILY SCHEDULE ===== */}
         <section className="py-20 bg-secondary/30">
           <div className="container mx-auto px-4">
