@@ -172,6 +172,70 @@ const exclusions = [
   "Personal shopping & extra activities",
 ];
 
+// What You Will Receive
+const whatYouWillReceive = [
+  { 
+    title: "Multi Style Yoga Training", 
+    description: "Learn yoga in its authentic, time-tested way. Our teachers preserve the wisdom of yogic tradition.",
+    icon: Leaf
+  },
+  { 
+    title: "Yoga Alliance Certified", 
+    description: "Receive globally recognized certification. Begin teaching yoga with confidence worldwide.",
+    icon: Award
+  },
+  { 
+    title: "Peaceful Bali Surroundings", 
+    description: "Experience yoga in the lap of nature. Calm beaches and greenery deepen your practice.",
+    icon: Mountain
+  },
+  { 
+    title: "Outdoor Excursions", 
+    description: "Explore temples, beaches, and nature walks. Balance learning with adventure and culture.",
+    icon: MapPin
+  },
+  { 
+    title: "Small Batch Sizes", 
+    description: "Get personal attention and guidance. Every student's growth matters to us.",
+    icon: Users
+  },
+  { 
+    title: "Supportive Community", 
+    description: "Be part of a warm and positive family. Grow together in a caring environment.",
+    icon: Heart
+  },
+  { 
+    title: "Balinese Massage", 
+    description: "Traditional Indonesian therapy to relieve muscle tension. Promotes deep relaxation and holistic healing.",
+    icon: Sparkles
+  },
+  { 
+    title: "Balinese Dance Performance", 
+    description: "Ancient, dynamic and highly expressive dance form that reflects Bali's rich cultural heritage.",
+    icon: Star
+  },
+  { 
+    title: "Ayurvedic Meals", 
+    description: "Enjoy sattvic and healthy meals supporting your practice.",
+    icon: Heart
+  },
+  { 
+    title: "Meditation Practice", 
+    description: "Deepen inner peace and mindfulness with guided sessions.",
+    icon: Sparkles
+  },
+  { 
+    title: "Experienced Instructors", 
+    description: "Learn from certified teachers with years of expertise.",
+    icon: GraduationCap
+  },
+  { 
+    title: "Yoga Lifestyle", 
+    description: "Adopt the yogic way of living for body, mind, and spirit.",
+    icon: Leaf
+  },
+];
+
 // Workshops
 const workshops = [
   { title: "Ayurveda Fundamentals", description: "Understand your unique constitution" },
@@ -903,31 +967,58 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== WHAT YOU'LL RECEIVE ===== */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-background overflow-hidden">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-primary mb-4">
               What You Will Receive in This Training
             </h2>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               A comprehensive curriculum covering all aspects of yoga
             </p>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {curriculum.map((category, index) => (
-                <div key={index} className="p-6 bg-card rounded-lg border border-border">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-4 pb-3 border-b border-border">
-                    {category.category}
-                  </h3>
-                  <ul className="space-y-3">
-                    {category.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
-                        <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+            {/* Vertical Carousel with 4 visible cards */}
+            <div className="relative max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {whatYouWillReceive.slice(0, 4).map((item, index) => (
+                  <div 
+                    key={index}
+                    className="group p-6 bg-card rounded-xl border border-border shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 animate-fade-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                      <item.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Scrolling carousel for remaining items */}
+              <div className="mt-8 relative">
+                <div className="flex animate-scroll-x gap-6 py-4">
+                  {[...whatYouWillReceive.slice(4), ...whatYouWillReceive.slice(4)].map((item, index) => (
+                    <div 
+                      key={index}
+                      className="flex-shrink-0 w-72 p-6 bg-card rounded-xl border border-border shadow-sm hover:shadow-card transition-all duration-300"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <item.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="font-heading text-base font-semibold text-foreground mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </section>
