@@ -411,6 +411,11 @@ export default function Course200Hour() {
   const [showManualDialog, setShowManualDialog] = useState(false);
   const [showManualThankYou, setShowManualThankYou] = useState(false);
   const [showSyllabusDialog, setShowSyllabusDialog] = useState(false);
+  const [showSyllabusThankYou, setShowSyllabusThankYou] = useState(false);
+  const [syllabusEmail, setSyllabusEmail] = useState("");
+  const [syllabusEmailError, setSyllabusEmailError] = useState("");
+  const [selectedSyllabusCourse, setSelectedSyllabusCourse] = useState("200");
+  const [showWebinarThankYou, setShowWebinarThankYou] = useState(false);
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
   const [email, setEmail] = useState("");
@@ -1616,18 +1621,86 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     <p className="text-center text-muted-foreground text-sm">
                       Select your course and enter email to receive the detailed syllabus.
                     </p>
-                    <select className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary">
+                    <select 
+                      value={selectedSyllabusCourse}
+                      onChange={(e) => setSelectedSyllabusCourse(e.target.value)}
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
                       <option value="100">100 Hour YTTC</option>
-                      <option value="200" selected>200 Hour YTTC</option>
+                      <option value="200">200 Hour YTTC</option>
                       <option value="300">300 Hour YTTC</option>
                     </select>
                     <input
                       type="email"
                       placeholder="Your email address"
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                      value={syllabusEmail}
+                      onChange={(e) => {
+                        setSyllabusEmail(e.target.value);
+                        setSyllabusEmailError("");
+                      }}
+                      className={`w-full px-4 py-3 rounded-lg border ${syllabusEmailError ? 'border-red-500' : 'border-border'} bg-background focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
-                    <Button className="w-full" size="lg">
+                    {syllabusEmailError && (
+                      <p className="text-sm text-red-500">{syllabusEmailError}</p>
+                    )}
+                    <Button 
+                      className="w-full" 
+                      size="lg"
+                      onClick={() => {
+                        if (!syllabusEmail) {
+                          setSyllabusEmailError("Please enter your email address");
+                          return;
+                        }
+                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(syllabusEmail)) {
+                          setSyllabusEmailError("Please enter a valid email address");
+                          return;
+                        }
+                        setSyllabusEmailError("");
+                        setShowSyllabusDialog(false);
+                        setShowSyllabusThankYou(true);
+                      }}
+                    >
                       Send Syllabus
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+              
+              {/* Syllabus Thank You Dialog */}
+              <Dialog open={showSyllabusThankYou} onOpenChange={(open) => {
+                setShowSyllabusThankYou(open);
+                if (!open) {
+                  setSyllabusEmail("");
+                  setSyllabusEmailError("");
+                }
+              }}>
+                <DialogContent className="sm:max-w-md text-center">
+                  <div className="py-6 space-y-6">
+                    <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                      <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-2xl font-bold text-primary mb-2">
+                        Thank You! 🙏
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Your {selectedSyllabusCourse}-hour YTTC syllabus is on its way to <span className="font-medium text-foreground">{syllabusEmail}</span>
+                      </p>
+                    </div>
+                    <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
+                      <p>Please check your inbox (and spam folder) within the next 24 hours.</p>
+                    </div>
+                    <Button 
+                      onClick={() => {
+                        setShowSyllabusThankYou(false);
+                        setSyllabusEmail("");
+                        setSyllabusEmailError("");
+                      }}
+                      className="w-full"
+                    >
+                      Close
                     </Button>
                   </div>
                 </DialogContent>
@@ -1668,7 +1741,11 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     Register for Free Webinar
                   </DialogTitle>
                 </DialogHeader>
-                <form onSubmit={(e) => { e.preventDefault(); setShowWebinarDialog(false); setWebinarForm({ name: '', email: '', timezone: '', date: '', time: '' }); }} className="space-y-4 pt-4">
+                <form onSubmit={(e) => { 
+                  e.preventDefault(); 
+                  setShowWebinarDialog(false); 
+                  setShowWebinarThankYou(true);
+                }} className="space-y-4 pt-4">
                   <p className="text-center text-muted-foreground text-sm">
                     Fill in your details to join our live orientation session
                   </p>
@@ -1795,6 +1872,45 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     You'll receive a confirmation email with the webinar link
                   </p>
                 </form>
+              </DialogContent>
+            </Dialog>
+            
+            {/* Webinar Thank You Dialog */}
+            <Dialog open={showWebinarThankYou} onOpenChange={(open) => {
+              setShowWebinarThankYou(open);
+              if (!open) {
+                setWebinarForm({ name: '', email: '', timezone: '', date: '', time: '' });
+              }
+            }}>
+              <DialogContent className="sm:max-w-md text-center">
+                <div className="py-6 space-y-6">
+                  <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-2xl font-bold text-primary mb-2">
+                      You're Registered! 🎉
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Thank you, <span className="font-medium text-foreground">{webinarForm.name}</span>! Your webinar registration is confirmed.
+                    </p>
+                  </div>
+                  <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground space-y-2">
+                    <p>📧 Confirmation sent to: <span className="font-medium text-foreground">{webinarForm.email}</span></p>
+                    <p>📅 We'll send you the webinar link before your selected date.</p>
+                  </div>
+                  <Button 
+                    onClick={() => {
+                      setShowWebinarThankYou(false);
+                      setWebinarForm({ name: '', email: '', timezone: '', date: '', time: '' });
+                    }}
+                    className="w-full"
+                  >
+                    Close
+                  </Button>
+                </div>
               </DialogContent>
             </Dialog>
           </div>
