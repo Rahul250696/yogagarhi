@@ -406,11 +406,14 @@ export default function Course200Hour() {
   const [showQuizDialog, setShowQuizDialog] = useState(false);
   const [showQuizThankYou, setShowQuizThankYou] = useState(false);
   const [showManualDialog, setShowManualDialog] = useState(false);
+  const [showManualThankYou, setShowManualThankYou] = useState(false);
   const [showSyllabusDialog, setShowSyllabusDialog] = useState(false);
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
   const [email, setEmail] = useState("");
+  const [manualEmail, setManualEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [manualEmailError, setManualEmailError] = useState("");
   const [showWelcomeExpanded, setShowWelcomeExpanded] = useState(false);
   const [activeInclusionTab, setActiveInclusionTab] = useState<'inclusions' | 'exclusions'>('inclusions');
   const [showWebinarDialog, setShowWebinarDialog] = useState(false);
@@ -839,12 +842,74 @@ export default function Course200Hour() {
                     <input
                       type="email"
                       placeholder="Your email address"
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      className={`w-full px-4 py-3 rounded-lg border ${manualEmailError ? 'border-red-500' : 'border-border'} bg-background focus:outline-none focus:ring-2 focus:ring-primary`}
+                      value={manualEmail}
+                      onChange={(e) => {
+                        setManualEmail(e.target.value);
+                        setManualEmailError("");
+                      }}
                     />
-                    <Button className="w-full" size="lg">
+                    {manualEmailError && (
+                      <p className="text-sm text-red-500">{manualEmailError}</p>
+                    )}
+                    <Button 
+                      className="w-full" 
+                      size="lg"
+                      onClick={() => {
+                        if (!manualEmail) {
+                          setManualEmailError("Please enter your email address");
+                          return;
+                        }
+                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(manualEmail)) {
+                          setManualEmailError("Please enter a valid email address");
+                          return;
+                        }
+                        setManualEmailError("");
+                        setShowManualDialog(false);
+                        setShowManualThankYou(true);
+                      }}
+                    >
                       Send Me The Manual
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+              
+              {/* Manual Thank You Dialog */}
+              <Dialog open={showManualThankYou} onOpenChange={(open) => {
+                setShowManualThankYou(open);
+                if (!open) {
+                  setManualEmail("");
+                  setManualEmailError("");
+                }
+              }}>
+                <DialogContent className="sm:max-w-md text-center">
+                  <div className="py-6 space-y-6">
+                    <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                      <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-heading text-2xl font-bold text-primary mb-2">
+                        Thank You! 🙏
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Your free 200-hour study manual is on its way to <span className="font-medium text-foreground">{manualEmail}</span>
+                      </p>
+                    </div>
+                    <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
+                      <p>Please check your inbox (and spam folder) within the next 24 hours.</p>
+                    </div>
+                    <Button 
+                      onClick={() => {
+                        setShowManualThankYou(false);
+                        setManualEmail("");
+                        setManualEmailError("");
+                      }}
+                      className="w-full"
+                    >
+                      Close
                     </Button>
                   </div>
                 </DialogContent>
