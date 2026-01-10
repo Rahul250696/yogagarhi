@@ -1909,34 +1909,41 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     </div>
                     
                     {/* Content */}
-                    <div className="p-6 space-y-6">
-                      <p className="text-center text-foreground font-medium">
+                    <div className="p-6 space-y-5">
+                      <p className="text-center text-foreground font-medium border-b border-border pb-4">
                         Course Duration: 21 Nights / 22 Days
                       </p>
                       
                       {/* Triple Sharing */}
-                      <div className="text-center pb-6 border-b border-border">
-                        <p className="font-heading text-2xl font-bold text-foreground mb-1">
-                          $1,750 <span className="text-lg text-muted-foreground font-normal">/ $1,899</span>
+                      <div className="text-center p-4 bg-secondary/30 rounded-lg">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Triple Sharing</p>
+                        <p className="font-heading text-2xl font-bold text-foreground">
+                          $1,750
                         </p>
-                        <p className="text-muted-foreground line-through text-sm mb-2">
-                          $2,187 / $2,370
+                        <p className="text-muted-foreground line-through text-sm">
+                          $2,187
                         </p>
-                        <p className="text-sm font-medium text-foreground uppercase tracking-wide">
-                          Triple / Double Sharing
+                      </div>
+                      
+                      {/* Double Sharing */}
+                      <div className="text-center p-4 bg-secondary/30 rounded-lg">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Double Sharing</p>
+                        <p className="font-heading text-2xl font-bold text-foreground">
+                          $1,899
+                        </p>
+                        <p className="text-muted-foreground line-through text-sm">
+                          $2,370
                         </p>
                       </div>
                       
                       {/* Private Room */}
-                      <div className="text-center">
-                        <p className="font-heading text-2xl font-bold text-foreground mb-1">
+                      <div className="text-center p-4 bg-secondary/30 rounded-lg">
+                        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Private Room</p>
+                        <p className="font-heading text-2xl font-bold text-foreground">
                           $2,499
                         </p>
-                        <p className="text-muted-foreground line-through text-sm mb-2">
+                        <p className="text-muted-foreground line-through text-sm">
                           $3,125
-                        </p>
-                        <p className="text-sm font-medium text-foreground uppercase tracking-wide">
-                          Private Room
                         </p>
                       </div>
                       
