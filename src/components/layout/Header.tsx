@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Instagram, Facebook, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEnrollment } from "@/components/EnrollmentDialog";
 import logo from "@/assets/yogagarhi-logo.png";
 
 const courses = [
@@ -23,6 +24,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
   const location = useLocation();
+  const { setShowEnrollDialog } = useEnrollment();
 
   const isActive = (href: string) => location.pathname === href;
 
@@ -110,8 +112,12 @@ export default function Header() {
                   <Youtube className="h-5 w-5" />
                 </a>
               </div>
-              <Button variant="cta" size="lg" asChild>
-                <Link to="/contact">Start Your Journey</Link>
+              <Button 
+                variant="cta" 
+                size="lg" 
+                onClick={() => setShowEnrollDialog(true)}
+              >
+                Start Your Journey
               </Button>
             </div>
 
@@ -171,8 +177,16 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <Button variant="cta" size="lg" className="mt-4" asChild>
-              <Link to="/contact" onClick={() => setIsOpen(false)}>Start Your Journey</Link>
+            <Button 
+              variant="cta" 
+              size="lg" 
+              className="mt-4"
+              onClick={() => {
+                setShowEnrollDialog(true);
+                setIsOpen(false);
+              }}
+            >
+              Start Your Journey
             </Button>
           </nav>
         </div>
