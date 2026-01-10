@@ -2339,36 +2339,68 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== CODE OF CONDUCT & REFUND ===== */}
-        <section className="py-20 bg-background">
+        <section className="py-12 bg-secondary/20">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6">
-                  Code of Conduct
-                </h3>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li>• Follow the daily schedule and attend all classes on time</li>
-                  <li>• No drugs, alcohol, or smoking on campus</li>
-                  <li>• Only vegetarian meals within school premises</li>
-                  <li>• Maintain silence during classes and meals</li>
-                  <li>• Wear modest, comfortable clothing</li>
-                  <li>• Show respect to teachers, staff, and fellow students</li>
-                  <li>• No mobile phones during classes and meditations</li>
-                  <li>• Full attendance required for certification</li>
-                </ul>
+            <div className="flex flex-col md:flex-row gap-6 max-w-5xl mx-auto">
+              {/* Code of Conduct */}
+              <div className="flex-1 bg-card rounded-xl p-6 border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <BookMarked className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-lg font-bold text-foreground">
+                    Code of Conduct
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Punctual attendance",
+                    "No alcohol/smoking",
+                    "Vegetarian only",
+                    "Silence in class",
+                    "Modest clothing",
+                    "Respect all",
+                    "No phones in class",
+                    "Full attendance required"
+                  ].map((item, i) => (
+                    <span 
+                      key={i} 
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-secondary/50 rounded-full text-xs text-muted-foreground"
+                    >
+                      <Check className="w-3 h-3 text-primary" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
               
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6">
-                  Refund & Cancellation Policy
-                </h3>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li>• Cannot attend? Reschedule to any future batch within 12 months</li>
-                  <li>• Transfer your seat to a friend or family member</li>
-                  <li>• School cancellation: full refund or new date offered</li>
-                  <li>• The first day is a trial day — if not right, inform management for refund eligibility</li>
-                  <li>• No refund after the first day</li>
-                </ul>
+              {/* Refund Policy */}
+              <div className="flex-1 bg-card rounded-xl p-6 border border-border shadow-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <RefreshCw className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-heading text-lg font-bold text-foreground">
+                    Refund & Cancellation
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "Reschedule within 12 months",
+                    "Transfer seat allowed",
+                    "Full refund if we cancel",
+                    "Trial day policy",
+                    "No refund after Day 1"
+                  ].map((item, i) => (
+                    <span 
+                      key={i} 
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-secondary/50 rounded-full text-xs text-muted-foreground"
+                    >
+                      <Check className="w-3 h-3 text-primary" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
