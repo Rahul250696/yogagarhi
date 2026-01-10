@@ -2139,13 +2139,81 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== ACCOMMODATION ===== */}
+        {/* Hero Banner with Background */}
+        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 -z-10">
+            <img 
+              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop"
+              alt="Bali yoga retreat accommodation"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-foreground/60" />
+          </div>
+          
+          {/* Content */}
+          <div className="container mx-auto px-4 text-center relative z-10">
+            {/* Main Title */}
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[0.15em] uppercase mb-8">
+              Accommodation
+            </h2>
+            
+            {/* Subtitle */}
+            <p className="font-heading text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-16 leading-relaxed">
+              A serene yoga retreat in the heart of Bali's sacred Ubud region
+            </p>
+            
+            {/* Location Features */}
+            <div className="max-w-xl mx-auto space-y-8">
+              {/* Feature 1 */}
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                  </svg>
+                </div>
+                <p className="font-heading text-lg md:text-xl text-white text-left">
+                  10 minutes to the sacred Tirta Empul Temple
+                </p>
+              </div>
+              
+              {/* Feature 2 */}
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M3 12C3 12 5 4 12 4C19 4 21 12 21 12C21 12 19 20 12 20C5 20 3 12 3 12Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </div>
+                <p className="font-heading text-lg md:text-xl text-white text-left">
+                  Surrounded by lush rice terraces and tropical jungle
+                </p>
+              </div>
+              
+              {/* Feature 3 */}
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                    <path d="M12 6V12L16 14" />
+                  </svg>
+                </div>
+                <p className="font-heading text-lg md:text-xl text-white text-left">
+                  15 minutes walk to Tegallalang Rice Terraces
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Room Types Section */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-3">Your Stay</p>
-              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Comfortable Accommodation
-              </h2>
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-3">Choose Your Stay</p>
+              <h3 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Room Options
+              </h3>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Rest and recharge in our peaceful living spaces, designed to support your yogic journey
               </p>
