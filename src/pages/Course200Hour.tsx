@@ -2621,20 +2621,80 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== INSTAGRAM FOLLOW ===== */}
-        <section className="py-16 bg-secondary/30">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-heading text-2xl font-bold text-foreground mb-4">
-              Follow Our Journey
-            </h2>
-            <a 
-              href="https://instagram.com/yogagarhi" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:underline"
-            >
-              <Instagram className="w-5 h-5" />
-              @yogagarhi
-            </a>
+        <section className="py-20 bg-background overflow-hidden">
+          <div className="container mx-auto px-4">
+            {/* Header */}
+            <div className="text-center mb-12">
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-3">
+                Behind the Scenes
+              </p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Follow Our Journey
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Daily moments of transformation, wisdom, and community from Bali
+              </p>
+            </div>
+            
+            {/* Instagram Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 max-w-6xl mx-auto mb-12">
+              {[
+                { img: activityAyurveda, likes: "234", type: "image" },
+                { img: activitySoundHealing, likes: "189", type: "image" },
+                { img: heroImage, likes: "412", type: "reel" },
+                { img: activityWaterfall, likes: "156", type: "image" },
+                { img: webinarBackground, likes: "298", type: "reel" },
+              ].map((post, index) => (
+                <a
+                  key={index}
+                  href="https://www.instagram.com/yogagarhi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-muted"
+                >
+                  <img 
+                    src={post.img} 
+                    alt={`Instagram post ${index + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex items-center gap-3 text-primary-foreground">
+                      <div className="flex items-center gap-1">
+                        <Heart className="w-5 h-5 fill-primary-foreground" />
+                        <span className="font-medium">{post.likes}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Reel indicator */}
+                  {post.type === "reel" && (
+                    <div className="absolute top-2 right-2">
+                      <Play className="w-5 h-5 text-primary-foreground drop-shadow-lg" />
+                    </div>
+                  )}
+                </a>
+              ))}
+            </div>
+            
+            {/* Follow CTA */}
+            <div className="text-center">
+              <a
+                href="https://www.instagram.com/yogagarhi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] p-[2px] rounded-full group"
+              >
+                <div className="flex items-center gap-3 bg-background rounded-full px-6 py-3 group-hover:bg-transparent transition-colors duration-300">
+                  <Instagram className="w-6 h-6 text-foreground group-hover:text-primary-foreground transition-colors" />
+                  <span className="font-heading font-semibold text-foreground group-hover:text-primary-foreground transition-colors">
+                    @yogagarhi
+                  </span>
+                  <span className="text-muted-foreground group-hover:text-primary-foreground/80 transition-colors text-sm">
+                    Follow us
+                  </span>
+                </div>
+              </a>
+            </div>
           </div>
         </section>
       </Layout>
