@@ -362,12 +362,14 @@ const dietaryOptions = [
 
 // Upcoming Dates
 const upcomingDates = [
-  { date: "1 Dec - 24 Dec 2025", price: "$1750", availability: "5 seats left" },
-  { date: "5 Jan - 29 Jan 2026", price: "$1750", availability: "Available" },
-  { date: "1 Feb - 24 Feb 2026", price: "$1750", availability: "Available" },
-  { date: "1 Mar - 24 Mar 2026", price: "$1750", availability: "Available" },
-  { date: "1 Apr - 24 Apr 2026", price: "$1750", availability: "Available" },
-  { date: "1 May - 24 May 2026", price: "$1750", availability: "5 seats left" },
+  { date: "1 Dec - 24 Dec 2025", spotsLeft: 3, earlyBirdSaving: "$200" },
+  { date: "5 Jan - 29 Jan 2026", spotsLeft: 5, earlyBirdSaving: "$200" },
+  { date: "1 Feb - 22 Feb 2026", spotsLeft: 8, earlyBirdSaving: "$200" },
+  { date: "1 Mar - 22 Mar 2026", spotsLeft: 8, earlyBirdSaving: "$200" },
+  { date: "2 Apr - 23 Apr 2026", spotsLeft: 8, earlyBirdSaving: "$200" },
+  { date: "2 May - 23 May 2026", spotsLeft: 7, earlyBirdSaving: "$200" },
+  { date: "2 Aug - 23 Aug 2026", spotsLeft: 8, earlyBirdSaving: "$200" },
+  { date: "2 Sept - 23 Sept 2026", spotsLeft: 7, earlyBirdSaving: "$200" },
 ];
 
 // Teachers
@@ -1850,41 +1852,101 @@ This is not a transactional relationship — it is a lifelong connection.`}
         {/* ===== UPCOMING DATES ===== */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-              Upcoming Dates 2025 - 2026
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-2">
+              200 Hour Yoga Teacher Training
             </h2>
-            <p className="text-center text-muted-foreground mb-12">
-              Limited seats available. Secure your spot today.
+            <p className="text-center text-primary font-heading text-lg tracking-[0.3em] uppercase mb-2">
+              Upcoming Dates
             </p>
+            <div className="w-16 h-0.5 bg-primary mx-auto mb-12" />
             
-            <div className="max-w-4xl mx-auto">
-              <div className="grid gap-4">
-                {upcomingDates.map((date, index) => (
-                  <div 
-                    key={index}
-                    className="flex flex-col md:flex-row md:items-center justify-between p-6 bg-card rounded-lg border border-border gap-4"
-                  >
-                    <div className="flex items-center gap-4">
-                      <Calendar className="w-5 h-5 text-primary" />
-                      <span className="font-medium text-foreground">{date.date}</span>
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-3 gap-8">
+                {/* Dates List */}
+                <div className="lg:col-span-2 space-y-0 divide-y divide-border border border-border rounded-xl overflow-hidden bg-card">
+                  {upcomingDates.map((item, index) => (
+                    <div 
+                      key={index}
+                      className="flex flex-col sm:flex-row sm:items-center justify-between p-4 sm:p-5 gap-4 hover:bg-secondary/30 transition-colors duration-200"
+                    >
+                      {/* Date */}
+                      <div className="flex items-center gap-3 min-w-[200px]">
+                        <Calendar className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="font-medium text-foreground">{item.date}</span>
+                      </div>
+                      
+                      {/* Spots Left */}
+                      <div className="flex items-center gap-4 sm:gap-6 flex-wrap sm:flex-nowrap">
+                        <span className={`text-sm px-3 py-1.5 rounded-md whitespace-nowrap ${
+                          item.spotsLeft <= 3 
+                            ? "bg-red-100 text-red-700" 
+                            : "bg-secondary text-secondary-foreground"
+                        }`}>
+                          Only {item.spotsLeft} spots left
+                        </span>
+                        
+                        {/* Early Bird */}
+                        <div className="text-center">
+                          <p className="font-heading font-bold text-foreground text-sm">Early Bird Price</p>
+                          <p className="text-primary text-sm font-medium">save {item.earlyBirdSaving}</p>
+                        </div>
+                        
+                        {/* Book Button */}
+                        <Button variant="outline" size="sm" className="whitespace-nowrap" asChild>
+                          <Link to="/contact">Book Now</Link>
+                        </Button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-6">
-                      <span className="font-heading text-xl font-bold text-primary">
-                        {date.price}
-                      </span>
-                      <span className={`text-sm px-3 py-1 rounded-full ${
-                        date.availability === "Available" 
-                          ? "bg-primary/10 text-primary" 
-                          : "bg-accent/10 text-accent"
-                      }`}>
-                        {date.availability}
-                      </span>
-                      <Button size="sm" asChild>
-                        <Link to="/contact">Book Now</Link>
+                  ))}
+                </div>
+                
+                {/* Pricing Card */}
+                <div className="lg:col-span-1">
+                  <div className="bg-card border border-border rounded-xl overflow-hidden sticky top-24">
+                    {/* Header */}
+                    <div className="bg-primary text-primary-foreground p-4 text-center">
+                      <h3 className="font-heading font-bold text-lg tracking-wide">200 HOUR YOGA TTC FEES</h3>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6 space-y-6">
+                      <p className="text-center text-foreground font-medium">
+                        Course Duration: 21 Nights / 22 Days
+                      </p>
+                      
+                      {/* Triple Sharing */}
+                      <div className="text-center pb-6 border-b border-border">
+                        <p className="font-heading text-2xl font-bold text-foreground mb-1">
+                          $1,750 <span className="text-lg text-muted-foreground font-normal">/ $1,899</span>
+                        </p>
+                        <p className="text-muted-foreground line-through text-sm mb-2">
+                          $2,187 / $2,370
+                        </p>
+                        <p className="text-sm font-medium text-foreground uppercase tracking-wide">
+                          Triple / Double Sharing
+                        </p>
+                      </div>
+                      
+                      {/* Private Room */}
+                      <div className="text-center">
+                        <p className="font-heading text-2xl font-bold text-foreground mb-1">
+                          $2,499
+                        </p>
+                        <p className="text-muted-foreground line-through text-sm mb-2">
+                          $3,125
+                        </p>
+                        <p className="text-sm font-medium text-foreground uppercase tracking-wide">
+                          Private Room
+                        </p>
+                      </div>
+                      
+                      {/* CTA */}
+                      <Button className="w-full" size="lg" asChild>
+                        <Link to="/contact">Enroll Now</Link>
                       </Button>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
