@@ -45,7 +45,7 @@ function EnrollmentDialogContent() {
 
   const isEnrollFormComplete = enrollForm.name && enrollForm.email && enrollForm.contact && 
     enrollForm.courseName && enrollForm.courseDate && enrollForm.accommodation && 
-    enrollForm.gender && enrollForm.country && enrollForm.source;
+    enrollForm.gender && enrollForm.country;
 
   const courseDates = [
     "December, 2025", "January, 2026", "February, 2026", "March, 2026", "April, 2026",
@@ -163,8 +163,8 @@ function EnrollmentDialogContent() {
             >
               <option value="">Select Accommodation</option>
               <option value="Private Room">Private Room</option>
-              <option value="Shared Room">Shared Room</option>
-              <option value="Deluxe Room">Deluxe Room</option>
+              <option value="Double Sharing Room">Double Sharing Room</option>
+              <option value="Triple Sharing Room">Triple Sharing Room</option>
             </select>
           </div>
           
@@ -202,7 +202,7 @@ function EnrollmentDialogContent() {
           {/* Source */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">
-              From where you get to know about us? <span className="text-destructive">*</span>
+              From where you get to know about us?
             </label>
             <select
               value={enrollForm.source}
