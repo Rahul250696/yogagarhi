@@ -2552,8 +2552,20 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== FINAL CONVERSION HUB ===== */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-secondary/10 relative overflow-hidden">
+          {/* Decorative Background Elements */}
+          <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute top-1/2 left-0 w-40 h-40 rounded-full bg-secondary/30 blur-2xl -translate-y-1/2" />
+          <div className="absolute top-1/2 right-0 w-40 h-40 rounded-full bg-secondary/30 blur-2xl -translate-y-1/2" />
+          
+          {/* Subtle Pattern Overlay */}
+          <div className="absolute inset-0 opacity-[0.02]" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+          
+          <div className="container mx-auto px-4 relative z-10">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
               Ready to Begin?
             </h2>
