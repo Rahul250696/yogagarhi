@@ -439,6 +439,7 @@ export default function Course200Hour() {
   });
   const [bookingForm, setBookingForm] = useState({
     name: '',
+    countryCode: '+91',
     contact: '',
     email: '',
     course: ''
@@ -2472,13 +2473,79 @@ This is not a transactional relationship — it is a lifelong connection.`}
                             <label className="block text-sm font-medium text-foreground mb-2">
                               Contact / WhatsApp Number <span className="text-destructive">*</span>
                             </label>
-                            <input
-                              type="tel"
-                              value={bookingForm.contact}
-                              onChange={(e) => setBookingForm(prev => ({ ...prev, contact: e.target.value }))}
-                              placeholder="+1 234 567 8900"
-                              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                            />
+                            <div className="flex gap-2">
+                              <select
+                                value={bookingForm.countryCode}
+                                onChange={(e) => setBookingForm(prev => ({ ...prev, countryCode: e.target.value }))}
+                                className="w-28 px-2 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
+                              >
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+49">🇩🇪 +49</option>
+                                <option value="+33">🇫🇷 +33</option>
+                                <option value="+39">🇮🇹 +39</option>
+                                <option value="+34">🇪🇸 +34</option>
+                                <option value="+31">🇳🇱 +31</option>
+                                <option value="+46">🇸🇪 +46</option>
+                                <option value="+47">🇳🇴 +47</option>
+                                <option value="+45">🇩🇰 +45</option>
+                                <option value="+358">🇫🇮 +358</option>
+                                <option value="+41">🇨🇭 +41</option>
+                                <option value="+43">🇦🇹 +43</option>
+                                <option value="+32">🇧🇪 +32</option>
+                                <option value="+351">🇵🇹 +351</option>
+                                <option value="+48">🇵🇱 +48</option>
+                                <option value="+7">🇷🇺 +7</option>
+                                <option value="+380">🇺🇦 +380</option>
+                                <option value="+81">🇯🇵 +81</option>
+                                <option value="+82">🇰🇷 +82</option>
+                                <option value="+86">🇨🇳 +86</option>
+                                <option value="+852">🇭🇰 +852</option>
+                                <option value="+65">🇸🇬 +65</option>
+                                <option value="+60">🇲🇾 +60</option>
+                                <option value="+62">🇮🇩 +62</option>
+                                <option value="+66">🇹🇭 +66</option>
+                                <option value="+84">🇻🇳 +84</option>
+                                <option value="+63">🇵🇭 +63</option>
+                                <option value="+92">🇵🇰 +92</option>
+                                <option value="+880">🇧🇩 +880</option>
+                                <option value="+94">🇱🇰 +94</option>
+                                <option value="+977">🇳🇵 +977</option>
+                                <option value="+971">🇦🇪 +971</option>
+                                <option value="+966">🇸🇦 +966</option>
+                                <option value="+972">🇮🇱 +972</option>
+                                <option value="+90">🇹🇷 +90</option>
+                                <option value="+20">🇪🇬 +20</option>
+                                <option value="+27">🇿🇦 +27</option>
+                                <option value="+234">🇳🇬 +234</option>
+                                <option value="+254">🇰🇪 +254</option>
+                                <option value="+55">🇧🇷 +55</option>
+                                <option value="+52">🇲🇽 +52</option>
+                                <option value="+54">🇦🇷 +54</option>
+                                <option value="+57">🇨🇴 +57</option>
+                                <option value="+56">🇨🇱 +56</option>
+                                <option value="+51">🇵🇪 +51</option>
+                                <option value="+64">🇳🇿 +64</option>
+                                <option value="+353">🇮🇪 +353</option>
+                                <option value="+30">🇬🇷 +30</option>
+                                <option value="+36">🇭🇺 +36</option>
+                                <option value="+420">🇨🇿 +420</option>
+                                <option value="+40">🇷🇴 +40</option>
+                                <option value="+375">🇧🇾 +375</option>
+                                <option value="+370">🇱🇹 +370</option>
+                                <option value="+371">🇱🇻 +371</option>
+                                <option value="+372">🇪🇪 +372</option>
+                              </select>
+                              <input
+                                type="tel"
+                                value={bookingForm.contact}
+                                onChange={(e) => setBookingForm(prev => ({ ...prev, contact: e.target.value }))}
+                                placeholder="Phone number"
+                                className="flex-1 px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                              />
+                            </div>
                           </div>
                           
                           {/* Email */}
@@ -2537,7 +2604,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                             // Handle form submission here
                             console.log('Booking submitted:', { ...bookingForm, date: `${selectedDay} ${["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][selectedMonth]} 2026`, time: selectedTime });
                             setShowBookingDialog(false);
-                            setBookingForm({ name: '', contact: '', email: '', course: '' });
+                            setBookingForm({ name: '', countryCode: '+91', contact: '', email: '', course: '' });
                           }}
                         >
                           Submit Booking
