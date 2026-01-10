@@ -347,12 +347,6 @@ const foodPhilosophy = [
   { icon: Sparkles, title: "Ayurvedic Balance", description: "Meals designed for your dosha" },
 ];
 
-// Herbal Teas
-const herbalTeas = [
-  { name: "Turmeric Golden Milk", benefit: "Anti-inflammatory & immunity boost", image: "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=400&h=300&fit=crop" },
-  { name: "Ginger Lemongrass", benefit: "Digestive health & detoxification", image: "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=400&h=300&fit=crop" },
-  { name: "Ashwagandha Chai", benefit: "Stress relief & deep relaxation", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop" },
-];
 
 // Dietary Options
 const dietaryOptions = [
@@ -1804,37 +1798,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
               </div>
             </div>
 
-            {/* Herbal Teas Section */}
-            <div className="mt-20">
-              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-4">
-                Healing Herbal Teas
-              </h3>
-              <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
-                Available throughout the day to support your practice and wellbeing
-              </p>
-              
-              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                {herbalTeas.map((tea, index) => (
-                  <div 
-                    key={index}
-                    className="group relative bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-card"
-                  >
-                    <div className="relative h-32 overflow-hidden">
-                      <img 
-                        src={tea.image}
-                        alt={tea.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
-                    </div>
-                    <div className="p-4 text-center">
-                      <h4 className="font-heading font-bold text-foreground mb-1">{tea.name}</h4>
-                      <p className="text-sm text-muted-foreground">{tea.benefit}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Dietary Options Grid */}
             <div className="mt-20">
