@@ -429,6 +429,44 @@ export default function Course200Hour() {
     email: '',
     course: ''
   });
+  const [selectedTimezone, setSelectedTimezone] = useState('UTC +05:30 New Delhi, Mumbai');
+  const [showTimezoneDropdown, setShowTimezoneDropdown] = useState(false);
+
+  const timezones = [
+    { value: 'UTC -12:00 Baker Island', label: 'UTC -12:00 Baker Island' },
+    { value: 'UTC -11:00 Pago Pago', label: 'UTC -11:00 Pago Pago' },
+    { value: 'UTC -10:00 Honolulu', label: 'UTC -10:00 Honolulu' },
+    { value: 'UTC -09:00 Anchorage', label: 'UTC -09:00 Anchorage' },
+    { value: 'UTC -08:00 Los Angeles, Vancouver', label: 'UTC -08:00 Los Angeles, Vancouver' },
+    { value: 'UTC -07:00 Denver, Phoenix', label: 'UTC -07:00 Denver, Phoenix' },
+    { value: 'UTC -06:00 Chicago, Mexico City', label: 'UTC -06:00 Chicago, Mexico City' },
+    { value: 'UTC -05:00 New York, Toronto', label: 'UTC -05:00 New York, Toronto' },
+    { value: 'UTC -04:00 Santiago, Caracas', label: 'UTC -04:00 Santiago, Caracas' },
+    { value: 'UTC -03:00 São Paulo, Buenos Aires', label: 'UTC -03:00 São Paulo, Buenos Aires' },
+    { value: 'UTC -02:00 Mid-Atlantic', label: 'UTC -02:00 Mid-Atlantic' },
+    { value: 'UTC -01:00 Azores, Cape Verde', label: 'UTC -01:00 Azores, Cape Verde' },
+    { value: 'UTC +00:00 London, Dublin, Lisbon', label: 'UTC +00:00 London, Dublin, Lisbon' },
+    { value: 'UTC +01:00 Paris, Berlin, Rome', label: 'UTC +01:00 Paris, Berlin, Rome' },
+    { value: 'UTC +02:00 Cairo, Johannesburg', label: 'UTC +02:00 Cairo, Johannesburg' },
+    { value: 'UTC +03:00 Moscow, Nairobi, Riyadh', label: 'UTC +03:00 Moscow, Nairobi, Riyadh' },
+    { value: 'UTC +03:30 Tehran', label: 'UTC +03:30 Tehran' },
+    { value: 'UTC +04:00 Dubai, Baku', label: 'UTC +04:00 Dubai, Baku' },
+    { value: 'UTC +04:30 Kabul', label: 'UTC +04:30 Kabul' },
+    { value: 'UTC +05:00 Karachi, Tashkent', label: 'UTC +05:00 Karachi, Tashkent' },
+    { value: 'UTC +05:30 New Delhi, Mumbai', label: 'UTC +05:30 New Delhi, Mumbai' },
+    { value: 'UTC +05:45 Kathmandu', label: 'UTC +05:45 Kathmandu' },
+    { value: 'UTC +06:00 Dhaka, Almaty', label: 'UTC +06:00 Dhaka, Almaty' },
+    { value: 'UTC +06:30 Yangon', label: 'UTC +06:30 Yangon' },
+    { value: 'UTC +07:00 Bangkok, Jakarta, Hanoi', label: 'UTC +07:00 Bangkok, Jakarta, Hanoi' },
+    { value: 'UTC +08:00 Singapore, Hong Kong, Beijing', label: 'UTC +08:00 Singapore, Hong Kong, Beijing' },
+    { value: 'UTC +09:00 Tokyo, Seoul', label: 'UTC +09:00 Tokyo, Seoul' },
+    { value: 'UTC +09:30 Adelaide, Darwin', label: 'UTC +09:30 Adelaide, Darwin' },
+    { value: 'UTC +10:00 Sydney, Melbourne', label: 'UTC +10:00 Sydney, Melbourne' },
+    { value: 'UTC +11:00 Solomon Islands', label: 'UTC +11:00 Solomon Islands' },
+    { value: 'UTC +12:00 Auckland, Fiji', label: 'UTC +12:00 Auckland, Fiji' },
+    { value: 'UTC +13:00 Tonga, Samoa', label: 'UTC +13:00 Tonga, Samoa' },
+    { value: 'UTC +14:00 Line Islands', label: 'UTC +14:00 Line Islands' },
+  ];
 
   const isBookingFormComplete = bookingForm.name && bookingForm.contact && bookingForm.email && bookingForm.course;
 
@@ -2101,12 +2139,36 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       Showing times for <span className="font-medium text-foreground">{selectedDay} {["January", "February", "March"][selectedMonth]} 2026</span>
                     </p>
                     
-                    {/* Timezone */}
-                    <button className="flex items-center gap-2 text-primary text-sm mb-4 hover:underline">
-                      <Clock className="w-4 h-4" />
-                      UTC +05:30 New Delhi, Mumbai
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
+                    {/* Timezone Dropdown */}
+                    <div className="relative mb-4">
+                      <button 
+                        onClick={() => setShowTimezoneDropdown(!showTimezoneDropdown)}
+                        className="flex items-center gap-2 text-primary text-sm hover:underline"
+                      >
+                        <Clock className="w-4 h-4" />
+                        {selectedTimezone}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${showTimezoneDropdown ? 'rotate-180' : ''}`} />
+                      </button>
+                      
+                      {showTimezoneDropdown && (
+                        <div className="absolute top-full left-0 mt-2 w-full max-w-xs bg-card border border-border rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto">
+                          {timezones.map((tz) => (
+                            <button
+                              key={tz.value}
+                              onClick={() => {
+                                setSelectedTimezone(tz.value);
+                                setShowTimezoneDropdown(false);
+                              }}
+                              className={`w-full text-left px-4 py-2.5 text-sm hover:bg-secondary transition-colors ${
+                                selectedTimezone === tz.value ? 'bg-primary/10 text-primary font-medium' : 'text-foreground'
+                              }`}
+                            >
+                              {tz.label}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                     
                     {/* Time Slots */}
                     <div className="space-y-3 max-h-[280px] overflow-y-auto pr-2">
