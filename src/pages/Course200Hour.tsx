@@ -4,6 +4,8 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { 
   Award, Users, Leaf, MapPin, BookOpen, Heart, 
   Check, X, ChevronDown, Play, Download, Phone,
@@ -11,7 +13,7 @@ import {
   GraduationCap, Repeat, Mountain, Handshake, Zap, Layers, 
   UserCheck, Brain, BookMarked, UsersRound, RefreshCw,
   Salad, Coffee, Apple, Soup, UtensilsCrossed, Wheat, Milk, 
-  Cherry, Sprout, CircleDot, Sun, MessageSquare
+  Cherry, Sprout, CircleDot, Sun, MessageSquare, Mail
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
@@ -26,7 +28,7 @@ import yaAllCertifications from "@/assets/ya-all-certifications.jpg";
 import WhyFeatureItem from "@/components/home/WhyFeatureItem";
 
 // Custom scroll-aware header component
-function StickyCompactHeader({ visible }: { visible: boolean }) {
+function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
   return (
     <div 
       className={`fixed top-0 left-0 right-0 z-50 bg-background/98 backdrop-blur-md shadow-sm transition-transform duration-300 ${
@@ -38,11 +40,11 @@ function StickyCompactHeader({ visible }: { visible: boolean }) {
           YOGAGARHI
         </Link>
         <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm" asChild>
-            <Link to="/contact">Quick Enquiry</Link>
+          <Button variant="outline" size="sm" onClick={onQuickEnquiry}>
+            Quick Enquiry
           </Button>
           <Button size="sm" className="bg-primary text-primary-foreground" asChild>
-            <a href="https://wa.me/1234567890">WhatsApp</a>
+            <a href="https://wa.me/917895350563" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </Button>
         </div>
       </div>
@@ -429,6 +431,12 @@ export default function Course200Hour() {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [showBookingDialog, setShowBookingDialog] = useState(false);
   const [showEnrollDialog, setShowEnrollDialog] = useState(false);
+  const [showQuickEnquiryDialog, setShowQuickEnquiryDialog] = useState(false);
+  const [quickEnquiryForm, setQuickEnquiryForm] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
   const [bookingForm, setBookingForm] = useState({
     name: '',
     contact: '',
@@ -552,7 +560,7 @@ export default function Course200Hour() {
 
   return (
     <>
-      <StickyCompactHeader visible={showCompactHeader} />
+      <StickyCompactHeader visible={showCompactHeader} onQuickEnquiry={() => setShowQuickEnquiryDialog(true)} />
       
       <Layout>
         {/* ===== HERO SECTION ===== */}
@@ -585,9 +593,9 @@ export default function Course200Hour() {
               <Button 
                 size="xl" 
                 className="bg-primary-foreground/20 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/30 font-semibold"
-                asChild
+                onClick={() => setShowQuickEnquiryDialog(true)}
               >
-                <Link to="/contact">Quick Enquiry</Link>
+                Quick Enquiry
               </Button>
               <Button 
                 size="xl"
@@ -646,8 +654,9 @@ export default function Course200Hour() {
                   <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Starting From</p>
                   <div className="flex items-baseline gap-2 justify-center lg:justify-start">
                     <span className="text-sm text-muted-foreground line-through">$2187</span>
-                    <span className="font-heading text-xl font-bold text-primary">$1750</span>
+                    <span className="font-heading text-2xl md:text-3xl font-bold text-primary animate-pulse">$1750</span>
                   </div>
+                  <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded-full">Save $437</span>
                 </div>
                 
                 {/* Book Now Button */}
@@ -734,21 +743,8 @@ export default function Course200Hour() {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left Column - YouTube Video */}
-              <div className="relative w-full">
-                <div className="aspect-video rounded-lg overflow-hidden shadow-card bg-muted">
-                  <iframe
-                    src="https://www.youtube.com/embed/U1r2mQRmWXM?rel=0"
-                    title="YogaGarhi 200 Hour Yoga Teacher Training"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-              
-              {/* Right Column - Welcome Text with Read More */}
-              <div>
+              {/* Left Column - Welcome Text (shown first on mobile) */}
+              <div className="order-1 lg:order-2">
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Welcome to Yogagarhi
                 </h2>
@@ -788,7 +784,7 @@ export default function Course200Hour() {
                     className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors mt-2 group"
                   >
                     {showWelcomeExpanded ? 'Read Less' : 'Read More'}
-                    <ChevronDown 
+                    <ChevronDown
                       className={`w-4 h-4 transition-transform duration-300 ${
                         showWelcomeExpanded ? 'rotate-180' : ''
                       }`}
@@ -796,13 +792,62 @@ export default function Course200Hour() {
                   </button>
                 </div>
               </div>
+              
+              {/* Right Column - YouTube Video (shown second on mobile) */}
+              <div className="relative w-full order-2 lg:order-1">
+                <div className="aspect-video rounded-lg overflow-hidden shadow-card bg-muted">
+                  <iframe
+                    src="https://www.youtube.com/embed/U1r2mQRmWXM?rel=0"
+                    title="YogaGarhi 200 Hour Yoga Teacher Training"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ===== VIDEO TESTIMONIALS ===== */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-secondary/30 relative overflow-hidden">
+          {/* Subtle Yoga Geometry Background */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+            {/* Sri Yantra inspired triangle pattern */}
+            <svg className="absolute top-10 left-10 w-40 h-40" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
+              <polygon points="50,10 90,85 10,85" className="text-primary" />
+              <polygon points="50,25 75,70 25,70" className="text-primary" />
+              <polygon points="50,40 60,55 40,55" className="text-primary" />
+            </svg>
+            {/* Lotus pattern */}
+            <svg className="absolute bottom-20 right-20 w-48 h-48" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.3">
+              <ellipse cx="50" cy="50" rx="20" ry="40" className="text-primary" transform="rotate(0 50 50)" />
+              <ellipse cx="50" cy="50" rx="20" ry="40" className="text-primary" transform="rotate(30 50 50)" />
+              <ellipse cx="50" cy="50" rx="20" ry="40" className="text-primary" transform="rotate(60 50 50)" />
+              <ellipse cx="50" cy="50" rx="20" ry="40" className="text-primary" transform="rotate(90 50 50)" />
+              <ellipse cx="50" cy="50" rx="20" ry="40" className="text-primary" transform="rotate(120 50 50)" />
+              <ellipse cx="50" cy="50" rx="20" ry="40" className="text-primary" transform="rotate(150 50 50)" />
+            </svg>
+            {/* Circle mandala */}
+            <svg className="absolute top-1/2 left-1/4 w-32 h-32 -translate-y-1/2" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.4">
+              <circle cx="50" cy="50" r="45" className="text-primary" />
+              <circle cx="50" cy="50" r="35" className="text-primary" />
+              <circle cx="50" cy="50" r="25" className="text-primary" />
+              <circle cx="50" cy="50" r="15" className="text-primary" />
+            </svg>
+            {/* Seed of life pattern */}
+            <svg className="absolute top-20 right-1/3 w-36 h-36" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.3">
+              <circle cx="50" cy="50" r="20" className="text-primary" />
+              <circle cx="50" cy="30" r="20" className="text-primary" />
+              <circle cx="67" cy="40" r="20" className="text-primary" />
+              <circle cx="67" cy="60" r="20" className="text-primary" />
+              <circle cx="50" cy="70" r="20" className="text-primary" />
+              <circle cx="33" cy="60" r="20" className="text-primary" />
+              <circle cx="33" cy="40" r="20" className="text-primary" />
+            </svg>
+          </div>
+          
+          <div className="container mx-auto px-4 relative z-10">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Student Testimonials
             </h2>
@@ -1478,6 +1523,26 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     title: "Meditation & Mantra", 
                     content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices for inner stillness.",
                     image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Iyengar Yoga", 
+                    content: "Precision-focused yoga emphasizing correct body alignment using props like blocks, straps, and blankets to help practitioners achieve optimal posture and prevent injuries.",
+                    image: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Alignment Principles", 
+                    content: "Foundation of safe practice through understanding joint stacking, muscle engagement patterns, and body mechanics to protect and strengthen the physical body.",
+                    image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Bandhas (Energy Locks)", 
+                    content: "Master the three primary bandhas - Mula, Uddiyana, and Jalandhara. These internal locks regulate prana flow, strengthen the core, and deepen meditation practice.",
+                    image: "https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=400&h=400&fit=crop"
+                  },
+                  { 
+                    title: "Mudras (Yogic Gestures)", 
+                    content: "Sacred hand and body gestures that channel energy, enhance concentration, and connect with specific states of consciousness. Essential for pranayama and meditation.",
+                    image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?w=400&h=400&fit=crop"
                   },
                 ].map((item, index) => (
                   <div 
@@ -2487,14 +2552,14 @@ This is not a transactional relationship — it is a lifelong connection.`}
                 <p className="text-muted-foreground mb-4">Or reach us directly</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="outline" asChild>
-                    <a href="https://wa.me/1234567890">
+                    <a href="https://wa.me/917895350563" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="w-4 h-4 mr-2" />
                       WhatsApp Us
                     </a>
                   </Button>
                   <Button variant="outline" asChild>
-                    <a href="mailto:info@yogagarhi.com">
-                      <Phone className="w-4 h-4 mr-2" />
+                    <a href="mailto:yogagarhi@gmail.com">
+                      <Mail className="w-4 h-4 mr-2" />
                       Email Us
                     </a>
                   </Button>
@@ -2768,6 +2833,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
               <Button 
                 size="lg" 
                 className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/20"
+                onClick={() => scrollToSection('book-call')}
               >
                 <Phone className="w-4 h-4 mr-2" />
                 Book a Call
@@ -2777,7 +2843,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                 className="bg-primary text-primary-foreground hover:bg-primary/90"
                 asChild
               >
-                <a href="https://wa.me/1234567890">
+                <a href="https://wa.me/917895350563" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   WhatsApp
                 </a>
@@ -3047,6 +3113,78 @@ This is not a transactional relationship — it is a lifelong connection.`}
             >
               Submit Enrollment
             </Button>
+          </DialogContent>
+        </Dialog>
+
+        {/* ===== QUICK ENQUIRY DIALOG ===== */}
+        <Dialog open={showQuickEnquiryDialog} onOpenChange={setShowQuickEnquiryDialog}>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle className="font-heading text-2xl">Quick Enquiry</DialogTitle>
+              <p className="text-sm text-muted-foreground">
+                Connect with us and begin your journey of transformation
+              </p>
+            </DialogHeader>
+            
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              console.log('Quick Enquiry submitted:', quickEnquiryForm);
+              setShowQuickEnquiryDialog(false);
+              setQuickEnquiryForm({ name: '', email: '', message: '' });
+            }} className="space-y-4 mt-4">
+              {/* Name */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Name <span className="text-destructive">*</span>
+                </label>
+                <Input
+                  type="text"
+                  required
+                  value={quickEnquiryForm.name}
+                  onChange={(e) => setQuickEnquiryForm(prev => ({ ...prev, name: e.target.value }))}
+                  placeholder="Your name"
+                />
+              </div>
+              
+              {/* Email */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Email <span className="text-destructive">*</span>
+                </label>
+                <Input
+                  type="email"
+                  required
+                  value={quickEnquiryForm.email}
+                  onChange={(e) => setQuickEnquiryForm(prev => ({ ...prev, email: e.target.value }))}
+                  placeholder="your@email.com"
+                />
+              </div>
+              
+              {/* Message */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Message <span className="text-destructive">*</span>
+                </label>
+                <Textarea
+                  required
+                  value={quickEnquiryForm.message}
+                  onChange={(e) => setQuickEnquiryForm(prev => ({ ...prev, message: e.target.value }))}
+                  placeholder="Tell us about your interest in yoga teacher training..."
+                  className="min-h-[120px]"
+                />
+              </div>
+              
+              {/* Trust Badge */}
+              <div className="bg-accent/20 rounded-lg p-4">
+                <p className="text-sm text-foreground">
+                  We Trust The Depth Of What We Offer. If, After The First Day, You Feel This Journey Is Not Meant For You, We Will Offer A 100% Full Refund With Complete Respect.
+                </p>
+              </div>
+              
+              <Button type="submit" className="w-full" size="lg">
+                Submit Enquiry
+              </Button>
+            </form>
           </DialogContent>
         </Dialog>
       </Layout>
