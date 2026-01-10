@@ -10,7 +10,8 @@ import {
   Calendar, Clock, Star, Instagram, MessageCircle, Sparkles,
   GraduationCap, Repeat, Mountain, Handshake, Zap, Layers, 
   UserCheck, Brain, BookMarked, UsersRound, RefreshCw,
-  Salad, Coffee, Apple, Soup, UtensilsCrossed
+  Salad, Coffee, Apple, Soup, UtensilsCrossed, Wheat, Milk, 
+  Cherry, Sprout, CircleDot, Sun, MessageSquare
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
@@ -344,6 +345,25 @@ const foodPhilosophy = [
   { icon: Heart, title: "Sattvic Principles", description: "Food that promotes clarity & peace" },
   { icon: Apple, title: "Locally Sourced", description: "Fresh ingredients from Bali farms" },
   { icon: Sparkles, title: "Ayurvedic Balance", description: "Meals designed for your dosha" },
+];
+
+// Herbal Teas
+const herbalTeas = [
+  { name: "Turmeric Golden Milk", benefit: "Anti-inflammatory & immunity boost", image: "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=400&h=300&fit=crop" },
+  { name: "Ginger Lemongrass", benefit: "Digestive health & detoxification", image: "https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=400&h=300&fit=crop" },
+  { name: "Ashwagandha Chai", benefit: "Stress relief & deep relaxation", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop" },
+];
+
+// Dietary Options
+const dietaryOptions = [
+  { icon: Leaf, name: "Vegan", description: "100% plant-based meals" },
+  { icon: Milk, name: "Lactose Free", description: "Dairy-free alternatives" },
+  { icon: Wheat, name: "Gluten Free", description: "No wheat or gluten" },
+  { icon: Sprout, name: "Raw Food", description: "Living food options" },
+  { icon: CircleDot, name: "Organic", description: "Certified organic produce" },
+  { icon: Cherry, name: "Fruitarian", description: "Fruit-based meals" },
+  { icon: Sun, name: "Yogic Diet", description: "Traditional sattvic food" },
+  { icon: MessageSquare, name: "Custom Request", description: "Other diets on request" },
 ];
 
 // Upcoming Dates
@@ -1784,20 +1804,80 @@ This is not a transactional relationship — it is a lifelong connection.`}
               </div>
             </div>
 
+            {/* Herbal Teas Section */}
+            <div className="mt-20">
+              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-4">
+                Healing Herbal Teas
+              </h3>
+              <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
+                Available throughout the day to support your practice and wellbeing
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                {herbalTeas.map((tea, index) => (
+                  <div 
+                    key={index}
+                    className="group relative bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-card"
+                  >
+                    <div className="relative h-32 overflow-hidden">
+                      <img 
+                        src={tea.image}
+                        alt={tea.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
+                    </div>
+                    <div className="p-4 text-center">
+                      <h4 className="font-heading font-bold text-foreground mb-1">{tea.name}</h4>
+                      <p className="text-sm text-muted-foreground">{tea.benefit}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Dietary Options Grid */}
+            <div className="mt-20">
+              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-4">
+                We Cater To All Diets
+              </h3>
+              <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
+                Let us know your dietary requirements and we'll take care of everything
+              </p>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                {dietaryOptions.map((diet, index) => {
+                  const DietIcon = diet.icon;
+                  return (
+                    <div 
+                      key={index}
+                      className="group text-center p-5 bg-background rounded-xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-card cursor-default"
+                    >
+                      <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <DietIcon className="w-5 h-5 text-primary" />
+                      </div>
+                      <h4 className="font-heading font-bold text-foreground text-sm mb-1">{diet.name}</h4>
+                      <p className="text-xs text-muted-foreground">{diet.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Additional Food Info */}
             <div className="mt-16 text-center">
               <div className="inline-flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
                   <Check className="w-4 h-4 text-primary" />
-                  Herbal teas available all day
+                  Fresh coconut water daily
                 </span>
                 <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
                   <Check className="w-4 h-4 text-primary" />
-                  Fresh coconut water
+                  Seasonal tropical fruits
                 </span>
                 <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
                   <Check className="w-4 h-4 text-primary" />
-                  Dietary accommodations available
+                  Special requests welcome
                 </span>
               </div>
             </div>
