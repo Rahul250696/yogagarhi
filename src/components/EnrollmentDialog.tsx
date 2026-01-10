@@ -1,4 +1,5 @@
 import { useState, createContext, useContext, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -62,6 +63,8 @@ function EnrollmentDialogContent() {
       name: '', email: '', contact: '', courseName: '', courseDate: '',
       accommodation: '', gender: '', country: '', source: '', message: ''
     });
+    // Navigate to thank you page
+    window.location.href = '/thank-you';
   };
 
   return (
