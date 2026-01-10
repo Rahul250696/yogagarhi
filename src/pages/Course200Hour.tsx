@@ -745,7 +745,7 @@ export default function Course200Hour() {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
-              {/* Left Column - Welcome Text (shown first on mobile) */}
+              {/* Left Column - Welcome Text & Video on Mobile */}
               <div className="order-1 lg:order-2">
                 <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
                   Welcome to Yogagarhi
@@ -753,6 +753,19 @@ export default function Course200Hour() {
                 <p className="font-heading text-xl text-primary mb-6 italic">
                   200 Hour Yoga Teacher Training Course
                 </p>
+                
+                {/* YouTube Video - Shows here on mobile, hidden on desktop */}
+                <div className="relative w-full mb-8 lg:hidden">
+                  <div className="aspect-video rounded-lg overflow-hidden shadow-card bg-muted">
+                    <iframe
+                      src="https://www.youtube.com/embed/U1r2mQRmWXM?rel=0"
+                      title="YogaGarhi 200 Hour Yoga Teacher Training"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    />
+                  </div>
+                </div>
                 
                 <div className="space-y-6 text-muted-foreground leading-relaxed">
                   {/* First 2 paragraphs - always visible */}
@@ -795,8 +808,8 @@ export default function Course200Hour() {
                 </div>
               </div>
               
-              {/* Right Column - YouTube Video (shown second on mobile) */}
-              <div className="relative w-full order-2 lg:order-1">
+              {/* Right Column - YouTube Video (desktop only) */}
+              <div className="relative w-full order-2 lg:order-1 hidden lg:block">
                 <div className="aspect-video rounded-lg overflow-hidden shadow-card bg-muted">
                   <iframe
                     src="https://www.youtube.com/embed/U1r2mQRmWXM?rel=0"
