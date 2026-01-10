@@ -311,11 +311,67 @@ const excursions = [
   },
 ];
 
-// Accommodation Types
+// Accommodation Types with galleries
 const accommodations = [
-  { type: "Private Room", originalPrice: "$3125", price: "$2499", perPerson: true },
-  { type: "Double Sharing", originalPrice: "$2370", price: "$1899", perPerson: true },
-  { type: "Triple Sharing", originalPrice: "$2187", price: "$1750", perPerson: true },
+  { 
+    type: "Private Room", 
+    originalPrice: "$3125", 
+    price: "$2499", 
+    perPerson: true,
+    description: "Your personal sanctuary for deep rest and self-reflection. Enjoy complete privacy with a comfortable bed, private bathroom, and peaceful views.",
+    amenities: ["Queen-size bed", "Private bathroom", "AC/Fan", "Garden view", "Free Wi-Fi"],
+    images: [
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&h=400&fit=crop",
+    ]
+  },
+  { 
+    type: "Double Sharing", 
+    originalPrice: "$2370", 
+    price: "$1899", 
+    perPerson: true,
+    description: "Share your journey with a fellow yogi. Perfect for building connections while maintaining comfort with ample personal space.",
+    amenities: ["Twin beds", "Shared bathroom", "AC/Fan", "Terrace access", "Free Wi-Fi"],
+    images: [
+      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1598928506311-c55ez3a3fe5e?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1505693314120-0d443867891c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=600&h=400&fit=crop",
+    ]
+  },
+  { 
+    type: "Triple Sharing", 
+    originalPrice: "$2187", 
+    price: "$1750", 
+    perPerson: true,
+    description: "The most communal option for those who thrive in shared energy. Create lasting bonds with your yoga family.",
+    amenities: ["Three single beds", "Shared bathroom", "AC/Fan", "Common area access", "Free Wi-Fi"],
+    images: [
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&h=400&fit=crop",
+    ]
+  },
+];
+
+// Accommodation Gallery Images
+const accommodationGallery = [
+  "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1559628233-100c798642d4?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1573790387438-4da905039392?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1604999333679-b86d54738315?w=800&h=600&fit=crop",
+];
+
+// Accommodation Location Features
+const locationFeatures = [
+  { icon: "🏛️", text: "2.5 km to sacred temples of Ubud" },
+  { icon: "🌊", text: "1 km to the sacred rice terraces" },
+  { icon: "🏔️", text: "Located at the heart of Bali's spiritual zone" },
 ];
 
 // Upcoming Dates
@@ -1661,31 +1717,167 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
-        {/* ===== ACCOMMODATION TYPES ===== */}
+        {/* ===== ACCOMMODATION HERO ===== */}
+        <section className="relative py-0">
+          {/* Hero Background with Overlay */}
+          <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop"
+              alt="Yoga retreat accommodation in Bali"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/50 to-foreground/70" />
+            
+            {/* Content Overlay */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <h2 className="font-heading text-4xl md:text-6xl font-bold text-background mb-6 tracking-wide">
+                ACCOMMODATION
+              </h2>
+              <p className="font-heading text-xl md:text-2xl text-background/90 italic mb-12 max-w-2xl">
+                A yoga retreat in Bali amidst tropical paradise
+              </p>
+              
+              {/* Location Features */}
+              <div className="flex flex-col gap-6 max-w-md">
+                {locationFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-full border-2 border-background/50 flex items-center justify-center bg-background/10 backdrop-blur-sm">
+                      <span className="text-2xl">{feature.icon}</span>
+                    </div>
+                    <p className="text-background text-lg text-left">{feature.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* Scrollable Gallery Carousel */}
+          <div className="relative bg-secondary/20 py-12">
+            {/* Decorative Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border-[40px] border-primary" />
+            </div>
+            
+            <div className="container mx-auto px-4">
+              <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                {accommodationGallery.map((image, index) => (
+                  <div 
+                    key={index}
+                    className="flex-shrink-0 w-[300px] md:w-[400px] snap-center group"
+                  >
+                    <div className="relative overflow-hidden rounded-xl shadow-card group-hover:shadow-elevated transition-shadow duration-300">
+                      <img 
+                        src={image}
+                        alt={`Accommodation view ${index + 1}`}
+                        className="w-full h-[250px] md:h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Scroll Indicator Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {accommodationGallery.map((_, index) => (
+                  <div key={index} className="w-2 h-2 rounded-full bg-primary/30 hover:bg-primary transition-colors duration-200" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== ROOM TYPES WITH GALLERIES ===== */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
-              Accommodation Types
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
+              Choose Your Stay
             </h2>
+            <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+              Each room type offers a unique experience. Select the accommodation that resonates with your journey.
+            </p>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="space-y-20 max-w-6xl mx-auto">
               {accommodations.map((acc, index) => (
-                <div key={index} className="p-8 bg-card rounded-lg border border-border text-center">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-4">
-                    {acc.type}
-                  </h3>
-                  <div className="mb-6">
-                    <span className="text-muted-foreground line-through text-lg">
-                      {acc.originalPrice}
+                <div key={index} className="relative">
+                  {/* Room Number Badge */}
+                  <div className="absolute -top-6 left-0 md:left-8 z-10">
+                    <span className="font-heading text-7xl md:text-8xl font-bold text-primary/10">
+                      0{index + 1}
                     </span>
-                    <span className="block font-heading text-3xl font-bold text-primary">
-                      {acc.price}
-                    </span>
-                    <span className="text-sm text-muted-foreground">/person</span>
                   </div>
-                  <Button className="w-full" asChild>
-                    <Link to="/contact">Reserve Now</Link>
-                  </Button>
+                  
+                  <div className="relative bg-card rounded-2xl border border-border overflow-hidden shadow-card">
+                    {/* Room Image Gallery - Scrollable */}
+                    <div className="relative">
+                      <div className="flex gap-3 overflow-x-auto p-4 snap-x snap-mandatory scrollbar-hide">
+                        {acc.images.map((image, imgIndex) => (
+                          <div 
+                            key={imgIndex}
+                            className="flex-shrink-0 w-[280px] md:w-[320px] snap-center group/img"
+                          >
+                            <div className="relative overflow-hidden rounded-xl">
+                              <img 
+                                src={image}
+                                alt={`${acc.type} view ${imgIndex + 1}`}
+                                className="w-full h-[200px] md:h-[220px] object-cover transition-transform duration-500 group-hover/img:scale-110"
+                              />
+                              {/* Image Number */}
+                              <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-background/90 flex items-center justify-center text-sm font-medium text-foreground">
+                                {imgIndex + 1}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Scroll Hint */}
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center animate-pulse">
+                        <ChevronDown className="w-4 h-4 text-primary rotate-[-90deg]" />
+                      </div>
+                    </div>
+                    
+                    {/* Room Content */}
+                    <div className="p-6 md:p-8">
+                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                        {/* Left: Title & Description */}
+                        <div className="flex-1">
+                          <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
+                            {acc.type}
+                          </h3>
+                          <p className="text-muted-foreground leading-relaxed mb-4">
+                            {acc.description}
+                          </p>
+                          
+                          {/* Amenities */}
+                          <div className="flex flex-wrap gap-2">
+                            {acc.amenities.map((amenity, amenityIndex) => (
+                              <span 
+                                key={amenityIndex}
+                                className="px-3 py-1.5 text-sm bg-secondary/50 text-secondary-foreground rounded-full"
+                              >
+                                {amenity}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        
+                        {/* Right: Pricing & CTA */}
+                        <div className="flex flex-col items-center md:items-end text-center md:text-right min-w-[160px]">
+                          <span className="text-muted-foreground line-through text-lg">
+                            {acc.originalPrice}
+                          </span>
+                          <span className="font-heading text-4xl font-bold text-primary">
+                            {acc.price}
+                          </span>
+                          <span className="text-sm text-muted-foreground mb-4">/person</span>
+                          <Button className="w-full md:w-auto min-w-[140px]" asChild>
+                            <Link to="/contact">Reserve Now</Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
