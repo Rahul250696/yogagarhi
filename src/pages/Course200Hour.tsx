@@ -369,8 +369,6 @@ const accommodationGallery = [
 
 // Accommodation Location Features
 const locationFeatures = [
-  { icon: "🏛️", text: "2.5 km to sacred temples of Ubud" },
-  { icon: "🌾", text: "1 km to the sacred rice terraces" },
   { icon: "💧", text: "10 beautiful waterfalls within 10 km" },
   { icon: "🌿", text: "Private forest with an in-house waterfall" },
   { icon: "🚶", text: "Peaceful rice-field trekking on-site" },
