@@ -291,9 +291,24 @@ const workshops = [
 
 // Excursions
 const excursions = [
-  { title: "Balinese Dance Performance", description: "Ancient cultural expression" },
-  { title: "Rice Field Trek", description: "Walk through Ubud's terraces" },
-  { title: "Waterfall Visit", description: "Sacred cleansing experience" },
+  { 
+    title: "Balinese Dance Performance", 
+    description: "Witness the ancient art of Balinese dance — a mesmerizing display of grace, storytelling, and spiritual devotion passed down through generations.",
+    image: "https://images.unsplash.com/photo-1518611507436-f9221403cca2?w=600&h=600&fit=crop",
+    icon: Star
+  },
+  { 
+    title: "Rice Field Trek", 
+    description: "Walk through Ubud's iconic terraced rice paddies. Experience the harmony of nature, traditional farming, and the peaceful rhythm of rural Bali.",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=600&fit=crop",
+    icon: Leaf
+  },
+  { 
+    title: "Sacred Waterfall Visit", 
+    description: "Journey to a sacred waterfall for a traditional cleansing ritual. Let the pure waters wash away what no longer serves you.",
+    image: "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=600&h=600&fit=crop",
+    icon: Sparkles
+  },
 ];
 
 // Accommodation Types
@@ -1588,24 +1603,60 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== EXCURSIONS ===== */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
-              Excursions
-            </h2>
+        <section className="py-24 bg-background relative overflow-hidden">
+          {/* Decorative Elements */}
+          <div className="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/50 rounded-full translate-x-1/3 translate-y-1/3" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16">
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-3">Beyond The Mat</p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Sacred Excursions
+              </h2>
+              <p className="text-muted-foreground max-w-xl mx-auto">
+                Immerse yourself in Bali's spiritual heritage through transformative experiences
+              </p>
+            </div>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {excursions.map((excursion, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                    <MapPin className="w-8 h-8 text-primary" />
+            <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+              {excursions.map((excursion, index) => {
+                const IconComponent = excursion.icon;
+                return (
+                  <div 
+                    key={index} 
+                    className="group relative"
+                  >
+                    {/* Hexagonal Image Container */}
+                    <div className="relative mb-6">
+                      <div className="aspect-square max-w-[280px] mx-auto overflow-hidden rounded-[2rem] rotate-0 group-hover:rotate-1 transition-transform duration-500 shadow-card group-hover:shadow-elevated">
+                        <img 
+                          src={excursion.image} 
+                          alt={excursion.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                      
+                      {/* Floating Icon Badge */}
+                      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-primary shadow-lg flex items-center justify-center transform group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
+                        <IconComponent className="w-6 h-6 text-primary-foreground" />
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="text-center pt-4">
+                      <h3 className="font-heading text-xl font-bold text-foreground mb-3">
+                        {excursion.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed px-2">
+                        {excursion.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                    {excursion.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{excursion.description}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
