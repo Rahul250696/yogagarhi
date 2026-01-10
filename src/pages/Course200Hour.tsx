@@ -404,11 +404,13 @@ const quizQuestions = [
 export default function Course200Hour() {
   const [showCompactHeader, setShowCompactHeader] = useState(false);
   const [showQuizDialog, setShowQuizDialog] = useState(false);
+  const [showQuizThankYou, setShowQuizThankYou] = useState(false);
   const [showManualDialog, setShowManualDialog] = useState(false);
   const [showSyllabusDialog, setShowSyllabusDialog] = useState(false);
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [showWelcomeExpanded, setShowWelcomeExpanded] = useState(false);
   const [activeInclusionTab, setActiveInclusionTab] = useState<'inclusions' | 'exclusions'>('inclusions');
   const [showWebinarDialog, setShowWebinarDialog] = useState(false);
@@ -526,6 +528,23 @@ export default function Course200Hour() {
     setQuizStep(0);
     setQuizAnswers([]);
     setEmail("");
+    setEmailError("");
+    setShowQuizThankYou(false);
+  };
+
+  const handleQuizSubmit = () => {
+    if (!email.trim()) {
+      setEmailError("Please enter your email address");
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+    setEmailError("");
+    setShowQuizDialog(false);
+    setShowQuizThankYou(true);
   };
 
   return (
@@ -1088,18 +1107,66 @@ This is not a transactional relationship — it is a lifelong connection.`}
                             Thank you for sharing. Enter your email and we will send you 
                             your personalized yogic energy insight shortly.
                           </p>
-                          <input
-                            type="email"
-                            placeholder="Your email address"
-                            className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                          />
-                          <Button className="w-full" size="lg" onClick={() => setShowQuizDialog(false)}>
-                            Receive My Insight
+                          <div className="space-y-2">
+                            <input
+                              type="email"
+                              placeholder="Your email address *"
+                              className={`w-full px-4 py-3 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary ${emailError ? 'border-red-500' : 'border-border'}`}
+                              value={email}
+                              onChange={(e) => {
+                                setEmail(e.target.value);
+                                if (emailError) setEmailError("");
+                              }}
+                            />
+                            {emailError && (
+                              <p className="text-sm text-red-500">{emailError}</p>
+                            )}
+                          </div>
+                          <Button 
+                            className="w-full" 
+                            size="lg" 
+                            onClick={handleQuizSubmit}
+                          >
+                            Submit & Receive My Insight
                           </Button>
                         </div>
                       )}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+                
+                {/* Quiz Thank You Dialog */}
+                <Dialog open={showQuizThankYou} onOpenChange={(open) => {
+                  setShowQuizThankYou(open);
+                  if (!open) resetQuiz();
+                }}>
+                  <DialogContent className="sm:max-w-md text-center">
+                    <div className="py-6 space-y-6">
+                      <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                        <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="font-heading text-2xl font-bold text-primary mb-2">
+                          Thank You! 🙏
+                        </h3>
+                        <p className="text-muted-foreground">
+                          Your personalized yogic energy insight is on its way to <span className="font-medium text-foreground">{email}</span>
+                        </p>
+                      </div>
+                      <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
+                        <p>Please check your inbox (and spam folder) within the next 24 hours.</p>
+                      </div>
+                      <Button 
+                        onClick={() => {
+                          setShowQuizThankYou(false);
+                          resetQuiz();
+                        }}
+                        className="w-full"
+                      >
+                        Close
+                      </Button>
                     </div>
                   </DialogContent>
                 </Dialog>
