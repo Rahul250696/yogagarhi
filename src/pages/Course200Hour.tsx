@@ -2221,15 +2221,35 @@ This is not a transactional relationship — it is a lifelong connection.`}
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Triple Sharing Room */}
-              <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elevated transition-all duration-300">
+              <div className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elevated transition-all duration-300">
+                {/* Horizontal Scrollable Images */}
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=300&fit=crop"
-                    alt="Triple Sharing Room"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
+                  <div 
+                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  >
+                    {[
+                      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=300&fit=crop",
+                      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&h=300&fit=crop",
+                      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop",
+                    ].map((img, idx) => (
+                      <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
+                        <img 
+                          src={img}
+                          alt={`Triple Sharing Room ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full z-10">
                     Best Value
+                  </div>
+                  {/* Scroll Dots */}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    <div className="w-2 h-2 rounded-full bg-white/80"></div>
+                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
+                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
                   </div>
                 </div>
                 <div className="p-6">
@@ -2264,16 +2284,36 @@ This is not a transactional relationship — it is a lifelong connection.`}
               </div>
 
               {/* Double Sharing Room */}
-              <div className="group bg-card rounded-2xl border-2 border-primary overflow-hidden hover:shadow-elevated transition-all duration-300 relative">
-                <div className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground text-center text-sm py-1 font-medium">
+              <div className="bg-card rounded-2xl border-2 border-primary overflow-hidden hover:shadow-elevated transition-all duration-300 relative">
+                <div className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground text-center text-sm py-1 font-medium z-20">
                   Most Popular
                 </div>
+                {/* Horizontal Scrollable Images */}
                 <div className="relative h-48 overflow-hidden mt-6">
-                  <img 
-                    src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop"
-                    alt="Double Sharing Room"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  <div 
+                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  >
+                    {[
+                      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop",
+                      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=400&h=300&fit=crop",
+                      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=400&h=300&fit=crop",
+                    ].map((img, idx) => (
+                      <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
+                        <img 
+                          src={img}
+                          alt={`Double Sharing Room ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  {/* Scroll Dots */}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    <div className="w-2 h-2 rounded-full bg-white/80"></div>
+                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
+                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading text-xl font-bold text-foreground mb-2">Double Sharing</h3>
@@ -2307,15 +2347,35 @@ This is not a transactional relationship — it is a lifelong connection.`}
               </div>
 
               {/* Private Room */}
-              <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elevated transition-all duration-300">
+              <div className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elevated transition-all duration-300">
+                {/* Horizontal Scrollable Images */}
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&h=300&fit=crop"
-                    alt="Private Room"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-foreground text-background text-sm font-medium rounded-full">
+                  <div 
+                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  >
+                    {[
+                      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&h=300&fit=crop",
+                      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=400&h=300&fit=crop",
+                      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&h=300&fit=crop",
+                    ].map((img, idx) => (
+                      <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
+                        <img 
+                          src={img}
+                          alt={`Private Room ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-foreground text-background text-sm font-medium rounded-full z-10">
                     Premium
+                  </div>
+                  {/* Scroll Dots */}
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    <div className="w-2 h-2 rounded-full bg-white/80"></div>
+                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
+                    <div className="w-2 h-2 rounded-full bg-white/40"></div>
                   </div>
                 </div>
                 <div className="p-6">
