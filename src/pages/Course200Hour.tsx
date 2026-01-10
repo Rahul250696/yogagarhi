@@ -2506,20 +2506,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
-        {/* ===== WANT TO KNOW MORE ===== */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4 text-center max-w-3xl">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Want to Know More?
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              Request access to our free orientation webinar and get all your questions answered.
-            </p>
-            <Button size="lg" className="bg-primary text-primary-foreground">
-              Request Webinar Access
-            </Button>
-          </div>
-        </section>
 
         {/* ===== LOCATION & MAP ===== */}
         <section className="py-20 bg-secondary/30">
