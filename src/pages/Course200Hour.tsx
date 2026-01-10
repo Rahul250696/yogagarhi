@@ -10,7 +10,7 @@ import {
   Calendar, Clock, Star, Instagram, MessageCircle, Sparkles,
   GraduationCap, Repeat, Mountain, Handshake, Zap, Layers, 
   UserCheck, Brain, BookMarked, UsersRound, RefreshCw,
-  Droplets, TreePine, Footprints, Navigation, type LucideIcon
+  Salad, Coffee, Apple, Soup, UtensilsCrossed
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
@@ -312,68 +312,38 @@ const excursions = [
   },
 ];
 
-// Accommodation Types with galleries
-const accommodations = [
-  { 
-    type: "Private Room", 
-    originalPrice: "$3125", 
-    price: "$2499", 
-    perPerson: true,
-    description: "Your personal sanctuary for deep rest and self-reflection. Enjoy complete privacy with a comfortable bed, private bathroom, and peaceful views.",
-    amenities: ["Queen-size bed", "Private bathroom", "AC/Fan", "Garden view", "Free Wi-Fi"],
-    images: [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&h=400&fit=crop",
-    ]
+
+// Sattvic Food Menu
+const foodMenu = [
+  {
+    meal: "Breakfast",
+    time: "7:00 AM",
+    icon: Coffee,
+    items: ["Fresh tropical fruits", "Homemade granola with coconut yogurt", "Herbal teas & fresh juices", "Balinese rice porridge"],
+    image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&h=400&fit=crop"
   },
-  { 
-    type: "Double Sharing", 
-    originalPrice: "$2370", 
-    price: "$1899", 
-    perPerson: true,
-    description: "Share your journey with a fellow yogi. Perfect for building connections while maintaining comfort with ample personal space.",
-    amenities: ["Twin beds", "Shared bathroom", "AC/Fan", "Terrace access", "Free Wi-Fi"],
-    images: [
-      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1598928506311-c55ez3a3fe5e?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1505693314120-0d443867891c?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=600&h=400&fit=crop",
-    ]
+  {
+    meal: "Lunch",
+    time: "12:30 PM",
+    icon: Salad,
+    items: ["Nourishing Buddha bowls", "Tempeh & tofu preparations", "Fresh garden salads", "Traditional Balinese vegetables"],
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop"
   },
-  { 
-    type: "Triple Sharing", 
-    originalPrice: "$2187", 
-    price: "$1750", 
-    perPerson: true,
-    description: "The most communal option for those who thrive in shared energy. Create lasting bonds with your yoga family.",
-    amenities: ["Three single beds", "Shared bathroom", "AC/Fan", "Common area access", "Free Wi-Fi"],
-    images: [
-      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=600&h=400&fit=crop",
-    ]
+  {
+    meal: "Dinner",
+    time: "6:30 PM",
+    icon: Soup,
+    items: ["Light sattvic soups", "Wholesome grain dishes", "Steamed vegetables", "Healing Ayurvedic preparations"],
+    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&h=400&fit=crop"
   },
 ];
 
-// Accommodation Gallery Images
-const accommodationGallery = [
-  "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1559628233-100c798642d4?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1573790387438-4da905039392?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&h=600&fit=crop",
-  "https://images.unsplash.com/photo-1604999333679-b86d54738315?w=800&h=600&fit=crop",
-];
-
-// Accommodation Location Features
-const locationFeatures: { icon: LucideIcon; text: string }[] = [
-  { icon: Droplets, text: "10 beautiful waterfalls within 10 km" },
-  { icon: TreePine, text: "Private forest with an in-house waterfall" },
-  { icon: Footprints, text: "Peaceful rice-field trekking on-site" },
-  { icon: Navigation, text: "Only 30 minutes from central Ubud" },
+// Food Philosophy Points
+const foodPhilosophy = [
+  { icon: Leaf, title: "100% Plant-Based", description: "Pure vegetarian & vegan cuisine" },
+  { icon: Heart, title: "Sattvic Principles", description: "Food that promotes clarity & peace" },
+  { icon: Apple, title: "Locally Sourced", description: "Fresh ingredients from Bali farms" },
+  { icon: Sparkles, title: "Ayurvedic Balance", description: "Meals designed for your dosha" },
 ];
 
 // Upcoming Dates
@@ -1719,226 +1689,116 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
-        {/* ===== ACCOMMODATION HERO ===== */}
-        <section className="relative py-0">
-          {/* Hero Background with Overlay */}
-          <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop"
-              alt="Yoga retreat accommodation in Bali"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/50 to-foreground/70" />
-            
-            {/* Content Overlay */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <h2 className="font-heading text-4xl md:text-6xl font-bold text-background mb-6 tracking-wide">
-                ACCOMMODATION
+        <section className="py-20 bg-secondary/20 relative overflow-hidden">
+          {/* Decorative Background */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                <UtensilsCrossed className="w-4 h-4" />
+                Nourishment for Body & Soul
+              </span>
+              <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Sattvic Food Experience
               </h2>
-              <p className="font-heading text-xl md:text-2xl text-background/90 italic mb-12 max-w-2xl">
-                A yoga retreat in Bali amidst tropical paradise
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                Three daily meals prepared with love, following ancient yogic principles 
+                to support your practice and elevate your consciousness.
               </p>
+            </div>
+
+            {/* Food Philosophy Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
+              {foodPhilosophy.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <div 
+                    key={index}
+                    className="group text-center p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-card"
+                  >
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                      <IconComponent className="w-6 h-6 text-primary" />
+                    </div>
+                    <h4 className="font-heading font-bold text-foreground mb-1">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Daily Meals */}
+            <div className="max-w-6xl mx-auto">
+              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-10">
+                A Day of Mindful Eating
+              </h3>
               
-              {/* Location Features */}
-              <div className="flex flex-col gap-6 max-w-md">
-                {locationFeatures.map((feature, index) => {
-                  const IconComponent = feature.icon;
+              <div className="grid md:grid-cols-3 gap-8">
+                {foodMenu.map((meal, index) => {
+                  const MealIcon = meal.icon;
                   return (
-                    <div key={index} className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-full border-2 border-background/50 flex items-center justify-center bg-background/10 backdrop-blur-sm">
-                        <IconComponent className="w-6 h-6 text-background" />
+                    <div 
+                      key={index}
+                      className="group relative bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-elevated"
+                    >
+                      {/* Meal Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={meal.image}
+                          alt={meal.meal}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
+                        
+                        {/* Meal Badge */}
+                        <div className="absolute top-4 left-4 px-3 py-1.5 bg-background/90 backdrop-blur-sm rounded-full flex items-center gap-2">
+                          <MealIcon className="w-4 h-4 text-primary" />
+                          <span className="text-sm font-medium text-foreground">{meal.time}</span>
+                        </div>
+                        
+                        {/* Meal Title Overlay */}
+                        <div className="absolute bottom-4 left-4">
+                          <h4 className="font-heading text-2xl font-bold text-background">{meal.meal}</h4>
+                        </div>
                       </div>
-                      <p className="text-background text-lg text-left">{feature.text}</p>
+                      
+                      {/* Meal Items */}
+                      <div className="p-6">
+                        <ul className="space-y-3">
+                          {meal.items.map((item, itemIndex) => (
+                            <li key={itemIndex} className="flex items-start gap-3 text-muted-foreground">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Hover Accent Line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     </div>
                   );
                 })}
               </div>
             </div>
-          </div>
-          
-          {/* Scrollable Gallery Carousel */}
-          <div className="relative bg-secondary/20 py-12">
-            {/* Decorative Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border-[40px] border-primary" />
-            </div>
-            
-            <div className="container mx-auto px-4">
-              <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-                {accommodationGallery.map((image, index) => (
-                  <div 
-                    key={index}
-                    className="flex-shrink-0 w-[300px] md:w-[400px] snap-center group"
-                  >
-                    <div className="relative overflow-hidden rounded-xl shadow-card group-hover:shadow-elevated transition-shadow duration-300">
-                      <img 
-                        src={image}
-                        alt={`Accommodation view ${index + 1}`}
-                        className="w-full h-[250px] md:h-[300px] object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              {/* Scroll Indicator Dots */}
-              <div className="flex justify-center gap-2 mt-6">
-                {accommodationGallery.map((_, index) => (
-                  <div key={index} className="w-2 h-2 rounded-full bg-primary/30 hover:bg-primary transition-colors duration-200" />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* ===== ROOM TYPES WITH GALLERIES ===== */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-              Choose Your Stay
-            </h2>
-            <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-              Each room type offers a unique experience. Select the accommodation that resonates with your journey.
-            </p>
-            
-            <div className="space-y-20 max-w-6xl mx-auto">
-              {accommodations.map((acc, index) => (
-                <div key={index} className="relative">
-                  {/* Room Number Badge */}
-                  <div className="absolute -top-6 left-0 md:left-8 z-10">
-                    <span className="font-heading text-7xl md:text-8xl font-bold text-primary/10">
-                      0{index + 1}
-                    </span>
-                  </div>
-                  
-                  <div className="relative bg-card rounded-2xl border border-border overflow-hidden shadow-card">
-                    {/* Room Image Gallery - Scrollable */}
-                    <div className="relative">
-                      <div className="flex gap-3 overflow-x-auto p-4 snap-x snap-mandatory scrollbar-hide">
-                        {acc.images.map((image, imgIndex) => (
-                          <div 
-                            key={imgIndex}
-                            className="flex-shrink-0 w-[280px] md:w-[320px] snap-center group/img"
-                          >
-                            <div className="relative overflow-hidden rounded-xl">
-                              <img 
-                                src={image}
-                                alt={`${acc.type} view ${imgIndex + 1}`}
-                                className="w-full h-[200px] md:h-[220px] object-cover transition-transform duration-500 group-hover/img:scale-110"
-                              />
-                              {/* Image Number */}
-                              <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-background/90 flex items-center justify-center text-sm font-medium text-foreground">
-                                {imgIndex + 1}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Scroll Hint */}
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center animate-pulse">
-                        <ChevronDown className="w-4 h-4 text-primary rotate-[-90deg]" />
-                      </div>
-                    </div>
-                    
-                    {/* Room Content */}
-                    <div className="p-6 md:p-8">
-                      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                        {/* Left: Title & Description */}
-                        <div className="flex-1">
-                          <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
-                            {acc.type}
-                          </h3>
-                          <p className="text-muted-foreground leading-relaxed mb-4">
-                            {acc.description}
-                          </p>
-                          
-                          {/* Amenities */}
-                          <div className="flex flex-wrap gap-2">
-                            {acc.amenities.map((amenity, amenityIndex) => (
-                              <span 
-                                key={amenityIndex}
-                                className="px-3 py-1.5 text-sm bg-secondary/50 text-secondary-foreground rounded-full"
-                              >
-                                {amenity}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        {/* Right: Pricing & CTA */}
-                        <div className="flex flex-col items-center md:items-end text-center md:text-right min-w-[160px]">
-                          <span className="text-muted-foreground line-through text-lg">
-                            {acc.originalPrice}
-                          </span>
-                          <span className="font-heading text-4xl font-bold text-primary">
-                            {acc.price}
-                          </span>
-                          <span className="text-sm text-muted-foreground mb-4">/person</span>
-                          <Button className="w-full md:w-auto min-w-[140px]" asChild>
-                            <Link to="/contact">Reserve Now</Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ===== ACCOMMODATION & FOOD ===== */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6">
-                  Accommodation
-                </h3>
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Clean, spacious, and peaceful rooms designed for comfort</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Attached bathrooms with hot water, AC/fan</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Both shared and private options available</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Natural surroundings for calm and reflection</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-foreground mb-6">
-                  Food
-                </h3>
-                <ul className="space-y-4 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Three fresh vegetarian/vegan meals daily</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Sattvic food — light, healthy, and nourishing</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Designed to energize body and calm mind</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span>Herbal teas, fresh fruits, local Balinese flavors</span>
-                  </li>
-                </ul>
+            {/* Additional Food Info */}
+            <div className="mt-16 text-center">
+              <div className="inline-flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
+                  <Check className="w-4 h-4 text-primary" />
+                  Herbal teas available all day
+                </span>
+                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
+                  <Check className="w-4 h-4 text-primary" />
+                  Fresh coconut water
+                </span>
+                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
+                  <Check className="w-4 h-4 text-primary" />
+                  Dietary accommodations available
+                </span>
               </div>
             </div>
           </div>
