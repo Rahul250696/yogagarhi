@@ -422,6 +422,22 @@ export default function Course200Hour() {
   const [selectedMonth, setSelectedMonth] = useState(0);
   const [selectedDay, setSelectedDay] = useState<number | null>(13);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [showBookingDialog, setShowBookingDialog] = useState(false);
+  const [bookingForm, setBookingForm] = useState({
+    name: '',
+    contact: '',
+    email: '',
+    course: ''
+  });
+
+  const isBookingFormComplete = bookingForm.name && bookingForm.contact && bookingForm.email && bookingForm.course;
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const isWebinarFormComplete = webinarForm.name && webinarForm.email && webinarForm.timezone && webinarForm.date && webinarForm.time;
 
@@ -491,9 +507,9 @@ export default function Course200Hour() {
               <Button 
                 size="xl"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-                asChild
+                onClick={() => scrollToSection('book-call')}
               >
-                <a href="#book-call">Book an Appointment</a>
+                Book an Appointment
               </Button>
             </div>
           </div>
@@ -554,9 +570,9 @@ export default function Course200Hour() {
                   <Button 
                     size="lg" 
                     className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full md:w-auto"
-                    asChild
+                    onClick={() => scrollToSection('book-call')}
                   >
-                    <a href="#dates">Book Now</a>
+                    Book Now
                   </Button>
                 </div>
               </div>
@@ -2114,9 +2130,115 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       className="w-full mt-6" 
                       size="lg"
                       disabled={!selectedDay || !selectedTime}
+                      onClick={() => setShowBookingDialog(true)}
                     >
                       Confirm Booking
                     </Button>
+                    
+                    {/* Booking Confirmation Dialog */}
+                    <Dialog open={showBookingDialog} onOpenChange={setShowBookingDialog}>
+                      <DialogContent className="sm:max-w-md">
+                        <DialogHeader>
+                          <DialogTitle className="font-heading text-xl">Complete Your Booking</DialogTitle>
+                          <p className="text-sm text-muted-foreground mt-2">
+                            {selectedDay && selectedTime && (
+                              <>Scheduled for {selectedDay} {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][selectedMonth]} 2026 at {selectedTime}</>
+                            )}
+                          </p>
+                        </DialogHeader>
+                        
+                        <div className="space-y-4 mt-4">
+                          {/* Name */}
+                          <div>
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                              Full Name <span className="text-destructive">*</span>
+                            </label>
+                            <input
+                              type="text"
+                              value={bookingForm.name}
+                              onChange={(e) => setBookingForm(prev => ({ ...prev, name: e.target.value }))}
+                              placeholder="Enter your full name"
+                              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            />
+                          </div>
+                          
+                          {/* Contact/WhatsApp */}
+                          <div>
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                              Contact / WhatsApp Number <span className="text-destructive">*</span>
+                            </label>
+                            <input
+                              type="tel"
+                              value={bookingForm.contact}
+                              onChange={(e) => setBookingForm(prev => ({ ...prev, contact: e.target.value }))}
+                              placeholder="+1 234 567 8900"
+                              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            />
+                          </div>
+                          
+                          {/* Email */}
+                          <div>
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                              Email Address <span className="text-destructive">*</span>
+                            </label>
+                            <input
+                              type="email"
+                              value={bookingForm.email}
+                              onChange={(e) => setBookingForm(prev => ({ ...prev, email: e.target.value }))}
+                              placeholder="you@example.com"
+                              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            />
+                          </div>
+                          
+                          {/* Course Selection */}
+                          <div>
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                              Which course are you joining? <span className="text-destructive">*</span>
+                            </label>
+                            <div className="space-y-2">
+                              {[
+                                { value: '100', label: '100 Hour YTTC' },
+                                { value: '200', label: '200 Hour YTTC' },
+                                { value: '300', label: '300 Hour YTTC' }
+                              ].map((option) => (
+                                <label
+                                  key={option.value}
+                                  className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
+                                    bookingForm.course === option.value
+                                      ? 'border-primary bg-primary/10'
+                                      : 'border-border hover:border-primary/50'
+                                  }`}
+                                >
+                                  <input
+                                    type="radio"
+                                    name="course"
+                                    value={option.value}
+                                    checked={bookingForm.course === option.value}
+                                    onChange={(e) => setBookingForm(prev => ({ ...prev, course: e.target.value }))}
+                                    className="w-4 h-4 text-primary"
+                                  />
+                                  <span className="text-foreground">{option.label}</span>
+                                </label>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <Button 
+                          className="w-full mt-6" 
+                          size="lg"
+                          disabled={!isBookingFormComplete}
+                          onClick={() => {
+                            // Handle form submission here
+                            console.log('Booking submitted:', { ...bookingForm, date: `${selectedDay} ${["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][selectedMonth]} 2026`, time: selectedTime });
+                            setShowBookingDialog(false);
+                            setBookingForm({ name: '', contact: '', email: '', course: '' });
+                          }}
+                        >
+                          Submit Booking
+                        </Button>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               </div>
