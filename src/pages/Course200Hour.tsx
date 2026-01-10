@@ -2098,10 +2098,21 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       <div key={`empty-${i}`} className="py-2" />
                     ))}
                     {/* Days */}
-                    {Array.from({ length: 28 }).map((_, i) => {
+                    {Array.from({ length: 31 }).map((_, i) => {
                       const day = i + 1;
                       const isSelected = selectedDay === day;
-                      const isAvailable = [6, 7, 13, 14, 20, 21, 27, 28].includes(day);
+                      // All upcoming dates (today and future) are available
+                      const today = new Date();
+                      const currentYear = 2026;
+                      const calendarDate = new Date(currentYear, selectedMonth, day);
+                      const isUpcoming = calendarDate >= new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                      // Check if the day exists in this month
+                      const daysInMonth = new Date(currentYear, selectedMonth + 1, 0).getDate();
+                      const isValidDay = day <= daysInMonth;
+                      const isAvailable = isValidDay && isUpcoming;
+                      
+                      if (!isValidDay) return null;
+                      
                       return (
                         <button
                           key={day}
