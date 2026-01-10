@@ -419,6 +419,9 @@ export default function Course200Hour() {
     date: '',
     time: ''
   });
+  const [selectedMonth, setSelectedMonth] = useState(0);
+  const [selectedDay, setSelectedDay] = useState<number | null>(13);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
   const isWebinarFormComplete = webinarForm.name && webinarForm.email && webinarForm.timezone && webinarForm.date && webinarForm.time;
 
@@ -1987,33 +1990,155 @@ This is not a transactional relationship — it is a lifelong connection.`}
 
 
         {/* ===== BOOK A CALL ===== */}
-        <section id="book-call" className="py-20 bg-foreground text-primary-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Book an Appointment
+        <section id="book-call" className="py-20 bg-secondary/20 relative overflow-hidden">
+          {/* Decorative Background */}
+          <div className="absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/5 -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 translate-x-1/2 translate-y-1/2" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
+              Do you have any questions?
             </h2>
-            <p className="mb-8 opacity-80 max-w-2xl mx-auto">
-              Have questions? Schedule a free call with our team to discuss your journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90"
-              >
-                <Phone className="w-4 h-4 mr-2" />
-                Schedule a Call
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
-                asChild
-              >
-                <a href="https://wa.me/1234567890">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  WhatsApp Us
-                </a>
-              </Button>
+            
+            <div className="max-w-5xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-8 bg-card rounded-2xl overflow-hidden shadow-elevated border border-border">
+                {/* Left: Calendar Section */}
+                <div className="bg-foreground text-primary-foreground p-8">
+                  {/* Logo/Icon */}
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-foreground/10 border-2 border-primary-foreground/30 flex items-center justify-center">
+                    <span className="font-heading text-2xl font-bold">YG</span>
+                  </div>
+                  
+                  <h3 className="font-heading text-xl font-bold text-center mb-6">
+                    Meet with YogaGarhi
+                  </h3>
+                  
+                  {/* Month Navigation */}
+                  <div className="flex items-center justify-center gap-4 mb-6">
+                    <button 
+                      onClick={() => setSelectedMonth(prev => prev > 0 ? prev - 1 : 11)}
+                      className="p-1 hover:bg-primary-foreground/10 rounded transition-colors"
+                    >
+                      <ChevronDown className="w-5 h-5 rotate-90" />
+                    </button>
+                    <span className="font-heading font-bold text-lg min-w-[140px] text-center">
+                      {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][selectedMonth]} 2026
+                    </span>
+                    <button 
+                      onClick={() => setSelectedMonth(prev => prev < 11 ? prev + 1 : 0)}
+                      className="p-1 hover:bg-primary-foreground/10 rounded transition-colors"
+                    >
+                      <ChevronDown className="w-5 h-5 -rotate-90" />
+                    </button>
+                  </div>
+                  
+                  {/* Calendar Grid */}
+                  <div className="grid grid-cols-7 gap-1 text-center text-sm">
+                    {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(day => (
+                      <div key={day} className="py-2 text-xs font-medium text-primary-foreground/60">
+                        {day}
+                      </div>
+                    ))}
+                    {/* Empty cells for offset */}
+                    {Array.from({ length: 3 }).map((_, i) => (
+                      <div key={`empty-${i}`} className="py-2" />
+                    ))}
+                    {/* Days */}
+                    {Array.from({ length: 28 }).map((_, i) => {
+                      const day = i + 1;
+                      const isSelected = selectedDay === day;
+                      const isAvailable = [6, 7, 13, 14, 20, 21, 27, 28].includes(day);
+                      return (
+                        <button
+                          key={day}
+                          onClick={() => isAvailable && setSelectedDay(day)}
+                          disabled={!isAvailable}
+                          className={`py-2 rounded-full text-sm transition-all ${
+                            isSelected 
+                              ? "bg-primary text-primary-foreground" 
+                              : isAvailable
+                                ? "text-primary-foreground hover:bg-primary-foreground/10"
+                                : "text-primary-foreground/30 cursor-not-allowed"
+                          }`}
+                        >
+                          {day}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                
+                {/* Right: Time Slots Section */}
+                <div className="p-8">
+                  {/* Meeting Duration */}
+                  <div className="mb-8">
+                    <h4 className="font-medium text-foreground mb-3">Meeting duration</h4>
+                    <div className="bg-secondary/50 rounded-lg p-3 text-center text-muted-foreground">
+                      30 mins
+                    </div>
+                  </div>
+                  
+                  {/* Time Selection */}
+                  <div>
+                    <h4 className="font-medium text-foreground mb-1">What time works best?</h4>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Showing times for <span className="font-medium text-foreground">{selectedDay} {["January", "February", "March"][selectedMonth]} 2026</span>
+                    </p>
+                    
+                    {/* Timezone */}
+                    <button className="flex items-center gap-2 text-primary text-sm mb-4 hover:underline">
+                      <Clock className="w-4 h-4" />
+                      UTC +05:30 New Delhi, Mumbai
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+                    
+                    {/* Time Slots */}
+                    <div className="space-y-3 max-h-[280px] overflow-y-auto pr-2">
+                      {["10:00 AM", "10:30 AM", "11:00 AM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM"].map((time) => (
+                        <button
+                          key={time}
+                          onClick={() => setSelectedTime(time)}
+                          className={`w-full py-3 px-4 rounded-lg border text-center transition-all ${
+                            selectedTime === time
+                              ? "border-primary bg-primary/10 text-primary font-medium"
+                              : "border-border hover:border-primary/50 text-foreground"
+                          }`}
+                        >
+                          {time}
+                        </button>
+                      ))}
+                    </div>
+                    
+                    {/* Confirm Button */}
+                    <Button 
+                      className="w-full mt-6" 
+                      size="lg"
+                      disabled={!selectedDay || !selectedTime}
+                    >
+                      Confirm Booking
+                    </Button>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Alternative Contact */}
+              <div className="mt-8 text-center">
+                <p className="text-muted-foreground mb-4">Or reach us directly</p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button variant="outline" asChild>
+                    <a href="https://wa.me/1234567890">
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      WhatsApp Us
+                    </a>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <a href="mailto:info@yogagarhi.com">
+                      <Phone className="w-4 h-4 mr-2" />
+                      Email Us
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
