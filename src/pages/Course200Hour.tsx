@@ -257,12 +257,36 @@ const whatYouWillReceive = [
 
 // Workshops
 const workshops = [
-  { title: "Ayurveda Fundamentals", description: "Understand your unique constitution" },
-  { title: "Arm Balance Mastery", description: "Build strength and confidence" },
-  { title: "Handstand Workshop", description: "Overcome fear, find your center" },
-  { title: "Yin Yoga Deep Stretch", description: "Access deeper tissue layers" },
-  { title: "Sound Healing Session", description: "Vibration therapy for inner calm" },
-  { title: "Bhakti Yoga & Kirtan", description: "Devotional practice through song" },
+  { 
+    title: "Ayurveda Fundamentals", 
+    description: "Understand your unique constitution (Prakriti) and learn how to balance your doshas through diet, lifestyle, and yogic practices for optimal health.",
+    image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&h=400&fit=crop"
+  },
+  { 
+    title: "Arm Balance Mastery", 
+    description: "Build the strength, technique and confidence needed to master arm balances like Crow, Side Crow, and Flying Pigeon with proper alignment.",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop"
+  },
+  { 
+    title: "Handstand Workshop", 
+    description: "Overcome fear and find your center through progressive drills, wall work, and partner exercises to achieve a confident freestanding handstand.",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop"
+  },
+  { 
+    title: "Yin Yoga Deep Stretch", 
+    description: "Access deeper connective tissue layers through long-held passive poses. Release tension, increase flexibility, and cultivate inner stillness.",
+    image: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=400&fit=crop"
+  },
+  { 
+    title: "Sound Healing Session", 
+    description: "Experience the transformative power of Tibetan singing bowls, gongs, and mantras. Vibration therapy for deep relaxation and inner calm.",
+    image: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=600&h=400&fit=crop"
+  },
+  { 
+    title: "Bhakti Yoga & Kirtan", 
+    description: "Open your heart through devotional practice. Learn sacred chants, mantras, and kirtan to connect with the spiritual essence of yoga.",
+    image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=600&h=400&fit=crop"
+  },
 ];
 
 // Excursions
@@ -1510,22 +1534,53 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== SPECIAL WORKSHOPS ===== */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-secondary/30">
           <div className="container mx-auto px-4">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Special Workshops Included
             </h2>
-            <p className="text-center text-muted-foreground mb-12">
-              Free additional sessions to enrich your training
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Enhance your training with these exclusive bonus workshops — all included free
             </p>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {workshops.map((workshop, index) => (
-                <div key={index} className="p-6 bg-card rounded-lg border border-border">
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                    {workshop.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">{workshop.description}</p>
+                <div 
+                  key={index} 
+                  className="group relative overflow-hidden rounded-2xl bg-card shadow-card hover:shadow-elevated transition-all duration-500"
+                >
+                  {/* Image Container with Overlay */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={workshop.image} 
+                      alt={workshop.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+                    
+                    {/* Workshop Number Badge */}
+                    <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center">
+                      <span className="font-heading font-bold text-primary-foreground text-sm">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    
+                    {/* Title on Image */}
+                    <h3 className="absolute bottom-4 left-4 right-4 font-heading text-xl font-bold text-white leading-tight">
+                      {workshop.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {workshop.description}
+                    </p>
+                    
+                    {/* Decorative Line */}
+                    <div className="mt-4 h-0.5 w-12 bg-primary/50 group-hover:w-full transition-all duration-500" />
+                  </div>
                 </div>
               ))}
             </div>
