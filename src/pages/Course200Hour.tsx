@@ -2514,20 +2514,38 @@ This is not a transactional relationship — it is a lifelong connection.`}
               Location
             </h2>
             <p className="text-center text-muted-foreground mb-12">
-              Nature's Escape Resort, Ubud, Bali, Indonesia
+              Ds Madangan Kaja, Desa Petak, Petak Kaja, Kec. Gianyar, Kabupaten Gianyar, Bali 80515, Indonesia
             </p>
             
             <div className="max-w-4xl mx-auto">
-              <div className="aspect-video rounded-lg overflow-hidden bg-muted">
+              <div className="aspect-video rounded-lg overflow-hidden bg-muted shadow-elevated">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126130.13656780396!2d115.15619897854716!3d-8.456310468621978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23d739f22c9c3%3A0x54a38affd03fd0!2sUbud%2C%20Gianyar%20Regency%2C%20Bali%2C%20Indonesia!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.5!2d115.3!3d-8.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd217a4e2d26eaf%3A0x5b5a8f3b5f9b9c0a!2sYoga%20Teacher%20Training%20in%20Bali%20-%20Yogagarhi!5e0!3m2!1sen!2sin!4v1704067200000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
+                  title="Yogagarhi Location - Gianyar, Bali"
                 />
+              </div>
+              
+              {/* Location Details */}
+              <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button variant="outline" asChild>
+                  <a 
+                    href="https://maps.app.goo.gl/u6pCMseX1a6ADLCA8" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Open in Google Maps
+                  </a>
+                </Button>
+                <p className="text-sm text-muted-foreground">
+                  <span className="font-medium text-foreground">Open 24 hours</span> • Gianyar, Bali
+                </p>
               </div>
             </div>
           </div>
