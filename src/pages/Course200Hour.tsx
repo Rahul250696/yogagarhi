@@ -372,12 +372,6 @@ const upcomingDates = [
   { date: "2 Sept - 23 Sept 2026", spotsLeft: 7, earlyBirdSaving: "$200" },
 ];
 
-// Teachers
-const teachers = [
-  { name: "Master Yogi", specialty: "Ashtanga & Philosophy", experience: "15+ Years" },
-  { name: "Priya Devi", specialty: "Hatha & Meditation", experience: "12+ Years" },
-  { name: "Arjun Sharma", specialty: "Anatomy & Alignment", experience: "10+ Years" },
-];
 
 // Yogic Energy Quiz Questions
 const quizQuestions = [
@@ -1991,29 +1985,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
-        {/* ===== TEACHERS ===== */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
-              Our Teachers
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {teachers.map((teacher, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-secondary flex items-center justify-center">
-                    <Users className="w-12 h-12 text-muted-foreground" />
-                  </div>
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-1">
-                    {teacher.name}
-                  </h3>
-                  <p className="text-primary text-sm mb-1">{teacher.specialty}</p>
-                  <p className="text-muted-foreground text-sm">{teacher.experience}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ===== BOOK A CALL ===== */}
         <section id="book-call" className="py-20 bg-foreground text-primary-foreground">
