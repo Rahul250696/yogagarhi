@@ -13,7 +13,8 @@ import {
   GraduationCap, Repeat, Mountain, Handshake, Zap, Layers, 
   UserCheck, Brain, BookMarked, UsersRound, RefreshCw,
   Salad, Coffee, Apple, Soup, UtensilsCrossed, Wheat, Milk, 
-  Cherry, Sprout, CircleDot, Sun, MessageSquare, Mail
+  Cherry, Sprout, CircleDot, Sun, MessageSquare, Mail,
+  Wifi, Droplets, Wind
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
@@ -2132,6 +2133,177 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   <Check className="w-4 h-4 text-primary" />
                   Special requests welcome
                 </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== ACCOMMODATION ===== */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <p className="text-primary uppercase tracking-[0.2em] text-sm mb-3">Your Stay</p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Comfortable Accommodation
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Rest and recharge in our peaceful living spaces, designed to support your yogic journey
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Triple Sharing Room */}
+              <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elevated transition-all duration-300">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=300&fit=crop"
+                    alt="Triple Sharing Room"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-sm font-medium rounded-full">
+                    Best Value
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-2">Triple Sharing</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    Share your space with two like-minded yogis. A great way to build lasting friendships.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Spacious room for 3 students</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Attached bathroom with hot water</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Air conditioning / fan</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Free Wi-Fi access</span>
+                    </li>
+                  </ul>
+                  <div className="text-center pt-4 border-t border-border">
+                    <p className="text-muted-foreground line-through text-sm">$2,187</p>
+                    <p className="font-heading text-2xl font-bold text-foreground">$1,750</p>
+                    <p className="text-primary text-sm font-medium">Save 20%</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Double Sharing Room */}
+              <div className="group bg-card rounded-2xl border-2 border-primary overflow-hidden hover:shadow-elevated transition-all duration-300 relative">
+                <div className="absolute top-0 left-0 right-0 bg-primary text-primary-foreground text-center text-sm py-1 font-medium">
+                  Most Popular
+                </div>
+                <div className="relative h-48 overflow-hidden mt-6">
+                  <img 
+                    src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&h=300&fit=crop"
+                    alt="Double Sharing Room"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-2">Double Sharing</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    Share with one roommate. Perfect balance of community and personal space.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Comfortable room for 2 students</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Attached bathroom with hot water</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Air conditioning / fan</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Free Wi-Fi access</span>
+                    </li>
+                  </ul>
+                  <div className="text-center pt-4 border-t border-border">
+                    <p className="text-muted-foreground line-through text-sm">$2,370</p>
+                    <p className="font-heading text-2xl font-bold text-foreground">$1,899</p>
+                    <p className="text-primary text-sm font-medium">Save 20%</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Private Room */}
+              <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-elevated transition-all duration-300">
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&h=300&fit=crop"
+                    alt="Private Room"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-foreground text-background text-sm font-medium rounded-full">
+                    Premium
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-2">Private Room</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    Your own sanctuary for complete privacy and deep personal reflection.
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Private single occupancy room</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Attached bathroom with hot water</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Air conditioning / fan</span>
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span>Free Wi-Fi access</span>
+                    </li>
+                  </ul>
+                  <div className="text-center pt-4 border-t border-border">
+                    <p className="text-muted-foreground line-through text-sm">$3,125</p>
+                    <p className="font-heading text-2xl font-bold text-foreground">$2,499</p>
+                    <p className="text-primary text-sm font-medium">Save 20%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Common Amenities */}
+            <div className="mt-16 max-w-4xl mx-auto">
+              <h3 className="font-heading text-xl font-bold text-center text-foreground mb-8">
+                All Rooms Include
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { icon: Wifi, label: "Free Wi-Fi" },
+                  { icon: Droplets, label: "Hot Water" },
+                  { icon: Wind, label: "AC / Fan" },
+                  { icon: Sparkles, label: "Daily Cleaning" },
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div key={index} className="flex items-center gap-3 p-4 bg-secondary/30 rounded-lg">
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                        <IconComponent className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="font-medium text-foreground text-sm">{item.label}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
