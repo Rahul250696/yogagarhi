@@ -2336,248 +2336,141 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {/* Triple Sharing Room - Minimal Clean Design */}
-              <div className="group bg-card rounded-3xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-500 border border-border">
-                {/* Image Carousel with Rounded Top */}
-                <div className="relative h-56 overflow-hidden">
-                  <div 
-                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full scroll-smooth"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                  >
-                    {[
-                      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=500&h=400&fit=crop",
-                      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=400&fit=crop",
-                      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=400&fit=crop",
-                    ].map((img, idx) => (
-                      <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
-                        <img 
-                          src={img}
-                          alt={`Triple Sharing Room ${idx + 1}`}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  {/* Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="px-4 py-1.5 bg-green-500 text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg">
-                      Best Value
-                    </span>
-                  </div>
-                  {/* Gradient Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
-                  {/* Scroll Indicator */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    {[0, 1, 2].map((i) => (
-                      <div key={i} className={`w-2.5 h-2.5 rounded-full ${i === 0 ? 'bg-white' : 'bg-white/50'} transition-all`} />
-                    ))}
-                  </div>
-                  {/* Swipe Hint */}
-                  <div className="absolute bottom-4 right-4 text-white/70 text-xs flex items-center gap-1 z-10">
-                    <ChevronDown className="w-3 h-3 rotate-[-90deg]" />
-                    <span>Swipe</span>
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-heading text-xl font-bold text-foreground">Triple Sharing</h3>
-                    <div className="flex items-center gap-1 text-primary">
-                      <Users className="w-4 h-4" />
-                      <span className="text-xs font-medium">3 beds</span>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                    Share your space with two like-minded yogis. A great way to build lasting friendships.
-                  </p>
-                  
-                  {/* Features as Pills */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"].map((feature) => (
-                      <span key={feature} className="px-3 py-1 bg-secondary text-secondary-foreground text-xs rounded-full">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  {/* Pricing */}
-                  <div className="flex items-end justify-between pt-4 border-t border-border">
-                    <div>
-                      <p className="text-muted-foreground line-through text-sm">$2,187</p>
-                      <p className="font-heading text-3xl font-bold text-foreground">$1,750</p>
-                    </div>
-                    <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded-lg">
-                      Save 20%
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Double Sharing Room - Featured/Highlighted Design */}
-              <div className="group relative bg-gradient-to-b from-primary/5 to-primary/10 rounded-3xl overflow-hidden shadow-elevated hover:shadow-2xl transition-all duration-500 border-2 border-primary transform md:-translate-y-4 md:scale-105">
-                {/* Popular Ribbon */}
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-center text-sm py-2 font-semibold z-30 tracking-wide">
-                  ⭐ MOST POPULAR
-                </div>
-                
-                {/* Image Carousel */}
-                <div className="relative h-56 overflow-hidden mt-8">
-                  <div 
-                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full scroll-smooth"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                  >
-                    {[
-                      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&h=400&fit=crop",
-                      "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=500&h=400&fit=crop",
-                      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=500&h=400&fit=crop",
-                    ].map((img, idx) => (
-                      <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
-                        <img 
-                          src={img}
-                          alt={`Double Sharing Room ${idx + 1}`}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  {/* Gradient Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
-                  {/* Navigation Arrows */}
-                  <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center z-10">
-                    <div className="flex gap-2">
-                      {[0, 1, 2].map((i) => (
-                        <div key={i} className={`w-8 h-1 rounded-full ${i === 0 ? 'bg-primary' : 'bg-white/50'} transition-all`} />
+              {[
+                {
+                  title: "Triple Sharing",
+                  beds: 3,
+                  description: "Share your space with two like-minded yogis. A great way to build lasting friendships.",
+                  originalPrice: "$2,187",
+                  price: "$1,750",
+                  images: [
+                    "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=500&h=400&fit=crop",
+                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=400&fit=crop",
+                    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=400&fit=crop",
+                  ],
+                  features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
+                  badge: null,
+                  isPopular: false,
+                },
+                {
+                  title: "Double Sharing",
+                  beds: 2,
+                  description: "Share with one roommate. Perfect balance of community and personal space.",
+                  originalPrice: "$2,370",
+                  price: "$1,899",
+                  images: [
+                    "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&h=400&fit=crop",
+                    "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=500&h=400&fit=crop",
+                    "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=500&h=400&fit=crop",
+                  ],
+                  features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
+                  badge: "Most Popular",
+                  isPopular: true,
+                },
+                {
+                  title: "Private Room",
+                  beds: 1,
+                  description: "Your own sanctuary for complete privacy and deep personal reflection.",
+                  originalPrice: "$3,125",
+                  price: "$2,499",
+                  images: [
+                    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=400&fit=crop",
+                    "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&h=400&fit=crop",
+                    "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=500&h=400&fit=crop",
+                  ],
+                  features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
+                  badge: "Premium",
+                  isPopular: false,
+                },
+              ].map((room, roomIndex) => (
+                <div 
+                  key={roomIndex} 
+                  className={`group bg-card rounded-2xl overflow-hidden border transition-all duration-300 hover:shadow-elevated ${
+                    room.isPopular ? 'border-primary shadow-lg' : 'border-border shadow-card'
+                  }`}
+                >
+                  {/* Image Carousel */}
+                  <div className="relative h-52 overflow-hidden">
+                    <div 
+                      className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full scroll-smooth"
+                      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    >
+                      {room.images.map((img, idx) => (
+                        <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
+                          <img 
+                            src={img}
+                            alt={`${room.title} ${idx + 1}`}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
                       ))}
                     </div>
-                    <span className="text-white text-xs bg-black/30 px-2 py-1 rounded backdrop-blur-sm">1/3</span>
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="p-6 bg-card/80 backdrop-blur-sm">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-heading text-xl font-bold text-foreground">Double Sharing</h3>
-                    <div className="flex items-center gap-1 text-primary">
-                      <Users className="w-4 h-4" />
-                      <span className="text-xs font-medium">2 beds</span>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                    Share with one roommate. Perfect balance of community and personal space.
-                  </p>
-                  
-                  {/* Features as Checkmarks */}
-                  <div className="space-y-2 mb-6">
-                    {["Comfortable room for 2", "Attached bathroom", "Air conditioning", "Free Wi-Fi"].map((feature) => (
-                      <div key={feature} className="flex items-center gap-2 text-sm text-foreground">
-                        <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
-                          <Check className="w-3 h-3 text-primary" />
-                        </div>
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Pricing */}
-                  <div className="bg-primary/10 rounded-xl p-4 -mx-2">
-                    <div className="flex items-end justify-between">
-                      <div>
-                        <p className="text-muted-foreground line-through text-sm">$2,370</p>
-                        <p className="font-heading text-3xl font-bold text-primary">$1,899</p>
-                      </div>
-                      <div className="text-right">
-                        <span className="px-3 py-1 bg-primary text-primary-foreground text-sm font-bold rounded-lg">
-                          Save 20%
+                    
+                    {/* Badge */}
+                    {room.badge && (
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                          room.isPopular 
+                            ? 'bg-primary text-primary-foreground' 
+                            : 'bg-foreground/80 text-background'
+                        }`}>
+                          {room.badge}
                         </span>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Private Room - Premium/Luxury Design */}
-              <div className="group bg-foreground rounded-3xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-500">
-                {/* Image Carousel */}
-                <div className="relative h-56 overflow-hidden">
-                  <div 
-                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full scroll-smooth"
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                  >
-                    {[
-                      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=400&fit=crop",
-                      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&h=400&fit=crop",
-                      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=500&h=400&fit=crop",
-                    ].map((img, idx) => (
-                      <div key={idx} className="flex-shrink-0 w-full h-full snap-start">
-                        <img 
-                          src={img}
-                          alt={`Private Room ${idx + 1}`}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    )}
+                    
+                    {/* Scroll Dots */}
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                      {room.images.map((_, idx) => (
+                        <div 
+                          key={idx} 
+                          className={`w-2 h-2 rounded-full ${idx === 0 ? 'bg-white' : 'bg-white/50'}`} 
                         />
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="font-heading text-lg font-bold text-foreground">{room.title}</h3>
+                      <div className="flex items-center gap-1 text-muted-foreground">
+                        <Users className="w-4 h-4" />
+                        <span className="text-xs">{room.beds} {room.beds === 1 ? 'bed' : 'beds'}</span>
                       </div>
-                    ))}
-                  </div>
-                  {/* Premium Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="px-4 py-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1">
-                      <Sparkles className="w-3 h-3" />
-                      Premium
-                    </span>
-                  </div>
-                  {/* Gradient Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-foreground to-transparent" />
-                  {/* Dots Navigation */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                    {[0, 1, 2].map((i) => (
-                      <div key={i} className={`w-2 h-2 rounded-full border border-white ${i === 0 ? 'bg-white' : 'bg-transparent'} transition-all`} />
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Content - Dark Theme */}
-                <div className="p-6 text-primary-foreground">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-heading text-xl font-bold">Private Room</h3>
-                    <div className="flex items-center gap-1 text-amber-400">
-                      <Star className="w-4 h-4 fill-amber-400" />
-                      <span className="text-xs font-medium">Exclusive</span>
+                    </div>
+                    
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                      {room.description}
+                    </p>
+                    
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {room.features.map((feature) => (
+                        <span 
+                          key={feature} 
+                          className="px-2.5 py-1 bg-secondary text-secondary-foreground text-xs rounded-md"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Pricing */}
+                    <div className="flex items-end justify-between pt-4 border-t border-border">
+                      <div>
+                        <p className="text-muted-foreground line-through text-sm">{room.originalPrice}</p>
+                        <p className="font-heading text-2xl font-bold text-foreground">{room.price}</p>
+                      </div>
+                      <span className="px-2.5 py-1 bg-primary/10 text-primary text-xs font-medium rounded-md">
+                        Save 20%
+                      </span>
                     </div>
                   </div>
-                  <p className="text-primary-foreground/70 text-sm mb-5 leading-relaxed">
-                    Your own sanctuary for complete privacy and deep personal reflection.
-                  </p>
-                  
-                  {/* Premium Features */}
-                  <div className="grid grid-cols-2 gap-2 mb-6">
-                    {[
-                      { icon: Users, text: "Single Occupancy" },
-                      { icon: Droplets, text: "Hot Water" },
-                      { icon: Wind, text: "Air Conditioning" },
-                      { icon: Wifi, text: "High-Speed WiFi" },
-                    ].map((feature, idx) => {
-                      const IconComp = feature.icon;
-                      return (
-                        <div key={idx} className="flex items-center gap-2 text-xs text-primary-foreground/80">
-                          <IconComp className="w-3.5 h-3.5 text-amber-400" />
-                          <span>{feature.text}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  
-                  {/* Pricing */}
-                  <div className="flex items-end justify-between pt-4 border-t border-primary-foreground/20">
-                    <div>
-                      <p className="text-primary-foreground/50 line-through text-sm">$3,125</p>
-                      <p className="font-heading text-3xl font-bold text-amber-400">$2,499</p>
-                    </div>
-                    <span className="px-3 py-1 bg-amber-500/20 text-amber-400 text-sm font-medium rounded-lg border border-amber-500/30">
-                      Save 20%
-                    </span>
-                  </div>
                 </div>
-              </div>
+              ))}
             </div>
 
             {/* Common Amenities */}
