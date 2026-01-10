@@ -9,7 +9,8 @@ import {
   Check, X, ChevronDown, Play, Download, Phone,
   Calendar, Clock, Star, Instagram, MessageCircle, Sparkles,
   GraduationCap, Repeat, Mountain, Handshake, Zap, Layers, 
-  UserCheck, Brain, BookMarked, UsersRound, RefreshCw
+  UserCheck, Brain, BookMarked, UsersRound, RefreshCw,
+  Droplets, TreePine, Footprints, Navigation, type LucideIcon
 } from "lucide-react";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import activityAyurveda from "@/assets/activity-ayurveda.jpg";
@@ -368,11 +369,11 @@ const accommodationGallery = [
 ];
 
 // Accommodation Location Features
-const locationFeatures = [
-  { icon: "💧", text: "10 beautiful waterfalls within 10 km" },
-  { icon: "🌿", text: "Private forest with an in-house waterfall" },
-  { icon: "🚶", text: "Peaceful rice-field trekking on-site" },
-  { icon: "📍", text: "Only 30 minutes from central Ubud" },
+const locationFeatures: { icon: LucideIcon; text: string }[] = [
+  { icon: Droplets, text: "10 beautiful waterfalls within 10 km" },
+  { icon: TreePine, text: "Private forest with an in-house waterfall" },
+  { icon: Footprints, text: "Peaceful rice-field trekking on-site" },
+  { icon: Navigation, text: "Only 30 minutes from central Ubud" },
 ];
 
 // Upcoming Dates
@@ -1740,14 +1741,17 @@ This is not a transactional relationship — it is a lifelong connection.`}
               
               {/* Location Features */}
               <div className="flex flex-col gap-6 max-w-md">
-                {locationFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full border-2 border-background/50 flex items-center justify-center bg-background/10 backdrop-blur-sm">
-                      <span className="text-2xl">{feature.icon}</span>
+                {locationFeatures.map((feature, index) => {
+                  const IconComponent = feature.icon;
+                  return (
+                    <div key={index} className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-full border-2 border-background/50 flex items-center justify-center bg-background/10 backdrop-blur-sm">
+                        <IconComponent className="w-6 h-6 text-background" />
+                      </div>
+                      <p className="text-background text-lg text-left">{feature.text}</p>
                     </div>
-                    <p className="text-background text-lg text-left">{feature.text}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
