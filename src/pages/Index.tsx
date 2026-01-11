@@ -8,7 +8,6 @@ import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import YTTCSupportSection from "@/components/home/YTTCSupportSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FAQSection from "@/components/home/FAQSection";
-import CTASection from "@/components/home/CTASection";
 
 const Index = () => {
   return (
@@ -22,7 +21,6 @@ const Index = () => {
       <GoogleReviewsSection />
       <WhyChooseUs />
       <FAQSection />
-      <CTASection />
     </Layout>
   );
 };
