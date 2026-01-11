@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Award } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
-import course100hr from "@/assets/course-100hr.jpg";
-import course200hr from "@/assets/course-200hr.jpg";
-import course300hr from "@/assets/course-300hr.jpg";
+import course100hr from "@/assets/course-100hr-new.jpg";
+import course200hr from "@/assets/course-200hr-new.jpg";
+import course300hr from "@/assets/course-300hr-new.jpg";
 
 const courses = [
   {
