@@ -60,31 +60,35 @@ export default function FounderSection() {
                 Meet Your Guide
               </span>
               
-              <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
-                A Journey from the
-                <span className="block text-primary">Himalayas to Your Heart</span>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-2">
+                Yogacharya Sachin
               </h2>
+              <p className="text-primary font-medium text-lg mb-6">Founder & Lead Teacher, YogaGarhi</p>
               
               <div className="space-y-5 text-muted-foreground leading-relaxed mb-8">
                 <p>
-                  Namaste! I am the founder of <strong className="text-foreground">YogaGarhi</strong>, 
-                  and my journey into yoga began in the sacred foothills of the Himalayas, where ancient 
-                  wisdom flows as naturally as the Ganges. Raised in a lineage of spiritual practitioners, 
-                  I was immersed in authentic yogic traditions from childhood.
+                  A fearless child, a curious teen, and a heart that kept seeking — this journey 
+                  gradually shaped a revolutionary man, <em className="text-foreground font-medium">not driven by rebellion, 
+                  but by awareness</em>. What began as exploration unfolded into a life devoted to 
+                  practice, discipline, teaching, and service.
+                </p>
+                
+                <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
+                  "Yoga was not found in a single moment; it revealed itself slowly — through experience, 
+                  inquiry, inner silence, and lived understanding."
                 </p>
                 
                 <p>
-                  After years of intensive sadhana under revered masters and earning international 
-                  certifications, I felt a calling to share this transformative knowledge with seekers 
-                  worldwide. YogaGarhi was born from a vision to create a space where traditional 
-                  teachings meet modern understanding – a sanctuary where every student can discover 
-                  their true potential.
+                  Through years of teaching in teacher training schools, a deeper realization emerged. 
+                  While yoga was being taught with technical precision, <strong className="text-foreground">its living 
+                  essence was often missing</strong>. From this understanding, <strong className="text-foreground">YogaGarhi</strong> was 
+                  founded — <em className="text-foreground font-medium">yoga as union</em> and <em className="text-foreground font-medium">garhi 
+                  as a fortress</em> — created to preserve the true spirit of yoga.
                 </p>
                 
                 <p>
-                  My teaching philosophy is simple: <em className="text-foreground font-medium">
-                  "Yoga is not about touching your toes; it is about what you learn on the way down."</em> 
-                  I believe in nurturing not just the body, but awakening the spirit within each practitioner.
+                  Here, <strong className="text-foreground">yoga is lived, not merely taught</strong>; rooted in nature, breath, 
+                  awareness, and inner truth — guiding sincere seekers toward balance and authentic transformation.
                 </p>
               </div>
               
