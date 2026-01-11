@@ -67,14 +67,14 @@ export default function FounderSection() {
               
               <div className="space-y-5 text-muted-foreground leading-relaxed mb-8">
                 <p>
-                  A fearless child, a curious teen, and a heart that kept seeking — this journey 
+                  A fearless child, a curious teen, and a heart that kept seeking. This journey 
                   gradually shaped a revolutionary man, <em className="text-foreground font-medium">not driven by rebellion, 
                   but by awareness</em>. What began as exploration unfolded into a life devoted to 
                   practice, discipline, teaching, and service.
                 </p>
                 
                 <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
-                  "Yoga was not found in a single moment; it revealed itself slowly — through experience, 
+                  "Yoga was not found in a single moment; it revealed itself slowly, through experience, 
                   inquiry, inner silence, and lived understanding."
                 </p>
                 
@@ -82,13 +82,13 @@ export default function FounderSection() {
                   Through years of teaching in teacher training schools, a deeper realization emerged. 
                   While yoga was being taught with technical precision, <strong className="text-foreground">its living 
                   essence was often missing</strong>. From this understanding, <strong className="text-foreground">YogaGarhi</strong> was 
-                  founded — <em className="text-foreground font-medium">yoga as union</em> and <em className="text-foreground font-medium">garhi 
-                  as a fortress</em> — created to preserve the true spirit of yoga.
+                  founded. <em className="text-foreground font-medium">Yoga as union</em> and <em className="text-foreground font-medium">garhi 
+                  as a fortress</em>, created to preserve the true spirit of yoga.
                 </p>
                 
                 <p>
                   Here, <strong className="text-foreground">yoga is lived, not merely taught</strong>; rooted in nature, breath, 
-                  awareness, and inner truth — guiding sincere seekers toward balance and authentic transformation.
+                  awareness, and inner truth, guiding sincere seekers toward balance and authentic transformation.
                 </p>
               </div>
               
