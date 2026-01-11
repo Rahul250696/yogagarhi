@@ -2209,42 +2209,44 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </p>
             
             {/* Location Features */}
-            <div className="max-w-xl mx-auto space-y-8">
-              {/* Feature 1 */}
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                  </svg>
+            <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Feature 1 - Waterfalls */}
+              <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-5 py-4">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <Droplets className="w-6 h-6 text-white" />
                 </div>
-                <p className="font-heading text-lg md:text-xl text-white text-left">
-                  10 minutes to the sacred Tirta Empul Temple
+                <p className="font-heading text-base md:text-lg text-white text-left">
+                  10 beautiful waterfalls within 10 km
                 </p>
               </div>
               
-              {/* Feature 2 */}
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M3 12C3 12 5 4 12 4C19 4 21 12 21 12C21 12 19 20 12 20C5 20 3 12 3 12Z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
+              {/* Feature 2 - Private Forest */}
+              <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-5 py-4">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <Mountain className="w-6 h-6 text-white" />
                 </div>
-                <p className="font-heading text-lg md:text-xl text-white text-left">
-                  Surrounded by lush rice terraces and tropical jungle
+                <p className="font-heading text-base md:text-lg text-white text-left">
+                  Private forest with an in-house waterfall
                 </p>
               </div>
               
-              {/* Feature 3 */}
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
-                    <path d="M12 6V12L16 14" />
-                  </svg>
+              {/* Feature 3 - Rice-field Trekking */}
+              <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-5 py-4">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <Leaf className="w-6 h-6 text-white" />
                 </div>
-                <p className="font-heading text-lg md:text-xl text-white text-left">
-                  15 minutes walk to Tegallalang Rice Terraces
+                <p className="font-heading text-base md:text-lg text-white text-left">
+                  Peaceful rice-field trekking on-site
+                </p>
+              </div>
+              
+              {/* Feature 4 - Distance to Ubud */}
+              <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-xl px-5 py-4">
+                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <p className="font-heading text-base md:text-lg text-white text-left">
+                  Only 15 km from central Ubud
                 </p>
               </div>
             </div>
