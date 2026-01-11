@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Phone, BookOpen, Sparkles, Video, Calendar, GraduationCap, Check } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
+import { useBooking } from "@/components/BookingDialog";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 const ReadyToBeginSection = () => {
   const { setShowEnrollDialog } = useEnrollment();
+  const { setShowBookingDialog } = useBooking();
   
   // Free Manual Dialog
   const [showManualDialog, setShowManualDialog] = useState(false);
@@ -26,17 +28,6 @@ const ReadyToBeginSection = () => {
   const isManualFormComplete = manualForm.name && manualForm.email;
   const isWebinarFormComplete = webinarForm.name && webinarForm.email && webinarForm.timezone && webinarForm.date && webinarForm.time;
   const isPreYTTCFormComplete = preYTTCForm.name && preYTTCForm.email;
-
-  const scrollToBooking = () => {
-    // First try to find FAQ section on homepage (has contact info)
-    const faqSection = document.getElementById('faq-section');
-    if (faqSection) {
-      faqSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to contact page
-      window.location.href = '/contact';
-    }
-  };
 
   const scrollToQuiz = () => {
     const quizSection = document.getElementById('prakriti-section');
@@ -107,7 +98,7 @@ const ReadyToBeginSection = () => {
           <Button 
             size="lg" 
             className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/20"
-            onClick={scrollToBooking}
+            onClick={() => setShowBookingDialog(true)}
           >
             <Phone className="w-4 h-4 mr-2" />
             Book a Call
