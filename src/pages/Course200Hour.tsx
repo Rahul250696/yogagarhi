@@ -2183,165 +2183,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
-        <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
-          <section className="bg-secondary/20 relative overflow-hidden">
-            {/* Decorative Background */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
-            
-            <div className="container mx-auto px-4 relative z-10">
-              {/* Clickable Section Header */}
-              <CollapsibleTrigger asChild>
-                <div className="text-center py-12 cursor-pointer group">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                    <UtensilsCrossed className="w-4 h-4" />
-                    Nourishment for Body & Soul
-                  </span>
-                  <div className="flex items-center justify-center gap-3">
-                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
-                      Sattvic Food Experience
-                    </h2>
-                    <ChevronDown className={`w-8 h-8 text-primary transition-transform duration-300 ${isFoodSectionOpen ? 'rotate-180' : ''}`} />
-                  </div>
-                  <p className="text-muted-foreground max-w-2xl mx-auto text-lg mt-4">
-                    Three daily meals prepared with love, following ancient yogic principles 
-                    to support your practice and elevate your consciousness.
-                  </p>
-                  <p className="text-primary/70 text-sm mt-2 group-hover:text-primary transition-colors">
-                    {isFoodSectionOpen ? 'Click to collapse' : 'Click to expand'}
-                  </p>
-                </div>
-              </CollapsibleTrigger>
-              
-              <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                <div className="pb-20">
-
-            {/* Food Philosophy Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
-              {foodPhilosophy.map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <div 
-                    key={index}
-                    className="group text-center p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-card"
-                  >
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                      <IconComponent className="w-6 h-6 text-primary" />
-                    </div>
-                    <h4 className="font-heading font-bold text-foreground mb-1">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Daily Meals */}
-            <div className="max-w-6xl mx-auto">
-              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-10">
-                A Day of Mindful Eating
-              </h3>
-              
-              <div className="grid md:grid-cols-3 gap-8">
-                {foodMenu.map((meal, index) => {
-                  const MealIcon = meal.icon;
-                  return (
-                    <div 
-                      key={index}
-                      className="group relative bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-elevated"
-                    >
-                      {/* Meal Image */}
-                      <div className="relative h-48 overflow-hidden">
-                        <img 
-                          src={meal.image}
-                          alt={meal.meal}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
-                        
-                        {/* Meal Badge */}
-                        <div className="absolute top-4 left-4 px-3 py-1.5 bg-background/90 backdrop-blur-sm rounded-full flex items-center gap-2">
-                          <MealIcon className="w-4 h-4 text-primary" />
-                          <span className="text-sm font-medium text-foreground">{meal.time}</span>
-                        </div>
-                        
-                        {/* Meal Title Overlay */}
-                        <div className="absolute bottom-4 left-4">
-                          <h4 className="font-heading text-2xl font-bold text-background">{meal.meal}</h4>
-                        </div>
-                      </div>
-                      
-                      {/* Meal Items */}
-                      <div className="p-6">
-                        <ul className="space-y-3">
-                          {meal.items.map((item, itemIndex) => (
-                            <li key={itemIndex} className="flex items-start gap-3 text-muted-foreground">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      {/* Hover Accent Line */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-
-            {/* Dietary Options Grid */}
-            <div className="mt-20">
-              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-4">
-                We Cater To All Diets
-              </h3>
-              <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
-                Let us know your dietary requirements and we'll take care of everything
-              </p>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                {dietaryOptions.map((diet, index) => {
-                  const DietIcon = diet.icon;
-                  return (
-                    <div 
-                      key={index}
-                      className="group text-center p-5 bg-background rounded-xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-card cursor-default"
-                    >
-                      <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                        <DietIcon className="w-5 h-5 text-primary" />
-                      </div>
-                      <h4 className="font-heading font-bold text-foreground text-sm mb-1">{diet.name}</h4>
-                      <p className="text-xs text-muted-foreground">{diet.description}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Additional Food Info */}
-            <div className="mt-16 text-center">
-              <div className="inline-flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
-                  <Check className="w-4 h-4 text-primary" />
-                  Fresh coconut water daily
-                </span>
-                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
-                  <Check className="w-4 h-4 text-primary" />
-                  Seasonal tropical fruits
-                </span>
-                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
-                  <Check className="w-4 h-4 text-primary" />
-                  Special requests welcome
-                </span>
-              </div>
-            </div>
-                </div>
-              </CollapsibleContent>
-            </div>
-          </section>
-        </Collapsible>
-
         {/* ===== ACCOMMODATION ===== */}
         {/* Hero Banner with Background */}
         <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
@@ -2587,6 +2428,166 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
           </div>
         </section>
+
+        {/* ===== SATTVIC FOOD ===== */}
+        <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
+          <section className="bg-secondary/20 relative overflow-hidden">
+            {/* Decorative Background */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
+            
+            <div className="container mx-auto px-4 relative z-10">
+              {/* Clickable Section Header */}
+              <CollapsibleTrigger asChild>
+                <div className="text-center py-12 cursor-pointer group">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                    <UtensilsCrossed className="w-4 h-4" />
+                    Nourishment for Body & Soul
+                  </span>
+                  <div className="flex items-center justify-center gap-3">
+                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
+                      Sattvic Food Experience
+                    </h2>
+                    <ChevronDown className={`w-8 h-8 text-primary transition-transform duration-300 ${isFoodSectionOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                  <p className="text-muted-foreground max-w-2xl mx-auto text-lg mt-4">
+                    Three daily meals prepared with love, following ancient yogic principles 
+                    to support your practice and elevate your consciousness.
+                  </p>
+                  <p className="text-primary/70 text-sm mt-2 group-hover:text-primary transition-colors">
+                    {isFoodSectionOpen ? 'Click to collapse' : 'Click to expand'}
+                  </p>
+                </div>
+              </CollapsibleTrigger>
+              
+              <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                <div className="pb-20">
+
+            {/* Food Philosophy Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
+              {foodPhilosophy.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <div 
+                    key={index}
+                    className="group text-center p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-card"
+                  >
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                      <IconComponent className="w-6 h-6 text-primary" />
+                    </div>
+                    <h4 className="font-heading font-bold text-foreground mb-1">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Daily Meals */}
+            <div className="max-w-6xl mx-auto">
+              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-10">
+                A Day of Mindful Eating
+              </h3>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                {foodMenu.map((meal, index) => {
+                  const MealIcon = meal.icon;
+                  return (
+                    <div 
+                      key={index}
+                      className="group relative bg-background rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-500 hover:shadow-elevated"
+                    >
+                      {/* Meal Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={meal.image}
+                          alt={meal.meal}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-transparent" />
+                        
+                        {/* Meal Badge */}
+                        <div className="absolute top-4 left-4 px-3 py-1.5 bg-background/90 backdrop-blur-sm rounded-full flex items-center gap-2">
+                          <MealIcon className="w-4 h-4 text-primary" />
+                          <span className="text-sm font-medium text-foreground">{meal.time}</span>
+                        </div>
+                        
+                        {/* Meal Title Overlay */}
+                        <div className="absolute bottom-4 left-4">
+                          <h4 className="font-heading text-2xl font-bold text-background">{meal.meal}</h4>
+                        </div>
+                      </div>
+                      
+                      {/* Meal Items */}
+                      <div className="p-6">
+                        <ul className="space-y-3">
+                          {meal.items.map((item, itemIndex) => (
+                            <li key={itemIndex} className="flex items-start gap-3 text-muted-foreground">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      {/* Hover Accent Line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+
+            {/* Dietary Options Grid */}
+            <div className="mt-20">
+              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-4">
+                We Cater To All Diets
+              </h3>
+              <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
+                Let us know your dietary requirements and we'll take care of everything
+              </p>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                {dietaryOptions.map((diet, index) => {
+                  const DietIcon = diet.icon;
+                  return (
+                    <div 
+                      key={index}
+                      className="group text-center p-5 bg-background rounded-xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-card cursor-default"
+                    >
+                      <div className="w-10 h-10 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <DietIcon className="w-5 h-5 text-primary" />
+                      </div>
+                      <h4 className="font-heading font-bold text-foreground text-sm mb-1">{diet.name}</h4>
+                      <p className="text-xs text-muted-foreground">{diet.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Additional Food Info */}
+            <div className="mt-16 text-center">
+              <div className="inline-flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
+                  <Check className="w-4 h-4 text-primary" />
+                  Fresh coconut water daily
+                </span>
+                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
+                  <Check className="w-4 h-4 text-primary" />
+                  Seasonal tropical fruits
+                </span>
+                <span className="flex items-center gap-2 px-4 py-2 bg-background rounded-full border border-border">
+                  <Check className="w-4 h-4 text-primary" />
+                  Special requests welcome
+                </span>
+              </div>
+            </div>
+                </div>
+              </CollapsibleContent>
+            </div>
+          </section>
+        </Collapsible>
 
         {/* ===== UPCOMING DATES ===== */}
         <section className="py-20 bg-background">
