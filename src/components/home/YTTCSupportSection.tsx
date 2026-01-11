@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { 
   GraduationCap, RefreshCw, Users, BookOpen, Heart, 
-  ArrowRight, Sparkles, CheckCircle2, Star, 
-  ChevronRight, Play
+  Sparkles, CheckCircle2, Star, 
+  ChevronRight, Play, X, Mail, Send, Check
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 
 // Pre-YTTC Support Items
 const preYTTCItems = [
@@ -44,6 +46,27 @@ const postYTTCItems = [
 
 const YTTCSupportSection = () => {
   const [activeTab, setActiveTab] = useState<'pre' | 'post'>('pre');
+  const [showPreYTTCDialog, setShowPreYTTCDialog] = useState(false);
+  const [showThankYouDialog, setShowThankYouDialog] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const isValidEmail = email.trim().length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isValidEmail) return;
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setIsSubmitting(false);
+    setShowPreYTTCDialog(false);
+    setShowThankYouDialog(true);
+    setEmail('');
+  };
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -218,13 +241,19 @@ const YTTCSupportSection = () => {
                     </p>
                   </div>
                   
-                  {/* CTA */}
+                  {/* CTA Button with Premium Styling */}
                   <Button 
-                    variant="outline" 
-                    className="group rounded-full px-6 border-primary/30 hover:border-primary hover:bg-primary/5"
+                    onClick={() => setShowPreYTTCDialog(true)}
+                    className="group relative overflow-hidden rounded-full px-8 py-6 bg-gradient-to-r from-amber-500 via-amber-600 to-orange-500 hover:from-amber-600 hover:via-amber-700 hover:to-orange-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border-0"
                   >
-                    Learn More About Pre-YTTC
-                    <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    {/* Shimmer Effect */}
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                    
+                    <span className="relative flex items-center gap-2">
+                      <GraduationCap className="w-5 h-5" />
+                      Learn More About Pre-YTTC
+                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </Button>
                 </div>
               </div>
@@ -366,6 +395,134 @@ const YTTCSupportSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Pre-YTTC Email Form Dialog */}
+      <Dialog open={showPreYTTCDialog} onOpenChange={setShowPreYTTCDialog}>
+        <DialogContent className="sm:max-w-md border-0 shadow-2xl">
+          {/* Decorative Header Background */}
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-amber-500 via-amber-600 to-orange-500 rounded-t-lg" />
+          
+          {/* Close Button */}
+          <button 
+            onClick={() => setShowPreYTTCDialog(false)}
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors z-10"
+          >
+            <X className="w-4 h-4 text-white" />
+          </button>
+          
+          <div className="relative pt-8 pb-4">
+            {/* Icon */}
+            <div className="mx-auto w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center mb-6 -mt-16">
+              <GraduationCap className="w-10 h-10 text-amber-600" />
+            </div>
+            
+            <DialogHeader className="text-center space-y-2">
+              <DialogTitle className="font-heading text-2xl font-bold text-foreground">
+                Get Pre-YTTC Details
+              </DialogTitle>
+              <p className="text-muted-foreground text-sm">
+                Enter your email to receive the complete Pre-YTTC preparation guide
+              </p>
+            </DialogHeader>
+            
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+              {/* Email Input */}
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <Input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="pl-12 py-6 rounded-xl border-2 border-border focus:border-amber-500 transition-colors"
+                  required
+                />
+              </div>
+              
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                disabled={!isValidEmail || isSubmitting}
+                className={`w-full py-6 rounded-xl font-semibold text-base transition-all duration-300 ${
+                  isValidEmail 
+                    ? 'bg-gradient-to-r from-amber-500 via-amber-600 to-orange-500 hover:from-amber-600 hover:via-amber-700 hover:to-orange-600 text-white shadow-lg hover:shadow-xl' 
+                    : 'bg-muted text-muted-foreground cursor-not-allowed'
+                }`}
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <Send className="w-5 h-5" />
+                    Send Me Pre-YTTC Guide
+                  </span>
+                )}
+              </Button>
+              
+              {/* Privacy Note */}
+              <p className="text-center text-xs text-muted-foreground">
+                🔒 We respect your privacy. No spam, ever.
+              </p>
+            </form>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Thank You Dialog */}
+      <Dialog open={showThankYouDialog} onOpenChange={setShowThankYouDialog}>
+        <DialogContent className="sm:max-w-md text-center border-0 shadow-2xl">
+          <div className="py-8 space-y-6">
+            {/* Success Animation */}
+            <div className="relative mx-auto w-24 h-24">
+              {/* Animated Rings */}
+              <div className="absolute inset-0 rounded-full border-4 border-green-200 animate-ping" />
+              <div className="absolute inset-2 rounded-full border-2 border-green-300 animate-pulse" />
+              
+              {/* Check Icon */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg">
+                  <Check className="w-10 h-10 text-white" strokeWidth={3} />
+                </div>
+              </div>
+            </div>
+            
+            {/* Message */}
+            <div className="space-y-2">
+              <h3 className="font-heading text-2xl font-bold text-foreground">
+                Thank You! 🙏
+              </h3>
+              <p className="text-muted-foreground">
+                Your Pre-YTTC preparation guide is on its way to your inbox.
+              </p>
+            </div>
+            
+            {/* Info Box */}
+            <div className="bg-secondary/50 rounded-xl p-4 text-sm text-muted-foreground space-y-2">
+              <p className="flex items-center justify-center gap-2">
+                <Mail className="w-4 h-4 text-primary" />
+                Check your email within the next few minutes
+              </p>
+              <p className="text-xs">
+                Don't forget to check your spam folder just in case!
+              </p>
+            </div>
+            
+            {/* Close Button */}
+            <Button 
+              onClick={() => setShowThankYouDialog(false)}
+              className="bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full px-8 hover:shadow-lg transition-all"
+            >
+              Continue Exploring
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
