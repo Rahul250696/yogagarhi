@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { useEnrollment } from "@/components/EnrollmentDialog";
+import { useQuickEnquiry } from "@/components/QuickEnquiryDialog";
 import { useBooking } from "@/components/BookingDialog";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 export default function Hero() {
-  const { setShowEnrollDialog } = useEnrollment();
+  const { setShowQuickEnquiry } = useQuickEnquiry();
   const { setShowBookingDialog } = useBooking();
-
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -94,7 +93,7 @@ export default function Hero() {
             <Button 
               variant="hero" 
               size="xl" 
-              onClick={() => setShowEnrollDialog(true)}
+              onClick={() => setShowQuickEnquiry(true)}
             >
               Quick Enquiry
             </Button>
