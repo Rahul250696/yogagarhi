@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { 
@@ -477,6 +478,8 @@ export default function Course200Hour() {
   ];
   const [selectedTimezone, setSelectedTimezone] = useState('UTC +05:30 New Delhi, Mumbai');
   const [showTimezoneDropdown, setShowTimezoneDropdown] = useState(false);
+  const [isFoodSectionOpen, setIsFoodSectionOpen] = useState(true);
+  const [isAccommodationOpen, setIsAccommodationOpen] = useState(true);
 
   const timezones = [
     { value: 'UTC -12:00 Baker Island', label: 'UTC -12:00 Baker Island' },
@@ -2110,26 +2113,38 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
-        <section className="py-20 bg-secondary/20 relative overflow-hidden">
-          {/* Decorative Background */}
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
-          
-          <div className="container mx-auto px-4 relative z-10">
-            {/* Section Header */}
-            <div className="text-center mb-16">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                <UtensilsCrossed className="w-4 h-4" />
-                Nourishment for Body & Soul
-              </span>
-              <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
-                Sattvic Food Experience
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                Three daily meals prepared with love, following ancient yogic principles 
-                to support your practice and elevate your consciousness.
-              </p>
-            </div>
+        <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
+          <section className="bg-secondary/20 relative overflow-hidden">
+            {/* Decorative Background */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
+            
+            <div className="container mx-auto px-4 relative z-10">
+              {/* Clickable Section Header */}
+              <CollapsibleTrigger asChild>
+                <div className="text-center py-12 cursor-pointer group">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                    <UtensilsCrossed className="w-4 h-4" />
+                    Nourishment for Body & Soul
+                  </span>
+                  <div className="flex items-center justify-center gap-3">
+                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
+                      Sattvic Food Experience
+                    </h2>
+                    <ChevronDown className={`w-8 h-8 text-primary transition-transform duration-300 ${isFoodSectionOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                  <p className="text-muted-foreground max-w-2xl mx-auto text-lg mt-4">
+                    Three daily meals prepared with love, following ancient yogic principles 
+                    to support your practice and elevate your consciousness.
+                  </p>
+                  <p className="text-primary/70 text-sm mt-2 group-hover:text-primary transition-colors">
+                    {isFoodSectionOpen ? 'Click to collapse' : 'Click to expand'}
+                  </p>
+                </div>
+              </CollapsibleTrigger>
+              
+              <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                <div className="pb-20">
 
             {/* Food Philosophy Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
@@ -2251,76 +2266,74 @@ This is not a transactional relationship — it is a lifelong connection.`}
                 </span>
               </div>
             </div>
-          </div>
-        </section>
+                </div>
+              </CollapsibleContent>
+            </div>
+          </section>
+        </Collapsible>
 
         {/* ===== ACCOMMODATION ===== */}
-        {/* Hero Banner with Background */}
-        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 -z-10">
-            <img 
-              src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop"
-              alt="Bali yoga retreat accommodation"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-foreground/60" />
-          </div>
-          
-          {/* Content */}
-          <div className="container mx-auto px-4 text-center relative z-10">
-            {/* Main Title */}
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[0.15em] uppercase mb-8">
-              Accommodation
-            </h2>
-            
-            {/* Subtitle */}
-            <p className="font-heading text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-16 leading-relaxed">
-              A serene yoga retreat in the heart of Bali's sacred Ubud region
-            </p>
-            
-            {/* Location Features */}
-            <div className="max-w-xl mx-auto space-y-8">
-              {/* Feature 1 */}
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                  </svg>
-                </div>
-                <p className="font-heading text-lg md:text-xl text-white text-left">
-                  10 minutes to the sacred Tirta Empul Temple
-                </p>
-              </div>
-              
-              {/* Feature 2 */}
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M3 12C3 12 5 4 12 4C19 4 21 12 21 12C21 12 19 20 12 20C5 20 3 12 3 12Z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                </div>
-                <p className="font-heading text-lg md:text-xl text-white text-left">
-                  Surrounded by lush rice terraces and tropical jungle
-                </p>
-              </div>
-              
-              {/* Feature 3 */}
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-full border-2 border-white/40 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
-                    <path d="M12 6V12L16 14" />
-                  </svg>
-                </div>
-                <p className="font-heading text-lg md:text-xl text-white text-left">
-                  15 minutes walk to Tegallalang Rice Terraces
-                </p>
-              </div>
+        <Collapsible open={isAccommodationOpen} onOpenChange={setIsAccommodationOpen}>
+          {/* Hero Banner with Background - Always Visible as Trigger */}
+          <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0 -z-10">
+              <img 
+                src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&h=1080&fit=crop"
+                alt="Bali yoga retreat accommodation"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-foreground/60" />
             </div>
-          </div>
-        </section>
+            
+            {/* Content - Clickable Header */}
+            <CollapsibleTrigger asChild>
+              <div className="container mx-auto px-4 text-center relative z-10 cursor-pointer group py-12">
+                {/* Main Title */}
+                <div className="flex items-center justify-center gap-3 mb-8">
+                  <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-[0.15em] uppercase">
+                    Accommodation
+                  </h2>
+                  <ChevronDown className={`w-10 h-10 text-white transition-transform duration-300 ${isAccommodationOpen ? 'rotate-180' : ''}`} />
+                </div>
+                
+                {/* Subtitle */}
+                <p className="font-heading text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
+                  A serene yoga retreat in the heart of Bali's sacred Ubud region
+                </p>
+                
+                <p className="text-white/70 text-sm group-hover:text-white transition-colors">
+                  {isAccommodationOpen ? 'Click to collapse' : 'Click to expand details'}
+                </p>
+                
+                {/* Location Features - Condensed when clickable */}
+                <div className="max-w-3xl mx-auto mt-8 flex flex-wrap justify-center gap-6 text-sm">
+                  <div className="flex items-center gap-2 text-white/80">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                    </svg>
+                    <span>10 min to Tirta Empul Temple</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-white/80">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M3 12C3 12 5 4 12 4C19 4 21 12 21 12C21 12 19 20 12 20C5 20 3 12 3 12Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>Lush rice terraces & jungle</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-white/80">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
+                      <path d="M12 6V12L16 14" />
+                    </svg>
+                    <span>15 min to Tegallalang Rice Terraces</span>
+                  </div>
+                </div>
+              </div>
+            </CollapsibleTrigger>
+          </section>
+
+          <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
 
         {/* Room Types Section */}
         <section className="py-20 bg-background">
@@ -2499,6 +2512,8 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
           </div>
         </section>
+          </CollapsibleContent>
+        </Collapsible>
 
         {/* ===== UPCOMING DATES ===== */}
         <section className="py-20 bg-background">
