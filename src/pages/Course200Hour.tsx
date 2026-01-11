@@ -1297,7 +1297,7 @@ Key Benefits:
 • Designed to refine over time as your understanding deepens
 
 These sequences are not random flows — they are practical, purposeful, and built to give maximum benefit.`}
-                imageUrl={apartMountainPose}
+                imageUrl={apartCeremony}
                 imageAlt="Yoga Sequences"
                 isReversed={false}
               />
@@ -1315,7 +1315,7 @@ These sequences are not random flows — they are practical, purposeful, and bui
 • Raja Yoga – discipline of body and mind
 
 These paths are not taught as theory. They are experienced through daily life, reflection, and practice.`}
-                imageUrl={apartCeremony}
+                imageUrl={apartMountainPose}
                 imageAlt="Himalayan Tradition"
                 isReversed={true}
               />
