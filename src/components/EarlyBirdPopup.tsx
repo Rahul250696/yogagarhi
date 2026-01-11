@@ -2,16 +2,21 @@ import { useState, useEffect } from "react";
 import { X, Sparkles } from "lucide-react";
 
 const EarlyBirdPopup = () => {
+  // Check sessionStorage immediately to prevent flash
+  const alreadyShown = sessionStorage.getItem('earlyBirdShown') === 'true';
+  
   const [isVisible, setIsVisible] = useState(false);
-  const [isDismissed, setIsDismissed] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(alreadyShown);
 
   useEffect(() => {
-    // Check if already dismissed in this session
-    const dismissed = sessionStorage.getItem('earlyBirdDismissed');
-    if (dismissed) {
+    // If already shown in this session, don't show again
+    if (sessionStorage.getItem('earlyBirdShown') === 'true') {
       setIsDismissed(true);
       return;
     }
+
+    // Mark as shown for this session (shows only once globally)
+    sessionStorage.setItem('earlyBirdShown', 'true');
 
     // Show popup after 3 seconds
     const timer = setTimeout(() => {
