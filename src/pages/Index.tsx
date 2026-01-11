@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import WelcomeSection from "@/components/home/WelcomeSection";
 import CoursesSection from "@/components/home/CoursesSection";
 import FounderSection from "@/components/home/FounderSection";
+import WhyOneStyleSection from "@/components/home/WhyOneStyleSection";
 import ActivitiesSection from "@/components/home/ActivitiesSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FAQSection from "@/components/home/FAQSection";
@@ -15,6 +16,7 @@ const Index = () => {
       <WelcomeSection />
       <CoursesSection />
       <FounderSection />
+      <WhyOneStyleSection />
       <ActivitiesSection />
       <WhyChooseUs />
       <FAQSection />
