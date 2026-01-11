@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -12,12 +13,12 @@ import gallery5 from "@/assets/gallery/gallery-5.jpg";
 import founderImage from "@/assets/founder-image.png";
 
 const whyChooseUs = [
-  { icon: Sparkles, title: "The Unique Shivshakti Method", desc: "Our Signature Approach converts yogic theory into practical wisdom." },
-  { icon: GraduationCap, title: "Real Teaching Skills", desc: "Micro-teaching, with short sessions and fewer students, builds trust and shapes practitioners into future teachers." },
-  { icon: Compass, title: "Post-TTC Mentorship", desc: "Include Yoga business modules, teaching set up, authentic marketing, retreat, workshops, and alumni community to support your career." },
-  { icon: Users, title: "Small Learning Groups", desc: "Only 10-15 students per batch for personalized attention. We make sure everyone learns." },
-  { icon: BookOpen, title: "Philosophy-driven Approach", desc: "Brings highest philosophy into practice through rituals, meditation, satsang and many more." },
-  { icon: Star, title: "Technical Expertise", desc: "We teach you anatomy and biomechanics on the mat. You learn alignment, sequencing, adjustments in detail." },
+  { title: "The Unique Shivshakti Method", desc: "Our Signature Approach converts yogic theory into practical wisdom.", highlight: "Signature" },
+  { title: "Real Teaching Skills", desc: "Micro-teaching, with short sessions and fewer students, builds trust and shapes practitioners into future teachers.", highlight: "Practical" },
+  { title: "Post-TTC Mentorship", desc: "Include Yoga business modules, teaching set up, authentic marketing, retreat, workshops, and alumni community to support your career.", highlight: "Lifetime" },
+  { title: "Small Learning Groups", desc: "Only 10-15 students per batch for personalized attention. We make sure everyone learns.", highlight: "8-15 Max" },
+  { title: "Philosophy-driven Approach", desc: "Brings highest philosophy into practice through rituals, meditation, satsang and many more.", highlight: "Authentic" },
+  { title: "Technical Expertise", desc: "We teach you anatomy and biomechanics on the mat. You learn alignment, sequencing, adjustments in detail.", highlight: "Expert" },
 ];
 
 const experiences = [
@@ -25,6 +26,17 @@ const experiences = [
   { icon: Heart, title: "Scientific, yet spiritual", desc: "Where ancient wisdom meets modern understanding." },
   { icon: Flame, title: "Practical, yet sacred", desc: "Grounded in daily life, yet rooted in timeless depth." },
 ];
+
+// Lotus SVG for decorative purposes
+const LotusDecor = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 100 60" fill="none" stroke="currentColor" strokeWidth="1">
+    <path d="M50 55 C50 40, 30 30, 20 40 C10 50, 30 55, 50 55" />
+    <path d="M50 55 C50 40, 70 30, 80 40 C90 50, 70 55, 50 55" />
+    <path d="M50 55 C50 35, 35 20, 30 30 C25 40, 40 50, 50 55" />
+    <path d="M50 55 C50 35, 65 20, 70 30 C75 40, 60 50, 50 55" />
+    <path d="M50 55 C50 30, 50 15, 50 25 C50 35, 50 45, 50 55" />
+  </svg>
+);
 
 const lifetimeExperiences = [
   "Nature walks",
@@ -36,6 +48,130 @@ const lifetimeExperiences = [
   "Yoga community",
   "Certification"
 ];
+
+function WhyChooseSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="py-24 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full border border-primary" />
+        <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full border border-primary" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full border border-primary" />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="inline-block text-sm font-medium tracking-widest text-primary/70 uppercase mb-3">
+            The Yogagarhi Difference
+          </span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Why Choose Us
+          </h2>
+          <LotusDecor className="w-16 h-10 mx-auto text-primary/40" />
+        </div>
+
+        {/* Bento-style layout */}
+        <div className="max-w-6xl mx-auto">
+          {/* Top row - 3 columns with featured card */}
+          <div className="grid md:grid-cols-3 gap-4 mb-4">
+            {/* Featured large card */}
+            <div 
+              className={`md:col-span-2 group relative p-8 rounded-2xl bg-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-500 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '100ms' }}
+            >
+              <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                {whyChooseUs[0].highlight}
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {whyChooseUs[0].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed max-w-md">
+                {whyChooseUs[0].desc}
+              </p>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </div>
+
+            {/* Stacked cards */}
+            <div className="flex flex-col gap-4">
+              {whyChooseUs.slice(1, 3).map((item, index) => (
+                <div
+                  key={index}
+                  className={`group relative p-5 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-500 ${
+                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${(index + 2) * 100}ms` }}
+                >
+                  <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-muted text-muted-foreground text-[10px] font-semibold">
+                    {item.highlight}
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom row - 3 equal columns */}
+          <div className="grid md:grid-cols-3 gap-4">
+            {whyChooseUs.slice(3, 6).map((item, index) => (
+              <div
+                key={index}
+                className={`group relative p-5 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-500 text-center ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${(index + 4) * 100}ms` }}
+              >
+                <div className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold mb-3">
+                  {item.highlight}
+                </div>
+                <h3 className="font-heading text-base font-semibold text-foreground mb-1.5 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-muted-foreground line-clamp-2">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom decoration */}
+        <div className="flex items-center justify-center gap-3 mt-12">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/30" />
+          <div className="w-2 h-2 rounded-full bg-primary/30" />
+          <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/30" />
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function AboutAshram() {
   const { setShowEnrollDialog } = useEnrollment();
@@ -220,39 +356,8 @@ export default function AboutAshram() {
         </div>
       </section>
 
-      {/* Why Choose YogaGarhi */}
-      <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-primary/40" />
-              <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Why Choose Us</span>
-              <div className="w-8 h-px bg-primary/40" />
-            </div>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose YogaGarhi for Yoga Teacher Training
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              YogaGarhi offers everything you need to become an outstanding yoga teacher. The foundation of our school is rooted in strong spiritual values.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {whyChooseUs.map((feature, index) => (
-              <div 
-                key={feature.title}
-                className={`p-6 bg-background rounded-2xl border border-border/50 transition-all hover:shadow-lg ${
-                  index === 0 ? 'ring-2 ring-primary/20' : ''
-                }`}
-              >
-                <feature.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="font-semibold text-lg text-foreground mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Why Choose YogaGarhi - Bento Style */}
+      <WhyChooseSection />
 
       {/* Lifetime Experiences */}
       <section className="py-20 bg-background">
