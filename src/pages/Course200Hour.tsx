@@ -2573,17 +2573,9 @@ This is not a transactional relationship — it is a lifelong connection.`}
                       </div>
                     )}
                     
-                    {/* Scroll Dots with Text */}
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10">
-                      <div className="flex gap-1.5">
-                        {room.images.map((_, idx) => (
-                          <div 
-                            key={idx} 
-                            className={`w-2 h-2 rounded-full ${idx === 0 ? 'bg-white' : 'bg-white/50'}`} 
-                          />
-                        ))}
-                      </div>
-                      <span className="text-[10px] text-white/80 font-medium tracking-wide">
+                    {/* Slide to explore text */}
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10">
+                      <span className="text-[10px] text-white/80 font-medium tracking-wide bg-black/30 px-2 py-1 rounded-full">
                         Slide to explore
                       </span>
                     </div>
