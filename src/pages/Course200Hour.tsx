@@ -46,6 +46,7 @@ import apartWarriorSequence from "@/assets/apart/warrior-sequence.jpg";
 import apartYogaAllianceGraduates from "@/assets/apart/yoga-alliance-graduates.jpg";
 import apartBaliSurroundings from "@/assets/apart/bali-surroundings.jpg";
 import apartCommunityBeach from "@/assets/apart/community-beach.jpg";
+import apartKecakDance from "@/assets/apart/kecak-dance.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -303,11 +304,11 @@ const whatYouWillReceive = [
     icon: Sparkles,
     image: apartHammock
   },
-  { 
+{ 
     title: "Balinese Dance Performance", 
     description: "Ancient, dynamic and highly expressive dance form that reflects Bali's rich cultural heritage.",
     icon: Star,
-    image: apartCeremony
+    image: apartKecakDance
   },
   { 
     title: "Ayurvedic Meals", 
