@@ -176,14 +176,10 @@ export default function Gallery() {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative h-64 flex items-center justify-center overflow-hidden bg-secondary/30">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[500px] h-[500px] animate-spin-slow">
-            <MandalaBackground />
-          </div>
-        </div>
-        <div className="relative z-10 text-center">
+      {/* Mandala Gallery Section */}
+      <section className="py-16 md:py-24 bg-background relative overflow-hidden min-h-screen">
+        {/* Header */}
+        <div className="container mx-auto px-4 text-center mb-12">
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
             Our Gallery
           </h1>
@@ -191,10 +187,7 @@ export default function Gallery() {
             Glimpses of life at YogaGarhi
           </p>
         </div>
-      </section>
 
-      {/* Mandala Gallery Section */}
-      <section className="py-16 md:py-24 bg-background relative overflow-hidden min-h-screen">
         {/* Central Mandala with Rotating Images */}
         <div className="container mx-auto px-4">
           <div className="relative flex items-center justify-center">
