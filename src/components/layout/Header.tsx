@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Instagram, Facebook, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,18 +23,48 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
+  const [showBanner, setShowBanner] = useState(false);
+  const [bannerDismissed, setBannerDismissed] = useState(false);
   const location = useLocation();
   const { setShowEnrollDialog } = useEnrollment();
+
+  // Show banner with shutter animation after a brief delay
+  useEffect(() => {
+    if (!bannerDismissed) {
+      const timer = setTimeout(() => {
+        setShowBanner(true);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [bannerDismissed]);
+
+  const dismissBanner = () => {
+    setShowBanner(false);
+    setBannerDismissed(true);
+  };
 
   const isActive = (href: string) => location.pathname === href;
 
   return (
     <>
-      {/* Top Banner */}
-      <div className="bg-primary text-primary-foreground py-2 px-4 text-center text-sm">
-        <p className="max-w-5xl mx-auto">
-          We trust the depth of what we offer. If, after the first day, you feel this journey is not meant for you, we will offer a 100% full refund.
-        </p>
+      {/* Top Banner - Shutter Style */}
+      <div 
+        className={`bg-primary text-primary-foreground overflow-hidden transition-all duration-500 ease-out ${
+          showBanner && !bannerDismissed ? 'max-h-20 py-2' : 'max-h-0 py-0'
+        }`}
+      >
+        <div className="container mx-auto px-4 flex items-center justify-center gap-4">
+          <p className="text-center text-sm flex-1">
+            We trust the depth of what we offer. If, after the first day, you feel this journey is not meant for you, we will offer a 100% full refund.
+          </p>
+          <button 
+            onClick={dismissBanner}
+            className="flex-shrink-0 p-1 hover:bg-primary-foreground/20 rounded-full transition-colors"
+            aria-label="Dismiss banner"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
       </div>
 
       {/* Main Header */}
