@@ -122,7 +122,7 @@ export default function Header() {
               <img 
                 src={logo} 
                 alt="YogaGarhi" 
-                className={`object-contain transition-all duration-300 ${
+                className={`object-contain transition-all duration-300 animate-spin-slow ${
                   scrolled ? 'h-12 w-12' : 'h-16 w-16'
                 }`} 
               />
