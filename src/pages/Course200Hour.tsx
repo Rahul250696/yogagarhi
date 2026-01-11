@@ -1235,7 +1235,7 @@ So when training begins, you don't panic. You arrive grounded. You don't jump in
 • How you relate to others
 
 This is where real change happens.`}
-                imageUrl={activityAyurveda}
+                imageUrl={apartChildPose}
                 imageAlt="Yoga Transformation"
                 isReversed={true}
               />
@@ -1254,7 +1254,7 @@ Instead of ignoring this need, Yogagarhi embraced it. Once you complete your YTT
 • Build confidence and refine skills
 
 Because yoga is not a one-time achievement. It is a lifelong refinement.`}
-                imageUrl={activitySoundHealing}
+                imageUrl={apartGroupClass}
                 imageAlt="Lifetime Learning"
                 isReversed={false}
               />
@@ -1274,7 +1274,7 @@ Because yoga is not a one-time achievement. It is a lifelong refinement.`}
 • Understand how to read and work with different bodies
 
 At Yogagarhi, teaching is personalized, precise, and practical — you are a person on a journey, not a number.`}
-                imageUrl={activityWaterfall}
+                imageUrl={apartGroupPose}
                 imageAlt="Small Group Training"
                 isReversed={true}
               />
@@ -1297,7 +1297,7 @@ Key Benefits:
 • Designed to refine over time as your understanding deepens
 
 These sequences are not random flows — they are practical, purposeful, and built to give maximum benefit.`}
-                imageUrl={heroImage}
+                imageUrl={apartMountainPose}
                 imageAlt="Yoga Sequences"
                 isReversed={false}
               />
@@ -1315,7 +1315,7 @@ These sequences are not random flows — they are practical, purposeful, and bui
 • Raja Yoga – discipline of body and mind
 
 These paths are not taught as theory. They are experienced through daily life, reflection, and practice.`}
-                imageUrl={activityAyurveda}
+                imageUrl={apartCeremony}
                 imageAlt="Himalayan Tradition"
                 isReversed={true}
               />
@@ -1328,7 +1328,7 @@ These paths are not taught as theory. They are experienced through daily life, r
                 expanded={`This is one of Yogagarhi's core strengths: students don't just transform how they practice, they transform how they live.
 
 Philosophy is not memorized for an exam — it is applied, reflected upon, and integrated into daily decisions, relationships, and self-understanding.`}
-                imageUrl={activitySoundHealing}
+                imageUrl={apartWaterTemple}
                 imageAlt="Living Philosophy"
                 isReversed={false}
               />
@@ -1346,7 +1346,7 @@ Philosophy is not memorized for an exam — it is applied, reflected upon, and i
 • Support as your journey continues
 
 This is not a transactional relationship — it is a lifelong connection.`}
-                imageUrl={activityWaterfall}
+                imageUrl={apartHammock}
                 imageAlt="Yoga Community"
                 isReversed={true}
               />
