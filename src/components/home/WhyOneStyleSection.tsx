@@ -3,35 +3,32 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
-// Quiz Questions
+// Yogic Energy Quiz Questions
 const quizQuestions = [
   {
-    question: "How do you typically start your mornings?",
-    options: [
-      "With energy and movement",
-      "Slowly and mindfully",
-      "It varies day to day",
-      "With structure and routine"
-    ]
+    question: "How does your body typically feel in the morning?",
+    options: ["Light and energetic", "Steady and grounded", "Heavy and slow to start"],
   },
   {
-    question: "When facing challenges, you tend to:",
-    options: [
-      "Take action immediately",
-      "Reflect before responding",
-      "Seek guidance from others",
-      "Analyze all options first"
-    ]
+    question: "What describes your mental pattern during stress?",
+    options: ["Racing thoughts, anxiety", "Irritability, intensity", "Withdrawal, lethargy"],
   },
   {
-    question: "Your ideal yoga practice feels:",
-    options: [
-      "Dynamic and energizing",
-      "Calm and restorative",
-      "Balanced and flowing",
-      "Precise and aligned"
-    ]
-  }
+    question: "How would you describe your natural energy rhythm?",
+    options: ["Variable, creative bursts", "Focused, consistent drive", "Calm, steady, enduring"],
+  },
+  {
+    question: "What is your relationship with heat?",
+    options: ["Prefer warmth, dislike cold", "Run warm, seek cooling", "Neutral, adaptable"],
+  },
+  {
+    question: "How do you typically process emotions?",
+    options: ["Quick to feel, quick to release", "Intense, lasting impressions", "Deep, slow processing"],
+  },
+  {
+    question: "What describes your lifestyle tendency?",
+    options: ["Movement, change, variety", "Achievement, structure, goals", "Routine, stability, comfort"],
+  },
 ];
 
 export default function WhyOneStyleSection() {
