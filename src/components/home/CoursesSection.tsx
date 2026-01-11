@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Award } from "lucide-react";
+import { useEnrollment } from "@/components/EnrollmentDialog";
 import course100hr from "@/assets/course-100hr.jpg";
 import course200hr from "@/assets/course-200hr.jpg";
 import course300hr from "@/assets/course-300hr.jpg";
@@ -46,6 +47,8 @@ const courses = [
 ];
 
 export default function CoursesSection() {
+  const { setShowEnrollDialog } = useEnrollment();
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Decorative Elements */}
@@ -164,11 +167,15 @@ export default function CoursesSection() {
         {/* Bottom CTA */}
         <div className="text-center mt-14">
           <p className="text-muted-foreground mb-3">Need help choosing the right program?</p>
-          <Button variant="link" className="text-primary p-0 h-auto font-medium group" asChild>
-            <Link to="/contact" className="flex items-center gap-2">
+          <Button 
+            variant="link" 
+            className="text-primary p-0 h-auto font-medium group" 
+            onClick={() => setShowEnrollDialog(true)}
+          >
+            <span className="flex items-center gap-2">
               Get Personalized Guidance
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </span>
           </Button>
         </div>
       </div>
