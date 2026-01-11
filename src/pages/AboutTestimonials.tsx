@@ -70,6 +70,46 @@ const testimonials = [
     rating: 5,
     featured: false,
   },
+  {
+    name: "Sophie Laurent",
+    country: "France",
+    course: "200 Hour YTTC",
+    text: "The blend of physical practice and philosophical depth was exactly what I needed. The teachers created a safe space for deep inner work. I left feeling transformed inside and out.",
+    rating: 5,
+    featured: false,
+  },
+  {
+    name: "Carlos Mendez",
+    country: "Mexico",
+    course: "300 Hour YTTC",
+    text: "After years of teaching, I came here to deepen my practice. The advanced training exceeded all expectations. The sequencing knowledge alone was worth the entire journey.",
+    rating: 5,
+    featured: false,
+  },
+  {
+    name: "Lisa van der Berg",
+    country: "Netherlands",
+    course: "200 Hour YTTC",
+    text: "I was nervous coming alone, but the community embraced me from day one. The friendships I made and the knowledge gained have shaped my entire approach to life and teaching.",
+    rating: 5,
+    featured: false,
+  },
+  {
+    name: "David Kim",
+    country: "South Korea",
+    course: "100 Hour YTTC",
+    text: "The 100-hour program was the perfect introduction. I appreciated how they made complex yogic concepts accessible without losing the traditional essence. Already planning my return for the 200-hour.",
+    rating: 5,
+    featured: false,
+  },
+  {
+    name: "Elena Rossi",
+    country: "Italy",
+    course: "200 Hour YTTC",
+    text: "The attention to alignment and anatomy was exceptional. I feel so much more confident in my body awareness now. The teachers truly care about each student's progress and well-being.",
+    rating: 5,
+    featured: false,
+  },
 ];
 
 export default function AboutTestimonials() {
