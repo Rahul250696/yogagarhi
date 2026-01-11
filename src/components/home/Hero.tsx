@@ -91,7 +91,7 @@ export default function Hero() {
               <Link to="/contact">Quick Enquiry</Link>
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <Link to="/about">Learn More</Link>
+              <Link to="/contact">Book an Appointment</Link>
             </Button>
           </div>
         </div>
