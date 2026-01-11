@@ -123,14 +123,14 @@ export default function Header() {
                 src={logo} 
                 alt="YogaGarhi" 
                 className={`object-contain transition-all duration-300 ${
-                  scrolled ? 'h-12 w-12' : 'h-16 w-16'
+                  scrolled ? 'h-10 w-10 sm:h-12 sm:w-12' : 'h-12 w-12 sm:h-16 sm:w-16'
                 }`} 
               />
               <div className="absolute inset-0 rounded-full bg-primary/10 scale-0 group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="flex flex-col">
               <span className={`font-heading font-bold text-primary tracking-wide transition-all duration-300 ${
-                scrolled ? 'text-lg' : 'text-xl'
+                scrolled ? 'text-sm sm:text-lg' : 'text-base sm:text-xl'
               }`}>
                 YOGAGARHI
               </span>
