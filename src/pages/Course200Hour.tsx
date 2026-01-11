@@ -32,6 +32,17 @@ import yaAllCertifications from "@/assets/ya-all-certifications.jpg";
 import WhyFeatureItem from "@/components/home/WhyFeatureItem";
 import StudentStoriesSection from "@/components/home/StudentStoriesSection";
 
+// User-provided photos for different sections
+import apartHammock from "@/assets/apart/hammock.jpg";
+import apartSeatedTalk from "@/assets/apart/seated-talk.jpg";
+import apartGroupPose from "@/assets/apart/group-pose.jpg";
+import apartCeremony from "@/assets/apart/ceremony.jpg";
+import apartGroupClass from "@/assets/apart/group-class.jpg";
+import apartChildPose from "@/assets/apart/child-pose.jpg";
+import apartWaterTemple from "@/assets/apart/water-temple.jpg";
+import apartPoolVilla from "@/assets/apart/pool-villa.jpg";
+import apartMountainPose from "@/assets/apart/mountain-pose.jpg";
+
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
   return (
@@ -244,134 +255,134 @@ const exclusions = [
   "Personal shopping & extra activities",
 ];
 
-// What You Will Receive
+// What You Will Receive - using user photos
 const whatYouWillReceive = [
   { 
     title: "Multi Style Yoga Training", 
     description: "Learn yoga in its authentic, time-tested way. Our teachers preserve the wisdom of yogic tradition.",
     icon: Leaf,
-    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=500&fit=crop"
+    image: apartGroupClass
   },
   { 
     title: "Yoga Alliance Certified", 
     description: "Receive globally recognized certification. Begin teaching yoga with confidence worldwide.",
     icon: Award,
-    image: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=500&fit=crop"
+    image: apartCeremony
   },
   { 
     title: "Peaceful Bali Surroundings", 
     description: "Experience yoga in the lap of nature. Calm beaches and greenery deepen your practice.",
     icon: Mountain,
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&h=500&fit=crop"
+    image: apartPoolVilla
   },
   { 
     title: "Outdoor Excursions", 
     description: "Explore temples, beaches, and nature walks. Balance learning with adventure and culture.",
     icon: MapPin,
-    image: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=400&h=500&fit=crop"
+    image: apartWaterTemple
   },
   { 
     title: "Small Batch Sizes", 
     description: "Get personal attention and guidance. Every student's growth matters to us.",
     icon: Users,
-    image: "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=400&h=500&fit=crop"
+    image: apartGroupPose
   },
   { 
     title: "Supportive Community", 
     description: "Be part of a warm and positive family. Grow together in a caring environment.",
     icon: Heart,
-    image: "https://images.unsplash.com/photo-1529693662653-9d480530a697?w=400&h=500&fit=crop"
+    image: apartSeatedTalk
   },
   { 
     title: "Balinese Massage", 
     description: "Traditional Indonesian therapy to relieve muscle tension. Promotes deep relaxation and holistic healing.",
     icon: Sparkles,
-    image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&h=500&fit=crop"
+    image: apartHammock
   },
   { 
     title: "Balinese Dance Performance", 
     description: "Ancient, dynamic and highly expressive dance form that reflects Bali's rich cultural heritage.",
     icon: Star,
-    image: "https://images.unsplash.com/photo-1518611507436-f9221403cca2?w=400&h=500&fit=crop"
+    image: apartCeremony
   },
   { 
     title: "Ayurvedic Meals", 
     description: "Enjoy sattvic and healthy meals supporting your practice.",
     icon: Heart,
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=500&fit=crop"
+    image: apartSeatedTalk
   },
   { 
     title: "Meditation Practice", 
     description: "Deepen inner peace and mindfulness with guided sessions.",
     icon: Sparkles,
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=500&fit=crop"
+    image: apartChildPose
   },
   { 
     title: "Experienced Instructors", 
     description: "Learn from certified teachers with years of expertise.",
     icon: GraduationCap,
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=500&fit=crop"
+    image: apartMountainPose
   },
   { 
     title: "Yoga Lifestyle", 
     description: "Adopt the yogic way of living for body, mind, and spirit.",
     icon: Leaf,
-    image: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=400&h=500&fit=crop"
+    image: apartPoolVilla
   },
 ];
 
-// Workshops
+// Workshops - using user photos
 const workshops = [
   { 
     title: "Ayurveda Fundamentals", 
     description: "Understand your unique constitution (Prakriti) and learn how to balance your doshas through diet, lifestyle, and yogic practices for optimal health.",
-    image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&h=400&fit=crop"
+    image: apartSeatedTalk
   },
   { 
     title: "Arm Balance Mastery", 
     description: "Build the strength, technique and confidence needed to master arm balances like Crow, Side Crow, and Flying Pigeon with proper alignment.",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop"
+    image: apartMountainPose
   },
   { 
     title: "Handstand Workshop", 
     description: "Overcome fear and find your center through progressive drills, wall work, and partner exercises to achieve a confident freestanding handstand.",
-    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&h=400&fit=crop"
+    image: apartGroupClass
   },
   { 
     title: "Yin Yoga Deep Stretch", 
     description: "Access deeper connective tissue layers through long-held passive poses. Release tension, increase flexibility, and cultivate inner stillness.",
-    image: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=600&h=400&fit=crop"
+    image: apartChildPose
   },
   { 
     title: "Sound Healing Session", 
     description: "Experience the transformative power of Tibetan singing bowls, gongs, and mantras. Vibration therapy for deep relaxation and inner calm.",
-    image: "https://images.unsplash.com/photo-1591291621164-2c6367723315?w=600&h=400&fit=crop"
+    image: apartHammock
   },
   { 
     title: "Bhakti Yoga & Kirtan", 
     description: "Open your heart through devotional practice. Learn sacred chants, mantras, and kirtan to connect with the spiritual essence of yoga.",
-    image: "https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?w=600&h=400&fit=crop"
+    image: apartCeremony
   },
 ];
 
-// Excursions
+// Excursions - using user photos
 const excursions = [
   { 
     title: "Balinese Dance Performance", 
     description: "Witness the ancient art of Balinese dance — a mesmerizing display of grace, storytelling, and spiritual devotion passed down through generations.",
-    image: "https://images.unsplash.com/photo-1518611507436-f9221403cca2?w=600&h=600&fit=crop",
+    image: apartCeremony,
     icon: Star
   },
   { 
     title: "Rice Field Trek", 
     description: "Walk through Ubud's iconic terraced rice paddies. Experience the harmony of nature, traditional farming, and the peaceful rhythm of rural Bali.",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=600&fit=crop",
+    image: apartPoolVilla,
     icon: Leaf
   },
   { 
     title: "Sacred Waterfall Visit", 
     description: "Journey to a sacred waterfall for a traditional cleansing ritual. Let the pure waters wash away what no longer serves you.",
-    image: "https://images.unsplash.com/photo-1544550581-5f7ceaf7f992?w=600&h=600&fit=crop",
+    image: apartWaterTemple,
     icon: Sparkles
   },
 ];
