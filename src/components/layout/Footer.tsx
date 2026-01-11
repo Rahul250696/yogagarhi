@@ -116,12 +116,17 @@ export default function Footer() {
             </div>
             <span>yogagarhi@gmail.com</span>
           </a>
-          <div className="flex items-center gap-2">
+          <a 
+            href="https://maps.google.com/?q=Ds+madangan+kaja,+Desa+petak,+Petak+kaja,+Kec.+Gianyar,+Kabupaten+Gianyar,+Bali+80515,+Indonesia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
+          >
             <div className="w-8 h-8 rounded-full border border-primary-foreground/20 flex items-center justify-center">
               <MapPin className="h-3.5 w-3.5" />
             </div>
             <span>Gianyar, Bali</span>
-          </div>
+          </a>
         </div>
 
         {/* Social Links - Unique Design */}
