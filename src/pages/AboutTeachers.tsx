@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Clock, GraduationCap, Heart, ArrowRight } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
+import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import founderImage from "@/assets/founder-image.png";
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
@@ -205,24 +206,8 @@ export default function AboutTeachers() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center text-primary-foreground">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-            Learn from the Best
-          </h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Join our teacher training program and learn from experienced masters who are dedicated to your growth.
-          </p>
-          <Button 
-            variant="hero" 
-            size="xl" 
-            onClick={() => setShowEnrollDialog(true)}
-          >
-            Start Your Journey
-          </Button>
-        </div>
-      </section>
+      {/* Ready to Begin Section */}
+      <ReadyToBeginSection />
     </Layout>
   );
 }

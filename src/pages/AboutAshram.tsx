@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Shield, Heart, Users, BookOpen, Sparkles, Mountain, ArrowRight, GraduationCap, Compass, Leaf, Star, Flame } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
+import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
@@ -478,20 +479,8 @@ export default function AboutAshram() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center text-primary-foreground">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-            Join the YogaGarhi Family
-          </h2>
-          <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-            Get an opportunity to become a member of a large yoga family that cultivates learning and supports growth.
-          </p>
-          <Button variant="hero" size="xl" onClick={() => setShowEnrollDialog(true)}>
-            Start Your Transformation
-          </Button>
-        </div>
-      </section>
+      {/* Ready to Begin Section */}
+      <ReadyToBeginSection />
     </Layout>
   );
 }
