@@ -15,12 +15,12 @@ const Index = () => {
   return (
     <Layout>
       <Hero />
+      <YTTCSupportSection />
       <WelcomeSection />
       <CoursesSection />
       <FounderSection />
       <WhyOneStyleSection />
       <GoogleReviewsSection />
-      <YTTCSupportSection />
       <ActivitiesSection />
       <WhyChooseUs />
       <FAQSection />
