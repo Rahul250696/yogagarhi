@@ -20,7 +20,7 @@ export default function Hero() {
             Welcome To
           </p>
           <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            {"Yogagarhi".split("").map((char, index) => (
+            {"Yogagarh".split("").map((char, index) => (
               <span 
                 key={index} 
                 className="inline-block animate-fade-in opacity-0"
@@ -32,6 +32,23 @@ export default function Hero() {
                 {char}
               </span>
             ))}
+            {/* Custom "i" with lotus dot */}
+            <span 
+              className="inline-block animate-fade-in opacity-0 relative"
+              style={{ 
+                animationDelay: `${0.4 + 8 * 0.08}s`,
+                animationFillMode: 'forwards'
+              }}
+            >
+              <span className="relative">
+                {/* The "i" stem without dot */}
+                <span className="font-heading">ı</span>
+                {/* Lotus/yoga symbol as the dot */}
+                <span className="absolute -top-[0.15em] left-1/2 -translate-x-1/2 text-[0.35em]">
+                  ✦
+                </span>
+              </span>
+            </span>
           </h1>
           <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: '1.2s', animationFillMode: 'forwards' }}>
             Ancient Himalayan wisdom. Authentic yoga, lived & taught.
