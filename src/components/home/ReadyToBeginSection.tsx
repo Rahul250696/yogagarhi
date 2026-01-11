@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Phone, BookOpen, Sparkles, Video, Calendar, GraduationCap, Check } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import { useBooking } from "@/components/BookingDialog";
-import heroImage from "@/assets/hero-yoga-bali.jpg";
+import readyToBeginBg from "@/assets/ready-to-begin-bg.jpg";
 
 const ReadyToBeginSection = () => {
   const { setShowEnrollDialog } = useEnrollment();
@@ -41,7 +41,7 @@ const ReadyToBeginSection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img 
-          src={heroImage} 
+          src={readyToBeginBg} 
           alt="" 
           className="w-full h-full object-cover"
         />
