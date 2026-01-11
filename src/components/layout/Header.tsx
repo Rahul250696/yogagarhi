@@ -85,16 +85,17 @@ export default function Header() {
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [showAnnouncement, setShowAnnouncement] = useState(false);
+  const [announcementDismissed, setAnnouncementDismissed] = useState(false);
   const location = useLocation();
   const { setShowEnrollDialog } = useEnrollment();
 
-  // Check if announcement should be shown for this page (once per session per path)
+  // Check if announcement was dismissed for this page in this session
   useEffect(() => {
     const dismissedPaths = JSON.parse(sessionStorage.getItem('announcementDismissed') || '[]');
-    if (!dismissedPaths.includes(location.pathname)) {
-      setShowAnnouncement(true);
+    if (dismissedPaths.includes(location.pathname)) {
+      setAnnouncementDismissed(true);
     } else {
-      setShowAnnouncement(false);
+      setAnnouncementDismissed(false);
     }
   }, [location.pathname]);
 
@@ -104,16 +105,25 @@ export default function Header() {
       dismissedPaths.push(location.pathname);
       sessionStorage.setItem('announcementDismissed', JSON.stringify(dismissedPaths));
     }
+    setAnnouncementDismissed(true);
     setShowAnnouncement(false);
   };
 
   useEffect(() => {
     const handleScroll = () => {
+      const isScrolled = window.scrollY > 100;
       setScrolled(window.scrollY > 20);
+      
+      // Show announcement when scrolling down (if not dismissed)
+      if (isScrolled && !announcementDismissed) {
+        setShowAnnouncement(true);
+      } else if (!isScrolled) {
+        setShowAnnouncement(false);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [announcementDismissed]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -128,27 +138,33 @@ export default function Header() {
 
   return (
     <>
-      {/* Announcement Bar */}
-      {showAnnouncement && (
-        <div className="bg-primary text-primary-foreground py-2 px-4 relative z-[60]">
-          <div className="container mx-auto flex items-center justify-center gap-2 text-xs sm:text-sm">
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
-            <span className="font-medium">100% Refund Policy</span>
-            <span className="hidden sm:inline text-primary-foreground/80">—</span>
-            <span className="hidden sm:inline text-primary-foreground/80">Your investment is protected with our hassle-free refund guarantee</span>
-            <button
-              onClick={dismissAnnouncement}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-primary-foreground/10 rounded-full transition-colors"
-              aria-label="Dismiss announcement"
-            >
-              <X className="w-3 h-3 sm:w-4 sm:h-4" />
-            </button>
-          </div>
+      {/* Announcement Bar - Slides in from top on scroll */}
+      <div 
+        className={`fixed top-0 left-0 right-0 bg-primary text-primary-foreground py-2.5 px-4 z-[60] transition-transform duration-500 ease-out ${
+          showAnnouncement ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
+        <div className="container mx-auto flex items-center justify-center gap-2 text-xs sm:text-sm pr-8">
+          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse flex-shrink-0" />
+          <p className="text-center leading-snug">
+            <span className="font-semibold">100% Refund Guarantee:</span>
+            <span className="hidden md:inline"> We Trust The Depth Of What We Offer. If, After The First Day, You Feel This Journey Is Not Meant For You, We Will Offer A Full Refund With Complete Respect.</span>
+            <span className="md:hidden"> Full refund after Day 1 if this journey isn't for you.</span>
+          </p>
+          <button
+            onClick={dismissAnnouncement}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-1.5 hover:bg-primary-foreground/20 rounded-full transition-colors"
+            aria-label="Dismiss announcement"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
-      )}
+      </div>
 
       <header 
-        className={`sticky top-0 z-50 transition-all duration-500 ${
+        className={`sticky z-50 transition-all duration-500 ${
+          showAnnouncement ? 'top-[42px]' : 'top-0'
+        } ${
           scrolled 
             ? 'bg-background/98 backdrop-blur-md shadow-md py-2' 
             : 'bg-background py-4'
