@@ -1361,9 +1361,9 @@ This is not a transactional relationship — it is a lifelong connection.`}
           <div className="absolute inset-0 -z-10">
             <div className="md:relative md:h-full sticky top-0 h-screen">
               <img 
-                src={heroImage}
-                alt="Yoga practice in nature"
-                className="w-full h-full object-cover"
+                src={apartGroupPose}
+                alt="Diverse yoga practice styles"
+                className="w-full h-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-black/60" />
             </div>
