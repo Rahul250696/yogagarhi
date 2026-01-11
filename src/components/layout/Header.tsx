@@ -5,10 +5,29 @@ import { Button } from "@/components/ui/button";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import logo from "@/assets/yogagarhi-logo.png";
 
+// Yoga pose SVG icons
+const TreePoseIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="currentColor">
+    <path d="M12 2c-.5 0-1 .19-1.41.59L8 5.17V8c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2V5.17l-2.59-2.58C13 2.19 12.5 2 12 2zm0 4c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1 5v3H9v2h2v6h2v-6h2v-2h-2v-3h-2z"/>
+  </svg>
+);
+
+const WarriorPoseIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="currentColor">
+    <path d="M12 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM4 9l4 1v4l-3 7h2.5l2.5-5.5 2 2V22h2v-5.5l-2-2.5v-4l4.5 1L18 9l-6-2-6 2h-2z"/>
+  </svg>
+);
+
+const LotusPoseIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="currentColor">
+    <path d="M12 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM7.5 8C5.5 8 4 10 4 12.5S5.5 17 7.5 17H9v5h2v-5h2v5h2v-5h1.5c2 0 3.5-2 3.5-4.5S18.5 8 16.5 8H15c-.6-1.2-1.9-2-3-2s-2.4.8-3 2H7.5z"/>
+  </svg>
+);
+
 const courses = [
-  { name: "100 Hour YTTC", href: "/courses/100-hour" },
-  { name: "200 Hour YTTC", href: "/courses/200-hour" },
-  { name: "300 Hour YTTC", href: "/courses/300-hour" },
+  { name: "100 Hour YTTC", href: "/courses/100-hour", icon: TreePoseIcon },
+  { name: "200 Hour YTTC", href: "/courses/200-hour", icon: WarriorPoseIcon },
+  { name: "300 Hour YTTC", href: "/courses/300-hour", icon: LotusPoseIcon },
 ];
 
 const navLinks = [
@@ -120,8 +139,8 @@ export default function Header() {
                                   : 'text-foreground/70 hover:bg-secondary hover:text-primary'
                               }`}
                             >
-                              <span className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                              <span className="flex items-center gap-3">
+                                <item.icon />
                                 {item.name}
                               </span>
                             </Link>
@@ -212,12 +231,13 @@ export default function Header() {
                           key={item.name}
                           to={item.href}
                           onClick={() => setIsOpen(false)}
-                          className={`py-2.5 px-4 rounded-lg text-sm transition-all ${
+                          className={`flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm transition-all ${
                             location.pathname === item.href
                               ? 'bg-primary/10 text-primary font-medium'
                               : 'text-foreground/60 hover:text-primary hover:bg-secondary/50'
                           }`}
                         >
+                          <item.icon />
                           {item.name}
                         </Link>
                       ))}
