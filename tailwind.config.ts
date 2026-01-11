@@ -108,6 +108,10 @@ export default {
           "0%, 100%": { transform: "translateY(0) scale(1)" },
           "50%": { transform: "translateY(-8px) scale(1.02)" },
         },
+        "float-ultra-smooth": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -120,6 +124,7 @@ export default {
         "float": "float 6s ease-in-out infinite",
         "float-slow": "float-slow 8s ease-in-out infinite",
         "float-gentle": "float-gentle 10s ease-in-out infinite",
+        "float-ultra-smooth": "float-ultra-smooth 8s cubic-bezier(0.45, 0, 0.55, 1) infinite",
       },
     },
   },

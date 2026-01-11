@@ -39,7 +39,7 @@ export default function FounderSection() {
               </div>
               
               {/* Floating Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-card rounded-2xl p-4 shadow-elevated border border-border/50">
+              <div className="absolute -bottom-6 -right-6 bg-card rounded-2xl p-4 shadow-elevated border border-border/50 animate-float-ultra-smooth">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <Sparkles className="w-6 h-6 text-primary" />
