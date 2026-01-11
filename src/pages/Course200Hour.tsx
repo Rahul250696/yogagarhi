@@ -478,7 +478,7 @@ export default function Course200Hour() {
   ];
   const [selectedTimezone, setSelectedTimezone] = useState('UTC +05:30 New Delhi, Mumbai');
   const [showTimezoneDropdown, setShowTimezoneDropdown] = useState(false);
-  const [isFoodSectionOpen, setIsFoodSectionOpen] = useState(true);
+  const [isFoodSectionOpen, setIsFoodSectionOpen] = useState(false);
   const [isAccommodationOpen, setIsAccommodationOpen] = useState(true);
 
   const timezones = [
