@@ -43,6 +43,7 @@ import apartWaterTemple from "@/assets/apart/water-temple.jpg";
 import apartPoolVilla from "@/assets/apart/pool-villa.jpg";
 import apartMountainPose from "@/assets/apart/mountain-pose.jpg";
 import apartWarriorSequence from "@/assets/apart/warrior-sequence.jpg";
+import apartYogaAllianceGraduates from "@/assets/apart/yoga-alliance-graduates.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -268,7 +269,7 @@ const whatYouWillReceive = [
     title: "Yoga Alliance Certified", 
     description: "Receive globally recognized certification. Begin teaching yoga with confidence worldwide.",
     icon: Award,
-    image: apartCeremony
+    image: apartYogaAllianceGraduates
   },
   { 
     title: "Peaceful Bali Surroundings", 
