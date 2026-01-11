@@ -98,7 +98,9 @@ export default function CoursesSection() {
                     <img
                       src={course.image}
                       alt={`${course.hours} Hour Yoga Teacher Training`}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${
+                        course.hours === "200" ? "object-top" : ""
+                      }`}
                     />
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
