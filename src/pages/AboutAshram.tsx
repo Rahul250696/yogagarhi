@@ -137,28 +137,43 @@ export default function AboutAshram() {
 
               {/* Content */}
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 mb-4">
-                  <Heart className="w-6 h-6 text-primary" />
-                  <span className="text-primary text-sm font-medium tracking-[0.15em] uppercase">Our Story</span>
-                </div>
-                <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Why YogaGarhi was Established
+                <span className="inline-flex items-center gap-2 text-primary/80 text-sm font-medium tracking-widest uppercase mb-4">
+                  <Heart className="w-4 h-4" fill="currentColor" />
+                  Our Story
+                </span>
+                
+                <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-2">
+                  Yogacharya Sachin
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Even after teaching yoga for seven years at a reputed yoga teacher training school, there was still a sense of incompleteness within me. I felt something was missing.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  We were teaching people anatomy, demonstrating postures, teaching alignment, and finally giving certificates, but something was missing—something that cannot be priced. Yoga had become just a course. But deep inside I knew that the importance of yoga is not limited to just a few physical postures.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  After a long period of observation, I realized that we live in duality—I and the world, day and night, pleasure and pain. The sages have said that this duality is the cause of all human suffering. Therefore, life is a journey from duality (dwaita) to non-duality (Advaita).
-                </p>
-                <blockquote className="border-l-4 border-primary pl-6 py-2 my-6 bg-muted/30 rounded-r-xl">
-                  <p className="text-foreground italic">
-                    "A yogi is one who remains unaffected from all external conditions—success and failure, pleasure and pain. Through discipline, self-knowledge, and selfless action one connects with the divine essence within."
+                <p className="text-primary font-medium text-lg mb-6">Founder & Lead Teacher, YogaGarhi</p>
+                
+                <div className="space-y-5 text-muted-foreground leading-relaxed mb-8">
+                  <p>
+                    Even after teaching yoga for seven years at a reputed yoga teacher training school, 
+                    there was still <em className="text-foreground font-medium">a sense of incompleteness</em> within me. 
+                    I felt something was missing. We were teaching anatomy, demonstrating postures, 
+                    teaching alignment, and giving certificates, but <strong className="text-foreground">something deeper was absent</strong>.
                   </p>
-                  <cite className="text-muted-foreground text-sm mt-2 block">— Bhagavad Gita, Chapter 6</cite>
-                </blockquote>
+                  
+                  <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
+                    "Yoga had become just a course. But deep inside I knew that its importance is not 
+                    limited to just a few physical postures."
+                  </p>
+                  
+                  <p>
+                    After a long period of observation, I realized that we live in duality: I and the world, 
+                    day and night, pleasure and pain. The sages have said that <strong className="text-foreground">this duality 
+                    is the cause of all human suffering</strong>. Therefore, life is a journey from 
+                    <em className="text-foreground font-medium"> duality (dwaita)</em> to 
+                    <em className="text-foreground font-medium"> non-duality (Advaita)</em>.
+                  </p>
+                  
+                  <p>
+                    From this understanding, <strong className="text-foreground">YogaGarhi</strong> was born. 
+                    A fortress where <em className="text-foreground font-medium">yoga is lived, not merely taught</em>; 
+                    rooted in awareness, inner silence, and the timeless wisdom of the ancient sages.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
