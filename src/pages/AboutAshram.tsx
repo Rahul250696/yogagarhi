@@ -345,15 +345,22 @@ export default function AboutAshram() {
                 
                 <div className="space-y-5 text-muted-foreground leading-relaxed mb-8">
                   <p>
+                    A fearless child, a curious teen, and a heart that kept seeking. This journey 
+                    gradually shaped a revolutionary man, <em className="text-foreground font-medium">not driven by rebellion, 
+                    but by awareness</em>. What began as exploration unfolded into a life devoted to 
+                    practice, discipline, teaching, and service.
+                  </p>
+                  
+                  <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
+                    "Yoga was not found in a single moment; it revealed itself slowly, through experience, 
+                    inquiry, inner silence, and lived understanding."
+                  </p>
+                  
+                  <p>
                     Even after teaching yoga for seven years at a reputed yoga teacher training school, 
                     there was still <em className="text-foreground font-medium">a sense of incompleteness</em> within me. 
                     I felt something was missing. We were teaching anatomy, demonstrating postures, 
                     teaching alignment, and giving certificates, but <strong className="text-foreground">something deeper was absent</strong>.
-                  </p>
-                  
-                  <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
-                    "Yoga had become just a course. But deep inside I knew that its importance is not 
-                    limited to just a few physical postures."
                   </p>
                   
                   <p>
