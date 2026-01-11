@@ -52,6 +52,7 @@ import apartBalineseMassage from "@/assets/apart/balinese-massage.jpg";
 import apartAyurvedicMeals from "@/assets/apart/ayurvedic-meals.jpg";
 import apartMeditationPractice from "@/assets/apart/meditation-practice.jpg";
 import apartYogaLifestyle from "@/assets/apart/yoga-lifestyle.jpg";
+import anatomyPhysiologyImage from "@/assets/syllabus/anatomy-physiology.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -1779,10 +1780,10 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     content: "Complete breathing techniques including Ujjayi, Bhastrika, Kapalbhati, Nadi-Sodhana, Bhramari, Surya-Bhedi, Chandra-Bhedi, Sheetali, and Sheetkari.",
                     image: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=400&h=400&fit=crop"
                   },
-                  { 
+{ 
                     title: "Anatomy & Physiology", 
                     content: "Body movement planes, joint protection, anatomy of ankle, knee, spine, shoulder, breathing mechanism, physiology of muscles, and nervous system.",
-                    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop"
+                    image: anatomyPhysiologyImage
                   },
                   { 
                     title: "Teaching Methodology", 
