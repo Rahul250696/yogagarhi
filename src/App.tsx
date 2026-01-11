@@ -13,6 +13,7 @@ import Blog from "./pages/Blog";
 import CourseDetail from "./pages/CourseDetail";
 import Course200Hour from "./pages/Course200Hour";
 import Course100Hour from "./pages/Course100Hour";
+import Course300Hour from "./pages/Course300Hour";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +34,8 @@ const App = () => (
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/courses/200-hour" element={<Course200Hour />} />
+              <Route path="/courses/100-hour" element={<Course100Hour />} />
+              <Route path="/courses/300-hour" element={<Course300Hour />} />
               <Route path="/courses/:slug" element={<CourseDetail />} />
               <Route path="/thank-you" element={<ThankYou />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
