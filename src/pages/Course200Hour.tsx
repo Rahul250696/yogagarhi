@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -480,6 +480,22 @@ export default function Course200Hour() {
   const [showTimezoneDropdown, setShowTimezoneDropdown] = useState(false);
   const [isFoodSectionOpen, setIsFoodSectionOpen] = useState(false);
   const [isAccommodationOpen, setIsAccommodationOpen] = useState(true);
+  const foodTriggerRef = useRef<HTMLDivElement>(null);
+
+  // Handle food section toggle with scroll position preservation
+  const handleFoodSectionToggle = (open: boolean) => {
+    setIsFoodSectionOpen(open);
+    
+    // If opening, scroll to the trigger after a brief delay for content to render
+    if (open) {
+      setTimeout(() => {
+        foodTriggerRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
+    }
+  };
 
   const timezones = [
     { value: 'UTC -12:00 Baker Island', label: 'UTC -12:00 Baker Island' },
@@ -2626,10 +2642,10 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
 
             {/* Collapsible Section - Daily Meals & More */}
-            <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
+            <Collapsible open={isFoodSectionOpen} onOpenChange={handleFoodSectionToggle}>
               {/* Collapse Trigger */}
               <CollapsibleTrigger asChild>
-                <div className="text-center mb-10 cursor-pointer group">
+                <div ref={foodTriggerRef} className="text-center mb-10 cursor-pointer group scroll-mt-24">
                   <div className="inline-flex items-center gap-3 px-6 py-3 bg-background rounded-full border border-border hover:border-primary/40 transition-all duration-300 shadow-sm hover:shadow-card">
                     <h3 className="font-heading text-xl font-bold text-foreground">
                       A Day of Mindful Eating
