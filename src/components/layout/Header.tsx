@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import logo from "@/assets/yogagarhi-logo-hd-preview.png";
@@ -84,8 +84,28 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [showAnnouncement, setShowAnnouncement] = useState(false);
   const location = useLocation();
   const { setShowEnrollDialog } = useEnrollment();
+
+  // Check if announcement should be shown for this page (once per session per path)
+  useEffect(() => {
+    const dismissedPaths = JSON.parse(sessionStorage.getItem('announcementDismissed') || '[]');
+    if (!dismissedPaths.includes(location.pathname)) {
+      setShowAnnouncement(true);
+    } else {
+      setShowAnnouncement(false);
+    }
+  }, [location.pathname]);
+
+  const dismissAnnouncement = () => {
+    const dismissedPaths = JSON.parse(sessionStorage.getItem('announcementDismissed') || '[]');
+    if (!dismissedPaths.includes(location.pathname)) {
+      dismissedPaths.push(location.pathname);
+      sessionStorage.setItem('announcementDismissed', JSON.stringify(dismissedPaths));
+    }
+    setShowAnnouncement(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,13 +127,33 @@ export default function Header() {
   const isAboutActive = location.pathname.startsWith("/about");
 
   return (
-    <header 
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-background/98 backdrop-blur-md shadow-md py-2' 
-          : 'bg-background py-4'
-      }`}
-    >
+    <>
+      {/* Announcement Bar */}
+      {showAnnouncement && (
+        <div className="bg-primary text-primary-foreground py-2 px-4 relative z-[60]">
+          <div className="container mx-auto flex items-center justify-center gap-2 text-xs sm:text-sm">
+            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
+            <span className="font-medium">100% Refund Policy</span>
+            <span className="hidden sm:inline text-primary-foreground/80">—</span>
+            <span className="hidden sm:inline text-primary-foreground/80">Your investment is protected with our hassle-free refund guarantee</span>
+            <button
+              onClick={dismissAnnouncement}
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-primary-foreground/10 rounded-full transition-colors"
+              aria-label="Dismiss announcement"
+            >
+              <X className="w-3 h-3 sm:w-4 sm:h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      <header 
+        className={`sticky top-0 z-50 transition-all duration-500 ${
+          scrolled 
+            ? 'bg-background/98 backdrop-blur-md shadow-md py-2' 
+            : 'bg-background py-4'
+        }`}
+      >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -341,5 +381,6 @@ export default function Header() {
         </nav>
       </div>
     </header>
+    </>
   );
 }
