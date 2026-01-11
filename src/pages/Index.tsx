@@ -11,6 +11,7 @@ import FAQSection from "@/components/home/FAQSection";
 import WebinarSection from "@/components/home/WebinarSection";
 import HomeGallerySection from "@/components/home/HomeGallerySection";
 import StudentStoriesSection from "@/components/home/StudentStoriesSection";
+import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
       <WebinarSection />
       <HomeGallerySection />
       <StudentStoriesSection />
+      <ReadyToBeginSection />
       <FAQSection />
     </Layout>
   );
