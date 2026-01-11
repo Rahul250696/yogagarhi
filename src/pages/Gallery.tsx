@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
-import { Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
+import { useEnrollment } from "@/components/EnrollmentDialog";
+import { Button } from "@/components/ui/button";
 
 // Import gallery images
 import yogaRiver from "@/assets/gallery/yoga-river.jpg";
@@ -174,6 +175,7 @@ const MandalaBackground = () => (
 
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { setShowEnrollDialog } = useEnrollment();
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
@@ -310,13 +312,13 @@ export default function Gallery() {
               Every moment at Yogagarhi is a step toward inner awakening. From sunrise practice to community meals, we cherish each experience on this transformative journey.
             </p>
 
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-primary font-medium group hover:gap-3 transition-all"
+            <Button 
+              onClick={() => setShowEnrollDialog(true)}
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 py-3 rounded-full transition-all group"
             >
-              <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-              Back to Home
-            </Link>
+              Enroll Now
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Button>
           </div>
         </div>
       </section>
