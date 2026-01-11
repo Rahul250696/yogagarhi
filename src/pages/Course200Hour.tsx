@@ -1217,7 +1217,7 @@ export default function Course200Hour() {
 • Feel confident & clear
 
 So when training begins, you don't panic. You arrive grounded. You don't jump into transformation — you are gently prepared for it.`}
-                imageUrl={heroImage}
+                imageUrl={apartSeatedTalk}
                 imageAlt="Pre-YTTC Preparation"
                 isReversed={false}
               />
