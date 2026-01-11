@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock, Award, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Clock, Award } from "lucide-react";
 import course100hr from "@/assets/course-100hr.jpg";
 import course200hr from "@/assets/course-200hr.jpg";
 import course300hr from "@/assets/course-300hr.jpg";
@@ -17,7 +17,6 @@ const courses = [
     savings: "$250",
     href: "/courses/100-hour",
     image: course100hr,
-    features: ["Foundation Training", "Yoga Alliance Certified", "All Meals Included"],
   },
   {
     hours: "200",
@@ -31,7 +30,6 @@ const courses = [
     href: "/courses/200-hour",
     image: course200hr,
     featured: true,
-    features: ["Complete Certification", "Teaching Methodology", "Lifetime Support"],
   },
   {
     hours: "300",
@@ -44,7 +42,6 @@ const courses = [
     savings: "$600",
     href: "/courses/300-hour",
     image: course300hr,
-    features: ["Advanced Training", "Specialization Tracks", "Senior Certification"],
   },
 ];
 
@@ -127,16 +124,6 @@ export default function CoursesSection() {
                         {course.level}
                       </div>
                     </div>
-
-                    {/* Features */}
-                    <ul className="space-y-2.5 mb-6">
-                      {course.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
 
                     {/* Pricing */}
                     <div className="flex items-end justify-between mb-6">
