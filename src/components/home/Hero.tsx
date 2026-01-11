@@ -55,7 +55,7 @@ export default function Hero() {
             </div>
             <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
             <div className="text-center">
-              <p className="font-heading text-3xl md:text-4xl font-bold">World's 1st</p>
+              <p className="font-heading text-3xl md:text-4xl font-bold">World's First</p>
               <p className="text-xs md:text-sm opacity-80">Pre-YTTC Support Academy</p>
             </div>
           </div>
