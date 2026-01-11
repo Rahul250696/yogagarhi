@@ -85,7 +85,7 @@ export default function WhyOneStyleSection() {
       <div className="relative z-10 min-h-screen md:min-h-0 flex items-center py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-white mb-6">
-            Why One Style Does Not Fit All
+            Prakriti and Multistyle Yoga Teacher Training
           </h2>
           <p className="font-heading text-xl text-center text-primary-foreground/90 mb-8 italic">
             Why We Teach Authentic Multi-Style & Prakriti-Based Yoga
