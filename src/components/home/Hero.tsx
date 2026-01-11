@@ -43,8 +43,13 @@ export default function Hero() {
               <span className="relative">
                 {/* The "i" stem without dot */}
                 <span className="font-heading">ı</span>
-                {/* Lotus/yoga symbol as the dot */}
-                <span className="absolute -top-[0.15em] left-1/2 -translate-x-1/2 text-[0.35em]">
+                {/* Star symbol as the dot - closer and animated */}
+                <span 
+                  className="absolute -top-[0.02em] left-1/2 -translate-x-1/2 text-[0.4em] animate-pulse"
+                  style={{ 
+                    animation: 'pulse 2s ease-in-out infinite, spin 8s linear infinite'
+                  }}
+                >
                   ✦
                 </span>
               </span>
