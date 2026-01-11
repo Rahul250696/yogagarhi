@@ -394,6 +394,11 @@ const YTTCSupportSection = () => {
               <p className="text-xs text-muted-foreground">Lifelong Support</p>
             </div>
           </div>
+          
+          {/* Hint Text */}
+          <p className="text-center mt-6 text-sm text-muted-foreground">
+            👆 Click on <span className="font-semibold text-primary cursor-pointer hover:underline" onClick={() => setActiveTab('pre')}>Pre-YTTC</span> or <span className="font-semibold text-primary cursor-pointer hover:underline" onClick={() => setActiveTab('post')}>Post-YTTC</span> buttons above to explore your journey
+          </p>
         </div>
       </div>
 
