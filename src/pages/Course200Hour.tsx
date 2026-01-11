@@ -53,6 +53,7 @@ import apartAyurvedicMeals from "@/assets/apart/ayurvedic-meals.jpg";
 import apartMeditationPractice from "@/assets/apart/meditation-practice.jpg";
 import apartYogaLifestyle from "@/assets/apart/yoga-lifestyle.jpg";
 import anatomyPhysiologyImage from "@/assets/syllabus/anatomy-physiology.jpg";
+import meditationMantraImage from "@/assets/syllabus/meditation-mantra.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -1790,10 +1791,10 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     content: "Class sequencing, adjustments, working with different levels, voice usage, mental preparation, demonstration principles, and step-by-step class planning.",
                     image: "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=400&h=400&fit=crop"
                   },
-                  { 
+{ 
                     title: "Meditation & Mantra", 
                     content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices for inner stillness.",
-                    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=400&h=400&fit=crop"
+                    image: meditationMantraImage
                   },
                   { 
                     title: "Iyengar Yoga", 
