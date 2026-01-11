@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 
 // Import gallery images
 import yogaRiver from "@/assets/gallery/yoga-river.jpg";
@@ -319,6 +320,9 @@ export default function Gallery() {
           </div>
         </div>
       </section>
+
+      {/* Ready to Begin Section */}
+      <ReadyToBeginSection />
     </Layout>
   );
 }
