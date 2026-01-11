@@ -50,8 +50,8 @@ export default function Hero() {
             </div>
             <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
             <div className="text-center">
-              <p className="font-heading text-3xl md:text-4xl font-bold">RYS 200</p>
-              <p className="text-xs md:text-sm opacity-80">Yoga Alliance Certified</p>
+              <p className="font-heading text-3xl md:text-4xl font-bold">Yoga Alliance</p>
+              <p className="text-xs md:text-sm opacity-80">Certified School</p>
             </div>
             <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
             <div className="text-center">
