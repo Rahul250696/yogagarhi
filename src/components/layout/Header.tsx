@@ -35,15 +35,45 @@ const ChakraSymbol3 = () => (
   </svg>
 );
 
+// About section icons
+const AshramIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+    <path d="M12 2L2 9h3v11h14V9h3L12 2z" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <circle cx="12" cy="13" r="3" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <path d="M12 10v-2M12 18v-2" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+  </svg>
+);
+
+const TeachersIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+    <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <path d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <path d="M12 11v2M10 13h4" stroke="currentColor" strokeWidth="1.2" className="text-primary"/>
+  </svg>
+);
+
+const TestimonialsIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <path d="M8 10h.01M12 10h.01M16 10h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="text-primary"/>
+  </svg>
+);
+
 const courses = [
   { name: "100 Hour YTTC", href: "/courses/100-hour", icon: ChakraSymbol1 },
   { name: "200 Hour YTTC", href: "/courses/200-hour", icon: ChakraSymbol2 },
   { name: "300 Hour YTTC", href: "/courses/300-hour", icon: ChakraSymbol3 },
 ];
 
+const aboutItems = [
+  { name: "About Ashram", href: "/about/ashram", icon: AshramIcon },
+  { name: "Our Teachers", href: "/about/teachers", icon: TeachersIcon },
+  { name: "Testimonials", href: "/about/testimonials", icon: TestimonialsIcon },
+];
+
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About", href: "#", dropdown: aboutItems },
   { name: "Courses", href: "#", dropdown: courses },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
@@ -51,7 +81,8 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [coursesOpen, setCoursesOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { setShowEnrollDialog } = useEnrollment();
@@ -67,11 +98,13 @@ export default function Header() {
   // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
-    setCoursesOpen(false);
+    setOpenDropdown(null);
+    setMobileOpenDropdown(null);
   }, [location.pathname]);
 
   const isActive = (href: string) => location.pathname === href;
   const isCoursesActive = location.pathname.startsWith("/courses");
+  const isAboutActive = location.pathname.startsWith("/about");
 
   return (
     <header 
@@ -110,69 +143,73 @@ export default function Header() {
           {/* Desktop Navigation - Centered */}
           <nav className="hidden lg:flex items-center">
             <div className="flex items-center bg-secondary/30 rounded-full px-2 py-1.5">
-              {navLinks.map((link, index) => (
-                <div key={link.name} className="relative">
-                  {link.dropdown ? (
-                    <div
-                      className="relative"
-                      onMouseEnter={() => setCoursesOpen(true)}
-                      onMouseLeave={() => setCoursesOpen(false)}
-                    >
-                      <button
-                        className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                          isCoursesActive 
+              {navLinks.map((link, index) => {
+                const isDropdownActive = link.name === 'Courses' ? isCoursesActive : 
+                                         link.name === 'About' ? isAboutActive : false;
+                return (
+                  <div key={link.name} className="relative">
+                    {link.dropdown ? (
+                      <div
+                        className="relative"
+                        onMouseEnter={() => setOpenDropdown(link.name)}
+                        onMouseLeave={() => setOpenDropdown(null)}
+                      >
+                        <button
+                          className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                            isDropdownActive 
+                              ? 'bg-primary text-primary-foreground' 
+                              : 'text-foreground/70 hover:text-primary hover:bg-secondary/50'
+                          }`}
+                        >
+                          {link.name}
+                          <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                            openDropdown === link.name ? 'rotate-180' : ''
+                          }`} />
+                        </button>
+
+                        {/* Dropdown */}
+                        <div
+                          className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-card rounded-2xl shadow-xl border border-border/50 overflow-hidden transition-all duration-300 ${
+                            openDropdown === link.name 
+                              ? 'opacity-100 visible translate-y-0' 
+                              : 'opacity-0 invisible -translate-y-4'
+                          }`}
+                        >
+                          <div className="p-2">
+                            {link.dropdown.map((item) => (
+                              <Link
+                                key={item.name}
+                                to={item.href}
+                                className={`block px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
+                                  location.pathname === item.href
+                                    ? 'bg-primary/10 text-primary font-medium'
+                                    : 'text-foreground/70 hover:bg-secondary hover:text-primary'
+                                }`}
+                              >
+                                <span className="flex items-center gap-3">
+                                  <item.icon />
+                                  {item.name}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                          isActive(link.href) 
                             ? 'bg-primary text-primary-foreground' 
                             : 'text-foreground/70 hover:text-primary hover:bg-secondary/50'
                         }`}
                       >
                         {link.name}
-                        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                          coursesOpen ? 'rotate-180' : ''
-                        }`} />
-                      </button>
-
-                      {/* Dropdown */}
-                      <div
-                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-card rounded-2xl shadow-xl border border-border/50 overflow-hidden transition-all duration-300 ${
-                          coursesOpen 
-                            ? 'opacity-100 visible translate-y-0' 
-                            : 'opacity-0 invisible -translate-y-4'
-                        }`}
-                      >
-                        <div className="p-2">
-                          {link.dropdown.map((item, i) => (
-                            <Link
-                              key={item.name}
-                              to={item.href}
-                              className={`block px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
-                                location.pathname === item.href
-                                  ? 'bg-primary/10 text-primary font-medium'
-                                  : 'text-foreground/70 hover:bg-secondary hover:text-primary'
-                              }`}
-                            >
-                              <span className="flex items-center gap-3">
-                                <item.icon />
-                                {item.name}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                        isActive(link.href) 
-                          ? 'bg-primary text-primary-foreground' 
-                          : 'text-foreground/70 hover:text-primary hover:bg-secondary/50'
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
-                </div>
-              ))}
+                      </Link>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </nav>
 
@@ -216,60 +253,66 @@ export default function Header() {
         }`}
       >
         <nav className="container mx-auto px-4 py-6 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <div key={link.name}>
-              {link.dropdown ? (
-                <>
-                  <button
-                    onClick={() => setCoursesOpen(!coursesOpen)}
-                    className={`w-full flex items-center justify-between py-3 px-4 rounded-xl text-base font-medium transition-all ${
-                      isCoursesActive 
+          {navLinks.map((link) => {
+            const isMobileDropdownActive = link.name === 'Courses' ? isCoursesActive : 
+                                            link.name === 'About' ? isAboutActive : false;
+            const isThisDropdownOpen = mobileOpenDropdown === link.name;
+            
+            return (
+              <div key={link.name}>
+                {link.dropdown ? (
+                  <>
+                    <button
+                      onClick={() => setMobileOpenDropdown(isThisDropdownOpen ? null : link.name)}
+                      className={`w-full flex items-center justify-between py-3 px-4 rounded-xl text-base font-medium transition-all ${
+                        isMobileDropdownActive 
+                          ? 'bg-primary/10 text-primary' 
+                          : 'text-foreground/80 hover:bg-secondary'
+                      }`}
+                    >
+                      {link.name}
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${
+                        isThisDropdownOpen ? 'rotate-180' : ''
+                      }`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${
+                      isThisDropdownOpen ? 'max-h-48 mt-1' : 'max-h-0'
+                    }`}>
+                      <div className="pl-4 flex flex-col gap-1 pb-2">
+                        {link.dropdown.map((item) => (
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className={`flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm transition-all ${
+                              location.pathname === item.href
+                                ? 'bg-primary/10 text-primary font-medium'
+                                : 'text-foreground/60 hover:text-primary hover:bg-secondary/50'
+                            }`}
+                          >
+                            <item.icon />
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    to={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`block py-3 px-4 rounded-xl text-base font-medium transition-all ${
+                      isActive(link.href) 
                         ? 'bg-primary/10 text-primary' 
-                        : 'text-foreground/80 hover:bg-secondary'
+                        : 'text-foreground/80 hover:bg-secondary hover:text-primary'
                     }`}
                   >
                     {link.name}
-                    <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${
-                      coursesOpen ? 'rotate-180' : ''
-                    }`} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-300 ${
-                    coursesOpen ? 'max-h-48 mt-1' : 'max-h-0'
-                  }`}>
-                    <div className="pl-4 flex flex-col gap-1 pb-2">
-                      {link.dropdown.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          onClick={() => setIsOpen(false)}
-                          className={`flex items-center gap-3 py-2.5 px-4 rounded-lg text-sm transition-all ${
-                            location.pathname === item.href
-                              ? 'bg-primary/10 text-primary font-medium'
-                              : 'text-foreground/60 hover:text-primary hover:bg-secondary/50'
-                          }`}
-                        >
-                          <item.icon />
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <Link
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`block py-3 px-4 rounded-xl text-base font-medium transition-all ${
-                    isActive(link.href) 
-                      ? 'bg-primary/10 text-primary' 
-                      : 'text-foreground/80 hover:bg-secondary hover:text-primary'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              )}
-            </div>
-          ))}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
           
           <div className="pt-4 mt-2 border-t border-border/50">
             <Button 

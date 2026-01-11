@@ -7,6 +7,9 @@ import { EnrollmentProvider } from "@/components/EnrollmentDialog";
 import { BookingProvider } from "@/components/BookingDialog";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import AboutAshram from "./pages/AboutAshram";
+import AboutTeachers from "./pages/AboutTeachers";
+import AboutTestimonials from "./pages/AboutTestimonials";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
 import Blog from "./pages/Blog";
@@ -30,6 +33,9 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
+              <Route path="/about/ashram" element={<AboutAshram />} />
+              <Route path="/about/teachers" element={<AboutTeachers />} />
+              <Route path="/about/testimonials" element={<AboutTestimonials />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/blog" element={<Blog />} />
