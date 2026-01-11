@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { 
   GraduationCap, RefreshCw, Users, BookOpen, Heart, 
   Sparkles, CheckCircle2, Star, 
@@ -7,7 +7,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-
+import SacredGeometryBackground from "@/components/3d/SacredGeometryBackground";
 // Pre-YTTC Support Items
 const preYTTCItems = [
   { icon: "📖", title: "Prepare Your Body", desc: "Start with gentle practices to prepare physically" },
@@ -164,53 +164,54 @@ const YTTCSupportSection = () => {
           }`}>
             <div className="max-w-6xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Left: Visual Card */}
+                {/* Left: Visual Card with 3D Background */}
                 <div className="relative">
                   {/* Main Card */}
-                  <div className="relative bg-gradient-to-br from-primary/10 via-background to-secondary/30 rounded-3xl p-8 border border-border overflow-hidden">
-                    {/* Decorative Pattern */}
-                    <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-                      <svg viewBox="0 0 200 200" fill="none" className="w-full h-full text-primary">
-                        <defs>
-                          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <circle cx="10" cy="10" r="1.5" fill="currentColor"/>
-                          </pattern>
-                        </defs>
-                        <rect width="200" height="200" fill="url(#grid)"/>
-                      </svg>
-                    </div>
+                  <div className="relative bg-gradient-to-br from-amber-50/90 via-orange-50/80 to-yellow-50/70 dark:from-amber-950/40 dark:via-orange-950/30 dark:to-yellow-950/20 rounded-3xl p-8 border border-amber-200/50 dark:border-amber-800/30 overflow-hidden min-h-[500px]">
+                    {/* 3D Animated Background */}
+                    <Suspense fallback={
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-100/50 to-orange-100/50 dark:from-amber-900/20 dark:to-orange-900/20" />
+                    }>
+                      <SacredGeometryBackground />
+                    </Suspense>
                     
-                    {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 text-amber-700 text-sm font-medium mb-6">
-                      <Star className="w-4 h-4 fill-amber-500" />
-                      World's First Pre-YTTC School
-                    </div>
+                    {/* Glass overlay for content readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/40 to-white/70 dark:from-background/70 dark:via-background/50 dark:to-background/80 backdrop-blur-[2px]" />
                     
-                    <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-                      Begin Before You Begin
-                    </h3>
-                    
-                    <p className="text-muted-foreground mb-8 leading-relaxed">
-                      The Optional Complimentary Online Pre-YTTC Preparation. If you feel like you don't know you are ready for course or not, 
-                      this pre-YTTC is for you to be prepared & feel confident.
-                    </p>
-                    
-                    {/* Feature List */}
-                    <div className="space-y-4">
-                      {preYTTCItems.map((item, index) => (
-                        <div 
-                          key={index}
-                          className="flex items-start gap-4 p-4 bg-background/80 rounded-xl border border-border/50 hover:border-primary/30 transition-all duration-300 group"
-                        >
-                          <div className="text-2xl">{item.icon}</div>
-                          <div>
-                            <h4 className="font-heading font-semibold text-foreground group-hover:text-primary transition-colors">
-                              {item.title}
-                            </h4>
-                            <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    {/* Content with z-index for readability */}
+                    <div className="relative z-10">
+                      {/* Badge */}
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold mb-6 shadow-lg">
+                        <Star className="w-4 h-4 fill-white" />
+                        World's First Pre-YTTC School
+                      </div>
+                      
+                      <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
+                        Begin Before You Begin
+                      </h3>
+                      
+                      <p className="text-muted-foreground mb-8 leading-relaxed">
+                        The Optional Complimentary Online Pre-YTTC Preparation. If you feel like you don't know you are ready for course or not, 
+                        this pre-YTTC is for you to be prepared & feel confident.
+                      </p>
+                      
+                      {/* Feature List */}
+                      <div className="space-y-4">
+                        {preYTTCItems.map((item, index) => (
+                          <div 
+                            key={index}
+                            className="flex items-start gap-4 p-4 bg-white/90 dark:bg-background/90 rounded-xl border border-amber-200/50 dark:border-amber-800/30 hover:border-amber-400/50 dark:hover:border-amber-600/50 transition-all duration-300 group backdrop-blur-sm shadow-sm hover:shadow-md"
+                          >
+                            <div className="text-2xl">{item.icon}</div>
+                            <div>
+                              <h4 className="font-heading font-semibold text-foreground group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                                {item.title}
+                              </h4>
+                              <p className="text-sm text-muted-foreground">{item.desc}</p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                   
