@@ -63,10 +63,10 @@ export default function Header() {
           </p>
           <button 
             onClick={dismissBanner}
-            className="flex-shrink-0 p-1 hover:bg-primary-foreground/20 rounded-full transition-colors"
+            className="flex-shrink-0 p-1.5 bg-primary-foreground/20 hover:bg-primary-foreground/40 rounded-full transition-all border border-primary-foreground/30 hover:scale-110"
             aria-label="Dismiss banner"
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4 stroke-[2.5]" />
           </button>
         </div>
       </div>
