@@ -28,9 +28,47 @@ const WhyFeatureItem = ({
       "flex flex-col md:flex-row items-center gap-8 md:gap-12",
       isReversed && "md:flex-row-reverse"
     )}>
-      {/* Circular Image */}
-      <div className="flex-shrink-0">
-        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+      {/* Circular Image with Chakra Ring */}
+      <div className="flex-shrink-0 relative">
+        {/* Animated Chakra Ring */}
+        <svg 
+          className="absolute -inset-4 w-[calc(100%+2rem)] h-[calc(100%+2rem)] animate-spin-slow text-primary/20"
+          viewBox="0 0 100 100" 
+          fill="none" 
+          stroke="currentColor"
+        >
+          {/* Outer ring with dashes */}
+          <circle cx="50" cy="50" r="48" strokeWidth="0.5" strokeDasharray="4 2" />
+          {/* Middle ring */}
+          <circle cx="50" cy="50" r="44" strokeWidth="0.3" />
+          {/* Inner decorative ring */}
+          <circle cx="50" cy="50" r="40" strokeWidth="0.5" strokeDasharray="2 4" />
+          {/* Chakra petals */}
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+            <ellipse 
+              key={angle}
+              cx={50 + 44 * Math.cos(angle * Math.PI / 180)} 
+              cy={50 + 44 * Math.sin(angle * Math.PI / 180)} 
+              rx="3" 
+              ry="6" 
+              transform={`rotate(${angle} ${50 + 44 * Math.cos(angle * Math.PI / 180)} ${50 + 44 * Math.sin(angle * Math.PI / 180)})`}
+              strokeWidth="0.4"
+            />
+          ))}
+          {/* Small dots at cardinal points */}
+          {[0, 90, 180, 270].map((angle) => (
+            <circle 
+              key={`dot-${angle}`}
+              cx={50 + 48 * Math.cos(angle * Math.PI / 180)} 
+              cy={50 + 48 * Math.sin(angle * Math.PI / 180)} 
+              r="1.5" 
+              fill="currentColor"
+            />
+          ))}
+        </svg>
+        
+        {/* Image Container */}
+        <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg relative z-10">
           <img 
             src={imageUrl}
             alt={imageAlt}
