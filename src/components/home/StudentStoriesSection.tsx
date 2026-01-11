@@ -62,7 +62,8 @@ const StudentStoriesSection = () => {
               <div className="aspect-video">
                 {isPlaying ? (
                   <iframe
-                    src={`https://www.youtube.com/embed/${videoTestimonials[activeVideo].id}?rel=0&autoplay=1`}
+                    key={`mobile-${activeVideo}-${isPlaying}`}
+                    src={`https://www.youtube.com/embed/${videoTestimonials[activeVideo].id}?rel=0&autoplay=1&enablejsapi=1`}
                     title={`${videoTestimonials[activeVideo].name} testimonial`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -205,7 +206,8 @@ const StudentStoriesSection = () => {
                 <div className="aspect-video">
                   {isPlaying ? (
                     <iframe
-                      src={`https://www.youtube.com/embed/${videoTestimonials[activeVideo].id}?rel=0&autoplay=1`}
+                      key={`desktop-${activeVideo}-${isPlaying}`}
+                      src={`https://www.youtube.com/embed/${videoTestimonials[activeVideo].id}?rel=0&autoplay=1&enablejsapi=1`}
                       title={`${videoTestimonials[activeVideo].name} testimonial`}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
