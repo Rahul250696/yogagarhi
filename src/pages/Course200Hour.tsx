@@ -930,6 +930,17 @@ export default function Course200Hour() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Student Testimonials
             </h2>
+            {/* Decorative Lotus Icon */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-10 h-6 text-primary" viewBox="0 0 40 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <ellipse cx="20" cy="12" rx="4" ry="10"/>
+                <ellipse cx="20" cy="12" rx="4" ry="10" transform="rotate(60 20 12)"/>
+                <ellipse cx="20" cy="12" rx="4" ry="10" transform="rotate(-60 20 12)"/>
+                <circle cx="20" cy="12" r="2" fill="currentColor"/>
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Hear from our graduates about their transformative journey
             </p>
@@ -1053,6 +1064,16 @@ export default function Course200Hour() {
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
                 What Sets YogaGarhi Apart
               </h2>
+              {/* Decorative Om Symbol */}
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+                <svg className="w-8 h-8 text-primary" viewBox="0 0 40 40" fill="currentColor">
+                  <path d="M12,28 C6,28 3,22 3,17 C3,9 9,4 18,4 C27,4 30,11 30,17 C30,24 23,28 19,28 C15,28 12,24 12,19 C12,15 16,13 19,13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M30,17 C30,11 36,8 39,12 C42,16 38,22 34,26 L31,32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="37" cy="6" r="2"/>
+                </svg>
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+              </div>
             </div>
 
             {/* Zigzag Feature Layout */}
@@ -1369,6 +1390,17 @@ This is not a transactional relationship — it is a lifelong connection.`}
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-primary mb-4">
               Daily Schedule
             </h2>
+            {/* Decorative Sun Icon */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-10 h-10 text-primary" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="20" cy="20" r="8"/>
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
+                  <line key={i} x1={20 + 11 * Math.cos(angle * Math.PI / 180)} y1={20 + 11 * Math.sin(angle * Math.PI / 180)} x2={20 + 16 * Math.cos(angle * Math.PI / 180)} y2={20 + 16 * Math.sin(angle * Math.PI / 180)}/>
+                ))}
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
               A typical day at YogaGarhi is designed to balance intensive learning with rest and integration.
             </p>
@@ -1417,6 +1449,19 @@ This is not a transactional relationship — it is a lifelong connection.`}
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-primary mb-4">
               What You Will Receive in This Training
             </h2>
+            {/* Decorative Mandala Icon */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-10 h-10 text-primary" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1">
+                <circle cx="20" cy="20" r="16"/>
+                <circle cx="20" cy="20" r="10"/>
+                <circle cx="20" cy="20" r="4"/>
+                {[0, 60, 120, 180, 240, 300].map((angle, i) => (
+                  <circle key={i} cx={20 + 10 * Math.cos(angle * Math.PI / 180)} cy={20 + 10 * Math.sin(angle * Math.PI / 180)} r="3" fill="currentColor"/>
+                ))}
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               A comprehensive curriculum covering all aspects of yoga
             </p>
@@ -1557,6 +1602,16 @@ This is not a transactional relationship — it is a lifelong connection.`}
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Course Syllabus
             </h2>
+            {/* Decorative Book/Scroll Icon */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-10 h-8 text-primary" viewBox="0 0 48 32" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M24 6 C24 6 18 4 8 4 C4 4 2 6 2 8 L2 26 C2 28 4 30 8 30 C18 30 24 28 24 28"/>
+                <path d="M24 6 C24 6 30 4 40 4 C44 4 46 6 46 8 L46 26 C46 28 44 30 40 30 C30 30 24 28 24 28"/>
+                <line x1="24" y1="6" x2="24" y2="28"/>
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Comprehensive curriculum covering all aspects of yoga teacher training
             </p>
@@ -1977,9 +2032,21 @@ This is not a transactional relationship — it is a lifelong connection.`}
         {/* ===== WHY CHOOSE YOGAGARHI (USPs) ===== */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Why Choose Yogagarhi
             </h2>
+            {/* Decorative Chakra Icon */}
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-10 h-10 text-primary" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="20" cy="20" r="16"/>
+                <circle cx="20" cy="20" r="8"/>
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
+                  <ellipse key={i} cx={20 + 12 * Math.cos(angle * Math.PI / 180)} cy={20 + 12 * Math.sin(angle * Math.PI / 180)} rx="2" ry="4" transform={`rotate(${angle} ${20 + 12 * Math.cos(angle * Math.PI / 180)} ${20 + 12 * Math.sin(angle * Math.PI / 180)})`}/>
+                ))}
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {[
@@ -2061,6 +2128,15 @@ This is not a transactional relationship — it is a lifelong connection.`}
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
               Special Workshops Included
             </h2>
+            {/* Decorative Hands/Mudra Icon */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-12 h-8 text-primary" viewBox="0 0 48 32" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 28 L12 16 C12 12 16 10 20 14 L20 8 C20 4 24 4 24 8 L24 14 C24 10 28 10 28 14 L28 20 C28 18 32 18 32 22 L32 28" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="24" cy="20" r="6" fill="none"/>
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
               Enhance your training with these exclusive bonus workshops — all included free
             </p>
@@ -2121,6 +2197,15 @@ This is not a transactional relationship — it is a lifelong connection.`}
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Sacred Excursions
               </h2>
+              {/* Decorative Mountain/Nature Icon */}
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+                <svg className="w-12 h-8 text-primary" viewBox="0 0 48 32" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M4 28 L16 8 L24 18 L32 10 L44 28 Z" strokeLinejoin="round"/>
+                  <circle cx="38" cy="8" r="4"/>
+                </svg>
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+              </div>
               <p className="text-muted-foreground max-w-xl mx-auto">
                 Immerse yourself in Bali's spiritual heritage through transformative experiences
               </p>
@@ -2510,6 +2595,15 @@ This is not a transactional relationship — it is a lifelong connection.`}
               <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
                 Sattvic Food Experience
               </h2>
+              {/* Decorative Leaf/Plant Icon */}
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+                <svg className="w-10 h-10 text-primary" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M20 36 C20 36 20 20 20 12 C20 4 28 2 36 6 C36 14 30 20 20 20" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M20 20 C10 20 4 14 4 6 C12 2 20 4 20 12" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+              </div>
               <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
                 Three daily meals prepared with love, following ancient yogic principles 
                 to support your practice and elevate your consciousness.
@@ -2666,6 +2760,20 @@ This is not a transactional relationship — it is a lifelong connection.`}
             <p className="text-center text-primary font-heading text-lg tracking-[0.3em] uppercase mb-2">
               Upcoming Dates
             </p>
+            {/* Decorative Calendar Icon */}
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/60" />
+              <svg className="w-10 h-10 text-primary" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="6" y="10" width="28" height="24" rx="3"/>
+                <line x1="6" y1="18" x2="34" y2="18"/>
+                <line x1="14" y1="6" x2="14" y2="12"/>
+                <line x1="26" y1="6" x2="26" y2="12"/>
+                <circle cx="14" cy="26" r="2" fill="currentColor"/>
+                <circle cx="20" cy="26" r="2" fill="currentColor"/>
+                <circle cx="26" cy="26" r="2" fill="currentColor"/>
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/60" />
+            </div>
             <div className="w-16 h-0.5 bg-primary mx-auto mb-12" />
             
             <div className="max-w-6xl mx-auto">
