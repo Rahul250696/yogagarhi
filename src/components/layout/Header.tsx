@@ -214,11 +214,22 @@ export default function Header() {
           </nav>
 
           {/* Right Side - CTA */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Mobile CTA Button */}
+            <Button 
+              variant="cta" 
+              size="sm"
+              className="lg:hidden text-xs px-3 py-1.5"
+              onClick={() => setShowEnrollDialog(true)}
+            >
+              Begin Journey
+            </Button>
+            
+            {/* Desktop CTA Button */}
             <Button 
               variant="cta" 
               size="default"
-              className="hidden sm:flex"
+              className="hidden lg:flex"
               onClick={() => setShowEnrollDialog(true)}
             >
               Begin Journey
