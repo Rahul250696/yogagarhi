@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Quote, Star, MapPin, ArrowRight } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
+import StudentStoriesSection from "@/components/home/StudentStoriesSection";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 const testimonials = [
@@ -139,6 +140,9 @@ export default function AboutTestimonials() {
           </p>
         </div>
       </section>
+
+      {/* Student Stories Section */}
+      <StudentStoriesSection />
 
       {/* Stats Section */}
       <section className="py-12 bg-secondary/20">
