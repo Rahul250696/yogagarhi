@@ -4,7 +4,7 @@ import { ArrowRight, Clock, Award } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import course100hr from "@/assets/course-100hr-new.jpg";
 import course200hr from "@/assets/course-200hr-new.jpg";
-import course300hr from "@/assets/gallery/teaching-practice.jpg";
+import course300hr from "@/assets/course-300hr-v2.jpg";
 
 const courses = [
   {
