@@ -478,6 +478,9 @@ export default function Course300Hour() {
   const [syllabusEmailError, setSyllabusEmailError] = useState("");
   const [selectedSyllabusCourse, setSelectedSyllabusCourse] = useState("300");
   const [showWebinarThankYou, setShowWebinarThankYou] = useState(false);
+  const [showPreYTTCDialog, setShowPreYTTCDialog] = useState(false);
+  const [showPreYTTCThankYou, setShowPreYTTCThankYou] = useState(false);
+  const [preYTTCForm, setPreYTTCForm] = useState({ name: '', email: '' });
   const [quizStep, setQuizStep] = useState(0);
   const [quizAnswers, setQuizAnswers] = useState<string[]>([]);
   const [email, setEmail] = useState("");
@@ -2114,6 +2117,100 @@ This is not a transactional relationship — it is a lifelong connection.`}
                 </div>
               </DialogContent>
             </Dialog>
+
+            {/* Pre-YTTC Detail Dialog */}
+            <Dialog open={showPreYTTCDialog} onOpenChange={setShowPreYTTCDialog}>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="font-heading text-2xl text-center">
+                    Get Pre-YTTC Details
+                  </DialogTitle>
+                </DialogHeader>
+                <form onSubmit={(e) => { 
+                  e.preventDefault(); 
+                  setShowPreYTTCDialog(false); 
+                  setShowPreYTTCThankYou(true);
+                }} className="space-y-4 pt-4">
+                  <p className="text-center text-muted-foreground text-sm">
+                    Learn about our world-first Pre-YTTC preparation program
+                  </p>
+                  
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">
+                      Full Name <span className="text-destructive">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your full name"
+                      required
+                      value={preYTTCForm.name}
+                      onChange={(e) => setPreYTTCForm(prev => ({ ...prev, name: e.target.value }))}
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">
+                      Email Address <span className="text-destructive">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      required
+                      value={preYTTCForm.email}
+                      onChange={(e) => setPreYTTCForm(prev => ({ ...prev, email: e.target.value }))}
+                      className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit" 
+                    className={`w-full transition-all ${preYTTCForm.name && preYTTCForm.email ? 'bg-primary text-primary-foreground hover:bg-primary/90' : 'bg-muted text-muted-foreground cursor-not-allowed'}`}
+                    size="lg"
+                    disabled={!preYTTCForm.name || !preYTTCForm.email}
+                  >
+                    <GraduationCap className="w-4 h-4 mr-2" />
+                    Get Pre-YTTC Details
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
+            
+            {/* Pre-YTTC Thank You Dialog */}
+            <Dialog open={showPreYTTCThankYou} onOpenChange={(open) => {
+              setShowPreYTTCThankYou(open);
+              if (!open) setPreYTTCForm({ name: '', email: '' });
+            }}>
+              <DialogContent className="sm:max-w-md text-center">
+                <div className="py-6 space-y-6">
+                  <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-2xl font-bold text-primary mb-2">
+                      Details on the Way! 🎓
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Thank you, <span className="font-medium text-foreground">{preYTTCForm.name}</span>! Your Pre-YTTC program details will be sent to your email.
+                    </p>
+                  </div>
+                  <div className="bg-secondary/50 rounded-lg p-4 text-sm text-muted-foreground">
+                    📧 Sent to: <span className="font-medium text-foreground">{preYTTCForm.email}</span>
+                  </div>
+                  <Button 
+                    onClick={() => { 
+                      setShowPreYTTCThankYou(false); 
+                      setPreYTTCForm({ name: '', email: '' }); 
+                    }} 
+                    className="w-full"
+                  >
+                    Close
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </section>
 
@@ -3660,6 +3757,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
               <Button 
                 size="lg" 
                 className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/20"
+                onClick={() => setShowWebinarDialog(true)}
               >
                 <Play className="w-4 h-4 mr-2" />
                 Free Webinar
@@ -3675,6 +3773,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
               <Button 
                 size="lg" 
                 className="bg-primary-foreground/10 backdrop-blur-sm border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/20"
+                onClick={() => setShowPreYTTCDialog(true)}
               >
                 <GraduationCap className="w-4 h-4 mr-2" />
                 Get Pre-YTTC Detail
