@@ -5,6 +5,7 @@ import CoursesSection from "@/components/home/CoursesSection";
 import FounderSection from "@/components/home/FounderSection";
 import WhyOneStyleSection from "@/components/home/WhyOneStyleSection";
 import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
+import YTTCSupportSection from "@/components/home/YTTCSupportSection";
 import ActivitiesSection from "@/components/home/ActivitiesSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FAQSection from "@/components/home/FAQSection";
@@ -19,6 +20,7 @@ const Index = () => {
       <FounderSection />
       <WhyOneStyleSection />
       <GoogleReviewsSection />
+      <YTTCSupportSection />
       <ActivitiesSection />
       <WhyChooseUs />
       <FAQSection />
