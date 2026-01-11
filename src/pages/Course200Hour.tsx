@@ -42,6 +42,7 @@ import apartChildPose from "@/assets/apart/child-pose.jpg";
 import apartWaterTemple from "@/assets/apart/water-temple.jpg";
 import apartPoolVilla from "@/assets/apart/pool-villa.jpg";
 import apartMountainPose from "@/assets/apart/mountain-pose.jpg";
+import apartWarriorSequence from "@/assets/apart/warrior-sequence.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -1297,7 +1298,7 @@ Key Benefits:
 • Designed to refine over time as your understanding deepens
 
 These sequences are not random flows — they are practical, purposeful, and built to give maximum benefit.`}
-                imageUrl={apartCeremony}
+                imageUrl={apartWarriorSequence}
                 imageAlt="Yoga Sequences"
                 isReversed={false}
               />
