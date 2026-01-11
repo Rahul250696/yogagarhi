@@ -169,6 +169,27 @@ const StudentStoriesSection = () => {
                 </div>
               </div>
 
+              {/* Featured Quote Card */}
+              <div className="mt-8 p-6 bg-secondary/40 rounded-2xl border border-border relative">
+                <Quote className="w-8 h-8 text-primary/20 absolute top-4 right-4" />
+                <p className="font-heading text-lg italic text-foreground/80 leading-relaxed mb-4">
+                  "{videoTestimonials[activeVideo].quote}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden">
+                    <img 
+                      src={`https://img.youtube.com/vi/${videoTestimonials[activeVideo].id}/mqdefault.jpg`}
+                      alt={videoTestimonials[activeVideo].name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground text-sm">{videoTestimonials[activeVideo].name}</p>
+                    <p className="text-xs text-muted-foreground">{videoTestimonials[activeVideo].country}</p>
+                  </div>
+                </div>
+              </div>
+
               {/* Stats Row */}
               <div className="mt-6 grid grid-cols-3 gap-4">
                 {[
@@ -181,6 +202,23 @@ const StudentStoriesSection = () => {
                     <p className="text-sm text-muted-foreground">{stat.label}</p>
                   </div>
                 ))}
+              </div>
+
+              {/* Trust Badges */}
+              <div className="mt-6 flex items-center justify-center gap-6 p-4 bg-background rounded-xl border border-border">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V8.26l7-3.89V12.99z"/>
+                  </svg>
+                  <span className="text-sm font-medium text-foreground">Yoga Alliance Certified</span>
+                </div>
+                <div className="w-px h-6 bg-border" />
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                  <span className="text-sm font-medium text-foreground">5.0 Google Rating</span>
+                </div>
               </div>
             </div>
           </div>
