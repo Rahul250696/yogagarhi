@@ -118,7 +118,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.8s ease-out forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
-        "spin-slow": "spin-slow 10s linear infinite",
+        "spin-slow": "spin-slow 60s linear infinite",
         "pulse-dot": "pulse-dot 5.5s ease-in-out infinite",
         "scroll-x": "scroll-x 30s linear infinite",
         "float": "float 6s ease-in-out infinite",
