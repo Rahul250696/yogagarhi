@@ -865,7 +865,7 @@ export default function Course200Hour() {
           {/* Enhanced Yoga-themed Background Art with Animations */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Large Chakra Wheel - Center */}
-            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] text-primary/[0.12] animate-float-gentle" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] text-primary/[0.04] animate-float-gentle" viewBox="0 0 100 100" fill="none" stroke="currentColor">
               <circle cx="50" cy="50" r="48" strokeWidth="0.2"/>
               <circle cx="50" cy="50" r="40" strokeWidth="0.2"/>
               <circle cx="50" cy="50" r="32" strokeWidth="0.2"/>
@@ -878,7 +878,7 @@ export default function Course200Hour() {
             </svg>
             
             {/* Sri Yantra - Top Left */}
-            <svg className="absolute -top-5 -left-5 w-56 h-56 text-primary/[0.15] animate-float" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
+            <svg className="absolute -top-5 -left-5 w-56 h-56 text-primary/[0.05] animate-float" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.5">
               <polygon points="50,5 95,90 5,90"/>
               <polygon points="50,95 5,10 95,10"/>
               <polygon points="50,20 78,75 22,75"/>
@@ -889,7 +889,7 @@ export default function Course200Hour() {
             </svg>
             
             {/* Lotus Flower - Bottom Right */}
-            <svg className="absolute -bottom-10 -right-10 w-72 h-72 text-primary/[0.12] animate-float-slow" style={{ animationDelay: '2s' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.4">
+            <svg className="absolute -bottom-10 -right-10 w-72 h-72 text-primary/[0.04] animate-float-slow" style={{ animationDelay: '2s' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.4">
               {/* Outer petals */}
               <ellipse cx="50" cy="50" rx="10" ry="35"/>
               <ellipse cx="50" cy="50" rx="10" ry="35" transform="rotate(30 50 50)"/>
@@ -907,7 +907,7 @@ export default function Course200Hour() {
             </svg>
             
             {/* Om Symbol - Top Right */}
-            <svg className="absolute top-16 right-20 w-36 h-36 text-primary/[0.18] animate-float-gentle" style={{ animationDelay: '1s' }} viewBox="0 0 100 100" fill="currentColor">
+            <svg className="absolute top-16 right-20 w-36 h-36 text-primary/[0.06] animate-float-gentle" style={{ animationDelay: '1s' }} viewBox="0 0 100 100" fill="currentColor">
               <path d="M28,68 C18,68 12,58 12,48 C12,32 24,22 40,22 C56,22 62,34 62,44 C62,56 50,62 44,62 C38,62 32,56 32,48 C32,42 38,38 44,38" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               <path d="M62,44 C62,32 74,26 80,32 C86,38 80,50 74,56 L68,72" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               <path d="M74,18 C80,18 84,24 84,30" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
@@ -915,7 +915,7 @@ export default function Course200Hour() {
             </svg>
             
             {/* Seed of Life - Left Center */}
-            <svg className="absolute top-1/3 -left-10 w-48 h-48 text-primary/[0.12] animate-float" style={{ animationDelay: '3s' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.4">
+            <svg className="absolute top-1/3 -left-10 w-48 h-48 text-primary/[0.04] animate-float" style={{ animationDelay: '3s' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.4">
               <circle cx="50" cy="50" r="18"/>
               <circle cx="50" cy="32" r="18"/>
               <circle cx="65.6" cy="41" r="18"/>
@@ -926,7 +926,7 @@ export default function Course200Hour() {
             </svg>
             
             {/* Mandala - Bottom Left */}
-            <svg className="absolute bottom-20 left-16 w-44 h-44 text-primary/[0.12] animate-float-slow" style={{ animationDelay: '4s' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.3">
+            <svg className="absolute bottom-20 left-16 w-44 h-44 text-primary/[0.04] animate-float-slow" style={{ animationDelay: '4s' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.3">
               <circle cx="50" cy="50" r="45"/>
               <circle cx="50" cy="50" r="36"/>
               <circle cx="50" cy="50" r="27"/>
@@ -939,7 +939,7 @@ export default function Course200Hour() {
             </svg>
             
             {/* Merudanda (Spine/Chakras) - Right Side */}
-            <svg className="absolute top-1/4 right-8 w-20 h-80 text-primary/[0.15] animate-float-gentle" style={{ animationDelay: '2.5s' }} viewBox="0 0 40 160" fill="none" stroke="currentColor" strokeWidth="0.5">
+            <svg className="absolute top-1/4 right-8 w-20 h-80 text-primary/[0.05] animate-float-gentle" style={{ animationDelay: '2.5s' }} viewBox="0 0 40 160" fill="none" stroke="currentColor" strokeWidth="0.5">
               {/* Spine line */}
               <line x1="20" y1="10" x2="20" y2="150" strokeWidth="0.3"/>
               {/* 7 Chakras */}
