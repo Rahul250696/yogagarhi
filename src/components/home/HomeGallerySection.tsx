@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Camera } from "lucide-react";
+import { ArrowRight, Camera, Play } from "lucide-react";
 
 // Import gallery images
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
@@ -13,43 +13,24 @@ import gallery7 from "@/assets/gallery/gallery-7.jpg";
 import gallery8 from "@/assets/gallery/gallery-8.jpg";
 
 const galleryImages = [
-  { src: gallery1, alt: "Waterfall excursion", label: "Nature" },
-  { src: gallery2, alt: "Meditation session", label: "Peace" },
-  { src: gallery3, alt: "Yoga practice", label: "Practice" },
-  { src: gallery4, alt: "Asana training", label: "Growth" },
-  { src: gallery5, alt: "Community meal", label: "Sangha" },
-  { src: gallery6, alt: "Warrior pose", label: "Strength" },
-  { src: gallery7, alt: "Group class", label: "Unity" },
-  { src: gallery8, alt: "Anatomy workshop", label: "Wisdom" },
-];
-
-// Positions for scattered polaroid layout
-const polaroidPositions = [
-  { top: "2%", left: "5%", rotate: -12, delay: 0 },
-  { top: "5%", left: "32%", rotate: 5, delay: 0.1 },
-  { top: "0%", left: "60%", rotate: -6, delay: 0.2 },
-  { top: "8%", right: "5%", rotate: 10, delay: 0.3 },
-  { bottom: "15%", left: "3%", rotate: 8, delay: 0.4 },
-  { bottom: "10%", left: "28%", rotate: -8, delay: 0.5 },
-  { bottom: "5%", right: "28%", rotate: 6, delay: 0.6 },
-  { bottom: "12%", right: "2%", rotate: -10, delay: 0.7 },
+  { src: gallery1, alt: "Waterfall excursion", label: "Nature Immersion" },
+  { src: gallery2, alt: "Meditation session", label: "Inner Peace" },
+  { src: gallery3, alt: "Yoga practice", label: "Daily Practice" },
+  { src: gallery4, alt: "Asana training", label: "Growth Journey" },
+  { src: gallery5, alt: "Community meal", label: "Sacred Sangha" },
+  { src: gallery6, alt: "Warrior pose", label: "Finding Strength" },
+  { src: gallery7, alt: "Group class", label: "Unity in Practice" },
+  { src: gallery8, alt: "Anatomy workshop", label: "Wisdom Sharing" },
 ];
 
 const HomeGallerySection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-background via-secondary/10 to-background overflow-hidden relative">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 border border-primary/10 rounded-full" />
-        <div className="absolute bottom-20 right-10 w-48 h-48 border border-primary/5 rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/5 rounded-full" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-16 md:py-24 bg-secondary/20 overflow-hidden">
+      <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-10 md:mb-14">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="w-8 h-px bg-primary/40" />
             <Camera className="w-4 h-4 text-primary/60" />
@@ -63,95 +44,94 @@ const HomeGallerySection = () => {
           </h2>
         </div>
 
-        {/* Scattered Polaroid Gallery */}
-        <div className="relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] max-w-6xl mx-auto">
-          {galleryImages.map((image, index) => {
-            const pos = polaroidPositions[index];
-            const isHovered = hoveredIndex === index;
-            
-            return (
-              <div
-                key={index}
-                className="absolute transition-all duration-500 ease-out cursor-pointer group"
-                style={{
-                  top: pos.top,
-                  left: pos.left,
-                  right: pos.right,
-                  bottom: pos.bottom,
-                  transform: `rotate(${pos.rotate}deg) ${isHovered ? 'scale(1.15) rotate(0deg)' : ''}`,
-                  zIndex: isHovered ? 50 : index,
-                  animationDelay: `${pos.delay}s`,
-                }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* Polaroid frame */}
-                <div 
-                  className={`
-                    bg-background p-2 pb-10 md:p-3 md:pb-12 shadow-xl rounded-sm
-                    transition-all duration-500
-                    ${isHovered ? 'shadow-2xl shadow-primary/20' : 'shadow-lg'}
-                  `}
-                >
-                  {/* Image */}
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 overflow-hidden">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className={`
-                        w-full h-full object-cover transition-transform duration-700
-                        ${isHovered ? 'scale-110' : 'scale-100'}
-                      `}
-                    />
-                  </div>
-                  
-                  {/* Label */}
-                  <div className="absolute bottom-2 md:bottom-3 left-0 right-0 text-center">
-                    <span className="font-heading text-xs md:text-sm text-foreground/70 italic">
-                      {image.label}
-                    </span>
-                  </div>
-
-                  {/* Tape decoration */}
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-3 md:h-4 bg-primary/20 rotate-[-2deg]" />
-                </div>
-              </div>
-            );
-          })}
-
-          {/* Center text overlay */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-40 pointer-events-none">
-            <div className="bg-background/95 backdrop-blur-sm px-8 py-6 md:px-12 md:py-8 rounded-2xl border border-primary/10 shadow-xl">
-              <p className="font-heading text-xl md:text-2xl lg:text-3xl text-foreground mb-2">
-                Where practice
-              </p>
-              <p className="font-heading text-xl md:text-2xl lg:text-3xl text-primary">
-                meets purpose
-              </p>
-              <div className="flex items-center justify-center gap-2 mt-4">
-                <span className="w-6 h-px bg-primary/40" />
-                <span className="text-xs text-muted-foreground tracking-widest uppercase">
-                  Bali, Indonesia
+        {/* Gallery Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+          {/* Left - Big Featured Image */}
+          <div className="relative group">
+            <div className="aspect-[4/3] lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={galleryImages[activeIndex].src}
+                alt={galleryImages[activeIndex].alt}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              
+              {/* Label */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <span className="inline-block px-3 py-1 bg-primary/90 text-primary-foreground text-xs font-medium rounded-full mb-3">
+                  {String(activeIndex + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
                 </span>
-                <span className="w-6 h-px bg-primary/40" />
+                <h3 className="font-heading text-2xl md:text-3xl text-white font-semibold">
+                  {galleryImages[activeIndex].label}
+                </h3>
+                <p className="text-white/70 mt-2 text-sm md:text-base">
+                  {galleryImages[activeIndex].alt}
+                </p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-8 md:mt-12">
-          <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-sm md:text-base">
-            Glimpses of transformation, community, and the yogic journey.
-          </p>
-          
-          <Link 
-            to="/gallery" 
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium group hover:bg-primary/90 transition-all"
-          >
-            Explore Full Gallery
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+            {/* Decorative frame */}
+            <div className="absolute -inset-3 border border-primary/20 rounded-2xl -z-10" />
+            <div className="absolute -inset-6 border border-primary/10 rounded-3xl -z-20 hidden md:block" />
+          </div>
+
+          {/* Right - Thumbnail Grid */}
+          <div className="flex flex-col">
+            <div className="grid grid-cols-4 lg:grid-cols-4 gap-2 md:gap-3">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`
+                    relative aspect-square rounded-lg md:rounded-xl overflow-hidden transition-all duration-300
+                    ${activeIndex === index 
+                      ? 'ring-2 ring-primary ring-offset-2 ring-offset-secondary/20 scale-95' 
+                      : 'hover:scale-105 opacity-70 hover:opacity-100'
+                    }
+                  `}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Active indicator */}
+                  {activeIndex === index && (
+                    <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
+                      <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-primary flex items-center justify-center">
+                        <Play className="w-3 h-3 md:w-4 md:h-4 text-primary-foreground fill-current" />
+                      </div>
+                    </div>
+                  )}
+                  {/* Number badge */}
+                  <div className="absolute top-1 left-1 md:top-2 md:left-2 w-5 h-5 md:w-6 md:h-6 rounded-full bg-background/90 flex items-center justify-center">
+                    <span className="text-[10px] md:text-xs font-medium text-foreground">
+                      {index + 1}
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Description below thumbnails */}
+            <div className="mt-6 md:mt-8 p-6 bg-background rounded-xl border border-primary/10">
+              <p className="font-heading text-xl md:text-2xl text-foreground mb-2">
+                Where practice meets purpose.
+              </p>
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
+                Glimpses of transformation, community, and the yogic journey at our Bali ashram.
+              </p>
+              
+              <Link 
+                to="/gallery" 
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full font-medium text-sm group hover:bg-primary/90 transition-all"
+              >
+                Explore Full Gallery
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
