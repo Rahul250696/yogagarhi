@@ -10,6 +10,7 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FAQSection from "@/components/home/FAQSection";
 import WebinarSection from "@/components/home/WebinarSection";
 import HomeGallerySection from "@/components/home/HomeGallerySection";
+import StudentStoriesSection from "@/components/home/StudentStoriesSection";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <WhyChooseUs />
       <WebinarSection />
       <HomeGallerySection />
+      <StudentStoriesSection />
       <FAQSection />
     </Layout>
   );
