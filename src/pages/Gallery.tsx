@@ -247,7 +247,7 @@ export default function Gallery() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
                 <div className="relative">
                   {/* Main circular image */}
-                  <div className="w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
+                  <div className="w-44 h-44 sm:w-60 sm:h-60 md:w-80 md:h-80 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
                     <img
                       src={galleryImages[currentIndex].src}
                       alt={galleryImages[currentIndex].alt}
