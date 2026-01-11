@@ -69,13 +69,13 @@ export default function CoursesSection() {
           </p>
         </div>
 
-        {/* Horizontal Scroll Container */}
+        {/* Cards Container */}
         <div className="relative">
-          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+          <div className="flex flex-col gap-6 md:grid md:grid-cols-3">
             {courses.map((course, index) => (
               <div
                 key={course.hours}
-                className="flex-shrink-0 w-[85vw] md:w-auto snap-center group"
+                className="w-full group"
               >
                 {/* Card */}
                 <div className={`relative h-full rounded-3xl overflow-hidden ${
