@@ -2726,7 +2726,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
           {/* Yoga-themed Background Art */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Sri Yantra Pattern - Top Left */}
-            <svg className="absolute top-10 left-10 w-48 h-48 text-primary/[0.04]" viewBox="0 0 100 100" fill="currentColor">
+            <svg className="absolute top-10 left-10 w-48 h-48 text-primary/[0.04] animate-float" viewBox="0 0 100 100" fill="currentColor">
               <polygon points="50,5 95,95 5,95" fill="none" stroke="currentColor" strokeWidth="0.5"/>
               <polygon points="50,95 5,5 95,5" fill="none" stroke="currentColor" strokeWidth="0.5"/>
               <polygon points="50,20 80,80 20,80" fill="none" stroke="currentColor" strokeWidth="0.5"/>
@@ -2736,7 +2736,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </svg>
             
             {/* Lotus Pattern - Bottom Right */}
-            <svg className="absolute bottom-10 right-10 w-64 h-64 text-primary/[0.03]" viewBox="0 0 100 100" fill="currentColor">
+            <svg className="absolute bottom-10 right-10 w-64 h-64 text-primary/[0.03] animate-float-slow" style={{ animationDelay: '2s' }} viewBox="0 0 100 100" fill="currentColor">
               {/* Lotus petals */}
               <ellipse cx="50" cy="50" rx="8" ry="25" fill="none" stroke="currentColor" strokeWidth="0.4"/>
               <ellipse cx="50" cy="50" rx="8" ry="25" fill="none" stroke="currentColor" strokeWidth="0.4" transform="rotate(30 50 50)"/>
@@ -2748,7 +2748,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </svg>
             
             {/* Om Symbol - Top Right */}
-            <svg className="absolute top-20 right-24 w-32 h-32 text-primary/[0.05]" viewBox="0 0 100 100" fill="currentColor">
+            <svg className="absolute top-20 right-24 w-32 h-32 text-primary/[0.05] animate-float-gentle" style={{ animationDelay: '1s' }} viewBox="0 0 100 100" fill="currentColor">
               <path d="M30,70 C20,70 15,60 15,50 C15,35 25,25 40,25 C55,25 60,35 60,45 C60,55 50,60 45,60 C40,60 35,55 35,50 C35,45 40,42 45,42" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               <path d="M60,45 C60,35 70,30 75,35 C80,40 75,50 70,55 L65,70" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               <path d="M70,20 C75,20 78,25 78,30" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -2756,7 +2756,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </svg>
             
             {/* Mandala Circle - Bottom Left */}
-            <svg className="absolute bottom-20 left-20 w-40 h-40 text-primary/[0.03]" viewBox="0 0 100 100" fill="currentColor">
+            <svg className="absolute bottom-20 left-20 w-40 h-40 text-primary/[0.03] animate-float" style={{ animationDelay: '3s' }} viewBox="0 0 100 100" fill="currentColor">
               <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.3"/>
               <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" strokeWidth="0.3"/>
               <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="0.3"/>
@@ -2768,7 +2768,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </svg>
             
             {/* Chakra Symbol - Center Faded */}
-            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] text-primary/[0.02]" viewBox="0 0 100 100" fill="currentColor">
+            <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] text-primary/[0.02] animate-float-gentle" style={{ animationDelay: '4s' }} viewBox="0 0 100 100" fill="currentColor">
               <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="0.2"/>
               <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.2"/>
               <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" strokeWidth="0.2"/>
