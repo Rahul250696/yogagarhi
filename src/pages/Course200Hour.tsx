@@ -622,13 +622,9 @@ export default function Course200Hour() {
         {/* ===== COURSE DETAILS BAR ===== */}
         <section className="py-8 bg-secondary/50 border-b border-border/50">
           <div className="container mx-auto px-4">
-            {/* Main Course Info Row - Animated Border Container */}
-            <div className="relative rounded-xl p-[3px] overflow-hidden">
-              {/* Animated rotating gradient border */}
-              <div className="absolute inset-0 rounded-xl animate-spin-slow bg-[conic-gradient(from_0deg,hsl(var(--primary)),hsl(var(--primary)/0.3),hsl(var(--primary)),hsl(var(--primary)/0.3),hsl(var(--primary)))]" />
-              
-              {/* Inner content container */}
-              <div className="relative bg-background rounded-xl shadow-card p-6 md:p-8">
+            {/* Main Course Info Row - Static Border Container */}
+            <div className="relative rounded-xl border-2 border-primary/40 bg-background shadow-card p-6 md:p-8">
+              <div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 items-center">
                 {/* Course Duration */}
                 <div className="text-center lg:text-left border-r border-border/30 pr-4 last:border-r-0">
@@ -726,8 +722,8 @@ export default function Course200Hour() {
                   </div>
                 </div>
               </div>
-              </div>
             </div>
+          </div>
           </div>
         </section>
 
