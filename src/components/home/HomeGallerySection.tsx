@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Camera } from "lucide-react";
 
 // Import gallery images
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
@@ -13,122 +13,49 @@ import gallery7 from "@/assets/gallery/gallery-7.jpg";
 import gallery8 from "@/assets/gallery/gallery-8.jpg";
 
 const galleryImages = [
-  { src: gallery1, alt: "Waterfall excursion" },
-  { src: gallery2, alt: "Meditation session" },
-  { src: gallery3, alt: "Yoga practice" },
-  { src: gallery4, alt: "Asana training" },
-  { src: gallery5, alt: "Community meal" },
-  { src: gallery6, alt: "Warrior pose" },
-  { src: gallery7, alt: "Group class" },
-  { src: gallery8, alt: "Anatomy workshop" },
+  { src: gallery1, alt: "Waterfall excursion", label: "Nature" },
+  { src: gallery2, alt: "Meditation session", label: "Peace" },
+  { src: gallery3, alt: "Yoga practice", label: "Practice" },
+  { src: gallery4, alt: "Asana training", label: "Growth" },
+  { src: gallery5, alt: "Community meal", label: "Sangha" },
+  { src: gallery6, alt: "Warrior pose", label: "Strength" },
+  { src: gallery7, alt: "Group class", label: "Unity" },
+  { src: gallery8, alt: "Anatomy workshop", label: "Wisdom" },
 ];
 
-// Large decorative Mandala SVG component
-const MandalaBackground = () => (
-  <svg
-    className="w-full h-full opacity-15"
-    viewBox="0 0 400 400"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="200" cy="200" r="190" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
-    <circle cx="200" cy="200" r="170" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="150" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
-    <circle cx="200" cy="200" r="130" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="110" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
-    <circle cx="200" cy="200" r="90" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="70" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
-    
-    {[...Array(12)].map((_, i) => (
-      <ellipse
-        key={`outer-petal-${i}`}
-        cx="200"
-        cy="40"
-        rx="20"
-        ry="50"
-        stroke="currentColor"
-        strokeWidth="1"
-        fill="none"
-        className="text-primary"
-        transform={`rotate(${i * 30} 200 200)`}
-      />
-    ))}
-    
-    {[...Array(12)].map((_, i) => (
-      <ellipse
-        key={`middle-petal-${i}`}
-        cx="200"
-        cy="70"
-        rx="15"
-        ry="40"
-        stroke="currentColor"
-        strokeWidth="1"
-        fill="none"
-        className="text-primary"
-        transform={`rotate(${i * 30 + 15} 200 200)`}
-      />
-    ))}
-    
-    {[...Array(8)].map((_, i) => (
-      <ellipse
-        key={`inner-petal-${i}`}
-        cx="200"
-        cy="120"
-        rx="12"
-        ry="30"
-        stroke="currentColor"
-        strokeWidth="1"
-        fill="none"
-        className="text-primary"
-        transform={`rotate(${i * 45} 200 200)`}
-      />
-    ))}
-
-    {[...Array(24)].map((_, i) => (
-      <line
-        key={`line-${i}`}
-        x1="200"
-        y1="110"
-        x2="200"
-        y2="90"
-        stroke="currentColor"
-        strokeWidth="0.5"
-        className="text-primary"
-        transform={`rotate(${i * 15} 200 200)`}
-      />
-    ))}
-    
-    {[...Array(36)].map((_, i) => (
-      <circle
-        key={`dot-${i}`}
-        cx="200"
-        cy="20"
-        r="3"
-        fill="currentColor"
-        className="text-primary"
-        transform={`rotate(${i * 10} 200 200)`}
-      />
-    ))}
-  </svg>
-);
+// Positions for scattered polaroid layout
+const polaroidPositions = [
+  { top: "2%", left: "5%", rotate: -12, delay: 0 },
+  { top: "5%", left: "32%", rotate: 5, delay: 0.1 },
+  { top: "0%", left: "60%", rotate: -6, delay: 0.2 },
+  { top: "8%", right: "5%", rotate: 10, delay: 0.3 },
+  { bottom: "15%", left: "3%", rotate: 8, delay: 0.4 },
+  { bottom: "10%", left: "28%", rotate: -8, delay: 0.5 },
+  { bottom: "5%", right: "28%", rotate: 6, delay: 0.6 },
+  { bottom: "12%", right: "2%", rotate: -10, delay: 0.7 },
+];
 
 const HomeGallerySection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
-  };
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 md:py-24 bg-secondary/20 overflow-hidden relative">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-background via-secondary/10 to-background overflow-hidden relative">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 border border-primary/10 rounded-full" />
+        <div className="absolute bottom-20 right-10 w-48 h-48 border border-primary/5 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/5 rounded-full" />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
-          <span className="text-primary/60 font-medium text-sm tracking-widest uppercase mb-2 block">
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <span className="w-8 h-px bg-primary/40" />
+            <Camera className="w-4 h-4 text-primary/60" />
+            <span className="w-8 h-px bg-primary/40" />
+          </div>
+          <span className="text-primary/60 font-medium text-sm tracking-widest uppercase mb-3 block">
             Moments & Memories
           </span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
@@ -136,83 +63,84 @@ const HomeGallerySection = () => {
           </h2>
         </div>
 
-        {/* Mandala Gallery */}
-        <div className="relative flex items-center justify-center">
-          <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[550px] md:h-[550px] lg:w-[650px] lg:h-[650px]">
-            {/* Background mandala - rotating slowly */}
-            <div className="absolute inset-0 animate-spin-slow">
-              <MandalaBackground />
-            </div>
-
-            {/* Images arranged in a circle - rotating around center */}
-            <div className="absolute inset-0 animate-spin-slow" style={{ animationDirection: 'reverse' }}>
-              {galleryImages.map((image, index) => {
-                const angle = (index * (360 / galleryImages.length)) - 90;
-                const radius = 42;
-                const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
-                const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
-                
-                return (
-                  <div
-                    key={index}
-                    className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: `${x}%`,
-                      top: `${y}%`,
-                    }}
-                  >
-                    <div className="w-full h-full animate-spin-slow">
-                      <div className="w-full h-full rounded-full overflow-hidden border-2 md:border-3 border-primary/30 shadow-lg hover:border-primary transition-all duration-300">
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
+        {/* Scattered Polaroid Gallery */}
+        <div className="relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-[650px] max-w-6xl mx-auto">
+          {galleryImages.map((image, index) => {
+            const pos = polaroidPositions[index];
+            const isHovered = hoveredIndex === index;
+            
+            return (
+              <div
+                key={index}
+                className="absolute transition-all duration-500 ease-out cursor-pointer group"
+                style={{
+                  top: pos.top,
+                  left: pos.left,
+                  right: pos.right,
+                  bottom: pos.bottom,
+                  transform: `rotate(${pos.rotate}deg) ${isHovered ? 'scale(1.15) rotate(0deg)' : ''}`,
+                  zIndex: isHovered ? 50 : index,
+                  animationDelay: `${pos.delay}s`,
+                }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                {/* Polaroid frame */}
+                <div 
+                  className={`
+                    bg-background p-2 pb-10 md:p-3 md:pb-12 shadow-xl rounded-sm
+                    transition-all duration-500
+                    ${isHovered ? 'shadow-2xl shadow-primary/20' : 'shadow-lg'}
+                  `}
+                >
+                  {/* Image */}
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className={`
+                        w-full h-full object-cover transition-transform duration-700
+                        ${isHovered ? 'scale-110' : 'scale-100'}
+                      `}
+                    />
                   </div>
-                );
-              })}
-            </div>
+                  
+                  {/* Label */}
+                  <div className="absolute bottom-2 md:bottom-3 left-0 right-0 text-center">
+                    <span className="font-heading text-xs md:text-sm text-foreground/70 italic">
+                      {image.label}
+                    </span>
+                  </div>
 
-            {/* Center static photo carousel */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="relative">
-                {/* Main circular image */}
-                <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
-                  <img
-                    src={galleryImages[currentIndex].src}
-                    alt={galleryImages[currentIndex].alt}
-                    className="w-full h-full object-cover transition-opacity duration-500"
-                  />
+                  {/* Tape decoration */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-3 md:h-4 bg-primary/20 rotate-[-2deg]" />
                 </div>
+              </div>
+            );
+          })}
 
-                {/* Navigation buttons */}
-                <button
-                  onClick={goToPrevious}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-background/90 border border-primary/30 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
-                </button>
-                
-                <button
-                  onClick={goToNext}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-background/90 border border-primary/30 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
-                </button>
+          {/* Center text overlay */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-40 pointer-events-none">
+            <div className="bg-background/95 backdrop-blur-sm px-8 py-6 md:px-12 md:py-8 rounded-2xl border border-primary/10 shadow-xl">
+              <p className="font-heading text-xl md:text-2xl lg:text-3xl text-foreground mb-2">
+                Where practice
+              </p>
+              <p className="font-heading text-xl md:text-2xl lg:text-3xl text-primary">
+                meets purpose
+              </p>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <span className="w-6 h-px bg-primary/40" />
+                <span className="text-xs text-muted-foreground tracking-widest uppercase">
+                  Bali, Indonesia
+                </span>
+                <span className="w-6 h-px bg-primary/40" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Description & CTA */}
+        {/* Bottom CTA */}
         <div className="text-center mt-8 md:mt-12">
-          <p className="font-heading text-xl md:text-2xl text-foreground/80 leading-relaxed mb-3">
-            Where practice meets purpose.
-          </p>
           <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-sm md:text-base">
             Glimpses of transformation, community, and the yogic journey.
           </p>
