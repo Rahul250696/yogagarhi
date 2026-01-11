@@ -8,6 +8,9 @@ import founderImage from "@/assets/founder-image.png";
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
 import gallery3 from "@/assets/gallery/gallery-3.jpg";
+import gallery4 from "@/assets/gallery/gallery-4.jpg";
+import gallery5 from "@/assets/gallery/gallery-5.jpg";
+import gallery6 from "@/assets/gallery/gallery-6.jpg";
 
 const founderAchievements = [
   { icon: Users, label: "2500+ Students Trained" },
@@ -60,6 +63,27 @@ const supportingTeachers = [
     image: gallery3,
     desc: "Dedicated practitioners who have mastered the subtle art of breath, guiding students into deeper states of awareness.",
     specialties: ["Pranayama", "Kriyas", "Meditation"],
+  },
+  {
+    name: "Meditation Masters",
+    role: "Inner Sciences",
+    image: gallery4,
+    desc: "Teachers who guide students through various meditation techniques, from concentration practices to advanced states of awareness.",
+    specialties: ["Dhyana", "Yoga Nidra", "Mindfulness"],
+  },
+  {
+    name: "Mantra & Kirtan Guides",
+    role: "Sacred Sound",
+    image: gallery5,
+    desc: "Masters of sacred sound who lead students through the transformative power of mantra chanting and devotional practices.",
+    specialties: ["Mantra", "Kirtan", "Sanskrit"],
+  },
+  {
+    name: "Ayurveda Specialists",
+    role: "Holistic Wellness",
+    image: gallery6,
+    desc: "Practitioners of the ancient science of life who integrate Ayurvedic wisdom with yoga for complete mind-body harmony.",
+    specialties: ["Diet", "Lifestyle", "Herbal Medicine"],
   },
 ];
 
@@ -276,7 +300,7 @@ export default function AboutTeachers() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {supportingTeachers.map((teacher, index) => (
               <div 
                 key={teacher.name}
