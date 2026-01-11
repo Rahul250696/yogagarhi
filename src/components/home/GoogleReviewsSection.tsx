@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Google Reviews Data
@@ -57,28 +57,13 @@ const reviews = [
 // Review Card Component
 function ReviewCard({ review }: { review: typeof reviews[0] }) {
   const [expanded, setExpanded] = useState(false);
-  const [liked, setLiked] = useState(false);
   const isLongText = review.text.length > 150;
   const displayText = expanded || !isLongText ? review.text : review.text.slice(0, 150) + "...";
 
   return (
-    <div className="bg-card rounded-xl border border-border p-4 transition-all duration-300 hover:shadow-lg hover:border-primary/20 relative group">
-      {/* Heart Icon */}
-      <button 
-        onClick={() => setLiked(!liked)}
-        className="absolute top-3 right-3 transition-all duration-300"
-      >
-        <Heart 
-          className={`w-5 h-5 transition-all duration-300 ${
-            liked 
-              ? "fill-red-500 text-red-500 scale-110" 
-              : "text-muted-foreground/40 group-hover:text-red-400"
-          }`}
-        />
-      </button>
-
+    <div className="bg-card rounded-xl border border-border p-4 transition-all duration-300 hover:shadow-lg hover:border-primary/20">
       {/* Header Row */}
-      <div className="flex items-center gap-3 mb-3 pr-6">
+      <div className="flex items-center gap-3 mb-3">
         {/* Avatar */}
         <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center flex-shrink-0">
           <span className="text-xs font-bold text-primary-foreground">{review.avatar}</span>
