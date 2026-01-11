@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Google Reviews Data
@@ -112,14 +112,31 @@ function ReviewCard({ review }: { review: typeof reviews[0] }) {
 
 export default function GoogleReviewsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % reviews.length);
-  };
+  const scrollToIndex = useCallback((index: number) => {
+    const el = viewportRef.current;
+    if (!el) return;
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-  };
+    const width = el.clientWidth;
+    el.scrollTo({ left: index * width, behavior: "smooth" });
+    setCurrentIndex(index);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    scrollToIndex((currentIndex + 1) % reviews.length);
+  }, [currentIndex, scrollToIndex]);
+
+  const prevSlide = useCallback(() => {
+    scrollToIndex((currentIndex - 1 + reviews.length) % reviews.length);
+  }, [currentIndex, scrollToIndex]);
+
+  useEffect(() => {
+    // Ensure we start aligned to the first card on initial render
+    scrollToIndex(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <section className="py-16 md:py-20 bg-gradient-to-b from-background via-secondary/5 to-background relative overflow-hidden">
@@ -164,13 +181,19 @@ export default function GoogleReviewsSection() {
 
         {/* Reviews Carousel - Mobile */}
         <div className="md:hidden relative">
-          <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
+          <div
+            ref={viewportRef}
+            className="overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+            onScroll={(e) => {
+              const el = e.currentTarget;
+              const width = el.clientWidth || 1;
+              const idx = Math.round(el.scrollLeft / width);
+              if (idx !== currentIndex) setCurrentIndex(idx);
+            }}
+          >
+            <div className="flex">
               {reviews.map((review, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-1">
+                <div key={index} className="w-full flex-shrink-0 px-1 snap-start">
                   <ReviewCard review={review} />
                 </div>
               ))}
@@ -184,19 +207,21 @@ export default function GoogleReviewsSection() {
               size="icon"
               onClick={prevSlide}
               className="rounded-full w-8 h-8"
+              aria-label="Previous review"
             >
               <ChevronLeft className="w-4 h-4" />
             </Button>
-            
+
             {/* Dots */}
             <div className="flex gap-1.5">
               {reviews.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => scrollToIndex(index)}
+                  aria-label={`Go to review ${index + 1}`}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex 
-                      ? "bg-primary w-5" 
+                    index === currentIndex
+                      ? "bg-primary w-5"
                       : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                   }`}
                 />
@@ -208,6 +233,7 @@ export default function GoogleReviewsSection() {
               size="icon"
               onClick={nextSlide}
               className="rounded-full w-8 h-8"
+              aria-label="Next review"
             >
               <ChevronRight className="w-4 h-4" />
             </Button>
