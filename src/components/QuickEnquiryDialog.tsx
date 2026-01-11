@@ -9,13 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Send, CheckCircle } from "lucide-react";
 
@@ -43,8 +36,6 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    course: "",
     message: "",
   });
 
@@ -70,8 +61,6 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
       setFormData({
         name: "",
         email: "",
-        phone: "",
-        course: "",
         message: "",
       });
     }, 3000);
@@ -88,8 +77,6 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
       setFormData({
         name: "",
         email: "",
-        phone: "",
-        course: "",
         message: "",
       });
     }
@@ -138,35 +125,6 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
                   onChange={(e) => handleChange("email", e.target.value)}
                   required
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="+91 XXXXXXXXXX"
-                  value={formData.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="course">Interested Course</Label>
-                <Select
-                  value={formData.course}
-                  onValueChange={(value) => handleChange("course", value)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a course" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="100-hour">100 Hour YTTC</SelectItem>
-                    <SelectItem value="200-hour">200 Hour YTTC</SelectItem>
-                    <SelectItem value="300-hour">300 Hour YTTC</SelectItem>
-                    <SelectItem value="other">Other / Not Sure</SelectItem>
-                  </SelectContent>
-                </Select>
               </div>
 
               <div className="space-y-2">
