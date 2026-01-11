@@ -5,29 +5,36 @@ import { Button } from "@/components/ui/button";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import logo from "@/assets/yogagarhi-logo.png";
 
-// Yoga symbol icons
-const LotusIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="currentColor">
-    <path d="M12 2C9.5 5 7 8 7 11c0 2.5 2 4 5 4s5-1.5 5-4c0-3-2.5-6-5-9zm-5 9c0-1.5.5-3 1.5-4.5C6 8 4 10 4 12.5 4 15 6 17 8.5 17c.5 0 1-.1 1.5-.2C8.5 16 7 14 7 11zm10 0c0 3-1.5 5-3 5.8.5.1 1 .2 1.5.2 2.5 0 4.5-2 4.5-4.5 0-2.5-2-4.5-4.5-6 1 1.5 1.5 3 1.5 4.5zM12 17c-1.5 0-2.5.5-3 1v4h6v-4c-.5-.5-1.5-1-3-1z"/>
+// Spiritual symbol icons
+const OmSymbol = () => (
+  <svg viewBox="0 0 100 100" className="w-5 h-5 text-primary" fill="currentColor">
+    <text x="50" y="75" textAnchor="middle" fontSize="70" fontFamily="serif">ॐ</text>
   </svg>
 );
 
-const OmIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="currentColor">
-    <path d="M12 2a3 3 0 0 0-3 3c0 1.1.6 2.1 1.5 2.6-.9.5-1.5 1.5-1.5 2.6 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.1-.6-2.1-1.5-2.6.9-.5 1.5-1.5 1.5-2.6a3 3 0 0 0-3-3zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM6 14c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm12-2c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+const LotusSymbol = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M12 21c0-4-3-7-3-10s1.5-5 3-5 3 2 3 5-3 6-3 10z" />
+    <path d="M12 21c-2 0-5-3-6-6s0-6 2-7c-1 3 1 6 4 8" />
+    <path d="M12 21c2 0 5-3 6-6s0-6-2-7c1 3-1 6-4 8" />
+    <path d="M7 8c-2-1-4 0-5 2s0 5 2 6c0-3 1-5 3-8z" />
+    <path d="M17 8c2-1 4 0 5 2s0 5-2 6c0-3-1-5-3-8z" />
   </svg>
 );
 
-const MandalaIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="currentColor">
-    <path d="M12 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3L12 14l-4.8 2.6.9-5.3-3.8-3.7 5.3-.8L12 2zm0 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+const SriYantraSymbol = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth="1.2">
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <polygon points="12,4 19,16 5,16" />
+    <polygon points="12,20 5,8 19,8" />
   </svg>
 );
 
 const courses = [
-  { name: "100 Hour YTTC", href: "/courses/100-hour", icon: LotusIcon },
-  { name: "200 Hour YTTC", href: "/courses/200-hour", icon: OmIcon },
-  { name: "300 Hour YTTC", href: "/courses/300-hour", icon: MandalaIcon },
+  { name: "100 Hour YTTC", href: "/courses/100-hour", icon: OmSymbol },
+  { name: "200 Hour YTTC", href: "/courses/200-hour", icon: LotusSymbol },
+  { name: "300 Hour YTTC", href: "/courses/300-hour", icon: SriYantraSymbol },
 ];
 
 const navLinks = [
