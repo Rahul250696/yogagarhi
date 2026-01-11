@@ -1,35 +1,45 @@
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { MapPin, Leaf, Mountain, Sun, Quote, Star, Play } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, MapPin, Users, Quote, Star, Clock, Award, Heart, Sparkles } from "lucide-react";
+import { useEnrollment } from "@/components/EnrollmentDialog";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 import founderImage from "@/assets/founder-image.png";
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
 import gallery3 from "@/assets/gallery/gallery-3.jpg";
 
+const sections = [
+  {
+    id: "ashram",
+    title: "About",
+    subtitle: "Ashram",
+    tagline: "Our Sacred Space",
+    image: gallery1,
+    featured: false,
+  },
+  {
+    id: "teachers",
+    title: "Our",
+    subtitle: "Teachers",
+    tagline: "Learn from Masters",
+    image: founderImage,
+    featured: true,
+  },
+  {
+    id: "testimonials",
+    title: "Student",
+    subtitle: "Stories",
+    tagline: "Hear Their Journey",
+    image: gallery3,
+    featured: false,
+  },
+];
+
 const ashramFeatures = [
-  {
-    icon: Mountain,
-    title: "Sacred Location",
-    description: "Nestled in the spiritual heart of Rishikesh, surrounded by the Himalayas and the holy Ganges.",
-  },
-  {
-    icon: Leaf,
-    title: "Natural Environment",
-    description: "Lush gardens, fresh mountain air, and serene surroundings for deep practice.",
-  },
-  {
-    icon: Sun,
-    title: "Traditional Setting",
-    description: "Authentic ashram lifestyle with modern comforts for focused learning.",
-  },
-  {
-    icon: MapPin,
-    title: "Easy Access",
-    description: "Well-connected to Dehradun airport and Rishikesh railway station.",
-  },
+  { icon: MapPin, title: "Sacred Location", desc: "Nestled in Rishikesh, by the Ganges" },
+  { icon: Heart, title: "Authentic Living", desc: "Traditional ashram lifestyle" },
+  { icon: Sparkles, title: "Peaceful Environment", desc: "Perfect for deep practice" },
 ];
 
 const teachers = [
@@ -37,28 +47,22 @@ const teachers = [
     name: "Yogacharya Sachin",
     role: "Founder & Lead Teacher",
     image: founderImage,
-    credentials: "E-RYT 500, Master in Yoga",
+    credentials: "E-RYT 500",
     experience: "18+ Years",
-    specialization: "Hatha Yoga, Yoga Philosophy, Meditation",
-    bio: "With over 18 years of dedicated practice and teaching, Yogacharya Sachin has trained 2500+ students globally. His approach blends traditional Himalayan wisdom with practical application.",
   },
   {
     name: "Dr. Priya Sharma",
-    role: "Yoga Anatomy Expert",
+    role: "Anatomy Expert",
     image: gallery1,
-    credentials: "PhD in Yoga Science",
+    credentials: "PhD Yoga Science",
     experience: "12+ Years",
-    specialization: "Anatomy, Physiology, Therapeutic Yoga",
-    bio: "Dr. Priya brings scientific understanding to traditional practices, helping students understand the body-mind connection through yoga.",
   },
   {
     name: "Acharya Deepak",
-    role: "Philosophy & Meditation",
+    role: "Philosophy Teacher",
     image: gallery2,
-    credentials: "Vedic Scholar, RYT 500",
+    credentials: "Vedic Scholar",
     experience: "15+ Years",
-    specialization: "Vedanta, Sanskrit, Pranayama",
-    bio: "A devoted practitioner and scholar of Vedic traditions, Acharya Deepak guides students through the depths of yogic philosophy.",
   },
 ];
 
@@ -66,39 +70,32 @@ const testimonials = [
   {
     name: "Sarah Mitchell",
     country: "United States",
-    course: "200 Hour YTTC",
+    text: "YogaGarhi transformed my understanding of yoga completely. The teachers are exceptional.",
     rating: 5,
-    text: "YogaGarhi transformed my understanding of yoga completely. The teachers are exceptional, and the ashram environment is perfect for deep learning. I left as a different person.",
-    avatar: "S",
   },
   {
     name: "Marcus Weber",
     country: "Germany",
-    course: "300 Hour YTTC",
+    text: "The authenticity here is unmatched. Every meditation session deepened my practice.",
     rating: 5,
-    text: "The authenticity here is unmatched. Every morning by the Ganges, every meditation session, every philosophy class deepened my practice. Truly life-changing.",
-    avatar: "M",
   },
   {
     name: "Yuki Tanaka",
     country: "Japan",
-    course: "200 Hour YTTC",
+    text: "I came seeking knowledge and found a family. The personalized attention exceeded expectations.",
     rating: 5,
-    text: "I came seeking knowledge and found a family. The personalized attention, the traditional teachings, and the loving environment exceeded all expectations.",
-    avatar: "Y",
-  },
-  {
-    name: "Elena Rodriguez",
-    country: "Spain",
-    course: "100 Hour YTTC",
-    rating: 5,
-    text: "Even in the shorter program, the depth of teaching was incredible. The teachers genuinely care about each student's growth and journey.",
-    avatar: "E",
   },
 ];
 
 export default function About() {
-  const [activeTeacher, setActiveTeacher] = useState(0);
+  const { setShowEnrollDialog } = useEnrollment();
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <Layout>
@@ -115,258 +112,280 @@ export default function About() {
             About YogaGarhi
           </h1>
           <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-            A sacred space where ancient Himalayan wisdom meets authentic practice
+            Ancient Himalayan wisdom. Authentic yoga, lived & taught.
           </p>
         </div>
       </section>
 
-      {/* Section Navigation */}
-      <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border/50">
+      {/* 3 Section Cards - Course Style Pattern */}
+      <section className="py-24 bg-background relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        
         <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-2 md:gap-8 py-3">
-            {["About Ashram", "Teachers", "Testimonials"].map((section) => (
-              <a
-                key={section}
-                href={`#${section.toLowerCase().replace(" ", "-")}`}
-                className="px-4 py-2 text-sm md:text-base font-medium text-muted-foreground hover:text-primary transition-colors rounded-full hover:bg-secondary/50"
-              >
-                {section}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* About Ashram Section */}
-      <section id="about-ashram" className="py-16 md:py-24 bg-background scroll-mt-32">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="text-primary font-medium text-sm tracking-wider uppercase">Our Sacred Space</span>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">
-              About the Ashram
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 mb-6">
+              <div className="w-12 h-px bg-primary/40" />
+              <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Discover</span>
+              <div className="w-12 h-px bg-primary/40" />
+            </div>
+            
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+              Know Us Better
             </h2>
-            <div className="w-16 h-1 bg-primary/30 mx-auto rounded-full" />
-          </div>
-
-          {/* Intro Text */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Welcome to <span className="text-primary font-semibold">YogaGarhi</span>, a sanctuary for self-discovery nestled in the spiritual heart of Rishikesh. Here, yoga is not just practiced but lived. Our ashram blends the depth of classical yogic traditions with the comforts needed for focused learning, creating the perfect environment for transformation.
+            <p className="font-heading text-2xl md:text-3xl text-primary">
+              Explore Our Story
             </p>
           </div>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16 max-w-5xl mx-auto">
-            <div className="md:col-span-2 relative h-64 md:h-80 rounded-2xl overflow-hidden">
-              <img src={gallery1} alt="Ashram main view" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-4 left-4 text-white">
-                <p className="font-heading text-xl font-semibold">Main Practice Hall</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="relative h-36 md:h-[calc(50%-8px)] rounded-2xl overflow-hidden">
-                <img src={gallery2} alt="Meditation space" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-              <div className="relative h-36 md:h-[calc(50%-8px)] rounded-2xl overflow-hidden">
-                <img src={gallery3} alt="Garden area" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
+          {/* Cards Container */}
+          <div className="relative">
+            <div className="flex flex-col gap-6 md:grid md:grid-cols-3">
+              {sections.map((section) => (
+                <div
+                  key={section.id}
+                  className="w-full group cursor-pointer"
+                  onClick={() => scrollToSection(section.id)}
+                >
+                  {/* Card */}
+                  <div className={`relative h-full rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${
+                    section.featured 
+                      ? 'ring-2 ring-primary/30' 
+                      : 'border border-border/40'
+                  }`}>
+                    {/* Featured Label */}
+                    {section.featured && (
+                      <div className="absolute top-0 left-0 right-0 z-20 bg-primary text-primary-foreground text-center py-2 text-xs font-bold tracking-widest uppercase">
+                        Meet Our Masters
+                      </div>
+                    )}
+                    
+                    {/* Image Section */}
+                    <div className={`relative h-56 md:h-64 overflow-hidden ${section.featured ? 'mt-8' : ''}`}>
+                      <img
+                        src={section.image}
+                        alt={section.subtitle}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
+                      
+                      {/* Title Badge */}
+                      <div className="absolute bottom-4 left-6 right-6">
+                        <p className="text-white/70 text-xs uppercase tracking-[0.15em] mb-1">{section.tagline}</p>
+                        <h3 className="font-heading text-4xl md:text-5xl font-bold text-white">
+                          {section.title}
+                          <span className="text-lg font-normal ml-2 text-white/80">{section.subtitle}</span>
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="bg-muted/30 p-6">
+                      {/* Description */}
+                      <p className="text-muted-foreground text-sm mb-5 pb-5 border-b border-border/40">
+                        {section.id === 'ashram' && "Discover our sacred space in Rishikesh, where ancient traditions meet modern comfort."}
+                        {section.id === 'teachers' && "Learn from dedicated practitioners with decades of experience in authentic yoga."}
+                        {section.id === 'testimonials' && "Hear transformative stories from our global community of graduates."}
+                      </p>
+
+                      {/* CTA */}
+                      <Button
+                        size="lg"
+                        className={`w-full group/btn ${
+                          section.featured 
+                            ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
+                            : 'bg-foreground/5 text-foreground hover:bg-foreground/10 border border-foreground/10'
+                        }`}
+                      >
+                        <span className="flex items-center justify-center gap-2">
+                          Explore {section.subtitle}
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                        </span>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {ashramFeatures.map((feature, index) => (
-              <div 
-                key={feature.title} 
-                className="p-6 bg-secondary/30 rounded-2xl border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg group"
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
+      {/* About Ashram Section */}
+      <section id="ashram" className="py-20 bg-secondary/20 scroll-mt-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-primary/40" />
+              <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Our Sacred Space</span>
+              <div className="w-8 h-px bg-primary/40" />
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
+              About the Ashram
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            {/* Images */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="h-48 rounded-2xl overflow-hidden">
+                  <img src={gallery1} alt="Ashram" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+                <div className="h-32 rounded-2xl overflow-hidden">
+                  <img src={gallery2} alt="Practice" className="w-full h-full object-cover" />
+                </div>
               </div>
-            ))}
+              <div className="pt-8">
+                <div className="h-64 rounded-2xl overflow-hidden">
+                  <img src={gallery3} alt="Environment" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Welcome to <span className="text-primary font-semibold">YogaGarhi</span>, a sanctuary for self-discovery nestled in the spiritual heart of Rishikesh. Here, yoga is not just practiced but lived.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Our ashram blends the depth of classical yogic traditions with the comforts needed for focused learning, creating the perfect environment for transformation. Every session is designed to inspire peace, strength, and harmony.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {ashramFeatures.map((feature) => (
+                  <div key={feature.title} className="p-4 bg-background rounded-xl border border-border/50">
+                    <feature.icon className="w-6 h-6 text-primary mb-2" />
+                    <h4 className="font-semibold text-foreground text-sm">{feature.title}</h4>
+                    <p className="text-xs text-muted-foreground">{feature.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Teachers Section */}
-      <section id="teachers" className="py-16 md:py-24 bg-secondary/20 scroll-mt-32">
+      <section id="teachers" className="py-20 bg-background scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-primary font-medium text-sm tracking-wider uppercase">Learn from the Best</span>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-primary/40" />
+              <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Learn from the Best</span>
+              <div className="w-8 h-px bg-primary/40" />
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
               Our Teachers
             </h2>
-            <div className="w-16 h-1 bg-primary/30 mx-auto rounded-full" />
           </div>
 
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-lg text-muted-foreground">
-              Our faculty comprises dedicated practitioners and scholars who bring decades of experience and authentic knowledge to every session.
-            </p>
-          </div>
-
-          {/* Teachers Display */}
-          <div className="max-w-5xl mx-auto">
-            {/* Teacher Selector - Mobile */}
-            <div className="flex gap-3 overflow-x-auto pb-4 mb-8 lg:hidden scrollbar-hide">
-              {teachers.map((teacher, index) => (
-                <button
-                  key={teacher.name}
-                  onClick={() => setActiveTeacher(index)}
-                  className={`flex-shrink-0 flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-                    activeTeacher === index 
-                      ? 'bg-primary text-primary-foreground' 
-                      : 'bg-background border border-border hover:border-primary/50'
-                  }`}
-                >
-                  <div className="w-10 h-10 rounded-full overflow-hidden">
-                    <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {teachers.map((teacher, index) => (
+              <div 
+                key={teacher.name}
+                className={`group rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${
+                  index === 0 ? 'ring-2 ring-primary/30' : 'border border-border/40'
+                }`}
+              >
+                {index === 0 && (
+                  <div className="bg-primary text-primary-foreground text-center py-2 text-xs font-bold tracking-widest uppercase">
+                    Founder
                   </div>
-                  <span className="font-medium text-sm whitespace-nowrap">{teacher.name.split(" ")[0]}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Desktop Layout */}
-            <div className="hidden lg:grid lg:grid-cols-3 gap-8">
-              {teachers.map((teacher, index) => (
-                <div 
-                  key={teacher.name}
-                  className="bg-background rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-xl group"
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <img 
-                      src={teacher.image} 
-                      alt={teacher.name} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <h3 className="font-heading text-xl font-bold">{teacher.name}</h3>
-                      <p className="text-sm opacity-90">{teacher.role}</p>
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="text-xs px-2.5 py-1 bg-primary/10 text-primary rounded-full">{teacher.credentials}</span>
-                      <span className="text-xs px-2.5 py-1 bg-secondary text-muted-foreground rounded-full">{teacher.experience}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                      {teacher.bio}
-                    </p>
-                    <p className="text-xs text-primary font-medium">
-                      Specialization: {teacher.specialization}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Active Teacher */}
-            <div className="lg:hidden">
-              <div className="bg-background rounded-2xl overflow-hidden border border-border/50">
-                <div className="relative h-72">
+                )}
+                <div className={`relative h-56 md:h-64 overflow-hidden ${index === 0 ? '' : ''}`}>
                   <img 
-                    src={teachers[activeTeacher].image} 
-                    alt={teachers[activeTeacher].name} 
-                    className="w-full h-full object-cover" 
+                    src={teacher.image} 
+                    alt={teacher.name} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="font-heading text-2xl font-bold">{teachers[activeTeacher].name}</h3>
-                    <p className="text-base opacity-90">{teachers[activeTeacher].role}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
+                  <div className="absolute bottom-4 left-6 right-6 text-white">
+                    <p className="text-white/70 text-xs uppercase tracking-wider mb-1">{teacher.role}</p>
+                    <h3 className="font-heading text-2xl font-bold">{teacher.name}</h3>
                   </div>
                 </div>
-                <div className="p-5">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs px-2.5 py-1 bg-primary/10 text-primary rounded-full">
-                      {teachers[activeTeacher].credentials}
-                    </span>
-                    <span className="text-xs px-2.5 py-1 bg-secondary text-muted-foreground rounded-full">
-                      {teachers[activeTeacher].experience}
-                    </span>
+                <div className="bg-muted/30 p-6">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center gap-2">
+                      <Award className="w-4 h-4 text-primary" />
+                      {teacher.credentials}
+                    </div>
+                    <div className="w-px h-4 bg-border" />
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-primary" />
+                      {teacher.experience}
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    {teachers[activeTeacher].bio}
-                  </p>
-                  <p className="text-xs text-primary font-medium">
-                    Specialization: {teachers[activeTeacher].specialization}
-                  </p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 md:py-24 bg-background scroll-mt-32">
+      <section id="testimonials" className="py-20 bg-secondary/20 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-primary font-medium text-sm tracking-wider uppercase">Student Experiences</span>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2 mb-4">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-primary/40" />
+              <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Student Stories</span>
+              <div className="w-8 h-px bg-primary/40" />
+            </div>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">
               Testimonials
             </h2>
-            <div className="w-16 h-1 bg-primary/30 mx-auto rounded-full" />
           </div>
 
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <p className="text-lg text-muted-foreground">
-              Hear from our global community of graduates who have transformed their lives through our programs.
-            </p>
-          </div>
-
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={testimonial.name}
-                className="p-6 bg-secondary/20 rounded-2xl border border-border/50 hover:border-primary/20 transition-all duration-300 group"
+                className={`group rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl ${
+                  index === 1 ? 'ring-2 ring-primary/30' : 'border border-border/40'
+                }`}
               >
-                <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                <p className="text-foreground/80 leading-relaxed mb-6 italic">
-                  "{testimonial.text}"
-                </p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-heading text-lg font-bold text-primary">{testimonial.avatar}</span>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.country} • {testimonial.course}</p>
-                    </div>
+                {index === 1 && (
+                  <div className="bg-primary text-primary-foreground text-center py-2 text-xs font-bold tracking-widest uppercase">
+                    Featured Story
                   </div>
-                  <div className="flex gap-0.5">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
+                )}
+                <div className="bg-muted/30 p-6">
+                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                  <p className="text-foreground/80 leading-relaxed mb-6 italic min-h-[80px]">
+                    "{testimonial.text}"
+                  </p>
+                  <div className="pt-4 border-t border-border/40">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                        <p className="text-sm text-muted-foreground">{testimonial.country}</p>
+                      </div>
+                      <div className="flex gap-0.5">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Google Reviews Link */}
           <div className="text-center mt-10">
             <a 
               href="https://www.google.com/maps" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-background border-2 border-border rounded-full text-sm font-medium text-foreground hover:border-primary/50 transition-all"
+              className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
             >
-              <Star className="w-4 h-4 text-amber-500" />
               View all reviews on Google
+              <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
