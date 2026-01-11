@@ -6,7 +6,6 @@ import FounderSection from "@/components/home/FounderSection";
 import WhyOneStyleSection from "@/components/home/WhyOneStyleSection";
 import GoogleReviewsSection from "@/components/home/GoogleReviewsSection";
 import YTTCSupportSection from "@/components/home/YTTCSupportSection";
-import ActivitiesSection from "@/components/home/ActivitiesSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import FAQSection from "@/components/home/FAQSection";
 import CTASection from "@/components/home/CTASection";
@@ -21,7 +20,6 @@ const Index = () => {
       <FounderSection />
       <WhyOneStyleSection />
       <GoogleReviewsSection />
-      <ActivitiesSection />
       <WhyChooseUs />
       <FAQSection />
       <CTASection />
