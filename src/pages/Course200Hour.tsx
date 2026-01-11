@@ -564,6 +564,19 @@ export default function Course200Hour() {
   // Scroll to top functionality
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // Check for #book-now hash and open enrollment dialog
+  useEffect(() => {
+    if (window.location.hash === '#book-now') {
+      setTimeout(() => {
+        const bookNowSection = document.getElementById('book-now');
+        if (bookNowSection) {
+          bookNowSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        setShowEnrollDialog(true);
+      }, 300);
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
@@ -2934,7 +2947,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== UPCOMING DATES ===== */}
-        <section className="py-20 bg-background">
+        <section id="book-now" className="py-20 bg-background scroll-mt-24">
           <div className="container mx-auto px-4">
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-center text-foreground mb-2">
               200 Hour Yoga Teacher Training
