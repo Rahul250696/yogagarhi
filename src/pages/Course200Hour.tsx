@@ -497,6 +497,21 @@ export default function Course200Hour() {
     }
   };
 
+  // Scroll to top functionality
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const timezones = [
     { value: 'UTC -12:00 Baker Island', label: 'UTC -12:00 Baker Island' },
     { value: 'UTC -11:00 Pago Pago', label: 'UTC -11:00 Pago Pago' },
@@ -4148,6 +4163,17 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </form>
           </DialogContent>
         </Dialog>
+
+        {/* Scroll to Top Button */}
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-primary text-primary-foreground rounded-full shadow-elevated hover:bg-primary/90 transition-all duration-300 flex items-center justify-center animate-fade-in hover:scale-110"
+            aria-label="Scroll to top"
+          >
+            <ChevronDown className="w-6 h-6 rotate-180" />
+          </button>
+        )}
       </Layout>
     </>
   );
