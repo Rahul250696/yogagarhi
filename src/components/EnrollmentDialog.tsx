@@ -1,5 +1,4 @@
 import { createContext, useContext, ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface EnrollmentContextType {
   setShowEnrollDialog: (show: boolean) => void;
@@ -17,17 +16,9 @@ export function useEnrollment() {
 }
 
 export function EnrollmentProvider({ children }: { children: ReactNode }) {
-  const navigate = useNavigate();
-
   const navigateToEnrollment = () => {
-    navigate('/courses/200-hour#book-now');
-    // Small delay to ensure navigation completes before scrolling
-    setTimeout(() => {
-      const bookNowSection = document.getElementById('book-now');
-      if (bookNowSection) {
-        bookNowSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
+    // Use window.location for navigation since this provider is outside BrowserRouter
+    window.location.href = '/courses/200-hour#book-now';
   };
 
   // setShowEnrollDialog now navigates instead of showing a dialog
