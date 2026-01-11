@@ -28,13 +28,88 @@ const StudentStoriesSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        {/* Asymmetric Layout */}
+        {/* Header - Mobile */}
+        <div className="lg:hidden mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+            <span className="text-primary font-medium text-sm">Real Voices</span>
+          </div>
+          <h2 className="font-heading text-4xl font-bold text-foreground mb-4">
+            Student Stories
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Every graduate carries a unique story of transformation. 
+            Here are some voices from our global yoga family.
+          </p>
+        </div>
+
+        {/* Featured Video - Mobile (Below Text) */}
+        <div className="lg:hidden mb-10">
+          <div className="relative">
+            {/* Decorative Elements */}
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+            
+            {/* Quote Decoration */}
+            <div className="absolute -top-4 -left-4 z-10">
+              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                <Quote className="w-5 h-5 text-primary-foreground" />
+              </div>
+            </div>
+
+            {/* Video Container */}
+            <div className="relative rounded-2xl overflow-hidden shadow-elevated bg-muted">
+              <div className="aspect-video">
+                {isPlaying ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${videoTestimonials[activeVideo].id}?rel=0&autoplay=1`}
+                    title={`${videoTestimonials[activeVideo].name} testimonial`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                ) : (
+                  <div className="relative w-full h-full">
+                    <img 
+                      src={`https://img.youtube.com/vi/${videoTestimonials[activeVideo].id}/maxresdefault.jpg`}
+                      alt={videoTestimonials[activeVideo].name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-foreground/20" />
+                    
+                    {/* Play Button */}
+                    <button
+                      onClick={() => setIsPlaying(true)}
+                      className="absolute inset-0 flex items-center justify-center group/play"
+                    >
+                      <div className="w-20 h-20 rounded-full bg-primary-foreground/95 flex items-center justify-center shadow-xl transform group-hover/play:scale-110 transition-transform duration-300">
+                        <Play className="w-8 h-8 text-primary ml-1" />
+                      </div>
+                    </button>
+
+                    {/* Video Info Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/80 to-transparent">
+                      <p className="font-heading text-xl font-bold text-primary-foreground">
+                        {videoTestimonials[activeVideo].name}
+                      </p>
+                      <p className="text-primary-foreground/70 text-sm">
+                        {videoTestimonials[activeVideo].country} • Click to play
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Asymmetric Layout - Desktop */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column - Header & Thumbnails */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            {/* Header */}
-            <div className="mb-10">
+            {/* Header - Desktop */}
+            <div className="hidden lg:block mb-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 <span className="text-primary font-medium text-sm">Real Voices</span>
@@ -111,8 +186,8 @@ const StudentStoriesSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Featured Video */}
-          <div className="lg:col-span-7">
+          {/* Right Column - Featured Video (Desktop Only) */}
+          <div className="hidden lg:block lg:col-span-7">
             <div className="relative">
               {/* Decorative Elements */}
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
