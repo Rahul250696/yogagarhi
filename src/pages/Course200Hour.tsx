@@ -2430,41 +2430,29 @@ This is not a transactional relationship — it is a lifelong connection.`}
         </section>
 
         {/* ===== SATTVIC FOOD ===== */}
-        <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
-          <section className="bg-secondary/20 relative overflow-hidden">
-            {/* Decorative Background */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
-            
-            <div className="container mx-auto px-4 relative z-10">
-              {/* Clickable Section Header */}
-              <CollapsibleTrigger asChild>
-                <div className="text-center py-12 cursor-pointer group">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-                    <UtensilsCrossed className="w-4 h-4" />
-                    Nourishment for Body & Soul
-                  </span>
-                  <div className="flex items-center justify-center gap-3">
-                    <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground">
-                      Sattvic Food Experience
-                    </h2>
-                    <ChevronDown className={`w-8 h-8 text-primary transition-transform duration-300 ${isFoodSectionOpen ? 'rotate-180' : ''}`} />
-                  </div>
-                  <p className="text-muted-foreground max-w-2xl mx-auto text-lg mt-4">
-                    Three daily meals prepared with love, following ancient yogic principles 
-                    to support your practice and elevate your consciousness.
-                  </p>
-                  <p className="text-primary/70 text-sm mt-2 group-hover:text-primary transition-colors">
-                    {isFoodSectionOpen ? 'Click to collapse' : 'Click to expand'}
-                  </p>
-                </div>
-              </CollapsibleTrigger>
-              
-              <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                <div className="pb-20">
+        <section className="py-20 bg-secondary/20 relative overflow-hidden">
+          {/* Decorative Background */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-accent/5 translate-y-1/2 -translate-x-1/2" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            {/* Section Header - Always Visible */}
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                <UtensilsCrossed className="w-4 h-4" />
+                Nourishment for Body & Soul
+              </span>
+              <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Sattvic Food Experience
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                Three daily meals prepared with love, following ancient yogic principles 
+                to support your practice and elevate your consciousness.
+              </p>
+            </div>
 
-            {/* Food Philosophy Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
+            {/* Food Philosophy Grid - Always Visible */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
               {foodPhilosophy.map((item, index) => {
                 const IconComponent = item.icon;
                 return (
@@ -2482,11 +2470,27 @@ This is not a transactional relationship — it is a lifelong connection.`}
               })}
             </div>
 
-            {/* Daily Meals */}
-            <div className="max-w-6xl mx-auto">
-              <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-10">
-                A Day of Mindful Eating
-              </h3>
+            {/* Collapsible Section - Daily Meals & More */}
+            <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
+              {/* Collapse Trigger */}
+              <CollapsibleTrigger asChild>
+                <div className="text-center mb-10 cursor-pointer group">
+                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-background rounded-full border border-border hover:border-primary/40 transition-all duration-300 shadow-sm hover:shadow-card">
+                    <h3 className="font-heading text-xl font-bold text-foreground">
+                      A Day of Mindful Eating
+                    </h3>
+                    <ChevronDown className={`w-6 h-6 text-primary transition-transform duration-300 ${isFoodSectionOpen ? 'rotate-180' : ''}`} />
+                  </div>
+                  <p className="text-primary/70 text-sm mt-3 group-hover:text-primary transition-colors">
+                    {isFoodSectionOpen ? 'Click to collapse' : 'Click to expand'}
+                  </p>
+                </div>
+              </CollapsibleTrigger>
+              
+              <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                <div className="pb-8">
+                  {/* Daily Meals */}
+                  <div className="max-w-6xl mx-auto">
               
               <div className="grid md:grid-cols-3 gap-8">
                 {foodMenu.map((meal, index) => {
@@ -2537,7 +2541,6 @@ This is not a transactional relationship — it is a lifelong connection.`}
               </div>
             </div>
 
-
             {/* Dietary Options Grid */}
             <div className="mt-20">
               <h3 className="font-heading text-2xl font-bold text-center text-foreground mb-4">
@@ -2585,9 +2588,9 @@ This is not a transactional relationship — it is a lifelong connection.`}
             </div>
                 </div>
               </CollapsibleContent>
-            </div>
-          </section>
-        </Collapsible>
+            </Collapsible>
+          </div>
+        </section>
 
         {/* ===== UPCOMING DATES ===== */}
         <section className="py-20 bg-background">
