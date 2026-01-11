@@ -55,37 +55,28 @@ const reviews = [
 ];
 
 // Review Card Component
-function ReviewCard({ review, featured = false }: { review: typeof reviews[0]; featured?: boolean }) {
+function ReviewCard({ review }: { review: typeof reviews[0] }) {
   const [expanded, setExpanded] = useState(false);
-  const isLongText = review.text.length > 120;
-  const displayText = expanded || !isLongText ? review.text : review.text.slice(0, 120) + "...";
+  const isLongText = review.text.length > 150;
+  const displayText = expanded || !isLongText ? review.text : review.text.slice(0, 150) + "...";
 
   return (
-    <div 
-      className={`relative bg-card rounded-2xl border border-border p-6 transition-all duration-500 hover:shadow-xl hover:border-primary/30 ${
-        featured ? "md:col-span-2 md:row-span-2" : ""
-      }`}
-    >
-      {/* Decorative Quote */}
-      <div className="absolute -top-3 -left-3 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-        <Quote className="w-5 h-5 text-primary" />
-      </div>
-
-      {/* Header */}
-      <div className="flex items-start gap-4 mb-4 mt-2">
+    <div className="bg-card rounded-xl border border-border p-4 transition-all duration-300 hover:shadow-lg hover:border-primary/20">
+      {/* Header Row */}
+      <div className="flex items-center gap-3 mb-3">
         {/* Avatar */}
-        <div className={`${featured ? "w-14 h-14" : "w-11 h-11"} rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center flex-shrink-0 shadow-lg`}>
-          <span className={`${featured ? "text-base" : "text-sm"} font-bold text-primary-foreground`}>{review.avatar}</span>
+        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center flex-shrink-0">
+          <span className="text-xs font-bold text-primary-foreground">{review.avatar}</span>
         </div>
 
         {/* Name & Location */}
         <div className="flex-1 min-w-0">
-          <h4 className={`font-semibold text-foreground ${featured ? "text-lg" : "text-base"}`}>{review.name}</h4>
-          <p className="text-sm text-muted-foreground">{review.location}</p>
+          <h4 className="font-medium text-foreground text-sm leading-tight">{review.name}</h4>
+          <p className="text-xs text-muted-foreground">{review.location}</p>
         </div>
 
         {/* Google Icon */}
-        <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
           <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
           <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
           <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
@@ -94,23 +85,23 @@ function ReviewCard({ review, featured = false }: { review: typeof reviews[0]; f
       </div>
 
       {/* Rating & Date */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-2 mb-2">
         <div className="flex gap-0.5">
           {Array.from({ length: review.rating }).map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+            <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
           ))}
         </div>
-        <span className="text-sm text-muted-foreground">{review.date}</span>
+        <span className="text-xs text-muted-foreground">{review.date}</span>
       </div>
 
       {/* Review Text */}
-      <p className={`text-muted-foreground leading-relaxed ${featured ? "text-base" : "text-sm"}`}>
+      <p className="text-sm text-muted-foreground leading-relaxed">
         {displayText}
       </p>
       {isLongText && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-sm text-primary hover:text-primary/80 font-medium mt-3 transition-colors"
+          className="text-xs text-primary hover:text-primary/80 font-medium mt-2 transition-colors"
         >
           {expanded ? "Read less" : "Read more"}
         </button>
@@ -131,78 +122,43 @@ export default function GoogleReviewsSection() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-background via-secondary/10 to-background relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-gradient-to-b from-background via-secondary/5 to-background relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      
-      {/* Floating Stars Decoration */}
-      <div className="absolute top-32 right-20 opacity-20">
-        <Star className="w-8 h-8 text-amber-400 fill-amber-400 animate-pulse" />
-      </div>
-      <div className="absolute bottom-40 left-16 opacity-15">
-        <Star className="w-6 h-6 text-amber-400 fill-amber-400 animate-pulse delay-300" />
-      </div>
+      <div className="absolute top-10 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           {/* Google Reviews Badge */}
-          <div className="inline-flex items-center gap-3 bg-card border border-border rounded-full px-6 py-3 shadow-lg mb-8">
-            <svg className="w-8 h-8" viewBox="0 0 24 24">
+          <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-2 shadow-md mb-6">
+            <svg className="w-6 h-6" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-foreground">5.0</span>
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
+            <span className="text-xl font-bold text-foreground">5.0</span>
+            <div className="flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+              ))}
             </div>
-            <span className="text-muted-foreground text-sm border-l border-border pl-3">100+ Reviews</span>
+            <span className="text-muted-foreground text-xs border-l border-border pl-2">100+ Reviews</span>
           </div>
 
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-3">
             What Our Students Say
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real experiences from our yoga teacher training graduates around the world
+          <p className="text-muted-foreground text-base max-w-xl mx-auto">
+            Real experiences from our yoga teacher training graduates
           </p>
-
-          {/* Decorative Lotus Icon */}
-          <div className="flex justify-center mt-6">
-            <svg 
-              width="48" 
-              height="32" 
-              viewBox="0 0 48 32" 
-              fill="none" 
-              className="text-primary/40 animate-float"
-            >
-              <path 
-                d="M24 28C24 28 8 20 8 12C8 4 16 0 24 8C32 0 40 4 40 12C40 20 24 28 24 28Z" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                fill="none"
-              />
-              <path 
-                d="M24 28C24 28 14 18 14 12C14 8 18 6 24 12C30 6 34 8 34 12C34 18 24 28 24 28Z" 
-                stroke="currentColor" 
-                strokeWidth="1.5" 
-                fill="none"
-              />
-              <circle cx="24" cy="14" r="2" fill="currentColor" opacity="0.5" />
-            </svg>
-          </div>
         </div>
 
         {/* Reviews Grid - Desktop */}
-        <div className="hidden md:grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="hidden md:grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {reviews.map((review, index) => (
-            <ReviewCard key={index} review={review} featured={index === 0} />
+            <ReviewCard key={index} review={review} />
           ))}
         </div>
 
@@ -214,7 +170,7 @@ export default function GoogleReviewsSection() {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {reviews.map((review, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-2">
+                <div key={index} className="w-full flex-shrink-0 px-1">
                   <ReviewCard review={review} />
                 </div>
               ))}
@@ -222,25 +178,25 @@ export default function GoogleReviewsSection() {
           </div>
 
           {/* Mobile Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-6">
+          <div className="flex items-center justify-center gap-3 mt-4">
             <Button
               variant="outline"
               size="icon"
               onClick={prevSlide}
-              className="rounded-full w-10 h-10"
+              className="rounded-full w-8 h-8"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </Button>
             
             {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-1.5">
               {reviews.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex 
-                      ? "bg-primary w-6" 
+                      ? "bg-primary w-5" 
                       : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                   }`}
                 />
@@ -251,28 +207,27 @@ export default function GoogleReviewsSection() {
               variant="outline"
               size="icon"
               onClick={nextSlide}
-              className="rounded-full w-10 h-10"
+              className="rounded-full w-8 h-8"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
         </div>
 
         {/* View All CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-8">
           <Button
             variant="outline"
-            size="lg"
-            className="group rounded-full px-8 border-primary/30 hover:border-primary hover:bg-primary/5"
+            className="group rounded-full px-6 border-primary/30 hover:border-primary hover:bg-primary/5"
             asChild
           >
             <a 
               href="https://maps.app.goo.gl/qE7ouyMxUyLsRhNk6" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2"
+              className="inline-flex items-center gap-2 text-sm"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
