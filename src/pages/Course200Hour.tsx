@@ -566,15 +566,26 @@ export default function Course200Hour() {
 
   // Check for #book-now hash and open enrollment dialog
   useEffect(() => {
-    if (window.location.hash === '#book-now') {
-      setTimeout(() => {
-        const bookNowSection = document.getElementById('book-now');
-        if (bookNowSection) {
-          bookNowSection.scrollIntoView({ behavior: 'smooth' });
-        }
-        setShowEnrollDialog(true);
-      }, 300);
-    }
+    const checkAndOpenBookNow = () => {
+      if (window.location.hash === '#book-now') {
+        setTimeout(() => {
+          const bookNowSection = document.getElementById('book-now');
+          if (bookNowSection) {
+            bookNowSection.scrollIntoView({ behavior: 'smooth' });
+          }
+          setShowEnrollDialog(true);
+          // Clear the hash to allow re-triggering on subsequent visits
+          window.history.replaceState(null, '', window.location.pathname);
+        }, 300);
+      }
+    };
+    
+    // Check on mount
+    checkAndOpenBookNow();
+    
+    // Also listen for hash changes (for SPA navigation)
+    window.addEventListener('hashchange', checkAndOpenBookNow);
+    return () => window.removeEventListener('hashchange', checkAndOpenBookNow);
   }, []);
 
   useEffect(() => {
