@@ -41,7 +41,7 @@ const HomeGallerySection = () => {
 
         {/* Main Gallery Grid */}
         <div className="grid lg:grid-cols-12 gap-4 lg:gap-6">
-          {/* Left Column - Featured Image + Description */}
+          {/* Left Column - Featured Image */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             {/* Featured Image */}
             <div className="relative group overflow-hidden rounded-2xl">
@@ -73,10 +73,10 @@ const HomeGallerySection = () => {
               </div>
             </div>
 
-            {/* Description Area - Below Featured Image */}
-            <div className="flex items-start gap-6 py-6">
+            {/* Description Area - Below Featured Image (Desktop Only) */}
+            <div className="hidden lg:flex items-start gap-6 py-6">
               {/* Decorative Lotus Icon */}
-              <div className="flex-shrink-0 hidden sm:block">
+              <div className="flex-shrink-0">
                 <svg className="w-12 h-12 text-primary/40" viewBox="0 0 64 64" fill="currentColor">
                   <path d="M32 8c-2 8-8 14-16 16 8 2 14 8 16 16 2-8 8-14 16-16-8-2-14-8-16-16z"/>
                   <path d="M32 16c-1.5 6-6 10.5-12 12 6 1.5 10.5 6 12 12 1.5-6 6-10.5 12-12-6-1.5-10.5-6-12-12z" opacity="0.5"/>
@@ -139,6 +139,25 @@ const HomeGallerySection = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* Description Area - Mobile Only (Below Photos) */}
+        <div className="lg:hidden flex flex-col items-center text-center gap-4 mt-8 py-6">
+          <p className="font-heading text-xl text-foreground/80 leading-relaxed">
+            Where practice meets purpose.
+          </p>
+          <p className="text-muted-foreground leading-relaxed max-w-md">
+            Glimpses of transformation, community, and the yogic journey. Every moment at Yogagarhi is a step toward inner awakening.
+          </p>
+          
+          {/* CTA Link */}
+          <Link 
+            to="/gallery" 
+            className="inline-flex items-center gap-2 mt-4 text-primary font-medium group/link hover:gap-3 transition-all"
+          >
+            Explore Full Gallery
+            <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>
