@@ -6,6 +6,29 @@ import heroImage from "@/assets/hero-yoga-bali.jpg";
 import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+// What Sets Apart section images
+import apartHammock from "@/assets/apart/hammock.jpg";
+import apartSeatedTalk from "@/assets/apart/seated-talk.jpg";
+import apartGroupPose from "@/assets/apart/group-pose.jpg";
+import apartCeremony from "@/assets/apart/ceremony.jpg";
+import apartGroupClass from "@/assets/apart/group-class.jpg";
+import apartChildPose from "@/assets/apart/child-pose.jpg";
+import apartWaterTemple from "@/assets/apart/water-temple.jpg";
+import apartPoolVilla from "@/assets/apart/pool-villa.jpg";
+import apartMountainPose from "@/assets/apart/mountain-pose.jpg";
+
+const apartImages = [
+  apartHammock,
+  apartSeatedTalk,
+  apartGroupPose,
+  apartCeremony,
+  apartGroupClass,
+  apartChildPose,
+  apartWaterTemple,
+  apartPoolVilla,
+  apartMountainPose,
+];
+
 const courseData = {
   "100-hour": {
     title: "100 HOUR YOGA",
@@ -583,29 +606,78 @@ export default function CourseDetail() {
       {/* What Sets YogaGarhi Apart */}
       <section className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground text-center mb-12">
+          <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground text-center mb-4">
             What Sets YogaGarhi Apart
           </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Discover the unique elements that make our training program truly transformative
+          </p>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {course.whatSetsApart.map((item, index) => (
-              <div 
-                key={index}
-                className="flex gap-6 p-6 bg-card rounded-xl shadow-soft"
-              >
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-primary-foreground font-bold text-xl">{index + 1}</span>
+          <div className="max-w-6xl mx-auto space-y-12 lg:space-y-16">
+            {course.whatSetsApart.map((item, index) => {
+              const isReversed = index % 2 === 1;
+              const imageIndex = index % apartImages.length;
+              
+              return (
+                <div 
+                  key={index}
+                  className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 items-center`}
+                >
+                  {/* Image with rotating chakra ring */}
+                  <div className="lg:w-1/2 relative">
+                    <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+                      {/* Rotating chakra ring */}
+                      <svg 
+                        className="absolute inset-0 w-full h-full animate-spin" 
+                        style={{ animationDuration: '30s' }}
+                        viewBox="0 0 200 200"
+                      >
+                        <circle 
+                          cx="100" cy="100" r="96" 
+                          fill="none" 
+                          stroke="hsl(var(--primary))" 
+                          strokeWidth="1"
+                          strokeDasharray="8 4"
+                          opacity="0.3"
+                        />
+                        <circle 
+                          cx="100" cy="100" r="88" 
+                          fill="none" 
+                          stroke="hsl(var(--accent))" 
+                          strokeWidth="1.5"
+                          strokeDasharray="12 6"
+                          opacity="0.4"
+                        />
+                      </svg>
+                      
+                      {/* Circular image */}
+                      <div className="absolute inset-4 rounded-full overflow-hidden shadow-elevated">
+                        <img 
+                          src={apartImages[imageIndex]} 
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="lg:w-1/2 text-center lg:text-left">
+                    <div className="inline-flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span className="text-primary-foreground font-bold">{index + 1}</span>
+                      </div>
+                      <h3 className="font-heading text-2xl font-semibold text-foreground">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
