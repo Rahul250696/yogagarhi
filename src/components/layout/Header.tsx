@@ -28,14 +28,16 @@ export default function Header() {
   const location = useLocation();
   const { setShowEnrollDialog } = useEnrollment();
 
-  // Show banner with shutter animation after a brief delay
+  // Show banner when user starts scrolling
   useEffect(() => {
-    if (!bannerDismissed) {
-      const timer = setTimeout(() => {
+    const handleScroll = () => {
+      if (!bannerDismissed && window.scrollY > 50) {
         setShowBanner(true);
-      }, 500);
-      return () => clearTimeout(timer);
-    }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [bannerDismissed]);
 
   const dismissBanner = () => {
