@@ -1,26 +1,44 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+// Import gallery images
+import gallery1 from "@/assets/gallery/gallery-1.jpg";
+import gallery2 from "@/assets/gallery/gallery-2.jpg";
+import gallery3 from "@/assets/gallery/gallery-3.jpg";
+import gallery4 from "@/assets/gallery/gallery-4.jpg";
+import gallery5 from "@/assets/gallery/gallery-5.jpg";
+import gallery6 from "@/assets/gallery/gallery-6.jpg";
+import gallery7 from "@/assets/gallery/gallery-7.jpg";
+import gallery8 from "@/assets/gallery/gallery-8.jpg";
+
+const galleryImages = [
+  { src: gallery1, alt: "Waterfall excursion" },
+  { src: gallery2, alt: "Meditation session" },
+  { src: gallery3, alt: "Yoga practice" },
+  { src: gallery4, alt: "Asana training" },
+  { src: gallery5, alt: "Community meal" },
+  { src: gallery6, alt: "Warrior pose" },
+  { src: gallery7, alt: "Group class" },
+  { src: gallery8, alt: "Anatomy workshop" },
+];
 
 // Large decorative Mandala SVG component
 const MandalaBackground = () => (
   <svg
-    className="absolute inset-0 w-full h-full opacity-10"
+    className="w-full h-full opacity-15"
     viewBox="0 0 400 400"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    {/* Outer circle rings */}
-    <circle cx="200" cy="200" r="190" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="170" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-    <circle cx="200" cy="200" r="150" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="130" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-    <circle cx="200" cy="200" r="110" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="90" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-    <circle cx="200" cy="200" r="70" stroke="currentColor" strokeWidth="1" className="text-primary" />
-    <circle cx="200" cy="200" r="50" stroke="currentColor" strokeWidth="0.5" className="text-primary" />
-    <circle cx="200" cy="200" r="30" stroke="currentColor" strokeWidth="1" className="text-primary" />
+    <circle cx="200" cy="200" r="190" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
+    <circle cx="200" cy="200" r="170" stroke="currentColor" strokeWidth="1" className="text-primary" />
+    <circle cx="200" cy="200" r="150" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
+    <circle cx="200" cy="200" r="130" stroke="currentColor" strokeWidth="1" className="text-primary" />
+    <circle cx="200" cy="200" r="110" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
+    <circle cx="200" cy="200" r="90" stroke="currentColor" strokeWidth="1" className="text-primary" />
+    <circle cx="200" cy="200" r="70" stroke="currentColor" strokeWidth="1.5" className="text-primary" />
     
-    {/* Lotus petals - outer layer */}
     {[...Array(12)].map((_, i) => (
       <ellipse
         key={`outer-petal-${i}`}
@@ -36,7 +54,6 @@ const MandalaBackground = () => (
       />
     ))}
     
-    {/* Lotus petals - middle layer */}
     {[...Array(12)].map((_, i) => (
       <ellipse
         key={`middle-petal-${i}`}
@@ -52,7 +69,6 @@ const MandalaBackground = () => (
       />
     ))}
     
-    {/* Lotus petals - inner layer */}
     {[...Array(8)].map((_, i) => (
       <ellipse
         key={`inner-petal-${i}`}
@@ -67,34 +83,7 @@ const MandalaBackground = () => (
         transform={`rotate(${i * 45} 200 200)`}
       />
     ))}
-    
-    {/* Diamond shapes */}
-    {[...Array(8)].map((_, i) => (
-      <path
-        key={`diamond-${i}`}
-        d="M200 60 L210 80 L200 100 L190 80 Z"
-        stroke="currentColor"
-        strokeWidth="0.5"
-        fill="none"
-        className="text-primary"
-        transform={`rotate(${i * 45} 200 200)`}
-      />
-    ))}
-    
-    {/* Inner star pattern */}
-    <path
-      d="M200 150 L210 180 L240 180 L215 200 L225 230 L200 210 L175 230 L185 200 L160 180 L190 180 Z"
-      stroke="currentColor"
-      strokeWidth="1"
-      fill="none"
-      className="text-primary"
-    />
-    
-    {/* Center lotus */}
-    <circle cx="200" cy="200" r="15" stroke="currentColor" strokeWidth="1" fill="none" className="text-primary" />
-    <circle cx="200" cy="200" r="8" stroke="currentColor" strokeWidth="1" className="text-primary" fill="currentColor" fillOpacity="0.3" />
-    
-    {/* Radiating lines */}
+
     {[...Array(24)].map((_, i) => (
       <line
         key={`line-${i}`}
@@ -109,87 +98,132 @@ const MandalaBackground = () => (
       />
     ))}
     
-    {/* Decorative dots on outer ring */}
     {[...Array(36)].map((_, i) => (
       <circle
         key={`dot-${i}`}
         cx="200"
         cy="20"
-        r="2"
+        r="3"
         fill="currentColor"
         className="text-primary"
         transform={`rotate(${i * 10} 200 200)`}
       />
     ))}
-    
-    {/* Sacred geometry triangles */}
-    <path
-      d="M200 80 L260 180 L140 180 Z"
-      stroke="currentColor"
-      strokeWidth="0.5"
-      fill="none"
-      className="text-primary"
-    />
-    <path
-      d="M200 280 L260 180 L140 180 Z"
-      stroke="currentColor"
-      strokeWidth="0.5"
-      fill="none"
-      className="text-primary"
-    />
   </svg>
 );
 
 const HomeGallerySection = () => {
-  return (
-    <section className="py-20 bg-secondary/30 overflow-hidden relative">
-      {/* Large Mandala Background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[800px] h-[800px] md:w-[1000px] md:h-[1000px] lg:w-[1200px] lg:h-[1200px] animate-spin-slow">
-          <MandalaBackground />
-        </div>
-      </div>
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <section className="py-16 md:py-24 bg-secondary/20 overflow-hidden relative">
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <span className="text-primary/60 font-medium text-sm tracking-widest uppercase mb-2 block">
             Moments & Memories
           </span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Life at Yogagarhi
           </h2>
         </div>
 
-        {/* Central Content */}
-        <div className="flex flex-col items-center justify-center min-h-[400px] md:min-h-[500px]">
-          {/* Decorative Lotus Icon */}
-          <div className="mb-8">
-            <svg className="w-20 h-20 md:w-24 md:h-24 text-primary/60" viewBox="0 0 64 64" fill="currentColor">
-              <path d="M32 8c-2 8-8 14-16 16 8 2 14 8 16 16 2-8 8-14 16-16-8-2-14-8-16-16z"/>
-              <path d="M32 16c-1.5 6-6 10.5-12 12 6 1.5 10.5 6 12 12 1.5-6 6-10.5 12-12-6-1.5-10.5-6-12-12z" opacity="0.5"/>
-              <ellipse cx="32" cy="52" rx="20" ry="6" opacity="0.2"/>
-            </svg>
+        {/* Mandala Gallery */}
+        <div className="relative flex items-center justify-center">
+          <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[550px] md:h-[550px] lg:w-[650px] lg:h-[650px]">
+            {/* Background mandala - rotating slowly */}
+            <div className="absolute inset-0 animate-spin-slow">
+              <MandalaBackground />
+            </div>
+
+            {/* Images arranged in a circle - rotating around center */}
+            <div className="absolute inset-0 animate-spin-slow" style={{ animationDirection: 'reverse' }}>
+              {galleryImages.map((image, index) => {
+                const angle = (index * (360 / galleryImages.length)) - 90;
+                const radius = 42;
+                const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
+                const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
+                
+                return (
+                  <div
+                    key={index}
+                    className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 -translate-x-1/2 -translate-y-1/2"
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                    }}
+                  >
+                    <div className="w-full h-full animate-spin-slow">
+                      <div className="w-full h-full rounded-full overflow-hidden border-2 md:border-3 border-primary/30 shadow-lg hover:border-primary transition-all duration-300">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Center static photo carousel */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+              <div className="relative">
+                {/* Main circular image */}
+                <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
+                  <img
+                    src={galleryImages[currentIndex].src}
+                    alt={galleryImages[currentIndex].alt}
+                    className="w-full h-full object-cover transition-opacity duration-500"
+                  />
+                </div>
+
+                {/* Navigation buttons */}
+                <button
+                  onClick={goToPrevious}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-background/90 border border-primary/30 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
+                </button>
+                
+                <button
+                  onClick={goToNext}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full bg-background/90 border border-primary/30 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
+                </button>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Description & CTA */}
+        <div className="text-center mt-8 md:mt-12">
+          <p className="font-heading text-xl md:text-2xl text-foreground/80 leading-relaxed mb-3">
+            Where practice meets purpose.
+          </p>
+          <p className="text-muted-foreground leading-relaxed max-w-xl mx-auto mb-6 text-sm md:text-base">
+            Glimpses of transformation, community, and the yogic journey.
+          </p>
           
-          {/* Text Content */}
-          <div className="text-center max-w-2xl">
-            <p className="font-heading text-2xl md:text-3xl text-foreground/80 leading-relaxed mb-4">
-              Where practice meets purpose.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-lg mb-8">
-              Glimpses of transformation, community, and the yogic journey. Every moment at Yogagarhi is a step toward inner awakening.
-            </p>
-            
-            {/* CTA Link */}
-            <Link 
-              to="/gallery" 
-              className="inline-flex items-center gap-2 text-primary font-medium group/link hover:gap-3 transition-all text-lg"
-            >
-              Explore Full Gallery
-              <ArrowRight className="w-5 h-5 transition-transform group-hover/link:translate-x-1" />
-            </Link>
-          </div>
+          <Link 
+            to="/gallery" 
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium group hover:bg-primary/90 transition-all"
+          >
+            Explore Full Gallery
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </div>
     </section>
