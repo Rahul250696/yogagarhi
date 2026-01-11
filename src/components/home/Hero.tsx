@@ -1,8 +1,21 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useEnrollment } from "@/components/EnrollmentDialog";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 export default function Hero() {
+  const { setShowEnrollDialog } = useEnrollment();
+
+  const scrollToBooking = () => {
+    // First try to find booking section on homepage (FAQ has contact info)
+    const faqSection = document.getElementById('faq-section');
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback to contact page
+      window.location.href = '/contact';
+    }
+  };
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -87,11 +100,19 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact">Quick Enquiry</Link>
+            <Button 
+              variant="hero" 
+              size="xl" 
+              onClick={() => setShowEnrollDialog(true)}
+            >
+              Quick Enquiry
             </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <Link to="/contact">Book an Appointment</Link>
+            <Button 
+              variant="heroOutline" 
+              size="xl" 
+              onClick={scrollToBooking}
+            >
+              Book an Appointment
             </Button>
           </div>
         </div>

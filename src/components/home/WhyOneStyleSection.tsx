@@ -170,7 +170,7 @@ export default function WhyOneStyleSection() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background">
+    <section id="prakriti-section" className="relative py-24 overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <MandalaPattern className="absolute top-0 left-0 w-[600px] h-[600px] text-primary/10 -translate-x-1/2 -translate-y-1/2 animate-[spin_120s_linear_infinite]" />
