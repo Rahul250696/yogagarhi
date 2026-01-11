@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
@@ -27,7 +27,7 @@ const HomeGallerySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="py-20 bg-background overflow-hidden">
+    <section className="py-20 bg-secondary/30 overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-12">
@@ -39,25 +39,19 @@ const HomeGallerySection = () => {
           </h2>
         </div>
 
-        {/* Main Gallery - Horizontal Scroll with Featured */}
-        <div className="grid lg:grid-cols-12 gap-6">
-          {/* Featured Large Image with Description */}
-          <div className="lg:col-span-7 relative group">
-            {/* Floating Description - visible on larger screens */}
-            <div className="hidden lg:block absolute -left-4 top-1/2 -translate-y-1/2 -translate-x-full w-52 z-10">
-              <div className="relative">
-                <p className="text-muted-foreground leading-relaxed">
-                  Where practice meets purpose. Glimpses of transformation, community, and the yogic journey.
-                </p>
+        {/* Main Gallery Grid */}
+        <div className="grid lg:grid-cols-12 gap-4 lg:gap-6">
+          {/* Left Column - Featured Image + Description */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            {/* Featured Image */}
+            <div className="relative group overflow-hidden rounded-2xl">
+              <div className="aspect-[4/3]">
+                <img 
+                  src={galleryImages[activeIndex].src}
+                  alt={galleryImages[activeIndex].alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
               </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
-              <img 
-                src={galleryImages[activeIndex].src}
-                alt={galleryImages[activeIndex].alt}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
               
@@ -78,9 +72,40 @@ const HomeGallerySection = () => {
                 </span>
               </div>
             </div>
+
+            {/* Description Area - Below Featured Image */}
+            <div className="flex items-start gap-6 py-6">
+              {/* Decorative Lotus Icon */}
+              <div className="flex-shrink-0 hidden sm:block">
+                <svg className="w-12 h-12 text-primary/40" viewBox="0 0 64 64" fill="currentColor">
+                  <path d="M32 8c-2 8-8 14-16 16 8 2 14 8 16 16 2-8 8-14 16-16-8-2-14-8-16-16z"/>
+                  <path d="M32 16c-1.5 6-6 10.5-12 12 6 1.5 10.5 6 12 12 1.5-6 6-10.5 12-12-6-1.5-10.5-6-12-12z" opacity="0.5"/>
+                  <ellipse cx="32" cy="52" rx="20" ry="6" opacity="0.2"/>
+                </svg>
+              </div>
+              
+              {/* Text Content */}
+              <div className="flex-1">
+                <p className="font-heading text-xl md:text-2xl text-foreground/80 leading-relaxed mb-4">
+                  Where practice meets purpose.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Glimpses of transformation, community, and the yogic journey. Every moment at Yogagarhi is a step toward inner awakening.
+                </p>
+                
+                {/* CTA Link */}
+                <Link 
+                  to="/gallery" 
+                  className="inline-flex items-center gap-2 mt-6 text-primary font-medium group/link hover:gap-3 transition-all"
+                >
+                  Explore Full Gallery
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* Thumbnail Grid */}
+          {/* Right Column - Thumbnail Grid */}
           <div className="lg:col-span-5">
             <div className="grid grid-cols-4 lg:grid-cols-2 gap-3 h-full">
               {galleryImages.map((img, index) => (
@@ -89,7 +114,7 @@ const HomeGallerySection = () => {
                   onClick={() => setActiveIndex(index)}
                   className={`relative overflow-hidden rounded-xl aspect-square transition-all duration-300 ${
                     activeIndex === index 
-                      ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' 
+                      ? 'ring-2 ring-primary ring-offset-2 ring-offset-secondary/30' 
                       : 'opacity-70 hover:opacity-100'
                   }`}
                 >
@@ -114,25 +139,6 @@ const HomeGallerySection = () => {
               ))}
             </div>
           </div>
-        </div>
-
-        {/* Bottom CTA Strip */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-border">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-              <Play className="w-5 h-5 text-primary ml-0.5" />
-            </div>
-            <div>
-              <p className="font-medium text-foreground">Watch Student Stories</p>
-              <p className="text-sm text-muted-foreground">Real experiences from our graduates</p>
-            </div>
-          </div>
-          <Button asChild size="lg" className="group">
-            <Link to="/gallery" className="flex items-center gap-2">
-              Explore Full Gallery
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
