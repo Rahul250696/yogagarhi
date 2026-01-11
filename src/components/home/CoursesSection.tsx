@@ -126,7 +126,7 @@ export default function CoursesSection() {
                 }`}
               >
                 {/* Card Container */}
-                <div className="relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl">
+                <div className="relative bg-card rounded-2xl overflow-hidden border border-border/50 hover:border-primary/30 transition-all duration-500">
                   {/* Number Badge */}
                   <div className="absolute top-4 left-4 z-20">
                     <span className="font-heading text-6xl font-bold text-white/20 leading-none">
