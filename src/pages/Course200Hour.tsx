@@ -45,6 +45,7 @@ import apartMountainPose from "@/assets/apart/mountain-pose.jpg";
 import apartWarriorSequence from "@/assets/apart/warrior-sequence.jpg";
 import apartYogaAllianceGraduates from "@/assets/apart/yoga-alliance-graduates.jpg";
 import apartBaliSurroundings from "@/assets/apart/bali-surroundings.jpg";
+import apartCommunityBeach from "@/assets/apart/community-beach.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -294,7 +295,7 @@ const whatYouWillReceive = [
     title: "Supportive Community", 
     description: "Be part of a warm and positive family. Grow together in a caring environment.",
     icon: Heart,
-    image: apartSeatedTalk
+    image: apartCommunityBeach
   },
   { 
     title: "Balinese Massage", 
