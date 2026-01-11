@@ -201,64 +201,147 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Shutter Down Animation with Yoga Background */}
         <div
-          className={`lg:hidden absolute top-full left-0 right-0 bg-card shadow-elevated transition-all duration-300 ${
-            isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          className={`lg:hidden absolute top-full left-0 right-0 shadow-elevated overflow-hidden transition-all duration-500 ease-out origin-top ${
+            isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <div key={link.name}>
-                {link.dropdown ? (
-                  <>
-                    <button
-                      onClick={() => setCoursesOpen(!coursesOpen)}
-                      className="w-full flex items-center justify-between py-3 text-foreground/80 hover:text-primary transition-colors font-medium"
+          {/* Yoga Poses Background Pattern */}
+          <div className="relative bg-card">
+            {/* Decorative Yoga Silhouettes */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.04]">
+              {/* Lotus Pose - Top Right */}
+              <svg className="absolute top-4 right-4 w-24 h-24 text-primary" viewBox="0 0 100 100" fill="currentColor">
+                <path d="M50 20c-5 0-10 5-15 15-5 10-5 20 0 25s15 5 15 5 10 0 15-5 5-15 0-25c-5-10-10-15-15-15zm0 35c-8 0-12-5-12-10s4-15 12-15 12 10 12 15-4 10-12 10z"/>
+                <path d="M50 60c-3 0-5 2-5 5v15c0 3 2 5 5 5s5-2 5-5V65c0-3-2-5-5-5z"/>
+                <circle cx="35" cy="70" r="8"/>
+                <circle cx="65" cy="70" r="8"/>
+              </svg>
+              
+              {/* Tree Pose - Bottom Left */}
+              <svg className="absolute bottom-10 left-6 w-20 h-28 text-primary" viewBox="0 0 60 100" fill="currentColor">
+                <circle cx="30" cy="10" r="8"/>
+                <path d="M30 20v25"/>
+                <path d="M30 45c0 0-15-10-15-20" strokeWidth="3" stroke="currentColor" fill="none"/>
+                <path d="M30 45c0 0 15-10 15-20" strokeWidth="3" stroke="currentColor" fill="none"/>
+                <path d="M30 45v35"/>
+                <path d="M20 80h20"/>
+                <path d="M25 60c-10 5-15 0-15-5"/>
+              </svg>
+              
+              {/* Warrior Pose - Center Right */}
+              <svg className="absolute top-1/2 right-8 w-28 h-20 text-primary -translate-y-1/2" viewBox="0 0 120 80" fill="currentColor">
+                <circle cx="60" cy="10" r="7"/>
+                <path d="M60 18v20"/>
+                <path d="M40 38h40"/>
+                <path d="M60 38l-25 30"/>
+                <path d="M60 38l25 30"/>
+              </svg>
+              
+              {/* Om Symbol - Bottom Right */}
+              <svg className="absolute bottom-6 right-10 w-16 h-16 text-primary" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M20 40c-5 0-8-4-8-10s4-12 12-12c6 0 10 4 10 10"/>
+                <path d="M34 28c0-6 4-10 10-10s10 6 10 14c0 10-8 18-20 18"/>
+                <circle cx="48" cy="16" r="4" fill="currentColor"/>
+                <path d="M52 8c4 0 6 2 6 6"/>
+              </svg>
+              
+              {/* Mandala Pattern - Top Left */}
+              <svg className="absolute top-8 left-8 w-20 h-20 text-primary" viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="40" cy="40" r="35"/>
+                <circle cx="40" cy="40" r="25"/>
+                <circle cx="40" cy="40" r="15"/>
+                <circle cx="40" cy="40" r="5"/>
+                <path d="M40 5v70M5 40h70M12 12l56 56M68 12L12 68"/>
+              </svg>
+            </div>
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-card via-card/95 to-card pointer-events-none" />
+            
+            {/* Navigation Content */}
+            <nav className="relative z-10 container mx-auto px-4 py-6 flex flex-col gap-2">
+              {navLinks.map((link, index) => (
+                <div 
+                  key={link.name}
+                  className={`transform transition-all duration-300 ${
+                    isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: isOpen ? `${index * 50}ms` : "0ms" }}
+                >
+                  {link.dropdown ? (
+                    <>
+                      <button
+                        onClick={() => setCoursesOpen(!coursesOpen)}
+                        className="w-full flex items-center justify-between py-3 text-foreground/80 hover:text-primary transition-colors font-medium"
+                      >
+                        {link.name}
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${coursesOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-300 ${coursesOpen ? "max-h-40" : "max-h-0"}`}>
+                        <div className="pl-4 flex flex-col gap-1 pb-2">
+                          {link.dropdown.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className="py-2 text-foreground/60 hover:text-primary transition-colors"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-3 text-foreground/80 hover:text-primary transition-colors font-medium ${
+                        isActive(link.href) ? "text-primary" : ""
+                      }`}
                     >
                       {link.name}
-                      <ChevronDown className={`h-4 w-4 transition-transform ${coursesOpen ? "rotate-180" : ""}`} />
-                    </button>
-                    {coursesOpen && (
-                      <div className="pl-4 flex flex-col gap-1">
-                        {link.dropdown.map((item) => (
-                          <Link
-                            key={item.name}
-                            to={item.href}
-                            onClick={() => setIsOpen(false)}
-                            className="py-2 text-foreground/60 hover:text-primary transition-colors"
-                          >
-                            {item.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    to={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`block py-3 text-foreground/80 hover:text-primary transition-colors font-medium ${
-                      isActive(link.href) ? "text-primary" : ""
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                )}
+                    </Link>
+                  )}
+                </div>
+              ))}
+              
+              {/* Social Links */}
+              <div 
+                className={`flex items-center justify-center gap-4 py-4 border-t border-border/50 mt-2 transform transition-all duration-300 ${
+                  isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: isOpen ? `${navLinks.length * 50}ms` : "0ms" }}
+              >
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 hover:text-primary transition-colors">
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 hover:text-primary transition-colors">
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2 hover:text-primary transition-colors">
+                  <Youtube className="h-5 w-5" />
+                </a>
               </div>
-            ))}
-            <Button 
-              variant="cta" 
-              size="lg" 
-              className="mt-4"
-              onClick={() => {
-                setShowEnrollDialog(true);
-                setIsOpen(false);
-              }}
-            >
-              Start Your Journey
-            </Button>
-          </nav>
+              
+              <Button 
+                variant="cta" 
+                size="lg" 
+                className={`mt-2 transform transition-all duration-300 ${
+                  isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: isOpen ? `${(navLinks.length + 1) * 50}ms` : "0ms" }}
+                onClick={() => {
+                  setShowEnrollDialog(true);
+                  setIsOpen(false);
+                }}
+              >
+                Start Your Journey
+              </Button>
+            </nav>
+          </div>
         </div>
       </header>
     </>
