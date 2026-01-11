@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, MessageCircle, HelpCircle, Plane, Calendar, Clock, MapPin } from "lucide-react";
+import { ChevronDown, MessageCircle, HelpCircle, Plane, Calendar, Clock, MapPin, Home, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const faqCategories = [
   { id: "travel", label: "Travel & Visa", icon: Plane },
   { id: "schedule", label: "Schedule", icon: Calendar },
   { id: "stay", label: "Stay & Location", icon: MapPin },
+  { id: "courses", label: "Courses & Accommodation", icon: Home },
 ];
 
 const faqs = [
@@ -39,6 +40,36 @@ const faqs = [
     category: "stay",
     question: "Can I stay longer in Bali after the course ends?",
     answer: "Yes, many students extend their stay. Our team can guide you with local stays, travel tips, and activities.",
+  },
+  {
+    category: "stay",
+    question: "Where is the school located in Bali?",
+    answer: "Our school is located in Gianyar, Bali — surrounded by lush rice fields and peaceful nature, just a short drive from Ubud, the cultural heart of Bali.",
+  },
+  {
+    category: "stay",
+    question: "Is the location safe and accessible?",
+    answer: "Absolutely. The area is known for its tranquility and safety. Local amenities, cafes, and ATMs are within walking distance, and our staff is available 24/7 for support.",
+  },
+  {
+    category: "courses",
+    question: "What courses do you offer?",
+    answer: "We offer 100-hour, 200-hour, and 300-hour Yoga Teacher Training Courses (YTTC), all certified by Yoga Alliance. Each course covers asana, pranayama, philosophy, anatomy, and teaching methodology.",
+  },
+  {
+    category: "courses",
+    question: "What accommodation options are available?",
+    answer: "We offer three options: Private Room, Double Sharing, and Triple Sharing. All rooms have attached bathrooms with hot water, air conditioning/fans, free Wi-Fi, and daily housekeeping.",
+  },
+  {
+    category: "courses",
+    question: "Are meals included in the course fee?",
+    answer: "Yes, three healthy sattvic vegetarian meals are included daily along with herbal teas and drinking water. We cater to vegan, gluten-free, and other dietary requirements upon request.",
+  },
+  {
+    category: "courses",
+    question: "What is included in the course fee?",
+    answer: "The fee includes accommodation, meals, study materials, yoga mats and props, excursions, airport pickup, certification, and access to special workshops like Ayurveda and arm balancing.",
   },
 ];
 
