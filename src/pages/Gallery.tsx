@@ -198,8 +198,8 @@ export default function Gallery() {
                 <MandalaBackground />
               </div>
 
-              {/* Images arranged in a circle - rotating in opposite direction */}
-              <div className="absolute inset-0" style={{ animation: 'spin 60s linear infinite reverse' }}>
+              {/* Images arranged in a circle - rotating around center */}
+              <div className="absolute inset-0 animate-spin-slow" style={{ animationDirection: 'reverse' }}>
                 {galleryImages.map((image, index) => {
                   const angle = (index * 36) - 90; // 36 degrees apart (360/10), start from top
                   const radius = 42; // percentage from center
@@ -213,20 +213,22 @@ export default function Gallery() {
                       style={{
                         left: `${x}%`,
                         top: `${y}%`,
-                        animation: 'spin 60s linear infinite', // Counter-rotate to keep images upright
                       }}
                     >
-                      <div className="w-full h-full rounded-full overflow-hidden border-4 border-primary/30 shadow-lg hover:border-primary hover:scale-110 transition-all duration-300 group">
-                        <img
-                          src={image.src}
-                          alt={image.alt}
-                          className="w-full h-full object-cover"
-                        />
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-full">
-                          <span className="text-primary-foreground text-xs md:text-sm font-medium text-center px-2">
-                            {image.alt}
-                          </span>
+                      {/* Counter-rotate to keep images upright */}
+                      <div className="w-full h-full animate-spin-slow">
+                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-primary/30 shadow-lg hover:border-primary hover:scale-110 transition-all duration-300 group">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-full object-cover"
+                          />
+                          {/* Hover overlay */}
+                          <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-full">
+                            <span className="text-primary-foreground text-xs md:text-sm font-medium text-center px-2">
+                              {image.alt}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
