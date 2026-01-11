@@ -29,35 +29,26 @@ const HomeGallerySection = () => {
   return (
     <section className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
-        {/* Header with offset design */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
-          <div>
-            <span className="text-primary/60 font-medium text-sm tracking-widest uppercase mb-2 block">
-              Moments & Memories
-            </span>
-            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
-              Life at Yogagarhi
-            </h2>
-          </div>
-          <p className="text-muted-foreground max-w-md md:text-right">
-            Where practice meets purpose. Glimpses of transformation, community, and the yogic journey.
-          </p>
+        {/* Header */}
+        <div className="mb-12">
+          <span className="text-primary/60 font-medium text-sm tracking-widest uppercase mb-2 block">
+            Moments & Memories
+          </span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground">
+            Life at Yogagarhi
+          </h2>
         </div>
 
         {/* Main Gallery - Horizontal Scroll with Featured */}
         <div className="grid lg:grid-cols-12 gap-6">
-          {/* Featured Large Image with Quote */}
+          {/* Featured Large Image with Description */}
           <div className="lg:col-span-7 relative group">
-            {/* Floating Quote - visible on larger screens */}
-            <div className="hidden lg:block absolute -left-4 top-1/2 -translate-y-1/2 -translate-x-full w-48 z-10">
+            {/* Floating Description - visible on larger screens */}
+            <div className="hidden lg:block absolute -left-4 top-1/2 -translate-y-1/2 -translate-x-full w-52 z-10">
               <div className="relative">
-                <svg className="w-8 h-8 text-primary/30 mb-2" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.956.76-3.022.66-1.065 1.515-1.867 2.558-2.403L9.373 5c-.8.396-1.56.898-2.26 1.505-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69-.346 2.04-.217 3.1c.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003zm9.124 0c0-.88-.23-1.618-.69-2.217-.326-.42-.77-.692-1.327-.817-.56-.124-1.074-.13-1.54-.022-.16-.94.09-1.95.75-3.02.66-1.06 1.514-1.86 2.557-2.4L18.49 5c-.8.396-1.555.898-2.26 1.505-.708.607-1.34 1.305-1.894 2.094-.556.79-.97 1.68-1.24 2.69-.273 1-.345 2.04-.217 3.1.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002.003z"/>
-                </svg>
-                <p className="font-heading text-lg italic text-foreground/80 leading-relaxed">
-                  The rhythm of the body, the melody of the mind, and the harmony of the soul create the symphony of life.
+                <p className="text-muted-foreground leading-relaxed">
+                  Where practice meets purpose. Glimpses of transformation, community, and the yogic journey.
                 </p>
-                <span className="block mt-3 text-sm text-muted-foreground">— B.K.S. Iyengar</span>
               </div>
             </div>
 
