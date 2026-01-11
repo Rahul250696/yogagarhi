@@ -4,9 +4,10 @@ import { Award, Heart, Users, Sparkles } from "lucide-react";
 import founderImage from "@/assets/founder-image.png";
 
 const achievements = [
-  { icon: Users, label: "500+ Students Trained" },
-  { icon: Award, label: "E-RYT 200 Certified" },
-  { icon: Heart, label: "10+ Years Practice" },
+  { icon: Users, label: "2500+ Students Trained" },
+  { icon: Award, label: "E-RYT 500 & Master in Yoga" },
+  { icon: Heart, label: "18+ Years Practice" },
+  { icon: Award, label: "Yoga Therapy to Indian Army" },
 ];
 
 export default function FounderSection() {
