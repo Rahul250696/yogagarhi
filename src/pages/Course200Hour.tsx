@@ -47,6 +47,7 @@ import apartYogaAllianceGraduates from "@/assets/apart/yoga-alliance-graduates.j
 import apartBaliSurroundings from "@/assets/apart/bali-surroundings.jpg";
 import apartCommunityBeach from "@/assets/apart/community-beach.jpg";
 import apartKecakDance from "@/assets/apart/kecak-dance.jpg";
+import apartInstructorAnatomy from "@/assets/apart/instructor-anatomy.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -322,11 +323,11 @@ const whatYouWillReceive = [
     icon: Sparkles,
     image: apartChildPose
   },
-  { 
+{ 
     title: "Experienced Instructors", 
     description: "Learn from certified teachers with years of expertise.",
     icon: GraduationCap,
-    image: apartMountainPose
+    image: apartInstructorAnatomy
   },
   { 
     title: "Yoga Lifestyle", 
