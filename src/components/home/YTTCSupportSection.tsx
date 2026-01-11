@@ -191,7 +191,7 @@ const YTTCSupportSection = () => {
                       </h3>
                       
                       <p className="text-muted-foreground mb-8 leading-relaxed">
-                        The Optional Complimentary Online Pre-YTTC Preparation. If you feel like you don't know you are ready for course or not, 
+                        The <span className="inline-flex items-center gap-1 px-3 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 rounded-full text-sm font-semibold border border-amber-200 dark:border-amber-700">Optional Complimentary Online</span> Pre-YTTC Preparation. If you feel like you don't know you are ready for course or not, 
                         this pre-YTTC is for you to be prepared & feel confident.
                       </p>
                       
