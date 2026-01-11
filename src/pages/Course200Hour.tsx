@@ -2390,7 +2390,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     </div>
                     
                     {/* Pricing */}
-                    <div className="flex items-end justify-between pt-4 border-t border-border">
+                    <div className="flex items-end justify-between pt-4 border-t border-border mb-4">
                       <div>
                         <p className="text-muted-foreground line-through text-sm">{room.originalPrice}</p>
                         <p className="font-heading text-2xl font-bold text-foreground">{room.price}</p>
@@ -2399,6 +2399,14 @@ This is not a transactional relationship — it is a lifelong connection.`}
                         Save 20%
                       </span>
                     </div>
+                    
+                    {/* Book Now Button */}
+                    <Button 
+                      onClick={() => setShowEnrollDialog(true)}
+                      className={`w-full ${room.isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-foreground hover:bg-foreground/90'} text-background font-semibold py-2.5`}
+                    >
+                      Book Now
+                    </Button>
                   </div>
                 </div>
               ))}
