@@ -5,36 +5,40 @@ import { Button } from "@/components/ui/button";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import logo from "@/assets/yogagarhi-logo.png";
 
-// Spiritual symbol icons
-const OmSymbol = () => (
-  <svg viewBox="0 0 100 100" className="w-5 h-5 text-primary" fill="currentColor">
-    <text x="50" y="75" textAnchor="middle" fontSize="70" fontFamily="serif">ॐ</text>
+// Chakra/Mandala spiritual symbols
+const ChakraSymbol1 = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <circle cx="12" cy="12" r="2" fill="currentColor" className="text-primary"/>
+    <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <path d="M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
   </svg>
 );
 
-const LotusSymbol = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth="1.5">
-    <path d="M12 21c0-4-3-7-3-10s1.5-5 3-5 3 2 3 5-3 6-3 10z" />
-    <path d="M12 21c-2 0-5-3-6-6s0-6 2-7c-1 3 1 6 4 8" />
-    <path d="M12 21c2 0 5-3 6-6s0-6-2-7c1 3-1 6-4 8" />
-    <path d="M7 8c-2-1-4 0-5 2s0 5 2 6c0-3 1-5 3-8z" />
-    <path d="M17 8c2-1 4 0 5 2s0 5-2 6c0-3-1-5-3-8z" />
+const ChakraSymbol2 = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <polygon points="12,4 18,9 18,15 12,20 6,15 6,9" stroke="currentColor" strokeWidth="1.5" fill="none" className="text-primary"/>
+    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <circle cx="12" cy="12" r="1" fill="currentColor" className="text-primary"/>
   </svg>
 );
 
-const SriYantraSymbol = () => (
-  <svg viewBox="0 0 24 24" className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth="1.2">
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="12" cy="12" r="6" />
-    <polygon points="12,4 19,16 5,16" />
-    <polygon points="12,20 5,8 19,8" />
+const ChakraSymbol3 = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <circle cx="12" cy="12" r="6" stroke="currentColor" strokeWidth="1.5" className="text-primary"/>
+    <path d="M12 6l3.5 3-3.5 3-3.5-3z" stroke="currentColor" strokeWidth="1.2" className="text-primary"/>
+    <path d="M12 12l3.5 3-3.5 3-3.5-3z" stroke="currentColor" strokeWidth="1.2" className="text-primary"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" className="text-primary"/>
   </svg>
 );
 
 const courses = [
-  { name: "100 Hour YTTC", href: "/courses/100-hour", icon: OmSymbol },
-  { name: "200 Hour YTTC", href: "/courses/200-hour", icon: LotusSymbol },
-  { name: "300 Hour YTTC", href: "/courses/300-hour", icon: SriYantraSymbol },
+  { name: "100 Hour YTTC", href: "/courses/100-hour", icon: ChakraSymbol1 },
+  { name: "200 Hour YTTC", href: "/courses/200-hour", icon: ChakraSymbol2 },
+  { name: "300 Hour YTTC", href: "/courses/300-hour", icon: ChakraSymbol3 },
 ];
 
 const navLinks = [
