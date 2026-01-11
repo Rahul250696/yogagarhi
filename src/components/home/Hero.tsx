@@ -38,10 +38,25 @@ export default function Hero() {
           </p>
           
           {/* Stats */}
-          <div className="flex items-center justify-center gap-8 pt-4">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 pt-4">
             <div className="text-center">
-              <p className="font-heading text-4xl md:text-5xl font-bold">500+</p>
-              <p className="text-sm opacity-80">Graduated Students</p>
+              <p className="font-heading text-3xl md:text-4xl font-bold">500+</p>
+              <p className="text-xs md:text-sm opacity-80">Graduated Students</p>
+            </div>
+            <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
+            <div className="text-center">
+              <p className="font-heading text-3xl md:text-4xl font-bold">Multi-Style</p>
+              <p className="text-xs md:text-sm opacity-80">Yoga Training</p>
+            </div>
+            <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
+            <div className="text-center">
+              <p className="font-heading text-3xl md:text-4xl font-bold">RYS 200</p>
+              <p className="text-xs md:text-sm opacity-80">Yoga Alliance Certified</p>
+            </div>
+            <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
+            <div className="text-center">
+              <p className="font-heading text-3xl md:text-4xl font-bold">World's 1st</p>
+              <p className="text-xs md:text-sm opacity-80">Pre-YTTC Support Academy</p>
             </div>
           </div>
 
