@@ -114,11 +114,11 @@ export default function GoogleReviewsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % Math.ceil(reviews.length / 3));
+    setCurrentIndex((prev) => (prev + 1) % reviews.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + Math.ceil(reviews.length / 3)) % Math.ceil(reviews.length / 3));
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
   return (
