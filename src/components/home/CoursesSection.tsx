@@ -16,7 +16,6 @@ const courses = [
     originalPrice: "$1399",
     href: "/courses/100-hour",
     image: course100hr,
-    highlights: ["Foundation Building", "Core Asanas", "Basic Pranayama"],
   },
   {
     hours: "200",
@@ -28,7 +27,6 @@ const courses = [
     originalPrice: "$2187",
     href: "/courses/200-hour",
     image: course200hr,
-    highlights: ["Yoga Alliance Certified", "Teaching Methodology", "Anatomy & Philosophy"],
     featured: true,
   },
   {
@@ -41,7 +39,6 @@ const courses = [
     originalPrice: "$2999",
     href: "/courses/300-hour",
     image: course300hr,
-    highlights: ["Advanced Techniques", "Specialized Training", "Leadership Skills"],
   },
 ];
 
@@ -145,16 +142,6 @@ export default function CoursesSection() {
                     <span>{course.level}</span>
                   </div>
                 </div>
-
-                {/* Highlights */}
-                <ul className="space-y-2.5 mb-6">
-                  {course.highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm text-foreground/80">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-primary to-accent flex-shrink-0" />
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
 
                 {/* CTA Button */}
                 <Button
