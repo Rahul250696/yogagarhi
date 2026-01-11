@@ -48,6 +48,10 @@ import apartBaliSurroundings from "@/assets/apart/bali-surroundings.jpg";
 import apartCommunityBeach from "@/assets/apart/community-beach.jpg";
 import apartKecakDance from "@/assets/apart/kecak-dance.jpg";
 import apartInstructorAnatomy from "@/assets/apart/instructor-anatomy.jpg";
+import apartBalineseMassage from "@/assets/apart/balinese-massage.jpg";
+import apartAyurvedicMeals from "@/assets/apart/ayurvedic-meals.jpg";
+import apartMeditationPractice from "@/assets/apart/meditation-practice.jpg";
+import apartYogaLifestyle from "@/assets/apart/yoga-lifestyle.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -299,11 +303,11 @@ const whatYouWillReceive = [
     icon: Heart,
     image: apartCommunityBeach
   },
-  { 
+{ 
     title: "Balinese Massage", 
     description: "Traditional Indonesian therapy to relieve muscle tension. Promotes deep relaxation and holistic healing.",
     icon: Sparkles,
-    image: apartHammock
+    image: apartBalineseMassage
   },
 { 
     title: "Balinese Dance Performance", 
@@ -315,13 +319,13 @@ const whatYouWillReceive = [
     title: "Ayurvedic Meals", 
     description: "Enjoy sattvic and healthy meals supporting your practice.",
     icon: Heart,
-    image: apartSeatedTalk
+    image: apartAyurvedicMeals
   },
   { 
     title: "Meditation Practice", 
     description: "Deepen inner peace and mindfulness with guided sessions.",
     icon: Sparkles,
-    image: apartChildPose
+    image: apartMeditationPractice
   },
 { 
     title: "Experienced Instructors", 
@@ -333,7 +337,7 @@ const whatYouWillReceive = [
     title: "Yoga Lifestyle", 
     description: "Adopt the yogic way of living for body, mind, and spirit.",
     icon: Leaf,
-    image: apartPoolVilla
+    image: apartYogaLifestyle
   },
 ];
 
