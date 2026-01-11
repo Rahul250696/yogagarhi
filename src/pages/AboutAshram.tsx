@@ -177,7 +177,7 @@ function WhyChooseSection() {
                   Free Course Repeat
                 </h3>
                 <p className="text-muted-foreground max-w-lg">
-                  Revisit any training whenever it runs, at absolutely no extra cost.
+                  Revisit any training whenever it runs, at absolutely no extra cost. Plus, we provide the opportunity to become an assistant teacher in future batches.
                 </p>
               </div>
               <div className="flex-shrink-0">
