@@ -44,6 +44,7 @@ import apartPoolVilla from "@/assets/apart/pool-villa.jpg";
 import apartMountainPose from "@/assets/apart/mountain-pose.jpg";
 import apartWarriorSequence from "@/assets/apart/warrior-sequence.jpg";
 import apartYogaAllianceGraduates from "@/assets/apart/yoga-alliance-graduates.jpg";
+import apartBaliSurroundings from "@/assets/apart/bali-surroundings.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -275,7 +276,7 @@ const whatYouWillReceive = [
     title: "Peaceful Bali Surroundings", 
     description: "Experience yoga in the lap of nature. Calm beaches and greenery deepen your practice.",
     icon: Mountain,
-    image: apartPoolVilla
+    image: apartBaliSurroundings
   },
   { 
     title: "Outdoor Excursions", 
