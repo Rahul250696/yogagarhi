@@ -139,7 +139,7 @@ function WhyChooseSection() {
           </div>
 
           {/* Bottom row - 3 equal columns */}
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4 mb-4">
             {whyChooseUs.slice(3, 6).map((item, index) => (
               <div
                 key={index}
@@ -159,6 +159,37 @@ function WhyChooseSection() {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* Full width - Free Course Repeat */}
+          <div
+            className={`group relative p-6 md:p-8 rounded-2xl bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-500 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: '800ms' }}
+          >
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="flex-1">
+                <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                  Forever
+                </div>
+                <h3 className="font-heading text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  Free Course Repeat
+                </h3>
+                <p className="text-muted-foreground max-w-lg">
+                  Revisit any training whenever it runs, at absolutely no extra cost.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <svg className="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M4 12a8 8 0 1 0 16 0 8 8 0 0 0-16 0Z" />
+                    <path d="M12 8v4l2 2" />
+                    <path d="M2 12h2M20 12h2M12 2v2M12 20v2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
