@@ -20,6 +20,9 @@ const navLinks = [
   { name: "Contact Us", href: "/contact" },
 ];
 
+// Track pages where banner has been shown (persists across navigation)
+const seenPages = new Set<string>();
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
@@ -28,17 +31,35 @@ export default function Header() {
   const location = useLocation();
   const { setShowEnrollDialog } = useEnrollment();
 
-  // Show banner when user starts scrolling
+  // Reset banner state when navigating to a new page
   useEffect(() => {
+    const currentPath = location.pathname;
+    
+    // If this page was already seen, mark as dismissed
+    if (seenPages.has(currentPath)) {
+      setBannerDismissed(true);
+      setShowBanner(false);
+    } else {
+      // New page - reset for fresh banner show
+      setBannerDismissed(false);
+      setShowBanner(false);
+    }
+  }, [location.pathname]);
+
+  // Show banner when user starts scrolling (only once per page)
+  useEffect(() => {
+    const currentPath = location.pathname;
+    
     const handleScroll = () => {
-      if (!bannerDismissed && window.scrollY > 50) {
+      if (!bannerDismissed && !seenPages.has(currentPath) && window.scrollY > 50) {
         setShowBanner(true);
+        seenPages.add(currentPath); // Mark this page as seen
       }
     };
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [bannerDismissed]);
+  }, [bannerDismissed, location.pathname]);
 
   const dismissBanner = () => {
     setShowBanner(false);
