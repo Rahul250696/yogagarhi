@@ -153,11 +153,11 @@ export default function AboutTestimonials() {
               <p className="text-muted-foreground text-sm">Countries Represented</p>
             </div>
             <div>
-              <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">4.9</div>
+              <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">5.0</div>
               <p className="text-muted-foreground text-sm">Google Rating</p>
             </div>
             <div>
-              <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">98%</div>
+              <div className="font-heading text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
               <p className="text-muted-foreground text-sm">Recommend Us</p>
             </div>
           </div>
