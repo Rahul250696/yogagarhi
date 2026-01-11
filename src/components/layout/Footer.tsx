@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Youtube, Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/yogagarhi-logo.png";
+import logo from "@/assets/yogagarhi-logo-new.png";
 
 const quickLinks = [
   { name: "100 Hour YTTC", href: "/courses/100-hour" },
