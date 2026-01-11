@@ -1,20 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { useEnrollment } from "@/components/EnrollmentDialog";
+import { useBooking } from "@/components/BookingDialog";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 export default function Hero() {
   const { setShowEnrollDialog } = useEnrollment();
-
-  const scrollToBooking = () => {
-    // First try to find booking section on homepage (FAQ has contact info)
-    const faqSection = document.getElementById('faq-section');
-    if (faqSection) {
-      faqSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to contact page
-      window.location.href = '/contact';
-    }
-  };
+  const { setShowBookingDialog } = useBooking();
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
@@ -110,7 +101,7 @@ export default function Hero() {
             <Button 
               variant="heroOutline" 
               size="xl" 
-              onClick={scrollToBooking}
+              onClick={() => setShowBookingDialog(true)}
             >
               Book an Appointment
             </Button>

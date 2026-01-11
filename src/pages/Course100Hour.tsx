@@ -7,6 +7,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useBooking } from "@/components/BookingDialog";
+import { useEnrollment } from "@/components/EnrollmentDialog";
 import { 
   Award, Users, Leaf, MapPin, BookOpen, Heart, 
   Check, X, ChevronDown, Play, Download, Phone,
@@ -441,6 +443,8 @@ const quizQuestions = [
 ];
 
 export default function Course100Hour() {
+  const { setShowBookingDialog: openBookingDialog } = useBooking();
+  const { setShowEnrollDialog: openEnrollDialog } = useEnrollment();
   const [showCompactHeader, setShowCompactHeader] = useState(false);
   const [showQuizDialog, setShowQuizDialog] = useState(false);
   const [showQuizThankYou, setShowQuizThankYou] = useState(false);
@@ -677,7 +681,7 @@ export default function Course100Hour() {
               <Button 
                 size="xl"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
-                onClick={() => scrollToSection('book-call')}
+                onClick={() => openBookingDialog(true)}
               >
                 Book an Appointment
               </Button>
