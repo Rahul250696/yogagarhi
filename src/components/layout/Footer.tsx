@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="YogaGarhi" className="h-12 w-12 object-contain brightness-0 invert" />
+              <img src={logo} alt="YogaGarhi" className="h-16 w-16 object-contain" />
               <span className="font-heading text-2xl font-bold">YogaGarhi</span>
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">

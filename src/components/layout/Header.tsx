@@ -123,7 +123,7 @@ export default function Header() {
                 src={logo} 
                 alt="YogaGarhi" 
                 className={`object-contain transition-all duration-300 ${
-                  scrolled ? 'h-10 w-10' : 'h-12 w-12'
+                  scrolled ? 'h-12 w-12' : 'h-16 w-16'
                 }`} 
               />
               <div className="absolute inset-0 rounded-full bg-primary/10 scale-0 group-hover:scale-110 transition-transform duration-300" />
