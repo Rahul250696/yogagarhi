@@ -49,10 +49,12 @@ export default function Header() {
 
   return (
     <>
-      {/* Top Banner - Shutter Style */}
+      {/* Top Banner - Shutter Style from Top */}
       <div 
-        className={`bg-primary text-primary-foreground overflow-hidden transition-all duration-500 ease-out ${
-          showBanner && !bannerDismissed ? 'max-h-20 py-2' : 'max-h-0 py-0'
+        className={`fixed top-0 left-0 right-0 z-[60] bg-primary text-primary-foreground overflow-hidden transition-all duration-700 ease-out origin-top ${
+          showBanner && !bannerDismissed 
+            ? 'max-h-20 py-2 opacity-100 translate-y-0' 
+            : 'max-h-0 py-0 opacity-0 -translate-y-full'
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-center gap-4">
