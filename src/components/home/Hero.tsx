@@ -74,13 +74,9 @@ export default function Hero() {
           
           {/* Second Row - Yoga Alliance & World's First */}
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-            {/* Yoga Alliance - Highlighted */}
-            <div className="text-center relative px-6 py-3 rounded-xl bg-amber-400/20 border border-amber-400/40 backdrop-blur-sm shadow-lg">
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                Certified
-              </div>
-              <p className="font-heading text-3xl md:text-4xl font-bold text-amber-300 drop-shadow-lg">Yoga Alliance</p>
-              <p className="text-xs md:text-sm text-amber-100">Certified School</p>
+            <div className="text-center">
+              <p className="font-heading text-3xl md:text-4xl font-bold">Yoga Alliance</p>
+              <p className="text-xs md:text-sm opacity-80">Certified School</p>
             </div>
             <div className="w-px h-10 bg-primary-foreground/30 hidden sm:block" />
             <div className="text-center">
