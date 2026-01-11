@@ -41,13 +41,28 @@ export default function Header() {
       <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm shadow-soft">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Logo with Name Below on Mobile */}
             <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="YogaGarhi" className="h-14 w-14 object-contain" />
-              <span className="font-heading text-2xl font-bold text-primary hidden sm:block">
+              <div className="flex flex-col items-center lg:flex-row lg:gap-3">
+                <img src={logo} alt="YogaGarhi" className="h-12 w-12 lg:h-14 lg:w-14 object-contain" />
+                <span className="font-heading text-xs lg:text-2xl font-bold text-primary lg:hidden">
+                  YOGAGARHI
+                </span>
+              </div>
+              <span className="font-heading text-2xl font-bold text-primary hidden lg:block">
                 YOGAGARHI
               </span>
             </Link>
+
+            {/* Mobile CTA Button - Between Logo and Hamburger */}
+            <Button 
+              variant="cta" 
+              size="sm"
+              className="lg:hidden text-xs px-3 py-1.5"
+              onClick={() => setShowEnrollDialog(true)}
+            >
+              Start Your Journey
+            </Button>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
