@@ -2113,6 +2113,76 @@ This is not a transactional relationship — it is a lifelong connection.`}
           </div>
         </section>
 
+        {/* ===== POST-PROGRAM SUPPORT ===== */}
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Post-Program Support
+              </h2>
+              {/* Decorative Flourish */}
+              <div className="flex items-center justify-center gap-2">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/60" />
+                <svg className="w-12 h-6 text-primary" viewBox="0 0 48 24" fill="none">
+                  <path d="M24 12C24 12 20 4 12 4C4 4 0 12 0 12C0 12 4 20 12 20C20 20 24 12 24 12Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                  <path d="M24 12C24 12 28 4 36 4C44 4 48 12 48 12C48 12 44 20 36 20C28 20 24 12 24 12Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" />
+                  <circle cx="36" cy="12" r="2" fill="currentColor" />
+                </svg>
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/60" />
+              </div>
+            </div>
+
+            {/* Support Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+              {[
+                {
+                  image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=400&h=400&fit=crop",
+                  title: "Bi-annual Upgrade Programs",
+                  description: "Programs to deepen your experience of the practices and upgrade your teaching skills"
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=400&fit=crop",
+                  title: "Extensive Alumni Support",
+                  description: "A dedicated alumni platform for queries, clarifications, and continuous learning"
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&h=400&fit=crop",
+                  title: "Community Connection",
+                  description: "Integration into a vibrant and supportive global community of YogaGarhi alumni"
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=400&fit=crop",
+                  title: "Teaching Resources",
+                  description: "Access to a repository of articles, videos, and teaching materials"
+                }
+              ].map((item, index) => (
+                <div key={index} className="text-center group">
+                  {/* Circular Image */}
+                  <div className="relative mx-auto mb-6 w-48 h-48 rounded-full overflow-hidden border-4 border-secondary group-hover:border-primary/30 transition-all duration-300 shadow-card group-hover:shadow-elevated">
+                    <img 
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="font-heading text-lg font-bold text-foreground mb-3">
+                    {item.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm leading-relaxed px-2">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <Collapsible open={isFoodSectionOpen} onOpenChange={setIsFoodSectionOpen}>
           <section className="bg-secondary/20 relative overflow-hidden">
             {/* Decorative Background */}
