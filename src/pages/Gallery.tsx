@@ -14,6 +14,10 @@ import backbend from "@/assets/gallery/backbend.jpg";
 import seatedTwist from "@/assets/gallery/seated-twist.jpg";
 import communityMeal from "@/assets/gallery/community-meal.jpg";
 import teachingPractice from "@/assets/gallery/teaching-practice.jpg";
+import savasana from "@/assets/gallery/savasana.jpg";
+import seatedMeditation from "@/assets/gallery/seated-meditation.jpg";
+import partnerAssist from "@/assets/gallery/partner-assist.jpg";
+import groupClass from "@/assets/gallery/group-class.jpg";
 
 const galleryImages = [
   { src: yogaRiver, alt: "Yoga by the river" },
@@ -26,6 +30,10 @@ const galleryImages = [
   { src: seatedTwist, alt: "Seated twist" },
   { src: communityMeal, alt: "Community meal" },
   { src: teachingPractice, alt: "Teaching practice" },
+  { src: savasana, alt: "Savasana relaxation" },
+  { src: seatedMeditation, alt: "Seated meditation" },
+  { src: partnerAssist, alt: "Partner assistance" },
+  { src: groupClass, alt: "Group yoga class" },
 ];
 
 // Large decorative Mandala SVG component
@@ -200,8 +208,8 @@ export default function Gallery() {
 
               {/* Images arranged in a circle - rotating around center */}
               <div className="absolute inset-0 animate-spin-slow" style={{ animationDirection: 'reverse' }}>
-                {galleryImages.map((image, index) => {
-                  const angle = (index * 36) - 90; // 36 degrees apart (360/10), start from top
+              {galleryImages.map((image, index) => {
+                  const angle = (index * (360 / galleryImages.length)) - 90; // Evenly spaced, start from top
                   const radius = 42; // percentage from center
                   const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
                   const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
