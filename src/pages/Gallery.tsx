@@ -1,6 +1,7 @@
+import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import gallery images
 import yogaRiver from "@/assets/gallery/yoga-river.jpg";
@@ -116,10 +117,6 @@ const MandalaBackground = () => (
       className="text-primary"
     />
     
-    {/* Center lotus */}
-    <circle cx="200" cy="200" r="15" stroke="currentColor" strokeWidth="1" fill="none" className="text-primary" />
-    <circle cx="200" cy="200" r="8" stroke="currentColor" strokeWidth="1" className="text-primary" fill="currentColor" fillOpacity="0.3" />
-    
     {/* Radiating lines */}
     {[...Array(24)].map((_, i) => (
       <line
@@ -167,6 +164,16 @@ const MandalaBackground = () => (
 );
 
 export default function Gallery() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -236,20 +243,64 @@ export default function Gallery() {
                 })}
               </div>
 
-              {/* Center decorative element */}
+              {/* Center static photo carousel */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-sm border border-primary/20 flex items-center justify-center">
-                  <svg className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 text-primary/60" viewBox="0 0 64 64" fill="currentColor">
-                    <path d="M32 8c-2 8-8 14-16 16 8 2 14 8 16 16 2-8 8-14 16-16-8-2-14-8-16-16z"/>
-                    <path d="M32 16c-1.5 6-6 10.5-12 12 6 1.5 10.5 6 12 12 1.5-6 6-10.5 12-12-6-1.5-10.5-6-12-12z" opacity="0.5"/>
-                  </svg>
+                <div className="relative">
+                  {/* Main circular image */}
+                  <div className="w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-primary/40 shadow-2xl">
+                    <img
+                      src={galleryImages[currentIndex].src}
+                      alt={galleryImages[currentIndex].alt}
+                      className="w-full h-full object-cover transition-opacity duration-500"
+                    />
+                  </div>
+
+                  {/* Navigation buttons */}
+                  <button
+                    onClick={goToPrevious}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-background/90 border border-primary/30 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                  </button>
+                  
+                  <button
+                    onClick={goToNext}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-background/90 border border-primary/30 shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                  </button>
+
+                  {/* Image label */}
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className="text-sm md:text-base font-medium text-foreground/80 bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full border border-primary/20">
+                      {galleryImages[currentIndex].alt}
+                    </span>
+                  </div>
+
+                  {/* Pagination dots */}
+                  <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+                    {galleryImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentIndex 
+                            ? 'bg-primary w-4' 
+                            : 'bg-primary/30 hover:bg-primary/50'
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Description below */}
-          <div className="text-center mt-12 md:mt-16">
+          <div className="text-center mt-20 md:mt-24">
             <p className="font-heading text-xl md:text-2xl text-foreground/80 leading-relaxed mb-4">
               Where practice meets purpose.
             </p>
