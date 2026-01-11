@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEnrollment } from "@/components/EnrollmentDialog";
-import logo from "@/assets/yogagarhi-logo-icon.png";
+import logo from "@/assets/yogagarhi-logo-hd-preview.png";
 
 // Chakra/Mandala spiritual symbols
 const ChakraSymbol1 = () => (
