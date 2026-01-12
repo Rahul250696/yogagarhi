@@ -7,11 +7,11 @@ import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 // Teacher Images
 import sachinJiImg from "@/assets/teachers/sachin-ji.webp";
-import chandaJiImg from "@/assets/teachers/chanda-ji.webp";
-import rahulJiImg from "@/assets/teachers/rahul-ji.webp";
-import rohitJiImg from "@/assets/teachers/rohit-ji.webp";
-import abhishekJiImg from "@/assets/teachers/abhishek-ji.jpg";
-import ankitJiImg from "@/assets/teachers/ankit-ji.webp";
+import chandaJiImg from "@/assets/teachers/chanda-ji-hd.jpg";
+import rahulJiImg from "@/assets/teachers/rahul-ji-hd.jpg";
+import rohitJiImg from "@/assets/teachers/rohit-ji-hd.jpg";
+import abhishekJiImg from "@/assets/teachers/abhishek-ji-hd.jpg";
+import ankitJiImg from "@/assets/teachers/ankit-ji-hd.jpg";
 
 const founderAchievements = [
   { icon: Users, label: "2500+ Students Trained" },
