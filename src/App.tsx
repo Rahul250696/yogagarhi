@@ -8,6 +8,7 @@ import { EnrollmentProvider } from "@/components/EnrollmentDialog";
 import { BookingProvider } from "@/components/BookingDialog";
 import { QuickEnquiryProvider } from "@/components/QuickEnquiryDialog";
 import { ContactDialogProvider } from "@/components/ContactDialog";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import AboutAshram from "./pages/AboutAshram";
@@ -35,6 +36,7 @@ const App = () => (
               <Toaster />
               <Sonner />
               <BrowserRouter>
+                <ScrollToTop />
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/about" element={<About />} />
