@@ -56,6 +56,14 @@ import anatomyPhysiologyImage from "@/assets/syllabus/anatomy-physiology.jpg";
 import meditationMantraImage from "@/assets/syllabus/meditation-mantra.jpg";
 import iyengarYogaImage from "@/assets/syllabus/iyengar-yoga.jpg";
 
+// Room images
+import tripleRoom1 from "@/assets/rooms/triple-sharing-1.jpg";
+import tripleRoom2 from "@/assets/rooms/triple-sharing-2.jpg";
+import doubleRoom from "@/assets/rooms/double-sharing.jpg";
+import privateRoom1 from "@/assets/rooms/private-room-1.jpg";
+import privateRoom2 from "@/assets/rooms/private-room-2.jpg";
+import bathroomImage from "@/assets/rooms/bathroom.jpg";
+
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
   return (
@@ -2647,11 +2655,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   description: "Share your space with two like-minded yogis. A great way to build lasting friendships.",
                   originalPrice: "$2,187",
                   price: "$1,750",
-                  images: [
-                    "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=400&fit=crop",
-                  ],
+                  images: [tripleRoom1, tripleRoom2, bathroomImage],
                   features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
                   badge: null,
                   isPopular: false,
@@ -2662,11 +2666,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   description: "Share with one roommate. Perfect balance of community and personal space.",
                   originalPrice: "$2,370",
                   price: "$1,899",
-                  images: [
-                    "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=500&h=400&fit=crop",
-                  ],
+                  images: [doubleRoom, bathroomImage],
                   features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
                   badge: "Most Popular",
                   isPopular: true,
@@ -2677,11 +2677,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   description: "Your own sanctuary for complete privacy and deep personal reflection.",
                   originalPrice: "$3,125",
                   price: "$2,499",
-                  images: [
-                    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=500&h=400&fit=crop",
-                  ],
+                  images: [privateRoom1, privateRoom2, bathroomImage],
                   features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
                   badge: "Premium",
                   isPopular: false,
