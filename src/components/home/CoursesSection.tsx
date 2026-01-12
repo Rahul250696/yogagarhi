@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Award } from "lucide-react";
-import { useEnrollment } from "@/components/EnrollmentDialog";
+import { useContactDialog } from "@/components/ContactDialog";
 import course100hr from "@/assets/course-100hr-new.jpg";
 import course200hr from "@/assets/course-200hr-new.jpg";
 import course300hr from "@/assets/course-300hr-v2.jpg";
@@ -47,7 +47,7 @@ const courses = [
 ];
 
 export default function CoursesSection() {
-  const { setShowEnrollDialog } = useEnrollment();
+  const { setShowContactDialog } = useContactDialog();
 
   return (
     <section className="py-24 bg-background relative overflow-hidden">
@@ -172,7 +172,7 @@ export default function CoursesSection() {
           <Button 
             variant="link" 
             className="text-primary p-0 h-auto font-medium group" 
-            onClick={() => setShowEnrollDialog(true)}
+            onClick={() => setShowContactDialog(true)}
           >
             <span className="flex items-center gap-2">
               Get Personalized Guidance
