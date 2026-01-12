@@ -54,7 +54,6 @@ import apartMeditationPractice from "@/assets/apart/meditation-practice.jpg";
 import apartYogaLifestyle from "@/assets/apart/yoga-lifestyle.jpg";
 import anatomyPhysiologyImage from "@/assets/syllabus/anatomy-physiology.jpg";
 import meditationMantraImage from "@/assets/syllabus/meditation-mantra.jpg";
-import iyengarYogaImage from "@/assets/syllabus/iyengar-yoga.jpg";
 
 // Custom scroll-aware header component
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
@@ -1797,10 +1796,10 @@ This is not a transactional relationship — it is a lifelong connection.`}
                     content: "Multiple meditation techniques, mantra chanting, Trataka, Osho Dynamic meditation, Nada Brahma, Antar Mouna, and silence practices for inner stillness.",
                     image: meditationMantraImage
                   },
-{ 
+                  { 
                     title: "Iyengar Yoga", 
                     content: "Precision-focused yoga emphasizing correct body alignment using props like blocks, straps, and blankets to help practitioners achieve optimal posture and prevent injuries.",
-                    image: iyengarYogaImage
+                    image: "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=400&h=400&fit=crop"
                   },
                   { 
                     title: "Alignment Principles", 
