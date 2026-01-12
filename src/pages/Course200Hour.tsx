@@ -56,7 +56,13 @@ import apartYogaLifestyle from "@/assets/apart/yoga-lifestyle.jpg";
 import anatomyPhysiologyImage from "@/assets/syllabus/anatomy-physiology.jpg";
 import meditationMantraImage from "@/assets/syllabus/meditation-mantra.jpg";
 
-// Custom scroll-aware header component
+// Triple Sharing room images
+import tripleBalcony from "@/assets/rooms/triple-balcony.jpg";
+import tripleBathroom from "@/assets/rooms/triple-bathroom.jpg";
+import tripleBedroom1 from "@/assets/rooms/triple-bedroom-1.jpg";
+import tripleBedroom2 from "@/assets/rooms/triple-bedroom-2.jpg";
+import tripleBedroom3 from "@/assets/rooms/triple-bedroom-3.jpg";
+
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
   return (
     <div 
@@ -2660,11 +2666,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   description: "Share your space with two like-minded yogis. A great way to build lasting friendships.",
                   originalPrice: "$2,187",
                   price: "$1,750",
-                  images: [
-                    "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=500&h=400&fit=crop",
-                  ],
+                  images: [tripleBalcony, tripleBathroom, tripleBedroom1, tripleBedroom2, tripleBedroom3],
                   features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
                   badge: null,
                   isPopular: false,
