@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Users, Quote, Star, Clock, Award, Heart, Sparkles } from "lucide-react";
@@ -99,6 +100,12 @@ export default function About() {
 
   return (
     <Layout>
+      <SEO 
+        title="About YogaGarhi - Our Story & Mission"
+        description="Learn about YogaGarhi's journey, our mission to spread authentic yoga wisdom, and the sacred ashram in Bali where we train yoga teachers from around the world."
+        keywords="about YogaGarhi, yoga school Bali, yoga ashram story, yoga teacher training mission, Ubud yoga center"
+        canonicalUrl="/about"
+      />
       {/* Hero Section */}
       <section className="relative h-72 md:h-80 flex items-center justify-center overflow-hidden">
         <div 

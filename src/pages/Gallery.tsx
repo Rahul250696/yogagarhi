@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 import { useEnrollment } from "@/components/EnrollmentDialog";
@@ -187,6 +188,12 @@ export default function Gallery() {
 
   return (
     <Layout>
+      <SEO 
+        title="Gallery - Yoga Teacher Training Photos"
+        description="Explore our yoga teacher training gallery. See photos from our ashram in Bali, yoga classes, ceremonies, and the beautiful surroundings of Ubud."
+        keywords="yoga training photos, YTTC gallery, yoga ashram pictures, Bali yoga images, Ubud retreat photos"
+        canonicalUrl="/gallery"
+      />
       {/* Mandala Gallery Section */}
       <section className="py-16 md:py-24 bg-background relative overflow-hidden min-h-screen">
         {/* Header */}

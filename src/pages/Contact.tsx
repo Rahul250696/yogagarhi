@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,6 +22,12 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO 
+        title="Contact Us - Get in Touch"
+        description="Contact YogaGarhi for yoga teacher training inquiries. Reach us via WhatsApp, phone, or email. We respond within 24 hours."
+        keywords="contact YogaGarhi, yoga training inquiry, YTTC questions, yoga school contact Bali"
+        canonicalUrl="/contact"
+      />
       {/* Hero Section */}
       <section className="relative h-80 flex items-center justify-center overflow-hidden">
         <div 
