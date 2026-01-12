@@ -70,6 +70,13 @@ import doubleBedroom3 from "@/assets/rooms/double-bedroom-3.jpg";
 import doubleBedroom4 from "@/assets/rooms/double-bedroom-4.jpg";
 import doubleBalcony from "@/assets/rooms/double-balcony.jpg";
 
+// Private Room images
+import privateBedroom1 from "@/assets/rooms/private-bedroom-1.jpg";
+import privateBedroom2 from "@/assets/rooms/private-bedroom-2.jpg";
+import privateBedroom3 from "@/assets/rooms/private-bedroom-3.jpg";
+import privateBathroom from "@/assets/rooms/private-bathroom.jpg";
+import privateBalcony from "@/assets/rooms/private-balcony.jpg";
+
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
   return (
     <div 
@@ -2689,16 +2696,18 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   badge: "Most Popular",
                   isPopular: true,
                 },
-                {
+{
                   title: "Private Room",
                   beds: 1,
                   description: "Your own sanctuary for complete privacy and deep personal reflection.",
                   originalPrice: "$3,125",
                   price: "$2,499",
                   images: [
-                    "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=500&h=400&fit=crop",
+                    privateBedroom1,
+                    privateBedroom2,
+                    privateBedroom3,
+                    privateBathroom,
+                    privateBalcony,
                   ],
                   features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
                   badge: "Premium",
