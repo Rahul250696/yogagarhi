@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
+import SEO from "@/components/SEO";
 import { Award, Clock, Heart, Sparkles, Users, BookOpen, Mountain, Flame, Star, ChevronDown } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
@@ -183,6 +184,12 @@ export default function AboutTeachers() {
 
   return (
     <Layout>
+      <SEO 
+        title="Our Teachers - Experienced Yoga Masters"
+        description="Meet our experienced yoga teachers at YogaGarhi. Learn from Yogacharya Sachin and our expert faculty with decades of combined teaching experience."
+        keywords="yoga teachers Bali, yoga masters, YogaGarhi instructors, Sachin Ji, yoga teacher training faculty"
+        canonicalUrl="/about/teachers"
+      />
       {/* Hero Section */}
       <section className="relative h-72 md:h-96 flex items-center justify-center overflow-hidden">
         <div 

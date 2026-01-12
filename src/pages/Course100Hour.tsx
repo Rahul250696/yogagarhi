@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import SEO, { generateCourseSchema } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -669,6 +670,19 @@ export default function Course100Hour() {
       <StickyCompactHeader visible={showCompactHeader} onQuickEnquiry={() => setShowQuickEnquiryDialog(true)} />
       
       <Layout>
+        <SEO 
+          title="100 Hour Yoga Teacher Training in Bali"
+          description="Begin your yoga journey with our Yoga Alliance certified 100 Hour YTTC in Bali, Ubud. 12-day intensive training perfect for beginners with experienced teachers."
+          keywords="100 hour yoga teacher training, YTTC Bali, beginner yoga certification, yoga course Ubud, yoga alliance 100hr"
+          canonicalUrl="/courses/100-hour"
+          structuredData={generateCourseSchema({
+            name: '100 Hour Yoga Teacher Training',
+            description: '12-day intensive yoga teacher training for beginners in Bali, Ubud',
+            duration: 'P12D',
+            price: '$1149',
+            image: 'https://yogagarhi.com/og-image.jpg'
+          })}
+        />
         {/* ===== HERO SECTION ===== */}
         <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0">
