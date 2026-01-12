@@ -107,7 +107,7 @@ function TeacherCard({ teacher, index }: { teacher: typeof teachers[0]; index: n
       className="group rounded-3xl overflow-hidden bg-card border border-border/40 transition-all hover:shadow-xl hover:border-primary/20"
     >
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-72 md:h-80 overflow-hidden">
         <img 
           src={teacher.image} 
           alt={teacher.name} 
