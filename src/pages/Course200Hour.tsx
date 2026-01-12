@@ -24,7 +24,7 @@ import activityAyurveda from "@/assets/activity-ayurveda.jpg";
 import activitySoundHealing from "@/assets/activity-sound-healing.jpg";
 import activityWaterfall from "@/assets/activity-waterfall.jpg";
 import webinarBackground from "@/assets/webinar-background.jpg";
-import yogaAllianceBg from "@/assets/yoga-alliance-graduates.jpg";
+import yogaAllianceBg from "@/assets/yoga-alliance-bg.jpg";
 import yaRyt200 from "@/assets/ya-ryt-200.png";
 import yaRys100 from "@/assets/ya-rys-100.png";
 import yaRys200 from "@/assets/ya-rys-200.jpg";
