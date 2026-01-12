@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
-import { Award, Clock, Heart, Sparkles, Users, BookOpen, Mountain, Flame, Star } from "lucide-react";
+import { Award, Clock, Heart, Sparkles, Users, BookOpen, Mountain, Flame, Star, ChevronDown } from "lucide-react";
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
@@ -15,8 +15,8 @@ import gallery6 from "@/assets/gallery/gallery-6.jpg";
 const founderAchievements = [
   { icon: Users, label: "2500+ Students Trained" },
   { icon: Award, label: "E-RYT 500 & Master in Yoga" },
-  { icon: Clock, label: "18+ Years Practice" },
-  { icon: Heart, label: "Yoga Therapy to Indian Army" },
+  { icon: Clock, label: "8+ Years Teaching" },
+  { icon: Heart, label: "Specialization in Asana & Pranayama" },
 ];
 
 const teachingPillars = [
@@ -42,48 +42,46 @@ const teachingPillars = [
   },
 ];
 
-const supportingTeachers = [
+const teachers = [
   {
-    name: "Guest Yoga Masters",
-    role: "Visiting Faculty",
+    name: "Chanda Ji",
+    role: "Co-Founder",
     image: gallery1,
-    desc: "Experienced teachers from various traditions join as guest faculty to share specialized knowledge in anatomy, Ayurveda, and advanced practices.",
-    specialties: ["Anatomy", "Ayurveda", "Adjustments"],
+    shortDesc: "Born into the sacred lineage of yoga, Chanda Maheshwari's journey began long before she ever stepped onto a mat. Her father, a devoted Hatha Yogi, planted the seeds of yoga in her early years, not as a practice but as a way of life.",
+    fullDesc: "Her path unfolded through the ancient streams of Yoga, from the rigor of Hatha Yoga, the devotion of Bhakti Yoga, to the inner awakening of Kriya Yoga. Guided first by her father and later by revered Gurus, she spent over four decades immersed in deep sadhana, study, and self-realization.\n\nWith more than 15 years of teaching experience, Chanda Maheshwari founded YogaGarhi, not as a modern school but as a living sanctuary of traditional wisdom. Through YogaGarhi, she shares the timeless essence of yoga, not as a posture but as a journey of transformation from the body to the soul.\n\nHer vision is to bring people back to the roots of Yoga, where every breath, every movement, and every silence becomes a doorway to inner stillness and well-being.",
+    specialties: ["Hatha Yoga", "Bhakti Yoga", "Kriya Yoga"],
   },
   {
-    name: "Philosophy Scholars",
-    role: "Vedic Studies",
+    name: "Rahul Ji",
+    role: "Vinyasa & Teaching Methodology",
     image: gallery2,
-    desc: "Scholars well-versed in Vedantic texts and yogic scriptures guide students through the profound depths of yogic philosophy.",
-    specialties: ["Bhagavad Gita", "Yoga Sutras", "Upanishads"],
+    shortDesc: "Born and trained in India, Rahul Ji carries over seven years of dedicated experience in the field of yoga practice and education. His journey began with a deep interest in understanding the relationship between body, breath, and consciousness.",
+    fullDesc: "Having studied under respected teachers in Rishikesh and Mysore, Rahul Ji developed a strong foundation in Hatha and Vinyasa Yoga, as well as in Yoga Philosophy, Anatomy, and Teaching Methodology. His classes reflect a refined balance between traditional discipline and modern understanding, guiding students toward intelligent sequencing, mindful alignment, and the deeper purpose of practice.\n\nAs a Senior teacher at YogaGarhi, Rahul Ji specializes in Vinyasa Flow and Teaching Methodology, helping future teachers cultivate clarity, confidence, and authenticity in their teaching. His approach emphasizes that yoga teaching is not only a skill but also an expression of inner awareness, compassion, and continuous self-study.\n\nDedicated, humble, and rooted in the yogic way of life, Rahul Ji continues to inspire students from around the world to experience yoga as a journey of self-realization and conscious living.",
+    specialties: ["Vinyasa Flow", "Teaching Methodology", "Alignment"],
   },
   {
-    name: "Pranayama Guides",
-    role: "Breath Work",
+    name: "Rohit Ji",
+    role: "Hatha Yoga & Pranayama",
     image: gallery3,
-    desc: "Dedicated practitioners who have mastered the subtle art of breath, guiding students into deeper states of awareness.",
-    specialties: ["Pranayama", "Kriyas", "Meditation"],
+    shortDesc: "With over ten years of dedicated teaching experience, Rohit Ji embodies the essence of traditional yogic practice and disciplined living. His journey began in the sacred lands of Rishikesh, where the timeless wisdom of yoga first captured his heart.",
+    fullDesc: "Over 10 years, Rohit Ji has taught students from across the world, known for his precise instruction, calm demeanor, and ability to bring subtle yogic principles into clear, practical experience. His teaching integrates physical discipline with spiritual insight, creating an atmosphere where students feel both challenged and supported in their personal journey.\n\nAs a senior teacher at YogaGarhi, Rohit Ji specializes in Hatha Yoga and Pranayama, guiding aspiring teachers to build a strong foundation in breath, alignment, and mindful teaching. He believes yoga is not limited to the mat – it is a continuous exploration of harmony between body, mind, and consciousness.",
+    specialties: ["Hatha Yoga", "Pranayama", "Yogic Philosophy"],
   },
   {
-    name: "Meditation Masters",
-    role: "Inner Sciences",
+    name: "Abhishek Ji",
+    role: "Alignment & Safe Practice",
     image: gallery4,
-    desc: "Teachers who guide students through various meditation techniques, from concentration practices to advanced states of awareness.",
-    specialties: ["Dhyana", "Yoga Nidra", "Mindfulness"],
+    shortDesc: "With over 9 years of dedicated yoga practice and 6 years of teaching experience, Abhishek Ji brings a deep passion for traditional Hatha Yoga and a strong focus on alignment and safe practice.",
+    fullDesc: "He holds a Bachelor's degree in Yoga and has completed a 500-hour Yoga Teacher Training Course, equipping him with a comprehensive understanding of both the philosophy and physical aspects of yoga.\n\nHis teaching is rooted in awareness, alignment, and injury prevention. He specializes in guiding students of all levels to move mindfully, helping them understand their own bodies and develop safe, sustainable practices. His classes are thoughtful and accessible, with a focus on correcting posture and bringing attention to the right techniques, so students can protect themselves and progress confidently in their yoga journey.",
+    specialties: ["Alignment", "Injury Prevention", "Hatha Yoga"],
   },
   {
-    name: "Mantra & Kirtan Guides",
-    role: "Sacred Sound",
+    name: "Ankit Ji",
+    role: "Ashtanga Flow",
     image: gallery5,
-    desc: "Masters of sacred sound who lead students through the transformative power of mantra chanting and devotional practices.",
-    specialties: ["Mantra", "Kirtan", "Sanskrit"],
-  },
-  {
-    name: "Ayurveda Specialists",
-    role: "Holistic Wellness",
-    image: gallery6,
-    desc: "Practitioners of the ancient science of life who integrate Ayurvedic wisdom with yoga for complete mind-body harmony.",
-    specialties: ["Diet", "Lifestyle", "Herbal Medicine"],
+    shortDesc: "Ankit Ji was born in Devprayag, the origin of the mother Ganges and raised in the world capital of yoga – Rishikesh. Ever since his childhood, he started practicing yoga with gurus in Rishikesh.",
+    fullDesc: "He specializes in the sacred art of Ashtanga Flow and his perfection in this style and its alignment can only be credited to his commitment to his mind and body. He has completed his bachelor's and master's degree in Yogic Science and regularly practices Yoga with the best gurus of Rishikesh.\n\nAnkit ji is also a 500 hour registered yoga teacher and has experience of teaching Yoga internationally. Practicing Yoga since his childhood and teaching Yoga for over 8 years has helped him earn a renowned reputation amongst his students all over the world. He is a well-respected and helpful Yoga teacher who leaves a positive and lasting impression on his student's minds.\n\nHe strongly believes yoga can be understood only if one is ready to accept the disciplinary rules and regulations one needs to practice and only when those are fulfilled one can experience the rising benefits of yoga in everyday life.",
+    specialties: ["Ashtanga Flow", "Yogic Science", "Alignment"],
   },
 ];
 
@@ -98,10 +96,72 @@ const LotusDecor = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// Teacher Card Component with Read More
+function TeacherCard({ teacher, index }: { teacher: typeof teachers[0]; index: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div 
+      className="group rounded-3xl overflow-hidden bg-card border border-border/40 transition-all hover:shadow-xl hover:border-primary/20"
+    >
+      {/* Image */}
+      <div className="relative h-56 overflow-hidden">
+        <img 
+          src={teacher.image} 
+          alt={teacher.name} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
+        <div className="absolute bottom-4 left-6 right-6 text-white">
+          <p className="text-white/70 text-xs uppercase tracking-wider mb-1">{teacher.role}</p>
+          <h3 className="font-heading text-xl font-bold">{teacher.name}</h3>
+        </div>
+      </div>
+      
+      {/* Content */}
+      <div className="p-6">
+        <div className="text-muted-foreground text-sm leading-relaxed">
+          <p>{teacher.shortDesc}</p>
+          
+          {isExpanded && (
+            <div className="mt-4 space-y-3 text-foreground/80">
+              {teacher.fullDesc.split('\n\n').map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        {/* Read More Button */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex items-center gap-1 mt-4 text-primary font-medium text-sm hover:underline transition-colors"
+        >
+          {isExpanded ? 'Read Less' : 'Read More'}
+          <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+        </button>
+        
+        {/* Specialties */}
+        <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border/40">
+          {teacher.specialties.map((specialty) => (
+            <span 
+              key={specialty}
+              className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
+            >
+              {specialty}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function AboutTeachers() {
   const { setShowEnrollDialog } = useEnrollment();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [founderExpanded, setFounderExpanded] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -137,7 +197,7 @@ export default function AboutTeachers() {
             <div className="w-8 h-px bg-primary-foreground/40" />
           </div>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Learn from Living Wisdom
+            Our Experienced Teachers
           </h1>
           <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
             Teachers who don't just teach yoga, but live it every day
@@ -155,7 +215,7 @@ export default function AboutTeachers() {
         </div>
       </section>
 
-      {/* Founder Section - Full Width Feature */}
+      {/* Founder Section - Sachin Ji */}
       <section className="py-24 bg-background relative overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -205,33 +265,54 @@ export default function AboutTeachers() {
                 </span>
                 
                 <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-2">
-                  Yogacharya Sachin
+                  Sachin Ji
                 </h2>
                 <p className="text-primary font-medium text-lg mb-6">Founder & Lead Teacher, YogaGarhi</p>
                 
-                <div className="space-y-5 text-muted-foreground leading-relaxed mb-8">
+                <div className="space-y-5 text-muted-foreground leading-relaxed mb-6">
                   <p>
-                    A fearless child, a curious teen, and a heart that kept seeking. This journey 
-                    gradually shaped a revolutionary man, <em className="text-foreground font-medium">not driven by rebellion, 
-                    but by awareness</em>. What began as exploration unfolded into a life devoted to 
-                    practice, discipline, teaching, and service.
+                    Born and raised in the sacred land of Devprayag India, where Mother Ganga takes her first divine form, 
+                    Sachin Ji's journey into yoga was not a choice but a calling. Growing up amidst rivers, temples, and the 
+                    quiet discipline of a yogic lifestyle, yoga became woven into his breath, his thoughts, and his way of living.
                   </p>
                   
-                  <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
-                    "Yoga was not found in a single moment; it revealed itself slowly, through experience, 
-                    inquiry, inner silence, and lived understanding."
-                  </p>
-                  
-                  <p>
-                    Through years of teaching in teacher training schools, a deeper realization emerged. 
-                    While yoga was being taught with technical precision, <strong className="text-foreground">its living 
-                    essence was often missing</strong>. From this understanding, <strong className="text-foreground">YogaGarhi</strong> was 
-                    founded — a fortress where <em className="text-foreground font-medium">yoga is lived, not merely taught</em>.
-                  </p>
+                  {founderExpanded && (
+                    <>
+                      <p>
+                        With over 8 years of dedicated teaching experience at renowned yoga institutions in Rishikesh, 
+                        Sachin Ji has guided more than 2,500 students through Yoga Teacher Training Courses and intensive 
+                        practice programs. Each student, for him, is not a number but a soul on a unique journey. His teaching 
+                        is shaped by deep traditional roots, supported by modern clarity holding 200-hour and 300-hour YTTC 
+                        certifications along with a Master's Degree in Yogic Sciences.
+                      </p>
+                      
+                      <p>
+                        As the founder of YogaGarhi, Sachin Ji envisioned a space where yoga is taught with honesty, depth, 
+                        and respect for its ancient lineage—free from shortcuts and commercial noise. His specialization in 
+                        Asana and Pranayama reflects his belief that the body is a temple and the breath is the bridge to 
+                        inner stillness. His classes are known for their personal attention, precise alignment, soulful silence, 
+                        and transformative energy.
+                      </p>
+                      
+                      <p className="text-foreground/90 border-l-2 border-primary/50 pl-4 italic">
+                        "Students often say that learning with Sachin Ji feels less like attending a class and more like 
+                        being gently guided back to oneself."
+                      </p>
+                    </>
+                  )}
                 </div>
                 
+                {/* Read More Button */}
+                <button
+                  onClick={() => setFounderExpanded(!founderExpanded)}
+                  className="flex items-center gap-1 mb-8 text-primary font-medium hover:underline transition-colors"
+                >
+                  {founderExpanded ? 'Read Less' : 'Read More'}
+                  <ChevronDown className={`w-4 h-4 transition-transform ${founderExpanded ? 'rotate-180' : ''}`} />
+                </button>
+                
                 {/* Achievement Badges */}
-                <div className="flex flex-wrap gap-3 mb-8">
+                <div className="flex flex-wrap gap-3">
                   {founderAchievements.map((item, index) => (
                     <div 
                       key={index}
@@ -285,7 +366,7 @@ export default function AboutTeachers() {
         </div>
       </section>
 
-      {/* Supporting Teachers */}
+      {/* Teachers Grid */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -293,7 +374,7 @@ export default function AboutTeachers() {
               Expert Faculty
             </span>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Supporting Teachers & Guides
+              Our Teachers & Guides
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               A team of dedicated practitioners, scholars, and healers who bring depth and diversity to your learning journey.
@@ -301,44 +382,8 @@ export default function AboutTeachers() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {supportingTeachers.map((teacher, index) => (
-              <div 
-                key={teacher.name}
-                className="group rounded-3xl overflow-hidden bg-card border border-border/40 transition-all hover:shadow-xl hover:border-primary/20"
-              >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={teacher.image} 
-                    alt={teacher.name} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
-                  <div className="absolute bottom-4 left-6 right-6 text-white">
-                    <p className="text-white/70 text-xs uppercase tracking-wider mb-1">{teacher.role}</p>
-                    <h3 className="font-heading text-xl font-bold">{teacher.name}</h3>
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="p-6">
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                    {teacher.desc}
-                  </p>
-                  
-                  {/* Specialties */}
-                  <div className="flex flex-wrap gap-2">
-                    {teacher.specialties.map((specialty) => (
-                      <span 
-                        key={specialty}
-                        className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
-                      >
-                        {specialty}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            {teachers.map((teacher, index) => (
+              <TeacherCard key={teacher.name} teacher={teacher} index={index} />
             ))}
           </div>
         </div>
@@ -389,12 +434,12 @@ export default function AboutTeachers() {
               <div className="bg-card rounded-2xl p-6 border border-border/50">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-5 h-5 text-primary" />
+                    <BookOpen className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-2">Work With Different Bodies</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Rooted in Tradition</h3>
                     <p className="text-muted-foreground text-sm">
-                      Learn to read, understand, and adapt teachings for different body types and conditions.
+                      Our teachers carry lineage knowledge — wisdom passed down through generations of practitioners.
                     </p>
                   </div>
                 </div>
@@ -403,12 +448,12 @@ export default function AboutTeachers() {
               <div className="bg-card rounded-2xl p-6 border border-border/50">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <BookOpen className="w-5 h-5 text-primary" />
+                    <Users className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-2">Continuous Learning</h3>
+                    <h3 className="font-semibold text-foreground mb-2">Small Batch, Personal Attention</h3>
                     <p className="text-muted-foreground text-sm">
-                      Our community supports ongoing growth with lifetime access to resources and guidance.
+                      With only 8-10 students per batch, every student receives individual guidance and correction.
                     </p>
                   </div>
                 </div>
@@ -418,7 +463,7 @@ export default function AboutTeachers() {
         </div>
       </section>
 
-      {/* Ready to Begin Section */}
+      {/* Ready to Begin */}
       <ReadyToBeginSection />
     </Layout>
   );
