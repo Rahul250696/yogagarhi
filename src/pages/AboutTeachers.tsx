@@ -111,7 +111,7 @@ function TeacherCard({ teacher, index }: { teacher: typeof teachers[0]; index: n
         <img 
           src={teacher.image} 
           alt={teacher.name} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
         <div className="absolute bottom-4 left-6 right-6 text-white">
