@@ -4,13 +4,14 @@ import { Award, Clock, Heart, Sparkles, Users, BookOpen, Mountain, Flame, Star, 
 import { useEnrollment } from "@/components/EnrollmentDialog";
 import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
-import founderImage from "@/assets/founder-image.png";
-import gallery1 from "@/assets/gallery/gallery-1.jpg";
-import gallery2 from "@/assets/gallery/gallery-2.jpg";
-import gallery3 from "@/assets/gallery/gallery-3.jpg";
-import gallery4 from "@/assets/gallery/gallery-4.jpg";
-import gallery5 from "@/assets/gallery/gallery-5.jpg";
-import gallery6 from "@/assets/gallery/gallery-6.jpg";
+
+// Teacher Images
+import sachinJiImg from "@/assets/teachers/sachin-ji.webp";
+import chandaJiImg from "@/assets/teachers/chanda-ji.webp";
+import rahulJiImg from "@/assets/teachers/rahul-ji.webp";
+import rohitJiImg from "@/assets/teachers/rohit-ji.webp";
+import abhishekJiImg from "@/assets/teachers/abhishek-ji.jpg";
+import ankitJiImg from "@/assets/teachers/ankit-ji.webp";
 
 const founderAchievements = [
   { icon: Users, label: "2500+ Students Trained" },
@@ -46,7 +47,7 @@ const teachers = [
   {
     name: "Chanda Ji",
     role: "Co-Founder",
-    image: gallery1,
+    image: chandaJiImg,
     shortDesc: "Born into the sacred lineage of yoga, Chanda Maheshwari's journey began long before she ever stepped onto a mat. Her father, a devoted Hatha Yogi, planted the seeds of yoga in her early years, not as a practice but as a way of life.",
     fullDesc: "Her path unfolded through the ancient streams of Yoga, from the rigor of Hatha Yoga, the devotion of Bhakti Yoga, to the inner awakening of Kriya Yoga. Guided first by her father and later by revered Gurus, she spent over four decades immersed in deep sadhana, study, and self-realization.\n\nWith more than 15 years of teaching experience, Chanda Maheshwari founded YogaGarhi, not as a modern school but as a living sanctuary of traditional wisdom. Through YogaGarhi, she shares the timeless essence of yoga, not as a posture but as a journey of transformation from the body to the soul.\n\nHer vision is to bring people back to the roots of Yoga, where every breath, every movement, and every silence becomes a doorway to inner stillness and well-being.",
     specialties: ["Hatha Yoga", "Bhakti Yoga", "Kriya Yoga"],
@@ -54,7 +55,7 @@ const teachers = [
   {
     name: "Rahul Ji",
     role: "Vinyasa & Teaching Methodology",
-    image: gallery2,
+    image: rahulJiImg,
     shortDesc: "Born and trained in India, Rahul Ji carries over seven years of dedicated experience in the field of yoga practice and education. His journey began with a deep interest in understanding the relationship between body, breath, and consciousness.",
     fullDesc: "Having studied under respected teachers in Rishikesh and Mysore, Rahul Ji developed a strong foundation in Hatha and Vinyasa Yoga, as well as in Yoga Philosophy, Anatomy, and Teaching Methodology. His classes reflect a refined balance between traditional discipline and modern understanding, guiding students toward intelligent sequencing, mindful alignment, and the deeper purpose of practice.\n\nAs a Senior teacher at YogaGarhi, Rahul Ji specializes in Vinyasa Flow and Teaching Methodology, helping future teachers cultivate clarity, confidence, and authenticity in their teaching. His approach emphasizes that yoga teaching is not only a skill but also an expression of inner awareness, compassion, and continuous self-study.\n\nDedicated, humble, and rooted in the yogic way of life, Rahul Ji continues to inspire students from around the world to experience yoga as a journey of self-realization and conscious living.",
     specialties: ["Vinyasa Flow", "Teaching Methodology", "Alignment"],
@@ -62,7 +63,7 @@ const teachers = [
   {
     name: "Rohit Ji",
     role: "Hatha Yoga & Pranayama",
-    image: gallery3,
+    image: rohitJiImg,
     shortDesc: "With over ten years of dedicated teaching experience, Rohit Ji embodies the essence of traditional yogic practice and disciplined living. His journey began in the sacred lands of Rishikesh, where the timeless wisdom of yoga first captured his heart.",
     fullDesc: "Over 10 years, Rohit Ji has taught students from across the world, known for his precise instruction, calm demeanor, and ability to bring subtle yogic principles into clear, practical experience. His teaching integrates physical discipline with spiritual insight, creating an atmosphere where students feel both challenged and supported in their personal journey.\n\nAs a senior teacher at YogaGarhi, Rohit Ji specializes in Hatha Yoga and Pranayama, guiding aspiring teachers to build a strong foundation in breath, alignment, and mindful teaching. He believes yoga is not limited to the mat – it is a continuous exploration of harmony between body, mind, and consciousness.",
     specialties: ["Hatha Yoga", "Pranayama", "Yogic Philosophy"],
@@ -70,7 +71,7 @@ const teachers = [
   {
     name: "Abhishek Ji",
     role: "Alignment & Safe Practice",
-    image: gallery4,
+    image: abhishekJiImg,
     shortDesc: "With over 9 years of dedicated yoga practice and 6 years of teaching experience, Abhishek Ji brings a deep passion for traditional Hatha Yoga and a strong focus on alignment and safe practice.",
     fullDesc: "He holds a Bachelor's degree in Yoga and has completed a 500-hour Yoga Teacher Training Course, equipping him with a comprehensive understanding of both the philosophy and physical aspects of yoga.\n\nHis teaching is rooted in awareness, alignment, and injury prevention. He specializes in guiding students of all levels to move mindfully, helping them understand their own bodies and develop safe, sustainable practices. His classes are thoughtful and accessible, with a focus on correcting posture and bringing attention to the right techniques, so students can protect themselves and progress confidently in their yoga journey.",
     specialties: ["Alignment", "Injury Prevention", "Hatha Yoga"],
@@ -78,7 +79,7 @@ const teachers = [
   {
     name: "Ankit Ji",
     role: "Ashtanga Flow",
-    image: gallery5,
+    image: ankitJiImg,
     shortDesc: "Ankit Ji was born in Devprayag, the origin of the mother Ganges and raised in the world capital of yoga – Rishikesh. Ever since his childhood, he started practicing yoga with gurus in Rishikesh.",
     fullDesc: "He specializes in the sacred art of Ashtanga Flow and his perfection in this style and its alignment can only be credited to his commitment to his mind and body. He has completed his bachelor's and master's degree in Yogic Science and regularly practices Yoga with the best gurus of Rishikesh.\n\nAnkit ji is also a 500 hour registered yoga teacher and has experience of teaching Yoga internationally. Practicing Yoga since his childhood and teaching Yoga for over 8 years has helped him earn a renowned reputation amongst his students all over the world. He is a well-respected and helpful Yoga teacher who leaves a positive and lasting impression on his student's minds.\n\nHe strongly believes yoga can be understood only if one is ready to accept the disciplinary rules and regulations one needs to practice and only when those are fulfilled one can experience the rising benefits of yoga in everyday life.",
     specialties: ["Ashtanga Flow", "Yogic Science", "Alignment"],
@@ -234,7 +235,7 @@ export default function AboutTeachers() {
                 {/* Main Image Container */}
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <img
-                    src={founderImage}
+                    src={sachinJiImg}
                     alt="Yogacharya Sachin - Founder of YogaGarhi"
                     className="w-full h-auto object-cover"
                   />
