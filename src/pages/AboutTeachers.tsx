@@ -6,7 +6,7 @@ import ReadyToBeginSection from "@/components/home/ReadyToBeginSection";
 import heroImage from "@/assets/hero-yoga-bali.jpg";
 
 // Teacher Images
-import sachinJiImg from "@/assets/teachers/sachin-ji.webp";
+import sachinJiImg from "@/assets/founder-image.png";
 import chandaJiImg from "@/assets/teachers/chanda-ji-hd.jpg";
 import rahulJiImg from "@/assets/teachers/rahul-ji-hd.jpg";
 import rohitJiImg from "@/assets/teachers/rohit-ji-hd.jpg";
