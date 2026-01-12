@@ -63,6 +63,13 @@ import tripleBedroom1 from "@/assets/rooms/triple-bedroom-1.jpg";
 import tripleBedroom2 from "@/assets/rooms/triple-bedroom-2.jpg";
 import tripleBedroom3 from "@/assets/rooms/triple-bedroom-3.jpg";
 
+// Double Sharing room images
+import doubleBedroom1 from "@/assets/rooms/double-bedroom-1.jpg";
+import doubleBedroom2 from "@/assets/rooms/double-bedroom-2.jpg";
+import doubleBedroom3 from "@/assets/rooms/double-bedroom-3.jpg";
+import doubleBedroom4 from "@/assets/rooms/double-bedroom-4.jpg";
+import doubleBalcony from "@/assets/rooms/double-balcony.jpg";
+
 function StickyCompactHeader({ visible, onQuickEnquiry }: { visible: boolean; onQuickEnquiry: () => void }) {
   return (
     <div 
@@ -2677,11 +2684,7 @@ This is not a transactional relationship — it is a lifelong connection.`}
                   description: "Share with one roommate. Perfect balance of community and personal space.",
                   originalPrice: "$2,370",
                   price: "$1,899",
-                  images: [
-                    "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=500&h=400&fit=crop",
-                    "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=500&h=400&fit=crop",
-                  ],
+                  images: [doubleBedroom1, doubleBedroom2, doubleBedroom3, doubleBedroom4, doubleBalcony],
                   features: ["Hot Water", "AC/Fan", "Wi-Fi", "Daily Clean"],
                   badge: "Most Popular",
                   isPopular: true,
