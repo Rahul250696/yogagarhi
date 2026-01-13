@@ -46,17 +46,13 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
 
     // Send to formsubmit.co
     try {
-      const response = await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          _subject: `New Quick Enquiry from ${formData.name}`,
-          _template: "table",
-          _captcha: "false"
+          _replyto: formData.email,
+          _subject: `Quick Online Enquiry - ${formData.name}`,
         })
       });
 
@@ -138,6 +134,7 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="name">Full Name *</Label>
                 <Input
                   id="name"
+                  name="name"
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
@@ -149,6 +146,7 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="email">Email *</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
@@ -161,6 +159,7 @@ export function QuickEnquiryProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="message">Message</Label>
                 <Textarea
                   id="message"
+                  name="message"
                   placeholder="Any questions or specific requirements..."
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}

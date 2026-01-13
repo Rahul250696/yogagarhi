@@ -39,11 +39,12 @@ const ReadyToBeginSection = () => {
     e.preventDefault();
     setIsSubmittingManual(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...manualForm,
+          _replyto: manualForm.email,
           _subject: "New Free Manual Request",
           source: "ReadyToBegin Section - Free Manual Button",
           form_type: "manual_download"
@@ -62,11 +63,12 @@ const ReadyToBeginSection = () => {
     e.preventDefault();
     setIsSubmittingWebinar(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...webinarForm,
+          _replyto: webinarForm.email,
           _subject: "New Webinar Registration",
           source: "ReadyToBegin Section - Webinar Button",
           form_type: "webinar_registration"
@@ -85,11 +87,12 @@ const ReadyToBeginSection = () => {
     e.preventDefault();
     setIsSubmittingPreYTTC(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...preYTTCForm,
+          _replyto: preYTTCForm.email,
           _subject: "New Pre-YTTC Info Request",
           source: "ReadyToBegin Section - Get Pre-YTTC Detail Button",
           form_type: "pre_yttc_info"
@@ -222,6 +225,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your full name"
                 required
                 value={manualForm.name}
@@ -236,6 +240,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 required
                 value={manualForm.email}
@@ -304,6 +309,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your full name"
                 required
                 value={webinarForm.name}
@@ -318,6 +324,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 required
                 value={webinarForm.email}
@@ -332,6 +339,7 @@ const ReadyToBeginSection = () => {
               </label>
               <select
                 required
+                name="timezone"
                 value={webinarForm.timezone}
                 onChange={(e) => setWebinarForm(prev => ({ ...prev, timezone: e.target.value }))}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
@@ -353,6 +361,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="date"
+                name="date"
                 required
                 value={webinarForm.date}
                 onChange={(e) => setWebinarForm(prev => ({ ...prev, date: e.target.value }))}
@@ -366,6 +375,7 @@ const ReadyToBeginSection = () => {
               </label>
               <select
                 required
+                name="time"
                 value={webinarForm.time}
                 onChange={(e) => setWebinarForm(prev => ({ ...prev, time: e.target.value }))}
                 className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
@@ -437,6 +447,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Enter your full name"
                 required
                 value={preYTTCForm.name}
@@ -451,6 +462,7 @@ const ReadyToBeginSection = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 required
                 value={preYTTCForm.email}

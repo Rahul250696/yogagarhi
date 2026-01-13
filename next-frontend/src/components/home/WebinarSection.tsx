@@ -24,11 +24,12 @@ const WebinarSection = () => {
     setIsSubmitting(true);
 
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...webinarForm,
+          _replyto: webinarForm.email,
           _subject: `New Webinar Registration: ${webinarForm.name}`,
           source: "Home Page - Webinar Section",
           form_type: "webinar_registration"
@@ -91,6 +92,7 @@ const WebinarSection = () => {
                 </label>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Enter your full name"
                   required
                   value={webinarForm.name}
@@ -106,6 +108,7 @@ const WebinarSection = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Enter your email"
                   required
                   value={webinarForm.email}
@@ -121,6 +124,7 @@ const WebinarSection = () => {
                 </label>
                 <select
                   required
+                  name="timezone"
                   value={webinarForm.timezone}
                   onChange={(e) => setWebinarForm(prev => ({ ...prev, timezone: e.target.value }))}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
@@ -168,6 +172,7 @@ const WebinarSection = () => {
                 </label>
                 <input
                   type="date"
+                  name="date"
                   required
                   value={webinarForm.date}
                   onChange={(e) => setWebinarForm(prev => ({ ...prev, date: e.target.value }))}
@@ -182,6 +187,7 @@ const WebinarSection = () => {
                 </label>
                 <select
                   required
+                  name="time"
                   value={webinarForm.time}
                   onChange={(e) => setWebinarForm(prev => ({ ...prev, time: e.target.value }))}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"

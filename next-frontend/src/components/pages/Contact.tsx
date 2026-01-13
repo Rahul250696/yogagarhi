@@ -21,16 +21,15 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
+          ...formData,
+          _replyto: formData.email,
           _subject: `New Contact Form Enquiry: ${formData.name}`,
           source: "Contact Page - Quick Enquiry",
           form_type: "contact_enquiry"
@@ -151,6 +150,7 @@ export default function Contact() {
                   </label>
                   <Input
                     id="name"
+                    name="name"
                     type="text"
                     required
                     value={formData.name}
@@ -165,6 +165,7 @@ export default function Contact() {
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     required
                     value={formData.email}
@@ -179,6 +180,7 @@ export default function Contact() {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}

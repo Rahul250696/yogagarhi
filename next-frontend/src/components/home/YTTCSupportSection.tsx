@@ -64,11 +64,12 @@ const YTTCSupportSection = () => {
     setIsSubmitting(true);
 
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           email: email,
+          _replyto: email,
           _subject: "New Pre-YTTC Guide Request",
           source: "YTTC Support Section - Learn More Button",
           form_type: "pre_yttc_guide"
@@ -446,6 +447,7 @@ const YTTCSupportSection = () => {
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

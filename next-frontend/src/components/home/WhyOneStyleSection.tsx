@@ -174,11 +174,12 @@ export default function WhyOneStyleSection() {
     const dominantDosha = getDominantDosha();
 
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           email: email,
+          _replyto: email,
           _subject: `New Prakriti Quiz Result: ${dominantDosha.toUpperCase()}`,
           source: "WhyOneStyle Section - Quiz",
           form_type: "prakriti_quiz",
@@ -433,6 +434,7 @@ export default function WhyOneStyleSection() {
                     <div className="space-y-2">
                       <input
                         type="email"
+                        name="email"
                         placeholder="Your email address *"
                         className={`
                           w-full px-4 py-3 rounded-xl border-2 bg-background 
