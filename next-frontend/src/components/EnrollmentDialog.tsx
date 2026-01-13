@@ -78,7 +78,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
 
     // Send to formsubmit.co
     try {
-      const response = await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,8 +86,8 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
         },
         body: JSON.stringify({
           ...formData,
+          _replyto: formData.email,
           _subject: `New Enrollment Request from ${formData.name}`,
-          _template: "table",
           _captcha: "false"
         })
       });
@@ -196,6 +196,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="enroll-name">Full Name <span className="text-destructive">*</span></Label>
                 <Input
                   id="enroll-name"
+                  name="name"
                   placeholder="Enter your full name"
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
@@ -208,6 +209,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="enroll-email">Email Address <span className="text-destructive">*</span></Label>
                 <Input
                   id="enroll-email"
+                  name="email"
                   type="email"
                   placeholder="you@example.com"
                   value={formData.email}
@@ -221,6 +223,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="enroll-phone">Contact / WhatsApp <span className="text-destructive">*</span></Label>
                 <div className="flex gap-2">
                   <select
+                    name="countryCode"
                     value={formData.countryCode}
                     onChange={(e) => handleChange("countryCode", e.target.value)}
                     className="w-28 px-2 py-2 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring text-sm"
@@ -233,6 +236,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
                   </select>
                   <Input
                     id="enroll-phone"
+                    name="phone"
                     type="tel"
                     placeholder="Phone number"
                     value={formData.phone}
@@ -249,6 +253,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
                 <div className="relative">
                   <select
                     id="enroll-course"
+                    name="course"
                     value={formData.course}
                     onChange={(e) => handleChange("course", e.target.value)}
                     className="w-full px-4 py-2.5 rounded-md border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none cursor-pointer"
@@ -268,6 +273,7 @@ export function EnrollmentProvider({ children }: { children: ReactNode }) {
                 <Label htmlFor="enroll-message">Message (Optional)</Label>
                 <Textarea
                   id="enroll-message"
+                  name="message"
                   placeholder="Any questions or specific requirements..."
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}

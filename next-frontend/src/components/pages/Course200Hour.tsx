@@ -738,11 +738,12 @@ export default function Course200Hour() {
     setIsSubmittingQuiz(true);
 
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           email: email,
+          _replyto: email,
           quiz_answers: quizAnswers.join(", "),
           _subject: "New Quiz Result: Yogic Energy",
           source: "Course 200 Hour - Quiz Section",
@@ -767,7 +768,7 @@ export default function Course200Hour() {
       : "";
 
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -775,6 +776,7 @@ export default function Course200Hour() {
           appointment_date: bookingDate,
           appointment_time: selectedTime,
           timezone: selectedTimezone,
+          _replyto: bookingForm.email,
           _subject: `New Call Booking: ${bookingForm.name}`,
           source: "Course 200 Hour - Book a Call Section",
           form_type: "booking_request"
@@ -795,11 +797,12 @@ export default function Course200Hour() {
   const handleEnrollSubmit = async () => {
     setIsSubmittingEnroll(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...enrollForm,
+          _replyto: enrollForm.email,
           _subject: `New Enrollment: ${enrollForm.name}`,
           source: "Course 200 Hour - Enrollment Popup",
           form_type: "enrollment"
@@ -825,11 +828,12 @@ export default function Course200Hour() {
     e.preventDefault();
     setIsSubmittingQuick(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...quickEnquiryForm,
+          _replyto: quickEnquiryForm.email,
           _subject: `New Quick Enquiry: ${quickEnquiryForm.name}`,
           source: "Course 200 Hour - Quick Enquiry Popup",
           form_type: "quick_enquiry"
@@ -855,12 +859,13 @@ export default function Course200Hour() {
     e.preventDefault();
     setIsSubmittingManual(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           name: manualForm.name,
           email: manualForm.email,
+          _replyto: manualForm.email,
           _subject: "New Free Manual Request",
           source: "Course 200 Hour - Free Manual Button",
           form_type: "manual_download"
@@ -886,11 +891,12 @@ export default function Course200Hour() {
 
     setIsSubmittingSyllabus(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           email: syllabusEmail,
+          _replyto: syllabusEmail,
           course: selectedSyllabusCourse,
           _subject: `New Syllabus Request: ${selectedSyllabusCourse} Hour`,
           source: "Course 200 Hour - Download Syllabus",
@@ -912,11 +918,12 @@ export default function Course200Hour() {
     e.preventDefault();
     setIsSubmittingWebinar(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...webinarForm,
+          _replyto: webinarForm.email,
           _subject: `New Webinar Registration: ${webinarForm.name}`,
           source: "Course 200 Hour - Webinar Section",
           form_type: "webinar_registration"
@@ -937,11 +944,12 @@ export default function Course200Hour() {
     e.preventDefault();
     setIsSubmittingPreYTTC(true);
     try {
-      await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           ...preYTTCForm,
+          _replyto: preYTTCForm.email,
           _subject: "New Pre-YTTC Info Request",
           source: "Course 200 Hour - Pre-YTTC Section",
           form_type: "pre_yttc_info"

@@ -83,7 +83,7 @@ function BookingDialogContent({ source }: { source: string }) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/yogagarhi@gmail.com", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -96,6 +96,7 @@ function BookingDialogContent({ source }: { source: string }) {
           booking_date: `${selectedDay} ${months[selectedMonth]} ${currentYear}`,
           booking_time: selectedTime,
           timezone: selectedTimezone,
+          _replyto: bookingForm.email,
           ...bookingForm,
         })
       });
@@ -310,6 +311,7 @@ function BookingDialogContent({ source }: { source: string }) {
                 </label>
                 <input
                   type="text"
+                  name="name"
                   value={bookingForm.name}
                   onChange={(e) => setBookingForm(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="Enter your full name"
@@ -324,6 +326,7 @@ function BookingDialogContent({ source }: { source: string }) {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   value={bookingForm.email}
                   onChange={(e) => setBookingForm(prev => ({ ...prev, email: e.target.value }))}
                   placeholder="you@example.com"
@@ -338,6 +341,7 @@ function BookingDialogContent({ source }: { source: string }) {
                 </label>
                 <div className="flex gap-2">
                   <select
+                    name="countryCode"
                     value={bookingForm.countryCode}
                     onChange={(e) => setBookingForm(prev => ({ ...prev, countryCode: e.target.value }))}
                     className="w-24 px-2 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
@@ -355,6 +359,7 @@ function BookingDialogContent({ source }: { source: string }) {
                   </select>
                   <input
                     type="tel"
+                    name="phone"
                     value={bookingForm.phone}
                     onChange={(e) => setBookingForm(prev => ({ ...prev, phone: e.target.value }))}
                     placeholder="Phone number"
@@ -369,6 +374,7 @@ function BookingDialogContent({ source }: { source: string }) {
                   Message (Optional)
                 </label>
                 <textarea
+                  name="message"
                   value={bookingForm.message}
                   onChange={(e) => setBookingForm(prev => ({ ...prev, message: e.target.value }))}
                   placeholder="Any questions or topics you'd like to discuss..."
