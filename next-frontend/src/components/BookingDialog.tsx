@@ -83,7 +83,7 @@ function BookingDialogContent({ source }: { source: string }) {
     setIsSubmitting(true);
 
     try {
-      await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
